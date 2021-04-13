@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-rate-component',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rate-component.component.css']
 })
 export class RateComponentComponent implements OnInit {
+  @Input() currentRate: number;
+  @Input() size:string;
 
-  constructor() { }
+  constructor() {  }
 
   ngOnInit(): void {
   }
