@@ -3,14 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import{OneProductCompComponent} from './productComp/oneProductComp/oneProductComp.component';
+import {FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OneProductCompComponent,
+    FreeShipppingmodalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
