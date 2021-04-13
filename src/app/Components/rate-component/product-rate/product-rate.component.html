@@ -1,0 +1,31 @@
+<!-- Product Component will take 2 things (product's avg rate & product rate object)-->
+<!-- it will put the avg in rate Component to make the rate shape (fill the stars) -->
+<div class="container-fluid  my-3">
+<div class="container shadow">
+
+    <div class="container p-3 bg-white" id="rate">
+        <div class="row my-2">
+            <!-- This column will take the Avrage rate  -->
+            <div class="col-lg-3 py-2 borderCOL d-flex align-items-center flex-column">
+                <div class="avg">
+                    {{avgRate}}
+                </div>
+                <!-- send the avg rate with [currentRate] and if you want a specific size for the stars, you can send it in [size], the size will be rem -->
+                <app-rate-component [currentRate]=avgRate [size]="2"></app-rate-component>
+                <strong *ngIf="avgRate>0">{{avgRate}} out of 5</strong>
+
+                <span class="text-secondary" *ngIf="avgRate>0">{{productRate.total}} Ratings</span>
+                <span class="text-secondary" *ngIf="avgRate===0">No Ratings Yet</span>
+            </div>
+            <!-- send the rate object to app rate statics and it will generate the component of the analyitcs of the rating -->
+            <div class="col-lg-6 col-sm-12 borderCOL pt-3">
+                <app-rate-statics [rate] = productRate></app-rate-statics>
+            </div>
+            <!-- this components is responisble for Rating -->
+            <div class="col-lg-3 mt-3 col-sm-12 px-2">
+                <app-user-rate [firstRate]=prdRateFlag></app-user-rate>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
