@@ -12,10 +12,16 @@ export class ReviewCardComponent implements OnInit {
   @Input() reviewText: string ='';
   @Input() isPurchasedOnSouq: boolean = false;
   isHelpful: boolean = true;
+  isHelpfulSelected: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleIsHelpful() {
+    this.isHelpful = !this.isHelpful;
+    this.isHelpfulSelected = true;
   }
 
 }

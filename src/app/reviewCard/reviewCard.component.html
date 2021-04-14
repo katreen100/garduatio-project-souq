@@ -1,15 +1,16 @@
 <div>
-  Rating: {{ratingValue}}
+  <app-user-rate firstRate={{ratingValue}}></app-user-rate>
 </div>
-<div class="isPurch">
-  isPurchasedOnSouq: {{isPurchasedOnSouq}}
-</div>
-<div>
-  By: {{userName}} on {{reviewDate}}
+<div class="isPurch" *ngIf="isPurchasedOnSouq">
+  Purchased on Souq
 </div>
 <div>
-  Review : {{reviewText}}
+  By: <strong>{{userName}}</strong> on {{reviewDate | date: 'fullDate'}}
 </div>
-<button class="someClass" ng-class="{true: 'green', false: 'blue'}        [!yupNope.isSelected]" ng-click="yupNope.isSelected = !yupNope.isSelected">Helpfull</button>
-   <button class="someClass" ng-class="{false: 'green', true: 'yupNope'}[!yupNope.isSelected]" ng-click="yupNope.isSelected = !yupNope.isSelected">NOt helpfull</button>
+<div class="reviewText">
+  {{reviewText}}
+</div>
+<p *ngIf="isHelpfulSelected">Thanks for your feedback!</p>
+<button class="selected" (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is Helpful</button>
+<button (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is not helpful</button>
 <hr>

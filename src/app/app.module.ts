@@ -13,7 +13,7 @@ import { UserRateComponent } from './Components/rate-component/user-rate/user-ra
 import { ProductRateComponent } from './Components/rate-component/product-rate/product-rate.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     RateComponentComponent,
     RateStaticsComponent,

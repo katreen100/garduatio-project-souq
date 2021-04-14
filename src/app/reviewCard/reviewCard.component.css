@@ -1,3 +1,15 @@
 .isPurch{
     text-align: right;
 }
+button{
+    color: #999;
+    background-color: #fff;
+    border: 1px solid #bbb;
+    margin: 0 10px;
+    margin-inline-start: 0;
+}
+button.selected{
+    color: #006fcc;
+    background-color: #fff;
+    border: 1px solid #006fcc;
+}
