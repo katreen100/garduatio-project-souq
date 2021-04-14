@@ -1,12 +1,15 @@
-<p>
+<div>
   Rating: {{ratingValue}}
-</p>
-<p>
-  By: {{userName}} on {{reviewDate}}
-</p>
-<p>
-  {{reviewText}}
-</p>
-<p>
+</div>
+<div class="isPurch">
   isPurchasedOnSouq: {{isPurchasedOnSouq}}
-</p>
+</div>
+<div>
+  By: {{userName}} on {{reviewDate}}
+</div>
+<div>
+  Review : {{reviewText}}
+</div>
+<button class="someClass" ng-class="{true: 'green', false: 'blue'}        [!yupNope.isSelected]" ng-click="yupNope.isSelected = !yupNope.isSelected">Helpfull</button>
+   <button class="someClass" ng-class="{false: 'green', true: 'yupNope'}[!yupNope.isSelected]" ng-click="yupNope.isSelected = !yupNope.isSelected">NOt helpfull</button>
+<hr>
