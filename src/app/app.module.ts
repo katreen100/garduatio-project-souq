@@ -9,6 +9,8 @@ import { RateStaticsComponent } from './Components/rate-component/rate-statics/r
 import { UserRateComponent } from './Components/rate-component/user-rate/user-rate.component';
 import { ProductRateComponent } from './Components/rate-component/product-rate/product-rate.component';
 import { FilterationComponent } from './Components/filteration/filteration.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FilterationComponent } from './Components/filteration/filteration.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxSliderModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
