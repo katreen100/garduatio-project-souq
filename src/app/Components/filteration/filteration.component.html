@@ -1,98 +1,255 @@
+<div class="col-3">
 
-<div class="col-md-4 bigDiv">
+    <div class="editDiv d-lg-block d-none" >
 
-    <ngb-accordion [closeOthers]="true" activeIds="static-1">
-        <ngb-panel id="static-1" title="Category">
-            <ng-template ngbPanelContent>
-                <!-- category option  -->
-                <div class="form-check" *ngFor="let item of Cateogryoptions">
-                    <input class="form-check-input" type="checkbox" value="" id="categoryOption">
-                    <label class="form-check-label" for="categoryOption">
-                        {{item.label}}
-                    </label>
-                </div>
 
-            </ng-template>
-        </ngb-panel>
-        <ngb-panel id="static-2">
-            <ng-template ngbPanelTitle>
-                <span> Price </span>
-            </ng-template>
-            <ng-template ngbPanelContent>
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+            <ngb-panel id="static-1"  >
+                <ng-template ngbPanelTitle>
+                    <div>
+                        <div class="d-block w-100 bg-warning"> Category</div>
+                        <div>-</div>
+                    </div>
+                </ng-template>
+                
+                <ng-template ngbPanelContent>
+                    <!-- category option  -->
+                    <div class="form-check" *ngFor="let item of Cateogryoptions">
+                        <input class="form-check-input" type="checkbox" value="" id="categoryOption">
+                        <label class="form-check-label" for="categoryOption">
+                            {{item.label}}
+                        </label>
+                    </div>
 
-                <!-- slider -->
-                <div class="custom-slider">
-                    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
-                    
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">From</span>
-                                   
+                </ng-template>
+            </ngb-panel>
+            <ngb-panel id="static-2">
+                <ng-template ngbPanelTitle>
+                    <span> Price</span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+
+                    <!-- slider -->
+                    <div class="custom-slider">
+                        <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">From</span>
+
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                        value="{{minValue}}">
                                 </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="{{minValue}}">
                             </div>
+
+                            <div class=col-6>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">To</span>
+
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                        value="{{maxValue}}">
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class=col-6>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">To</span>
-                                   
-                                </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="{{maxValue}}">
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-primary">Apply</button>
+
+
 
                     </div>
 
-                    <button type="button" class="btn btn-primary">Apply</button>
-                    
+                </ng-template>
+            </ngb-panel>
+
+            <ngb-panel id="static-3" title="Average Rating">
+                <ng-template ngbPanelContent>
+                    <!-- rating with star -->
+                    <div *ngFor="let item of Stars">
+                        <a href="#">
+                            <app-rate-component [currentRate]=item.label [size]="2"></app-rate-component>
+                            <span>& up {{item.value}}</span>
+                        </a>
+                    </div>
+
+                </ng-template>
+            </ngb-panel>
+
+            <ngb-panel id="static-4" title="Condition">
+                <ng-template ngbPanelContent>
+                    <!-- Condition  Option-->
+
+                    <div class="form-check" *ngFor="let item of Condition">
+                        <input class="form-check-input" type="checkbox" value="" id="ConditionOption">
+                        <label class="form-check-label" for="ConditionOption">
+                            {{item.label}}
+                        </label>
+                    </div>
+                </ng-template>
+            </ngb-panel>
 
 
+            <ngb-panel id="static-5" title="Brand">
+                <ng-template ngbPanelContent>
+                    <!-- Brand  Option-->
+
+                    <div class="form-check" *ngFor="let item of Brand">
+                        <input class="form-check-input" type="checkbox" value="" id="BrandOption">
+                        <label class="form-check-label" for="BrandOption">
+                            {{item.label}}
+                        </label>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+
+        </ngb-accordion>
+    </div>
+
+    <div class="hideDiv" >
+
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary d-lg-none d-block" data-toggle="modal" data-target="#myModal">
+            +
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">All Cateogries</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+
+
+
+                        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                            <ngb-panel id="static-1" title="Category">
+                                <ng-template ngbPanelContent>
+                                    <!-- category option  -->
+                                    <div class="form-check" *ngFor="let item of Cateogryoptions">
+                                        <input class="form-check-input" type="checkbox" value="" id="categoryOption">
+                                        <label class="form-check-label" for="categoryOption">
+                                            {{item.label}}
+                                        </label>
+                                    </div>
+
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-2">
+                                <ng-template ngbPanelTitle>
+                                    <span> Price </span>
+                                </ng-template>
+                                <ng-template ngbPanelContent>
+
+                                    <!-- slider -->
+                                    <div class="custom-slider">
+                                        <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options">
+                                        </ngx-slider>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">From</span>
+
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Amount (to the nearest dollar)"
+                                                        value="{{minValue}}">
+                                                </div>
+                                            </div>
+
+                                            <div class=col-6>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">To</span>
+
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Amount (to the nearest dollar)"
+                                                        value="{{maxValue}}">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary">Apply</button>
+
+
+
+                                    </div>
+
+                                </ng-template>
+                            </ngb-panel>
+
+                            <ngb-panel id="static-3" title="Average Rating">
+                                <ng-template ngbPanelContent>
+                                    <!-- rating with star -->
+                                    <div *ngFor="let item of Stars">
+                                        <a href="#">
+                                            <app-rate-component [currentRate]=item.label [size]="2">
+                                            </app-rate-component>
+                                            <span>& up {{item.value}}</span>
+                                        </a>
+                                    </div>
+
+                                </ng-template>
+                            </ngb-panel>
+
+                            <ngb-panel id="static-4" title="Condition">
+                                <ng-template ngbPanelContent>
+                                    <!-- Condition  Option-->
+
+                                    <div class="form-check" *ngFor="let item of Condition">
+                                        <input class="form-check-input" type="checkbox" value="" id="ConditionOption">
+                                        <label class="form-check-label" for="ConditionOption">
+                                            {{item.label}}
+                                        </label>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+
+
+                            <ngb-panel id="static-5" title="Brand">
+                                <ng-template ngbPanelContent>
+                                    <!-- Brand  Option-->
+
+                                    <div class="form-check" *ngFor="let item of Brand">
+                                        <input class="form-check-input" type="checkbox" value="" id="BrandOption">
+                                        <label class="form-check-label" for="BrandOption">
+                                            {{item.label}}
+                                        </label>
+                                    </div>
+                                </ng-template>
+                            </ngb-panel>
+
+                        </ngb-accordion>
+                    </div>
                 </div>
 
-            </ng-template>
-        </ngb-panel>
-
-        <ngb-panel id="static-3" title="Average Rating">
-            <ng-template ngbPanelContent>
-                <!-- rating with star -->
-                <app-rate-component [currentRate]=4 [size]="2"></app-rate-component>
-                <br />
-                <app-rate-component [currentRate]=3 [size]="2"></app-rate-component>
-                <br />
-                <app-rate-component [currentRate]=2 [size]="2"></app-rate-component>
-            </ng-template>
-        </ngb-panel>
-
-        <ngb-panel id="static-4" title="Condition">
-            <ng-template ngbPanelContent>
-                <!-- Condition  Option-->
-                
-                <div class="form-check" *ngFor="let item of Condition">
-                    <input class="form-check-input" type="checkbox" value="" id="ConditionOption">
-                    <label class="form-check-label" for="ConditionOption">
-                        {{item.label}}
-                    </label>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
-            </ng-template>
-        </ngb-panel>
 
 
-        <ngb-panel id="static-5" title="Brand">
-            <ng-template ngbPanelContent>
-                <!-- Brand  Option-->
-                
-                <div class="form-check" *ngFor="let item of Brand">
-                    <input class="form-check-input" type="checkbox" value="" id="BrandOption">
-                    <label class="form-check-label" for="BrandOption">
-                        {{item.label}}
-                    </label>
-                </div>
-            </ng-template>
-        </ngb-panel>
+            </div>
+        </div>
+    </div>
 
-    </ngb-accordion>
+
+
+
 </div>

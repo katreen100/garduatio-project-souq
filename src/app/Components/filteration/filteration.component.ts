@@ -24,6 +24,12 @@ export class FilterationComponent implements OnInit {
     showTicks: true
   };
 
+  Stars = [
+    {value:5000 , label: 4},
+    {value:4000 , label: 3},
+    {value:3000 , label: 2},
+    {value:2000 , label: 1}
+  ];
   Condition = [
     {value : 1 , label : "New"},
     {value : 2 , label : "Old"}
@@ -37,6 +43,8 @@ export class FilterationComponent implements OnInit {
     {value : 1 , label : "B"},
     {value : 2 , label : "C"}
   ]
+
+
 
 
   constructor() { }
