@@ -4,20 +4,20 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: antiquewhite;
+        /* background-color: antiquewhite; */
         /* width: 365px; */
         max-width: 365px;
-        height: 640px;
+        /* height: 640px; */
     }
 
     .product-image {
-        padding: 10px;
+        /* padding: 10px; */
         /* width: clamp(100px, 100%, 300px); */
         /* height: clamp(100px, 100%, 360px); */
         /* width: 100%; */
         /* max-width: 100%; */
         max-height: 390px;
-        width: 100%;
+        /* width: 100%; */
         /* height: 390px; */
         /* height: auto; */
         /* display: inline-block; */
@@ -26,31 +26,31 @@
 
     .product-details {
         display: grid;
-        grid-template-rows: 1.5fr 1fr 1fr 1.5fr;
-        height: 255px;
+        grid-template-rows: 1fr 1fr 1fr 1.5fr;
         width: 100%;
-        padding: 5px 14px;
-        background-color: tomato;
+        /* padding: 5px 14px; */
+        /* background-color: rgb(235, 235, 235); */
     }
 
 
     .product-show {
-        height: 385px;
+        /* height: 385px; */
         width: 100%;
         justify-content: center;
         align-items: center;
-        background-color: lightblue;
+        /* background-color: lightblue; */
         position: relative;
     }
 
     .add-to-cart-btn {
+        font-weight: 700;
         width: 100%;
         grid-row: -2 / -1;
     }
 
     .discount-box {
-        height: 30px;
-        width: 60px;
+        /* height: 30px;
+        width: 60px; */
         font-size: 14px;
         line-height: 30px;
         font-weight: 800;
@@ -93,15 +93,15 @@
 </style>
 
 <div class="m-3">
-    <section class="product-card">
-        <section class="product-show">
+    <section class="product-card shadow">
+        <section class="product-show text-center py-2">
             <img 
               [src]="product.mainImage"
               class="product-image"
               alt="product image"
             />
 
-            <div class="discount-box">
+            <div class="discount-box px-2">
                 <span>{{ product.discount }}% OFF</span>
             </div>
 
@@ -114,8 +114,8 @@
             </div> -->
 
         </section>
-        <section class="product-details">
-            <p>{{ product.title }}</p>
+        <section class="product-details  px-4 py-2">
+            <h2 class="text-secondary">{{ product.title }}</h2>
 
             <div class="price-and-rating-row">
                 <div>
@@ -140,7 +140,7 @@
                 <div *ngIf="product.fullfilledBySouq">Fullfilled by Souq</div>
             </div>
 
-            <button class="add-to-cart-btn">ADD TO CART</button>
+            <button class="add-to-cart-btn btn btn-primary">ADD TO CART</button>
         </section>
     </section>
 </div>
