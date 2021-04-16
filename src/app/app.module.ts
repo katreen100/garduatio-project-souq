@@ -8,6 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RateStaticsComponent } from './Components/rate-component/rate-statics/rate-statics.component';
 import { UserRateComponent } from './Components/rate-component/user-rate/user-rate.component';
 import { ProductRateComponent } from './Components/rate-component/product-rate/product-rate.component';
+import { FilterationComponent } from './Components/filteration/filteration.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,12 +19,16 @@ import { ProductRateComponent } from './Components/rate-component/product-rate/p
     RateComponentComponent,
     RateStaticsComponent,
     UserRateComponent,
-    ProductRateComponent
+    ProductRateComponent,
+    FilterationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxSliderModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
