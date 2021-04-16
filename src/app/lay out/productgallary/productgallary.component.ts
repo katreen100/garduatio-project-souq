@@ -1,16 +1,16 @@
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
-import { ProductDetails } from 'src/app/view model/productDetails';
+import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDropdown} from '@ng-bootstrap/ng-bootstrap'
-import { OrderShipingInfo } from 'src/app/view model/orderShipingInfo';
+import { ProductDetails } from 'src/app/view model/productDetails';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
-  selector: 'app-oneProductComp',
-  templateUrl: './oneProductComp.component.html',
-  styleUrls: ['./oneProductComp.component.css'],
-  providers: [NgbModalConfig, NgbModal,NgbDropdown]
+  selector: 'app-productgallary',
+  templateUrl: './productgallary.component.html',
+  styleUrls: ['./productgallary.component.css'],
+  providers: [NgbModalConfig, NgbModal,NgbCarouselConfig]
 })
-export class OneProductCompComponent implements OnInit {
+export class ProductgallaryComponent implements OnInit {
   product:ProductDetails={
     
     "id": 2,
@@ -20,12 +20,13 @@ export class OneProductCompComponent implements OnInit {
     "categoryID": 2,
     "quantity": 5,
     "sideImages": ["url"],
-    "mainImages": ["url1", "url2"],
+    "mainImages": ["https://image.shutterstock.com/image-illustration/digital-generated-devices-on-desktop-260nw-1495869476.jpg", "https://image.shutterstock.com/image-illustration/digital-generated-devices-on-desktop-260nw-1495869476.jpg"],
+    
     "description": ["string of description","anther discribtion"],
     "descriptionAr": ["وصف المنتج","وصف اخر "],
     "features": ["لا تتأثر بالماء", "امكانيات الساعة"],
     "condition": "new",
-    "conditionAr": "جديدة", 
+    "conditionAr": "جديدة",
     "freeshipping": true,
    " freeshippingAr": true,
     "fullfilledBySouq": true,
@@ -57,7 +58,7 @@ export class OneProductCompComponent implements OnInit {
     },
     "price": {
         "currentPrice": 500,
-        "discount":10,
+        "discount":15,
         "previousPrices": {
             "timestamp": 400,
             "timestamp2": 300,
@@ -66,37 +67,20 @@ export class OneProductCompComponent implements OnInit {
         "savedMoney":0,
     }
    }
-   orderinfo:OrderShipingInfo[];
-
-
-  constructor( config: NgbModalConfig, private modalService: NgbModal) { 
+   images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  constructor(config: NgbModalConfig,configc: NgbCarouselConfig, private modalService: NgbModal) { 
+    
     config.backdrop = 'static';
     config.keyboard = false;
-    this.orderinfo=[
-     {prodID:2,
-      shippingCity:["cairo"],
-      arrivalDate:new Date(1-2-2021)}
-    ]
+    configc.interval = 10000;
+    configc.wrap = true;
+    configc.keyboard = true;
+    configc.pauseOnHover = false;
   }
   openlg(content) {
-    
     this.modalService.open(content, { size: 'lg' });
-  
   }
-  calPricefterDiscount(){
-    return this.product.price.currentPrice-(this.product.price.currentPrice*this.product.price.discount/100)
 
-   }
-  
-  calcSavedMony():number{
-    return this.product.price.currentPrice-this.calPricefterDiscount()
-   }
-  
-  
-getarrivalDate(id:number){
-   return this.orderinfo.find(prod=>(prod.prodID=id)).arrivalDate
-
-}
   ngOnInit() {
   }
 

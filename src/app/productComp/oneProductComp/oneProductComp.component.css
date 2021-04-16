@@ -28,10 +28,16 @@ body{
     .graytext{
         color: #818181;
     }
-    #productinfo .fa-star
-    {
-        color:gold  
+    #head-covidmsg span { 
+       background-color: #a2deda;
+         font-size: 1.285 rem; 
+         font-weight: 700;
     }
+    #productColor dd{
+        background-color: #cccaca;
+        border: 2px grey solid;
+    }
+    
     #headprice h2
     {
         font-size: 1.428rem;

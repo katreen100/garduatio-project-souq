@@ -6,8 +6,8 @@ export interface  ProductDetails {
 "brandID": number,
 "categoryID": number,
 "quantity": number,
-"mainImage": string,
-"images": string[],
+"mainImages": string[],
+"sideImages": string[],
 "description": string[],
 "descriptionAr": string[],
 "features":string [] ,
@@ -43,6 +43,7 @@ export interface  ProductDetails {
 },
 "price": {
     "currentPrice": number,
+    "discount":number,
     "previousPrices": {
         "timestamp": number,
         "timestamp2": number,
