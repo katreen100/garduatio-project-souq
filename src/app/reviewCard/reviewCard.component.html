@@ -1,0 +1,16 @@
+<div>
+  <app-user-rate firstRate={{ratingValue}}></app-user-rate>
+</div>
+<div class="isPurch" *ngIf="isPurchasedOnSouq">
+  Purchased on Souq
+</div>
+<div>
+  By: <strong>{{userName}}</strong> on {{reviewDate | date: 'fullDate'}}
+</div>
+<div class="reviewText">
+  {{reviewText}}
+</div>
+<p *ngIf="isHelpfulSelected">Thanks for your feedback!</p>
+<button class="selected" (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is Helpful</button>
+<button (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is not helpful</button>
+<hr>

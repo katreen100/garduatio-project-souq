@@ -7,6 +7,7 @@ import { IProductCard } from 'src/viewModels/iproduct-card';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'souq-app';
   productCards: IProductCard[];

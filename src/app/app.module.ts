@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReviewCardComponent } from './reviewCard/reviewCard.component';
+import { ProductInfoComponent } from './productInfo/productInfo.component';
+import { ReviewsListComponent } from './reviewsList/reviewsList.component';
 import{OneProductCompComponent} from './productComp/oneProductComp/oneProductComp.component';
 import {FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component'
 import {ProductgallaryComponent} from "./lay out/productgallary/productgallary.component"
@@ -27,6 +30,9 @@ import { FormsModule } from '@angular/forms';
     RateStaticsComponent,
     UserRateComponent,
     ProductRateComponent,
+    ReviewCardComponent,
+    ProductInfoComponent,
+    ReviewsListComponent
     FilterationComponent
   ],
   imports: [
