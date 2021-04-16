@@ -8,6 +8,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RateStaticsComponent } from './Components/rate-component/rate-statics/rate-statics.component';
 import { UserRateComponent } from './Components/rate-component/user-rate/user-rate.component';
 import { ProductRateComponent } from './Components/rate-component/product-rate/product-rate.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { ProductRateComponent } from './Components/rate-component/product-rate/p
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AppRoutingModule,
     NgbModule
   ],
