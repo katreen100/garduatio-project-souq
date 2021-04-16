@@ -10,6 +10,7 @@ import { UserRateComponent } from './Components/rate-component/user-rate/user-ra
 import { ProductRateComponent } from './Components/rate-component/product-rate/product-rate.component';
 import { FilterationComponent } from './Components/filteration/filteration.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgxSliderModule
+    NgxSliderModule,
+    FormsModule
     
   ],
   providers: [],

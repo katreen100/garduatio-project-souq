@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filteration.component.css']
 })
 export class FilterationComponent implements OnInit {
+  searchCat : string;
+  searchCondition : string;
+  searchBrand : string;
+
   Cateogryoptions = [
     { value: '1', label: 'Watches' },
     { value: '2', label: 'Smart Watches' },
@@ -14,6 +18,7 @@ export class FilterationComponent implements OnInit {
     { value: '4', label: 'Sport Watches' },
   ];
 
+  cats = [...this.Cateogryoptions];
 
   minValue: number = 0;
   maxValue: number = 100;
@@ -34,6 +39,7 @@ export class FilterationComponent implements OnInit {
     {value : 1 , label : "New"},
     {value : 2 , label : "Old"}
   ];
+  cond = [...this.Condition];
 
   Brand = [
     {value : 1 , label : "X"},
@@ -43,6 +49,7 @@ export class FilterationComponent implements OnInit {
     {value : 1 , label : "B"},
     {value : 2 , label : "C"}
   ]
+  bran = [...this.Brand];
 
 
 
@@ -51,6 +58,69 @@ export class FilterationComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+  Search(){
+
+    if(this.searchCat != ""){
+      this.Cateogryoptions = this.cats.filter(res=>{
+        console.log(res.label);
+        console.log(this.searchCat);
+        return res.label.toLocaleLowerCase().startsWith(this.searchCat.toLocaleLowerCase());
+      })
+    }
+    else{
+      this.Cateogryoptions = [...this.cats]
+    }
+
+    
+  }
+  SelectedProduct(item){
+    console.log(item);
+  }
+  priceFromTo(from , to){
+    console.log(from);
+    console.log(to);
+  }
+
+  averageRating(value, label){
+    console.log(value);
+    console.log(label);
+    
+    
+  }
+  SearchCondition(){
+    if(this.searchCondition != ""){
+      this.Condition = this.cond.filter(res=>{
+        console.log(res.label);
+        console.log(this.searchCondition);
+        return res.label.toLocaleLowerCase().startsWith(this.searchCondition.toLocaleLowerCase());
+      })
+    }
+    else{
+      this.Condition = [...this.cond]
+    }
+
+  }
+  SelectedCondition(item){
+    console.log(item);
+    
+  }
+
+  SearchBrand(){
+    if(this.searchBrand != ""){
+      this.Brand = this.bran.filter(res=>{
+        console.log(res.label);
+        console.log(this.searchBrand);
+        return res.label.toLocaleLowerCase().startsWith(this.searchBrand.toLocaleLowerCase());
+      })
+    }
+    else{
+      this.Brand = [...this.bran]
+    }
+
+  }
+  brandOption(item){
+    console.log(item);
   }
 
 

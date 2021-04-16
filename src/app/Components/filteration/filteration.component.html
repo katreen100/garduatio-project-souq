@@ -1,34 +1,36 @@
 <div class="col-3">
 
-    <div class="editDiv d-lg-block d-none" >
+    <div class="editDiv d-lg-block d-none">
 
-
-        <ngb-accordion [closeOthers]="true" activeIds="static-1">
-            <ngb-panel id="static-1"  >
-                <ng-template ngbPanelTitle>
-                    <div>
-                        <div class="d-block w-100 bg-warning"> Category</div>
-                        <div>-</div>
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+            <ngb-panel id="ngb-panel-0">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div (click)="acc.toggle('ngb-panel-0')">
+                        <span> Category</span>
                     </div>
                 </ng-template>
-                
                 <ng-template ngbPanelContent>
                     <!-- category option  -->
+                    <input type="text" [(ngModel)]="searchCat" [ngModelOptions]="{standalone: true}"
+                        (input)="Search()" />
+
                     <div class="form-check" *ngFor="let item of Cateogryoptions">
-                        <input class="form-check-input" type="checkbox" value="" id="categoryOption">
+                        <input class="form-check-input" type="checkbox" value="" id="categoryOption"
+                            (change)="SelectedProduct(item.label)">
                         <label class="form-check-label" for="categoryOption">
                             {{item.label}}
                         </label>
                     </div>
-
                 </ng-template>
             </ngb-panel>
-            <ngb-panel id="static-2">
-                <ng-template ngbPanelTitle>
-                    <span> Price</span>
+
+            <ngb-panel id="ngb-panel-1">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div (click)="acc.toggle('ngb-panel-1')">
+                        <span> Price</span>
+                    </div>
                 </ng-template>
                 <ng-template ngbPanelContent>
-
                     <!-- slider -->
                     <div class="custom-slider">
                         <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
@@ -58,34 +60,44 @@
 
                         </div>
 
-                        <button type="button" class="btn btn-primary">Apply</button>
-
-
-
+                        <button type="button" class="btn btn-primary"
+                            (click)="priceFromTo(minValue, maxValue)">Apply</button>
                     </div>
-
                 </ng-template>
             </ngb-panel>
 
-            <ngb-panel id="static-3" title="Average Rating">
+            <ngb-panel id="ngb-panel-2">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div (click)="acc.toggle('ngb-panel-2')">
+                        <span> Average Rating</span>
+                    </div>
+                </ng-template>
                 <ng-template ngbPanelContent>
                     <!-- rating with star -->
                     <div *ngFor="let item of Stars">
-                        <a href="#">
-                            <app-rate-component [currentRate]=item.label [size]="2"></app-rate-component>
+                        <a href="#" (click)="averageRating(item.value, item.label)">
+                            <app-rate-component [currentRate]=item.label [size]="1.5"></app-rate-component>
                             <span>& up {{item.value}}</span>
                         </a>
                     </div>
-
                 </ng-template>
             </ngb-panel>
 
-            <ngb-panel id="static-4" title="Condition">
+
+            <ngb-panel id="ngb-panel-3">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div (click)="acc.toggle('ngb-panel-3')">
+                        <span> Condition</span>
+                    </div>
+                </ng-template>
                 <ng-template ngbPanelContent>
                     <!-- Condition  Option-->
+                    <input type="text" [(ngModel)]="searchCondition" [ngModelOptions]="{standalone: true}"
+                        (input)="SearchCondition()" />
 
                     <div class="form-check" *ngFor="let item of Condition">
-                        <input class="form-check-input" type="checkbox" value="" id="ConditionOption">
+                        <input class="form-check-input" type="checkbox" value="" id="ConditionOption"
+                            (change)="SelectedCondition(item.label)">
                         <label class="form-check-label" for="ConditionOption">
                             {{item.label}}
                         </label>
@@ -94,12 +106,20 @@
             </ngb-panel>
 
 
-            <ngb-panel id="static-5" title="Brand">
+            <ngb-panel id="ngb-panel-4">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div (click)="acc.toggle('ngb-panel-4')">
+                        <span> Brand</span>
+                    </div>
+                </ng-template>
                 <ng-template ngbPanelContent>
                     <!-- Brand  Option-->
+                    <input type="text" [(ngModel)]="searchBrand" [ngModelOptions]="{standalone: true}"
+                        (input)="SearchBrand()" />
 
                     <div class="form-check" *ngFor="let item of Brand">
-                        <input class="form-check-input" type="checkbox" value="" id="BrandOption">
+                        <input class="form-check-input" type="checkbox" value="" id="BrandOption"
+                            (change)="brandOption(item.label)">
                         <label class="form-check-label" for="BrandOption">
                             {{item.label}}
                         </label>
@@ -107,10 +127,17 @@
                 </ng-template>
             </ngb-panel>
 
+
+
+
         </ngb-accordion>
+
+
+
+
     </div>
 
-    <div class="hideDiv" >
+    <div class="hideDiv">
 
         <!-- Button to Open the Modal -->
         <button type="button" class="btn btn-primary d-lg-none d-block" data-toggle="modal" data-target="#myModal">
@@ -133,13 +160,16 @@
 
 
 
-
                         <ngb-accordion [closeOthers]="true" activeIds="static-1">
                             <ngb-panel id="static-1" title="Category">
                                 <ng-template ngbPanelContent>
                                     <!-- category option  -->
+                                    <input type="text" [(ngModel)]="searchCat" [ngModelOptions]="{standalone: true}"
+                                        (input)="Search()" />
+
                                     <div class="form-check" *ngFor="let item of Cateogryoptions">
-                                        <input class="form-check-input" type="checkbox" value="" id="categoryOption">
+                                        <input class="form-check-input" type="checkbox" value="" id="categoryOption"
+                                            (change)="SelectedProduct(item.label)">
                                         <label class="form-check-label" for="categoryOption">
                                             {{item.label}}
                                         </label>
@@ -185,7 +215,8 @@
 
                                         </div>
 
-                                        <button type="button" class="btn btn-primary">Apply</button>
+                                        <button type="button" class="btn btn-primary"
+                                            (click)="priceFromTo(minValue, maxValue)">Apply</button>
 
 
 
@@ -198,8 +229,8 @@
                                 <ng-template ngbPanelContent>
                                     <!-- rating with star -->
                                     <div *ngFor="let item of Stars">
-                                        <a href="#">
-                                            <app-rate-component [currentRate]=item.label [size]="2">
+                                        <a href="#" (click)="averageRating(item.value, item.label)">
+                                            <app-rate-component [currentRate]=item.label [size]="1.5">
                                             </app-rate-component>
                                             <span>& up {{item.value}}</span>
                                         </a>
@@ -211,9 +242,12 @@
                             <ngb-panel id="static-4" title="Condition">
                                 <ng-template ngbPanelContent>
                                     <!-- Condition  Option-->
+                                    <input type="text" [(ngModel)]="searchCondition"
+                                        [ngModelOptions]="{standalone: true}" (input)="SearchCondition()" />
 
                                     <div class="form-check" *ngFor="let item of Condition">
-                                        <input class="form-check-input" type="checkbox" value="" id="ConditionOption">
+                                        <input class="form-check-input" type="checkbox" value="" id="ConditionOption"
+                                            (change)="SelectedCondition(item.label)">
                                         <label class="form-check-label" for="ConditionOption">
                                             {{item.label}}
                                         </label>
@@ -225,9 +259,12 @@
                             <ngb-panel id="static-5" title="Brand">
                                 <ng-template ngbPanelContent>
                                     <!-- Brand  Option-->
+                                    <input type="text" [(ngModel)]="searchBrand" [ngModelOptions]="{standalone: true}"
+                                        (input)="SearchBrand()" />
 
                                     <div class="form-check" *ngFor="let item of Brand">
-                                        <input class="form-check-input" type="checkbox" value="" id="BrandOption">
+                                        <input class="form-check-input" type="checkbox" value="" id="BrandOption"
+                                            (change)="brandOption(item.label)">
                                         <label class="form-check-label" for="BrandOption">
                                             {{item.label}}
                                         </label>
