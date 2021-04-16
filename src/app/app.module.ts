@@ -16,11 +16,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RateStaticsComponent } from './Components/rate-component/rate-statics/rate-statics.component';
 import { UserRateComponent } from './Components/rate-component/user-rate/user-rate.component';
 import { ProductRateComponent } from './Components/rate-component/product-rate/product-rate.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 import { FilterationComponent } from './Components/filteration/filteration.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
-
-
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AppRoutingModule,
 
     NgbModule
