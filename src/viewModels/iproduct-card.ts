@@ -5,4 +5,5 @@ export interface IProductCard {
     shipping: string;
     averageRating: number;
     fullfilledBySouq: boolean;
+    dum?: string;
 }
