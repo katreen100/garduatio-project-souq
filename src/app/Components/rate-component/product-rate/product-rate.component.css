@@ -1,0 +1,14 @@
+.avg{
+    width: 5.7rem;
+    height: 5.7rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid silver;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.borderCOL {
+    border-right: 1px solid #EEEEEE;
+}
