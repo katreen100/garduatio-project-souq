@@ -1,0 +1,161 @@
+<div id="head " class="row bg-white m-0" style="box-shadow: 2px 2px #adabab">
+  <div id="head-covidmsg" class="col-12 text-center p-5">
+    <span class="p-3"> 
+      Pay online for contactless deliveries 
+    </span>
+  </div>
+  <div id="leftDiv" class="col-lg-5 col-md-12 col-sm-12 row pb-4 pr-2">
+    <div id="productinfo" class="col-12">
+      <h6>
+        {{ product.description }}
+      </h6>
+      <div class="pb-2">
+        <span ngbDropdown class="d-inline-block">
+          <span id="dropdownBasic1" ngbDropdownToggle>
+            rating star
+          </span>
+          <span ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-3">
+            meter start
+          </span>
+        </span>
+        <span class="bluefontcolor">
+          (x)review
+        </span>
+     </div>
+      <div>
+        <app-productgallary></app-productgallary>
+      </div>
+    </div>
+  </div>
+  <div id="middldiv" class="col-lg-4 col-md-6 col-sm-12 pb-3">
+    <div class="pr-3 pl-3">
+      <div id="headprice">
+        <h2 class="storngancor">{{ calPricefterDiscount() }}<sub>EGP</sub></h2>
+        <div [hidden]="product.price.discount == 0">
+          <span
+            class="priceBeforDiscount graytext"
+            style="text-decoration: line-through"
+            >{{ product.price.currentPrice }}</span
+          >
+          <span> you saved {{ calcSavedMony() }}</span>
+        </div>
+        <div>
+          <span class="graytext"> All price include VAT</span>
+          <a class="bluefontcolor"> details</a>
+        </div>
+        <div
+          class="pb-2 graytext borderbtm pricedetails"
+          [hidden]="product.freeshipping == false"
+        >
+          <strong> free shipping</strong>
+          <span class="bluefontcolor"
+            ><a (click)="openlg(content)" href="#"> details</a></span
+          >
+        </div>
+
+        <!-- modal for detils of  -->
+
+        <ng-template
+          class="modal-lg"
+          #content
+          let-c="close"
+          style="width: 1200px"
+          let-d="dismiss"
+        >
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="d('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-freeShipppingmodal></app-freeShipppingmodal>
+          </div>
+        </ng-template>
+      </div>
+      <div>
+        <div
+          id="productColor"
+          class="pt-3"
+          [hidden]="product.productVarities.color == null"
+        >
+          <dl>
+            <dt>color :</dt>
+            <dd
+              *ngFor="let item of product.productVarities.color"
+              class="btn mr-2"
+            >
+              {{ item }}
+            </dd>
+          </dl>
+        </div>
+        <div>
+          <dl>
+            <dt style="float: left">brand :</dt>
+            <dd>getbrandname()</dd>
+          </dl>
+        </div>
+        <div id="ptoduct-desc">
+          <strong>description</strong>
+          <ul id="descUl" *ngFor="let item of product.description">
+            <li>{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="rightdiv"
+    class="col-lg-3 col-md-6 col-sm-12 d-flex align-content-between flex-wrap"
+  >
+    <div class="borderleft pl-2">
+      <div id="shiping-info " class="p-2 fullborder">
+        <span>
+          Ship to <b id="shiping-city"> Cairo </b> (<a class="bluefontcolor">
+            Change city</a
+          >)
+          <br />
+          <b>Delivered within {{ getarrivalDate(product.id) }}</b> to
+          <b>Cairo</b>
+        </span>
+      </div>
+      <div class="pt-3">
+        <input
+          id="addtoCard"
+          class="button w-100 btn-lg"
+          type="button"
+          value="ADD TO CARD"
+        />
+        <span id="amount_left">{{ product.leftOnStock }} left in stock! </span>
+      </div>
+      <div id="details">
+        <dl>
+          <dt style="float: left; width: 40%">condition:</dt>
+          <dd>{{ product.condition }}</dd>
+        </dl>
+        <dl>
+          <dt style="float: left; width: 40%">sold by:</dt>
+          <dd>
+            <span class="storngancor"
+              ><a>{{ product.Soldby }}</a> </span
+            ><br />(89% Positive Rating)
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div id="icondiv" class="col-12" style="font-size: 18px">
+      <ul id="socialicon">
+        <li><i class="fas fa-heart p-2"></i></li>
+        <li><i class="fab fa-twitter p-2"></i></li>
+        <li><i class="fab fa-facebook-square p-2"></i></li>
+        <li><i class="fab fa-google-plus-g p-2"></i></li>
+        <!-- <fb-like></fb-like> -->
+        <!-- <tweet></tweet> -->
+      </ul>
+    </div>
+  </div>
+</div>

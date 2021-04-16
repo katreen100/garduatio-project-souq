@@ -1,0 +1,89 @@
+body{
+    background-color: #fafafa !important;
+    }
+    
+    .borderleft{
+        border-left: 1px solid #f1f1f1;
+    }
+    
+    .borderbtm{
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .fullborder
+    {
+        border: 1px solid #f1f1f1; 
+    }
+    
+    
+  
+    .bluefontcolor{
+        color:#006fcc ;
+    }
+    .storngancor{
+        font-weight: bold;
+        color:#006fcc  !important;
+    
+        
+    }
+    .graytext{
+        color: #818181;
+    }
+    #head-covidmsg span { 
+       background-color: #a2deda;
+         font-size: 1.285 rem; 
+         font-weight: 700;
+    }
+    #productColor dd{
+        background-color: #cccaca;
+        border: 2px grey solid;
+    }
+    
+    #headprice h2
+    {
+        font-size: 1.428rem;
+    }
+    #headprice sub
+    {
+        font-size: 1rem;
+    }
+    #headprice   .pricedetails
+    {
+        font-size: .928rem;           
+        padding-top: .29rem;
+        padding-bottom: .2857rem;
+    }
+    
+     
+    #icondiv li{
+        float: right;
+        list-style: none;
+    }
+    #icondiv .fa-heart
+    {
+        color: gray;
+    }
+    #icondiv .fa-twitter
+    {
+        color:royalblue;
+    }
+    #icondiv .fa-facebook-square
+    {
+        color: blue;
+    }
+    #icondiv .fa-google-plus-g
+    {
+        color: brown;
+    }
+    #addtoCard{
+        
+        color: white;
+        box-shadow: none !important;
+        font-weight: bold;
+           border-color: #7cb62e;
+        background-color: #91CE3F;
+       background-image: -webkit-linear-gradient(top,#91ce3f,#87af40); 
+    }
+    #amount_left{
+        color:#ec5840;
+        font-weight: bold;
+    }
