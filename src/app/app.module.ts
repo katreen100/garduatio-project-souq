@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
     ProductRateComponent,
     ReviewCardComponent,
     ProductInfoComponent,
-    ReviewsListComponent
+    ReviewsListComponent,
     FilterationComponent
   ],
   imports: [
