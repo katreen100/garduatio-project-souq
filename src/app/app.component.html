@@ -1,3 +1,46 @@
 <router-outlet></router-outlet>
 <!-- <app-product-rate></app-product-rate> -->
+
+<div>
+    product reviews 
+    <pre>
+        {{ reviews | json }}
+    </pre>
+</div>
+
+<div>
+    product description 
+    <pre>
+        {{ descr | json }}
+    </pre>
+</div>
+
+<div>
+    product ratings 
+    <pre>
+        {{ rating | json }}
+    </pre>
+</div>
+
+<div>
+    product cards
+    <pre>
+        {{ productCards | json }}
+    </pre>
+</div>
+
+
+<div>
+    products
+    <pre>
+        {{ products | json }}
+    </pre>
+</div>
+
+<div>
+    product specs
+    <pre>
+        {{ specs | json }}
+    </pre>
+</div>
 <app-filteration> </app-filteration>
