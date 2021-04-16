@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BrandService } from 'src/services/brand.service';
+import { CategoryService } from 'src/services/category.service';
 import { ProductService } from 'src/services/product.service';
 import { IProductCard } from 'src/viewModels/iproduct-card';
 
@@ -16,8 +18,12 @@ export class AppComponent {
   rating;
   descr;
   reviews;
+  brands;
+  categories;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private brandService: BrandService,
+              private categoryService: CategoryService) {
     this.productService.getProductReviews(1)
                         .subscribe(res => {
                           this.reviews = res;
@@ -48,5 +54,11 @@ export class AppComponent {
                         .subscribe(res => {
                           this.productCards = res;
                         });
+
+    this.brandService.getBrands()
+                      .subscribe(res => this.brands = res);
+
+    this.categoryService.getCategories()
+                        .subscribe(res => this.categories = res);
   }
 }
