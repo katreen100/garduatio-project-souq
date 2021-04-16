@@ -11,6 +11,9 @@ import { ProductRateComponent } from './Components/rate-component/product-rate/p
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { FilterationComponent } from './Components/filteration/filteration.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,18 @@ import { environment } from 'src/environments/environment';
     RateComponentComponent,
     RateStaticsComponent,
     UserRateComponent,
-    ProductRateComponent
+    ProductRateComponent,
+    FilterationComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxSliderModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
