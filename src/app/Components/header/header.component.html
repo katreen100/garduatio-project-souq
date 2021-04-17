@@ -1,0 +1,20 @@
+<div class="d-flex">
+
+  <app-sidebar [Toggled]=isToggled></app-sidebar>
+
+  <!-- Page content holder -->
+  <div class="page-content" [class.active]="isToggled" id="content">
+    <div [ngClass]="{'side-bar-active': !isToggled}" (click)="toggleClass()"> </div>
+    <!-- Toggle button -->
+    <app-top-header></app-top-header>
+    <button id="sidebarCollapse" (click)="toggleClass()" type="button"
+      class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small
+        class="text-uppercase font-weight-bold">Toggle Side bar</small></button>
+    <div class="content"><span> Content</span></div>
+    <router-outlet></router-outlet>
+
+    <app-footer></app-footer>
+
+
+  </div>
+</div>

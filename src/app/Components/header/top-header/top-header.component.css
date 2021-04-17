@@ -1,0 +1,12 @@
+.right-section{
+    float: right;
+    height: 30px;
+    overflow: hidden;
+}
+.right-section li{
+    list-style: none;
+}
+.right-section li a{
+    color: white;
+    text-decoration: none;
+}

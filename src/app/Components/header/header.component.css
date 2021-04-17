@@ -1,0 +1,32 @@
+/* .vertical-nav{
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgb(0 0 0 / 10%);
+    transition: all 0.4s;
+}
+#sidebar.active {
+    margin-left: -17rem;
+} */
+.page-content {
+    /* width: calc(100% - 17rem); */
+    width: 100%;
+    overflow: hidden;
+    margin-left: 17rem;
+    transition: all 0.4s;
+}
+#content.active {
+    /* width: 100%; */
+    margin: 0;
+}
+.side-bar-active{
+    width: calc(100% - 17rem);
+    background-color: rgb(0 0 0 / 23%);
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+}
