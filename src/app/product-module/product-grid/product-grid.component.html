@@ -2,20 +2,13 @@
     #product-grid {
         border: 3px solid tomato;
         display: grid;
-        grid-template-columns: repeat(minmax(1,4), 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
 </style>
-
-<h1>product-grid works!</h1>
-
+<h1 class="text-secondary">Products:</h1>
 <section id="product-grid">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+    <app-product-card
+        *ngFor="let p of productCards"
+        [productData]="p">
+    </app-product-card>
 </section>

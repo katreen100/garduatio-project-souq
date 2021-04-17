@@ -33,6 +33,9 @@ import { TopHeaderComponent } from './Components/header/top-header/top-header.co
 import { LoginComponent } from './lay out/User/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HomeComponent } from './Components/home/home.component';
+import { HomeLayloutComponent } from './Components/home-laylout/home-laylout.component';
+import { SearchComponent } from './Components/search/search.component';
+import { ProductPageComponent } from './Components/product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,10 @@ import { HomeComponent } from './Components/home/home.component';
     SidebarComponent,
     TopHeaderComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HomeLayloutComponent,
+    SearchComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,

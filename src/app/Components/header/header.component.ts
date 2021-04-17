@@ -1,4 +1,5 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/services/category.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('sidebarCollapse', {static: true}) sideBarCollapse: ElementRef;
   categories: []
   
-  constructor(private service: CategoryService) { }
+  constructor(private service: CategoryService, private router:Router) { }
 
   ngOnInit(): void {
     this.service.getCategories().subscribe(res => {
@@ -26,10 +27,13 @@ export class HeaderComponent implements OnInit {
     console.log("hello")
   }
   show(catName){
-    console.log(catName)
+    // console.log(catName)
   }
   hide(){
     
+  }
+  search(search){
+    this.router.navigate(['search-result/',search])
   }
 
 }

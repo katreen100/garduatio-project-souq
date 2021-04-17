@@ -92,22 +92,6 @@
     }
 
 
-    /* .product-varieties-overlay {
-        display: none;
-    }
-
-    .product-varieties-overlay:hover {
-        opacity: .5;
-        background-color: silver;
-    }
-
-    .product-varieties {
-        display: inline;
-    }
-
-    .product-variety {
-        list-style: none;
-    } */
 </style>
 
 <div class="m-3">
@@ -121,41 +105,36 @@
                 </div>
             </div>
             <div class="quick-view">
-                <h2>hello</h2>
+                <h2>Quick View</h2>
             </div>
-
-            <!-- <div class="product-varieties-overlay">
-                <ul 
-                  *ngFor="let v of product.productVarieties"
-                  class="product-varieties">
-                    <li class="product-variety">{{v}}</li>
-                </ul>
-            </div> -->
 
         </section>
         <section class="product-details  px-4 py-2">
-            <h2 class="text-secondary">{{ product.title }}</h2>
+            <h2 class="text-secondary" type="button" (click)="productDetails(product.sku)">{{ product.title }}</h2>
 
             <div class="price-and-rating-row">
                 <div>
                     <div>
-                        {{ product.price.currentPrice * ((100 - product.discount) / 100) }}
+                        {{ product.price* ((100 - product.discount) / 100) }}
                     </div>
 
                     <div *ngIf="product.discount">
                         <small>
-                            <strike>{{ product.price.currentPrice }}</strike>
+                            <strike>{{ product.price}}</strike>
                         </small>
                     </div>
                 </div>
 
                 <div>
-                    rating
+                    <app-rate-component
+                        [currentRate]="product.averageRating"
+                        size="1.5">
+                    </app-rate-component>
                 </div>
             </div>
 
             <div class="shipping-and-fullfillment-row">
-                <div *ngIf="product.shipping">Free Shipping</div>
+                <div *ngIf="product.shipping">{{ product.shipping }}</div>
                 <div *ngIf="product.fullfilledBySouq">Fullfilled by Souq</div>
             </div>
 
