@@ -16,9 +16,9 @@
 
                     <div class="form-check" *ngFor="let item of Cateogryoptions">
                         <input class="form-check-input" type="checkbox" value="" id="categoryOption"
-                            (change)="SelectedProduct(item.label)">
+                            (change)="SelectedProduct(item.categoryName)">
                         <label class="form-check-label" for="categoryOption">
-                            {{item.label}}
+                            {{item.categoryName}}
                         </label>
                     </div>
                 </ng-template>
@@ -74,12 +74,35 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <!-- rating with star -->
-                    <div *ngFor="let item of Stars">
-                        <a href="#" (click)="averageRating(item.value, item.label)">
-                            <app-rate-component [currentRate]=item.label [size]="1.5"></app-rate-component>
-                            <span>& up {{item.value}}</span>
+                    <div *ngFor="let item of Stars let prd of products">
+                        <a href="#" (click)="averageRating(item.averageRating, prd.quantity)">
+                            <app-rate-component [currentRate]=item.averageRating [size]="1.5"></app-rate-component>
+                            <span>& up {{prd.quantity}}</span>
                         </a>
                     </div>
+
+                    <div *ngFor="let item of Stars let prd of products">
+                        <a href="#" (click)="averageRating(3, prd.quantity)">
+                            <app-rate-component [currentRate]=3 [size]="1.5"></app-rate-component>
+                            <span>& up {{prd.quantity}}</span>
+                        </a>
+                    </div>
+
+                    <div *ngFor="let item of Stars let prd of products">
+                        <a href="#" (click)="averageRating(2, prd.quantity)">
+                            <app-rate-component [currentRate]=2 [size]="1.5"></app-rate-component>
+                            <span>& up {{prd.quantity}}</span>
+                        </a>
+                    </div>
+
+                    <div *ngFor="let item of Stars let prd of products">
+                        <a href="#" (click)="averageRating(1, prd.quantity)">
+                            <app-rate-component [currentRate]=1 [size]="1.5"></app-rate-component>
+                            <span>& up {{prd.quantity}}</span>
+                        </a>
+                    </div>
+
+
                 </ng-template>
             </ngb-panel>
 
@@ -119,9 +142,9 @@
 
                     <div class="form-check" *ngFor="let item of Brand">
                         <input class="form-check-input" type="checkbox" value="" id="BrandOption"
-                            (change)="brandOption(item.label)">
+                            (change)="brandOption(item.brandName)">
                         <label class="form-check-label" for="BrandOption">
-                            {{item.label}}
+                            {{item.brandName}}
                         </label>
                     </div>
                 </ng-template>
@@ -169,9 +192,9 @@
 
                                     <div class="form-check" *ngFor="let item of Cateogryoptions">
                                         <input class="form-check-input" type="checkbox" value="" id="categoryOption"
-                                            (change)="SelectedProduct(item.label)">
+                                            (change)="SelectedProduct(item.categoryName)">
                                         <label class="form-check-label" for="categoryOption">
-                                            {{item.label}}
+                                            {{item.categoryName}}
                                         </label>
                                     </div>
 
@@ -228,11 +251,32 @@
                             <ngb-panel id="static-3" title="Average Rating">
                                 <ng-template ngbPanelContent>
                                     <!-- rating with star -->
-                                    <div *ngFor="let item of Stars">
-                                        <a href="#" (click)="averageRating(item.value, item.label)">
-                                            <app-rate-component [currentRate]=item.label [size]="1.5">
+                                    <div *ngFor="let item of Stars let prd of products">
+                                        <a href="#" (click)="averageRating(item.averageRating, prd.quantity)">
+                                            <app-rate-component [currentRate]=item.averageRating [size]="1.5">
                                             </app-rate-component>
-                                            <span>& up {{item.value}}</span>
+                                            <span>& up {{prd.quantity}}</span>
+                                        </a>
+                                    </div>
+
+                                    <div *ngFor="let item of Stars let prd of products">
+                                        <a href="#" (click)="averageRating(3, prd.quantity)">
+                                            <app-rate-component [currentRate]=3 [size]="1.5"></app-rate-component>
+                                            <span>& up {{prd.quantity}}</span>
+                                        </a>
+                                    </div>
+
+                                    <div *ngFor="let item of Stars let prd of products">
+                                        <a href="#" (click)="averageRating(2, prd.quantity)">
+                                            <app-rate-component [currentRate]=2 [size]="1.5"></app-rate-component>
+                                            <span>& up {{prd.quantity}}</span>
+                                        </a>
+                                    </div>
+
+                                    <div *ngFor="let item of Stars let prd of products">
+                                        <a href="#" (click)="averageRating(1, prd.quantity)">
+                                            <app-rate-component [currentRate]=1 [size]="1.5"></app-rate-component>
+                                            <span>& up {{prd.quantity}}</span>
                                         </a>
                                     </div>
 
@@ -264,10 +308,9 @@
 
                                     <div class="form-check" *ngFor="let item of Brand">
                                         <input class="form-check-input" type="checkbox" value="" id="BrandOption"
-                                            (change)="brandOption(item.label)">
+                                            (change)="brandOption(item.brandName)">
                                         <label class="form-check-label" for="BrandOption">
-                                            {{item.label}}
-                                            
+                                            {{item.brandName}}
                                         </label>
                                     </div>
                                 </ng-template>
