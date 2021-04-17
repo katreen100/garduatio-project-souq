@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProductCardComponent } from './product-module/product-card/product-card.component';
+import { ProductGridComponent } from './product-module/product-grid/product-grid.component';
 import { ReviewCardComponent } from './reviewCard/reviewCard.component';
 import { ProductInfoComponent } from './productInfo/productInfo.component';
 import { ReviewsListComponent } from './reviewsList/reviewsList.component';
@@ -24,6 +26,8 @@ import { LoginComponent } from './lay out/User/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
+    ProductCardComponent,
+    ProductGridComponent,
     OneProductCompComponent,
     FreeShipppingmodalComponent,
     ProductgallaryComponent,
