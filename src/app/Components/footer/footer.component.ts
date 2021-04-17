@@ -13,7 +13,6 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.service.getCategories().subscribe(res=>{
       this.categories =res
-      console.log(this.categories)
     })
   }
 

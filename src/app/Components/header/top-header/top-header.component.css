@@ -1,12 +1,21 @@
 .right-section{
     float: right;
-    height: 30px;
+    height: 25px;
     overflow: hidden;
 }
 .right-section li{
     list-style: none;
+    display: inline-block;
 }
 .right-section li a{
     color: white;
     text-decoration: none;
+    cursor: pointer;
+}
+.right-section li a small{
+    border-right: 1px solid darkgray;
+}
+.right-section ul li:last-child a small{
+    /* border-right: 1px solid darkgray; */
+    border: none;
 }

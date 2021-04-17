@@ -51,7 +51,8 @@ import { TopHeaderComponent } from './Components/header/top-header/top-header.co
     SupportAndSocialLinksComponent,
     FooterMyAccountComponent,
     SidebarComponent,
-    TopHeaderComponent
+    TopHeaderComponent,
+
   ],
   imports: [
     BrowserModule,

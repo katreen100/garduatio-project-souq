@@ -11,3 +11,32 @@
 #sidebar.active {
     margin-left: -17rem;
 }
+.vertical-nav ul li{
+    transition: all 0.4s;
+}
+.vertical-nav ul li:hover {
+    background: #b3b3b3;
+}
+.vertical-nav ul li a{
+    color: darkgrey;
+}
+.vertical-nav ul li:hover a{
+    color: white;
+}
+.ul-title{
+    border-top: 1px solid #5e5e5e;
+    color: #999;
+    display: block;
+    font-size: .8571428571rem;
+    margin: 0;
+    padding: .2857142857rem 1.0714285714rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.ul-title:hover{
+    background: rgb(114, 114, 114);
+    color: lightgray;
+}

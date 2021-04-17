@@ -1,8 +1,8 @@
 <div class="container-fluid bg-dark d-none d-sm-block py-2">
-    <div class="text-white-50">
+    <div class="text-white-50 container">
         <div class="row">
-            <article class="col-6 d-none d-lg-flex">
-                <div class="pr-3 p-0" placement="bottom"
+            <article class="col-6 d-none d-lg-block">
+                <div class="pr-3 p-0 d-inline-block" placement="bottom"
                     ngbTooltip="All orders of 350.00 EGP or more on eligible items across any product category qualify for FREE Shipping. "
                     role="button" tooltipClass="ml-4">
                     <small>
@@ -10,14 +10,14 @@
                         Free Shipping
                     </small>
                 </div>
-                <div class="pr-3 p-0" placement="bottom"
+                <div class="pr-3 p-0 d-inline-block" placement="bottom"
                     ngbTooltip="Changed your mind, you can return your product and get a full refund" role="button">
                     <small>
                         <i class="fas fa-sync pr-1"></i>
                         Free Returns
                     </small>
                 </div>
-                <div class="pr-3 p-0" placement="bottom"
+                <div class="pr-3 p-0 d-inline-block" placement="bottom"
                     ngbTooltip="Pay for your order in cash at the moment the shipment is delivered to your doorstep."
                     role="button">
                     <small>
@@ -26,19 +26,22 @@
                     </small>
                 </div>
             </article>
-            <article class=" col-lg-6 col-sm-12 ml-auto  right-section">
-                <ul class="d-flex justify-content-around p-0 m-0 ">
+            <article class=" col-lg-6 col-sm-10 text-right ml-auto  right-section">
+                <ul class="p-0 m-0 ">
                     <li>
-                        <a href="#">Create an account</a>
+                        <a [routerLink]="['/user/register']" routerLinkActive="active" href="#"><small  class="px-2">Create an account</small> </a>
                     </li>
                     <li>
-                        <a  href="#" >Options</a>
+                        <a href="#"> <small  class="px-2">Daily Deals</small></a>
                     </li>
                     <li>
-                        <a  href="#" >Track Orders</a>
+                        <a href="#"> <small  class="px-2">Customer Service</small></a>
                     </li>
                     <li>
-                        <a  href="#" >Join</a>
+                        <a href="#"> <small  class="px-2"> Sell with Us </small> </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/orders']" href="#"> <small  class="px-2">Track Orders</small> </a>
                     </li>
                 </ul>
             </article>
