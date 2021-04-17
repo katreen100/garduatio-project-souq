@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { FilterationComponent } from './Components/filteration/filteration.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './lay out/User/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     ReviewCardComponent,
     ProductInfoComponent,
     ReviewsListComponent,
-    FilterationComponent
+    FilterationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

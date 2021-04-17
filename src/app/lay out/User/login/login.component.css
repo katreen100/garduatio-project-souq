@@ -1,0 +1,20 @@
+.loginDiv{
+    background-color:white;
+    
+}
+.divMain{
+    padding-top: 5%;
+    text-align: center;
+}
+
+.btnDiv{
+    text-align: center;
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; 
+ }
+
+ .ng-valid:not(form)  {
+    border-left: 5px solid #1ca317; 
+ }
