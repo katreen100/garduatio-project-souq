@@ -65,6 +65,30 @@ export class ProductService {
   }
 
 
+   getAllProductCards(): Observable<IProductCard[]> {
+    return this.db
+                .collection('products')
+                .get()
+                .pipe(
+                  map(response => {
+                    return response.docs.map(doc => {
+                      let p = doc.data();
+                      return {
+                        sku: p['sku'],
+                        title: p['title'],
+                        price: p['price']['currentPrice'],
+                        mainImage: '../assets/watch',
+                        discount: p['discount']['currentDiscout'],
+                        shipping: p['shipping'],
+                        averageRating: p['ratings']['averageRating'],
+                        fullfilledBySouq: p['fullfilledBySouq'],
+                      }
+                    })
+                  })
+                );
+  }
+
+
   getProductSpecifications(sku: number): Observable<any> {
     return this.db
                 .collection('products', ref => ref.where('sku', '==', sku))
@@ -125,9 +149,7 @@ export class ProductService {
                     map(resp => {
                       return resp.docs.map(doc => {
                         let reviews = doc.data()['reviews'];
-                        // console.table(reviews);
                         return reviews.map(p => {
-                                // console.table(p);
                                 return {
                                   negatives: p['negatives'],
                                   positives: p['positives'], 

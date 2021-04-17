@@ -7,13 +7,8 @@
 </style>
 <h1 class="text-secondary">Products:</h1>
 <section id="product-grid">
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
-    <app-product-card></app-product-card>
+    <app-product-card
+        *ngFor="let p of productCards"
+        [productData]="p">
+    </app-product-card>
 </section>
