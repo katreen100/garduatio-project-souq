@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 /**
  * Product Card
@@ -22,36 +22,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
+  @Input() productData;
   product;
 
   constructor() {
-    this.product = {
-      mainImage: '../../../../assets/watch',
-      discount: 15,
-      productVarieties: ['small', 'medium', 'large'],
-      title: "hand watch",
-      fullfilledBySouq: true,
-      price: {
-        currentPrice: 500,
-        previousPrices: {
-          timestamp: 400,
-          timestamp2: 300,
-          timestamp3: 600,
-        }
-      },
-      ratings: {
-        five_stars: ['user_id', 'user_2_id'],
-        four_stars: ['user_id', 'user_2_id'],
-        three_stars: ['user_id', 'user_2_id'],
-        two_stars: ['user_id', 'user_2_id'],
-        one_stars: ['user_id', 'user_2_id'],
-        averageRating: 4.5 // calculated field
-      },
-      shipping: 'free',
-    }
   }
 
   ngOnInit(): void {
+    this.product = this.productData;
   }
 
 }
