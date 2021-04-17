@@ -1,6 +1,6 @@
 
 <ngb-carousel  (click)="openlg(content)">
-   <ng-template ngbSlide *ngFor="let item of product.mainImages">
+   <ng-template ngbSlide *ngFor="let item of images">
     <div class="picsum-img-wrapper">
       <img [src]="item"  alt="Random third slide" width="500px">
     </div>    
@@ -25,7 +25,7 @@
           </div>
           <div class="modal-body p-5" >
             <ngb-carousel >
-              <ng-template ngbSlide *ngFor="let item of product.mainImages">
+              <ng-template ngbSlide *ngFor="let item of images">
                <div class="picsum-img-wrapper">
                  <img [src]="item"  alt="Random third slide" width="700px">
                </div>    

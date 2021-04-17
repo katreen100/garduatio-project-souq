@@ -14,7 +14,7 @@ import { ProductService } from 'src/services/product.service';
 })
 export class OneProductCompComponent implements OnInit {
   product;
-  productvarityKey: string[]
+  
 
 
   constructor( config: NgbModalConfig, private modalService: NgbModal ,private prodservice:ProductService) { 
@@ -59,7 +59,7 @@ console.log(res)
   this.product=res[0]
 console.log(this.product)
 
-console.log(this.productvarityKey);
+
 
 
 
