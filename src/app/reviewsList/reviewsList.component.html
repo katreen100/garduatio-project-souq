@@ -1,12 +1,14 @@
 <div>
   <ul>
-    <li *ngFor="let review of data">
+    <li *ngFor="let review of reviews">
       <app-reviewCard
-        ratingValue={{review.ratingValue}}
-        userName={{review.userName}}
+        [ratingValue]="review.rating"
+        userName={{review.reviewerName}}
         reviewDate={{review.reviewDate}}
-        reviewText={{review.reviewText}}
-        isPurchasedOnSouq={{review.isPurchasedOnSouq}}
+        reviewText={{review.reviewBody}}
+        positive={{review.positives}}
+        negative={{review.negatives}}
+        isPurchasedOnSouq={{review.purchasesOn}}
       ></app-reviewCard>
     </li>
   </ul>

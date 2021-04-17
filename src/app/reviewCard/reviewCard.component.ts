@@ -10,6 +10,8 @@ export class ReviewCardComponent implements OnInit {
   @Input() userName: string ='';
   @Input() reviewDate: Date;
   @Input() reviewText: string ='';
+  @Input() positive: string ='';
+  @Input() negative: string ='';
   @Input() isPurchasedOnSouq: boolean = false;
   isHelpful: boolean = true;
   isHelpfulSelected: boolean = false;
