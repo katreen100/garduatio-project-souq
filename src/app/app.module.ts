@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProductCardComponent } from './product-module/product-card/product-card.component';
+import { ProductGridComponent } from './product-module/product-grid/product-grid.component';
 import { ReviewCardComponent } from './reviewCard/reviewCard.component';
 import { ProductInfoComponent } from './productInfo/productInfo.component';
 import { ReviewsListComponent } from './reviewsList/reviewsList.component';
@@ -28,10 +30,14 @@ import { SupportAndSocialLinksComponent } from './Components/support-and-social-
 import { FooterMyAccountComponent } from './Components/footer-my-account/footer-my-account.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { TopHeaderComponent } from './Components/header/top-header/top-header.component';
+import { LoginComponent } from './lay out/User/login/login.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProductCardComponent,
+    ProductGridComponent,
     OneProductCompComponent,
     FreeShipppingmodalComponent,
     ProductgallaryComponent,
@@ -52,7 +58,7 @@ import { TopHeaderComponent } from './Components/header/top-header/top-header.co
     FooterMyAccountComponent,
     SidebarComponent,
     TopHeaderComponent,
-
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,9 @@ import { TopHeaderComponent } from './Components/header/top-header/top-header.co
     AppRoutingModule,
     NgbModule,
     NgxSliderModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

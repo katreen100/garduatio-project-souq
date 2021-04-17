@@ -8,13 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReviewCardComponent implements OnInit {
   @Input() ratingValue: number = 0;
   @Input() userName: string ='';
-  @Input() reviewDate: Date;
+  @Input() reviewDate;
   @Input() reviewText: string ='';
+  @Input() positive: string ='';
+  @Input() negative: string ='';
   @Input() isPurchasedOnSouq: boolean = false;
   isHelpful: boolean = true;
   isHelpfulSelected: boolean = false;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }
@@ -22,6 +25,12 @@ export class ReviewCardComponent implements OnInit {
   toggleIsHelpful() {
     this.isHelpful = !this.isHelpful;
     this.isHelpfulSelected = true;
+  }
+
+  extractReviewDate(r) {
+    let res = r.split('=')[1].split(',')[0];
+    console.log(res);
+    return res;
   }
 
 }
