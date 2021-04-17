@@ -5,7 +5,7 @@
   Purchased on Souq
 </div>
 <div>
-  By: <strong>{{userName}}</strong> on {{reviewDate | date: 'fullDate'}}
+  By: <strong>{{userName}}</strong> on {{ extractReviewDate(reviewDate) * 1000 | date: 'fullDate'}}
 </div>
 <div class="reviewText">
   {{reviewText}}
