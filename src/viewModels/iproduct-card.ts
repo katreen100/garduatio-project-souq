@@ -6,4 +6,5 @@ export interface IProductCard {
     averageRating: number;
     fullfilledBySouq: boolean;
     dum?: string;
+    // img?: string;   property to hold the image URL
 }

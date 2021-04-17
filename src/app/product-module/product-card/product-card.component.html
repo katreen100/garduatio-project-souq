@@ -98,7 +98,8 @@
     <section class="product-card shadow">
         <section class="product-show text-center py-2">
             <div class="productImage">
-                <img [src]="product.mainImage" class="product-image" alt="product image" />
+                <img [src]="product.mainImage" width="100%" class="product-image" alt="product image" />
+                <!-- <img [src]="product.img" width="100%" class="product-image" alt="product image" /> -->
 
                 <div class="discount-box px-2">
                     <span>{{ product.discount }}% OFF</span>
@@ -115,7 +116,7 @@
             <div class="price-and-rating-row">
                 <div>
                     <div>
-                        {{ product.price* ((100 - product.discount) / 100) }}
+                        {{ product.price* ((100 - product.discount) / 100)  }}
                     </div>
 
                     <div *ngIf="product.discount">
