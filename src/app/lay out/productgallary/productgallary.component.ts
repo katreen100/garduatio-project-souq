@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDetails } from 'src/app/view model/productDetails';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ProductService } from 'src/services/product.service';
 
 
 @Component({
@@ -11,64 +12,10 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbModalConfig, NgbModal,NgbCarouselConfig]
 })
 export class ProductgallaryComponent implements OnInit {
-  product:ProductDetails={
-    
-    "id": 2,
-    "title": "Watch xyz",
-  "  titleAr": "ساعة يد",
-    "brandID": 3,
-    "categoryID": 2,
-    "quantity": 5,
-    "sideImages": ["url"],
-    "mainImages": ["https://image.shutterstock.com/image-illustration/digital-generated-devices-on-desktop-260nw-1495869476.jpg", "https://image.shutterstock.com/image-illustration/digital-generated-devices-on-desktop-260nw-1495869476.jpg"],
-    
-    "description": ["string of description","anther discribtion"],
-    "descriptionAr": ["وصف المنتج","وصف اخر "],
-    "features": ["لا تتأثر بالماء", "امكانيات الساعة"],
-    "condition": "new",
-    "conditionAr": "جديدة",
-    "freeshipping": true,
-   " freeshippingAr": true,
-    "fullfilledBySouq": true,
-    "tax": 14,
-    "leftOnStock":4,
-    "Soldby":"GUCCI",
-
-    "productVarities": {
-        "color": ["blue", "green", "red"],
-       " size": ["large", "small"]
-    },
-    "productVaritiesAr": {
-        "color": ["ازرق", "اخضر", "احمر"],
-       " size": ["كبير","صغير"]
-    },
-    "specifications": {
-        "type": "casual watch",
-        "targetedGroup": "male",
-       " modelNumber": "2342-232-2",
-        "expirable": false,
-        "expiryDate": null
-    },
-    "specificationsAr": {
-        "type": "casual watch",
-        "targetedGroup": "للرجال",
-       " modelNumber": "2342-232-2",
-        "expirable": false,
-        "expiryDate": null
-    },
-    "price": {
-        "currentPrice": 500,
-        "discount":15,
-        "previousPrices": {
-            "timestamp": 400,
-            "timestamp2": 300,
-            "timestamp3": 600
-        },
-        "savedMoney":0,
-    }
-   }
-   images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  constructor(config: NgbModalConfig,configc: NgbCarouselConfig, private modalService: NgbModal) { 
+  product;
+  images=["../../../assets/watch"]
+  imgs:string[];
+  constructor(config: NgbModalConfig,configc: NgbCarouselConfig, private modalService: NgbModal,private prodservice:ProductService) { 
     
     config.backdrop = 'static';
     config.keyboard = false;
@@ -80,8 +27,16 @@ export class ProductgallaryComponent implements OnInit {
   openlg(content) {
     this.modalService.open(content, { size: 'lg' });
   }
-
+getImges(obj){
+  this.imgs=this.product.productVarities.size[0].images
+}
   ngOnInit() {
-  }
-
+    this.prodservice.getProduct(1).subscribe(res=>{
+      console.log(res);
+      this.product=res[0];
+    this.getImges(this.product);
+      console.log(this.product);
+      console.log(this.imgs)
+    })
+    }
 }
