@@ -36,7 +36,8 @@ export class FilterationComponent implements OnInit {
 
   Brand = [];
   bran = [];
-  products =[] ;
+  products =[];
+  filterProducts=[];
 
 
 
@@ -68,6 +69,9 @@ export class FilterationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.productService.getProduct(1).subscribe(res=>{
+      console.log(res)
+    })
 
   }
   Search() {

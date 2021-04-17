@@ -125,9 +125,9 @@ export class ProductService {
                     map(resp => {
                       return resp.docs.map(doc => {
                         let reviews = doc.data()['reviews'];
-                        console.table(reviews);
+                        // console.table(reviews);
                         return reviews.map(p => {
-                                console.table(p);
+                                // console.table(p);
                                 return {
                                   negatives: p['negatives'],
                                   positives: p['positives'], 

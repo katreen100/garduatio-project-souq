@@ -58,7 +58,7 @@ export class AppComponent {
     this.brandService.getBrands(1)
                       .subscribe(res => {
                         this.brands = res;
-                        console.log(this.brands);
+                        // console.log(this.brands);
                       });
 
     this.categoryService.getCategories()

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 /**
  * Product Card
@@ -24,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductCardComponent implements OnInit {
   product;
 
-  constructor() {
+  constructor(private router:Router) {
     this.product = {
       mainImage: '../../../../assets/watch',
       discount: 15,
@@ -39,6 +40,7 @@ export class ProductCardComponent implements OnInit {
           timestamp3: 600,
         }
       },
+      sku:2,
       ratings: {
         five_stars: ['user_id', 'user_2_id'],
         four_stars: ['user_id', 'user_2_id'],
@@ -52,6 +54,9 @@ export class ProductCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  productDetails(skuNumber){
+    this.router.navigate(['/productPage/',skuNumber])
   }
 
 }
