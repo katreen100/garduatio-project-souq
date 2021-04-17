@@ -58,7 +58,7 @@ export class ProductService {
                         shipping: p['shipping'],
                         averageRating: p['ratings']['averageRating'],
                         fullfilledBySouq: p['fullfilledBySouq'],
-                        img: p['mainImage'],
+                        // img: p['mainImage'],    // this line will bring the image from database
                       }
                     })
                   })
