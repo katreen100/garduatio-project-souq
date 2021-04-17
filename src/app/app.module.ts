@@ -33,6 +33,7 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { TopHeaderComponent } from './Components/header/top-header/top-header.component';
 import { LoginComponent } from './lay out/User/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HomeComponent } from './Components/home/home.component';
 import { HomeLayloutComponent } from './Components/home-laylout/home-laylout.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
@@ -64,6 +65,7 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
     TopHeaderComponent,
     LoginComponent,
     RegisterFormComponent,
+    HomeComponent,
     HomeLayloutComponent,
     SearchComponent,
     ProductPageComponent
