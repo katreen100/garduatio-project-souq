@@ -6,7 +6,6 @@
     transition: all 0.4s;
     position: static  !important;
     display: block;
-    height: 200vh;
 }
 #content.active {
     margin: 0;
@@ -39,7 +38,8 @@
     text-decoration: none;
 }
 .category:hover{
-    background: white
+    background: white;
+    cursor: pointer;
 }
 .category:hover a{
     color: rgb(37, 33, 33);

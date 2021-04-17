@@ -17,16 +17,16 @@
           </div>
           <div class="col-md-5 col-lg-7 d-none d-md-block ">
             <div class="input-group">
-              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="What are you looking for?">
+              <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
               <div class="input-group-prepend">
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
                   <i class="fas fa-search"></i>
                 </button>
               </div>
             </div>
           </div>
           <div class="col pt-1">
-            <button class="btn btn-link">Login</button>
+            <button class="btn btn-link" [routerLink]="['/user/login']"  >Login</button>
           </div>
         </div>
       </div>
@@ -43,7 +43,6 @@
         </ul>
       </div>
     </div>
-    <div class="container ">
 
       <!-- <button id="sidebarCollapse" (click)="toggleClass()" type="button"
         class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small
@@ -51,7 +50,6 @@
       <!-- <div class="content"><span> Content</span></div> -->
 
       <router-outlet></router-outlet>
-    </div>
 
     <app-footer></app-footer>
 

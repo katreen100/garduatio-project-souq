@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 /**
@@ -24,12 +25,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductCardComponent implements OnInit {
   @Input() productData;
   product;
-
-  constructor() {
+constructor(private router:Router) {
   }
 
   ngOnInit(): void {
     this.product = this.productData;
+  }
+  productDetails(skuNumber){
+    this.router.navigate(['/productPage/',skuNumber])
   }
 
 }

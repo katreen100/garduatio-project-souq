@@ -3,17 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrandComponent } from './Components/brand/brand.component';
 import { CategoryComponent } from './Components/category/category.component';
+import { HomeLayloutComponent } from './Components/home-laylout/home-laylout.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { ProductPageComponent } from './Components/product-page/product-page.component';
+import { SearchComponent } from './Components/search/search.component';
+import { LoginComponent } from './lay out/User/login/login.component';
+import { ProductGridComponent } from './product-module/product-grid/product-grid.component';
 import { OneProductCompComponent } from './productComp/oneProductComp/oneProductComp.component';
 
 const routes: Routes = [
-  // {path:"",redirectTo:"home",pathMatch:'full'}, // Home component should be here
-  // {path:"home",component: AppComponent}, // Home component should be here
+  {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
+  {path:"home",component: HomeLayloutComponent}, // Home component should be here
   {path:"freeShipppingDetails",component: OneProductCompComponent},
   {path:"category/:catName",component: CategoryComponent},   //Routing to category component and this component will expect the category name
+  {path:"category",component: ProductGridComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"brand/:brandName",component: BrandComponent}, //Routing to Brand component and this component will expect the brand name
+  {path:"search-result/:searchParam",component: SearchComponent},
+  {path:"productPage/:prdsku",component: ProductPageComponent},
   // {path:"user/register",component: AppComponent},
-  // {path:"user/login",component: AppComponent},
+  {path:"user/login",component: LoginComponent},
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},
   // {path:"FAQS-summary",component: AppComponent},
