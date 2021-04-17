@@ -32,6 +32,7 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { TopHeaderComponent } from './Components/header/top-header/top-header.component';
 import { LoginComponent } from './lay out/User/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HomeComponent } from './Components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     FooterMyAccountComponent,
     SidebarComponent,
     TopHeaderComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
