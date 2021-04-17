@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IuserLogin } from 'src/app/view model/iuser-login';
+import { UsersService } from 'src/services/users-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { IuserLogin } from 'src/app/view model/iuser-login';
 export class LoginComponent implements OnInit {
 
   userLogin : IuserLogin;
-  constructor() {
+  constructor( private Auth : UsersService) {
     this.userLogin = {};
    }
 
@@ -17,7 +18,10 @@ export class LoginComponent implements OnInit {
   }
   login()
   {
-    alert(`Welcome ... ${this.userLogin.email}`);
+    this.Auth.SignIn(this.userLogin.email, this.userLogin.password).then(res=>{
+      console.log(res);
+      
+    }).catch(err=>{console.log("error")});
   }
 
 }

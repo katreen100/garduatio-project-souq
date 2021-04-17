@@ -20,6 +20,7 @@ import { FilterationComponent } from './Components/filteration/filteration.compo
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './lay out/User/login/login.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { LoginComponent } from './lay out/User/login/login.component';
     AppRoutingModule,
     NgbModule,
     NgxSliderModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
