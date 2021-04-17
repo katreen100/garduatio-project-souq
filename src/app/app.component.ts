@@ -22,7 +22,7 @@ export class AppComponent {
   categories;
 
   constructor(private productService: ProductService,
-              // private brandService: BrandService,
+              private brandService: BrandService,
               private categoryService: CategoryService) {
     this.productService.getProductReviews(1)
                         .subscribe(res => {
@@ -55,8 +55,11 @@ export class AppComponent {
                           this.productCards = res;
                         });
 
-    // this.brandService.getBrands()
-    //                   .subscribe(res => this.brands = res);
+    this.brandService.getBrands(1)
+                      .subscribe(res => {
+                        this.brands = res;
+                        console.log(this.brands);
+                      });
 
     this.categoryService.getCategories()
                         .subscribe(res => this.categories = res);

@@ -48,7 +48,7 @@ export class FilterationComponent implements OnInit {
         this.Cateogryoptions = res
         this.cats = [...this.Cateogryoptions]
       });
-    this.brandService.getBrands()
+    this.brandService.getBrands(1)
       .subscribe(res => {
         this.Brand = res;
         this.bran = [...this.Brand];
