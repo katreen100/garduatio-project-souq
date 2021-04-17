@@ -13,7 +13,7 @@
       <!-- Username -->
       <label class="control-label" for="username">Username</label>
       <div class="controls">
-        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+        <input type="text" [(ngModel)]="userRegister.username" id="username" name="username" placeholder="" class="input-xlarge">
         <p class="help-block">Username can contain any letters or numbers, without spaces</p>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <!-- Username -->
     <label class="control-label" for="mobile">Mobile</label>
     <div class="controls">
-      <input type="text" id="mobile" name="mobile" placeholder="" class="input-xlarge">
+      <input type="text" [(ngModel)]="userRegister.mobile" id="mobile" name="mobile" placeholder="" class="input-xlarge">
       <p class="help-block">Mobile can contain 11 numbers, without spaces</p>
     </div>
 
@@ -29,7 +29,7 @@
       <!-- adress -->
       <label class="control-label" for="adress">adress</label>
       <div class="controls">
-        <input type="text" id="adress" name="adress" placeholder="" class="input-xlarge">
+        <input type="text" [(ngModel)]="userRegister.address" id="address" name="address" placeholder="" class="input-xlarge">
         <p class="help-block">Adress can contain any letters or numbers, with spaces</p>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <!-- E-mail -->
       <label class="control-label" for="email">E-mail</label>
       <div class="controls">
-        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+        <input type="text" [(ngModel)]="userRegister.email" name="email" id="email" placeholder="" class="input-xlarge">
         <p class="help-block">Please provide your E-mail</p>
       </div>
     </div>
@@ -46,7 +46,7 @@
     <div class="control-group">
       <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+        <input type="password" [(ngModel)]="userRegister.password" id="password" name="password" placeholder="" class="input-xlarge">
         <p class="help-block">Password should be at least 4 characters</p>
       </div>
     </div>
@@ -55,7 +55,7 @@
       <!-- Password -->
       <label class="control-label" for="password_confirm">Password (Confirm)</label>
       <div class="controls">
-        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+        <input type="password" [(ngModel)]="userRegister.password_confirm" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
         <p class="help-block">Please confirm password</p>
       </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="control-group">
       <!-- Button -->
       <div class="controls">
-        <button class="btn btn-success">Register</button>
+        <button class="btn btn-success" (click)="register()">Register</button>
       </div>
     </div>
   </fieldset>

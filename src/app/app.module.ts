@@ -62,7 +62,7 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
     FooterMyAccountComponent,
     SidebarComponent,
     TopHeaderComponent,
-    LoginComponent
+    LoginComponent,
     RegisterFormComponent,
     HomeLayloutComponent,
     SearchComponent,
