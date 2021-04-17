@@ -60,7 +60,7 @@ export class UsersService {
     return this.afAuth.sendPasswordResetEmail(email)
   }
   signUp(email: string, password: string) {
-    this.afAuth.createUserWithEmailAndPassword(email, password).then((res) => {
+    return this.afAuth.createUserWithEmailAndPassword(email, password).then((res) => {
       this.router.navigate(["Users/login"])
     });
   }
