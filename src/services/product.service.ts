@@ -58,6 +58,7 @@ export class ProductService {
                         shipping: p['shipping'],
                         averageRating: p['ratings']['averageRating'],
                         fullfilledBySouq: p['fullfilledBySouq'],
+                        img: p['mainImage'],
                       }
                     })
                   })
