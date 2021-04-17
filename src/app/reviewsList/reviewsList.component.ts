@@ -14,8 +14,9 @@ export class ReviewsListComponent implements OnInit {
   constructor(private productService: ProductService) {
     this.productService.getProductReviews(1)
       .subscribe(res => {
-        // debugger;
         this.reviews = res[0];
+        console.table(this.reviews);
+        console.log(...this.reviews);
     });
 
     // this.data = [

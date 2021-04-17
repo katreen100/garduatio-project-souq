@@ -12,8 +12,7 @@ export class ProductInfoComponent implements OnInit {
   constructor(private productService: ProductService) {
     this.productService.getProductDescription(1)
       .subscribe(res => {
-        debugger;
-        this.data = res[0];
+        this.data = res;
       })
   }
 
