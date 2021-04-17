@@ -1,35 +1,16 @@
 
   <div class="mainDiv">
     <div>
-      <p>Product information</p>
-      <div>Brand:{{Brand}}</div>
-      <div>Manufacture number:{{ManufacturerNumber}}</div>
-      <div>Operating system:{{operatingSystem}}</div>
-      <div>Backage Thikness:{{backegeThickness}}</div>
-    <br>
-    </div>
-    
-    <div>
       <p>Discription</p>
-      <div>{{discription}}</div>
+      <div>{{data.desription}}</div>
     </div>
+
     <br><br>
-    
     
     <div>
       <p>Key features</p>
       <div class="middleDiv">
-        <div>simCard : {{sim}}</div>
-        <div>ROM: {{ROM}}</div>
-        <div>RAM: {{RAM}}</div>
-        <div>Rear Camera: {{RearCamera}}</div>
-      </div>
-    
-      <div class="middleDiv">
-        <div>front camera: {{FrontCamera}}</div>
-        <div>Display: {{display}}</div>
-        <div>Support 18 w fast charger: {{fastCharge}}</div>
-        <div>corning Gorilla glass 5 front and back: {{corningGlass}}</div>
+        <div *ngFor="let item of data.features">{{item}}</div>
       </div>
       
     </div>

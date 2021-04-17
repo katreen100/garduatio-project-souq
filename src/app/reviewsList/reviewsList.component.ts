@@ -14,7 +14,7 @@ export class ReviewsListComponent implements OnInit {
   constructor(private productService: ProductService) {
     this.productService.getProductReviews(1)
       .subscribe(res => {
-        debugger;
+        // debugger;
         this.reviews = res[0];
     });
 
