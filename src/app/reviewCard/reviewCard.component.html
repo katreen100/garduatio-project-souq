@@ -1,0 +1,24 @@
+<div>
+  <app-rate-component [currentRate]="ratingValue" size="1.5"></app-rate-component>
+</div>
+<div class="isPurch" *ngIf="isPurchasedOnSouq">
+  Purchased on Souq
+</div>
+<div>
+  By: <strong>{{userName}}</strong> on {{ extractReviewDate(reviewDate) * 1000 | date: 'fullDate'}}
+</div>
+<div class="reviewText">
+  {{reviewText}}
+  <br />
+  WHAT'S GOOD ABOUT THIS PRODUCT:
+  <br />
+  {{positive}}
+  <br />
+  WHAT'S NOT SO GOOD ABOUT THIS PRODUCT:
+  <br />
+  {{negative}}
+</div>
+<p *ngIf="isHelpfulSelected">Thanks for your feedback!</p>
+<button class="selected" (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is Helpful</button>
+<button (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is not helpful</button>
+<hr>

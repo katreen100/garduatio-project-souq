@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "27712452-018c-4b5d-8a9e-4a6ffe6c6f7a"
+    "analytics": "false"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -123,6 +123,10 @@
               "devServerTarget": "souq-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

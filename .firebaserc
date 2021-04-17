@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ecommerce-clone-site": {
+      "hosting": {
+        "souq-app": [
+          "ecommerce-clone-site"
+        ]
+      }
+    }
+  }
+}

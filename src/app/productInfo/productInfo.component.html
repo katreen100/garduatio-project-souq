@@ -1,0 +1,17 @@
+
+  <div class="mainDiv" *ngFor="let item of data">
+    <div>
+      <p>Discription</p>
+      <div>{{item.desription}}</div>
+    </div>
+
+    <br><br>
+    
+    <div>
+      <p>Key features</p>
+      <div class="middleDiv">
+        <div *ngFor="let feature of item.features">{{feature}}</div>
+      </div>
+      
+    </div>
+  </div>

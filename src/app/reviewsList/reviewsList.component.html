@@ -1,0 +1,15 @@
+<div>
+  <ul>
+    <li *ngFor="let review of reviews">
+      <app-reviewCard
+        [ratingValue]="review.rating"
+        userName={{review.reviewerName}}
+        reviewDate={{review.reviewDate}}
+        reviewText={{review.reviewBody}}
+        positive={{review.positives}}
+        negative={{review.negatives}}
+        isPurchasedOnSouq={{review.purchasesOn}}
+      ></app-reviewCard>
+    </li>
+  </ul>
+</div>
