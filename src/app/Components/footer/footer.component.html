@@ -1,0 +1,67 @@
+<section class="contianer-fluid bg-light py-2">
+    <div class="container d-lg-block d-none py-2">
+        <div class="row">
+            <div class="col-3">
+                <strong class="text-dark">POPULAR SEARCHES</strong>
+                <ul class="p-0 nav flex-column">
+                    <li *ngFor="let cat of categories">
+                        <a href="#" [routerLink]="['/category',cat.categoryName]"
+                            class="text-secondary nav-link p-0">{{cat.categoryName}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <app-footer-my-account></app-footer-my-account>
+            </div>
+            <div class="col-3">
+                <strong class="text-dark">SELLING ON SOUQ.COM</strong>
+                <ul class="p-0 nav flex-column">
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">Sell on souq.com</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">How It Works</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">Selling Policies</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">Seller Terms and
+                            Conditions</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">Fulfilled by Souq</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">FAQS</a>
+                    </li>
+                </ul>
+                <strong class="text-dark">BUYING ON SOUQ.COM</strong>
+                <ul class="p-0 nav flex-column">
+                    <li>
+                        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">How to Buy</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="" class="text-secondary nav-link p-0">Return Policy</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="" class="text-secondary nav-link p-0">Advertise with us</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/home']" href="" class="text-secondary nav-link p-0">Help</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <app-support-and-social-links></app-support-and-social-links>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid d-block d-lg-none py-2">
+        <app-support-and-social-links></app-support-and-social-links>
+        <app-footer-my-account></app-footer-my-account>
+    </div>
+    <div class="copyRights text-center py-3 bg-secondary text-white">
+        <strong>© 2021 Souq.com</strong>
+    </div>
+</section>

@@ -21,7 +21,17 @@ import { environment } from 'src/environments/environment';
 import { FilterationComponent } from './Components/filteration/filteration.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { CategoryComponent } from './Components/category/category.component';
+import { BrandComponent } from './Components/brand/brand.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { SupportAndSocialLinksComponent } from './Components/support-and-social-links/support-and-social-links.component';
+import { FooterMyAccountComponent } from './Components/footer-my-account/footer-my-account.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { TopHeaderComponent } from './Components/header/top-header/top-header.component';
 import { LoginComponent } from './lay out/User/login/login.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -39,6 +49,15 @@ import { LoginComponent } from './lay out/User/login/login.component';
     ProductInfoComponent,
     ReviewsListComponent,
     FilterationComponent,
+    HeaderComponent,
+    FooterComponent,
+    CategoryComponent,
+    BrandComponent,
+    NotFoundComponent,
+    SupportAndSocialLinksComponent,
+    FooterMyAccountComponent,
+    SidebarComponent,
+    TopHeaderComponent,
     LoginComponent
   ],
   imports: [
@@ -48,7 +67,9 @@ import { LoginComponent } from './lay out/User/login/login.component';
     AppRoutingModule,
     NgbModule,
     NgxSliderModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
