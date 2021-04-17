@@ -19,6 +19,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { FilterationComponent } from './Components/filteration/filteration.component';
+import { RegisterFormComponent } from './Components/register-form/register-form.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './Components/header/header.component';
@@ -61,7 +62,8 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
     FooterMyAccountComponent,
     SidebarComponent,
     TopHeaderComponent,
-    LoginComponent,
+    LoginComponent
+    RegisterFormComponent,
     HomeLayloutComponent,
     SearchComponent,
     ProductPageComponent
