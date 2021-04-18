@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      react app worx
+      <h1>react app worx</h1>
     </div>
   );
 }
