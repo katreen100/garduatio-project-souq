@@ -1,73 +1,19 @@
-import { getAllOrderNames } from '../../network/apis/order';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Button from "@material-ui/core/Button";
-
-
+import { deleteOrderNames } from '../../network/apis/order';
+import db from '../../network/firebase/firebaseConfig';
+import { PanoramaVerticalSharp } from '@material-ui/icons';
+import Modal from "./Modal";
+import {updateOrderNames} from "../../network/apis/order";
 const OrderSectionPage = () => {
 
-    const columns = [
-        { field: 'customerName', headerName: 'Name', width: 130 },
-        { field: 'id', headerName: 'ID', width: 130 },
-        { field: 'nameProduct', headerName: 'Name Product', width: 130 },
-        {
-            field: 'quantity',
-            headerName: 'quantity',
-            type: 'number',
-            width: 130,
-        },
-        {
-            field: 'telephoneCustomer',
-            headerName: 'telephoneCustomer',
+    const [editColumn, setEditColumn] = useState({
+        flag:false
+    })
 
-            width: 130,
-        },
-
-        {
-            field: 'to',
-            headerName: 'to',
-
-            width: 130,
-        },
-        {
-            field: 'totalPrice',
-            headerName: 'Total Price',
-            type: 'number',
-            width: 130,
-        },
-        {
-            field: "",
-            headerName: "Button",
-            sortable: false,
-            width: 117,
-            disableClickEventBubbling: true,
-            renderCell: (params) => {
-              const onClick = () => {
-                const api = params.api;
-                const fields = api
-                  .getAllColumns()
-                  .map((c) => c.field)
-                  .filter((c) => c !== "__check__" && !!c);
-                const thisRow = {};
-        
-                fields.forEach((f) => {
-                  thisRow[f] = params.getValue(f);
-                });
-        
-                return alert(JSON.stringify(thisRow, null, 4));
-              };
-        
-              return <Button onClick={onClick}>Click</Button>;
-            }
-          },
-
-
-
-
-    ];
-
-
+    // initail value
     const initial = [{
         customerName: "",
         id: 0,
@@ -81,47 +27,117 @@ const OrderSectionPage = () => {
     const [all, setAll] = useState(initial);
 
 
-    console.log(getAllOrderNames()
-        .then(res => { console.log(res.map(id => { console.log(id.id) })) }));
-    getAllOrderNames().then(res => {
-        console.log(res);
-        setAll(
+    const [docId, setDocId] = useState([]);
+    /*
+    {
+        docID: asgasg,
+        itemID: id
+    }
+    */
 
-            res.map(AllData => {
-                console.log(AllData.id);
+    useEffect(() => {
+        const items = [];
+        const ref = db.collection('Order');
+        function getAll() {
+            ref.onSnapshot((snap) => {
+                let doc = {}
+                let temp = []
 
-                return AllData;
+                snap.forEach((doc) => {
+                    items.push(doc.data())
+                    console.log(doc.data().id)
+                    doc = {
+                        DocID: doc.id,
+                        itemID: doc.data().id
+                    }
+                    temp.push(doc)
+
+                })
+                setDocId(temp)
+                console.log(docId)
+                setAll(items)
             })
-        )
-    }).then(res => { console.log(all) })
+        }
+        console.log("use effect")
+        getAll();
+    }, [])
+
+    // col grid data
+    const columns = [
+        { field: 'customerName', headerName: 'Customer', width: 120 },
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'nameProduct', headerName: 'Product', width: 120 },
+        { field: 'quantity', headerName: 'Quantity', type: 'number', width: 130, },
+        { field: 'telephoneCustomer', headerName: 'Tel Customer', width: 150, },
+        { field: 'to', headerName: 'To', width: 100 },
+        { field: 'totalPrice', headerName: 'Price', type: 'number', width: 100, },
+        { //Button
+            field: "",
+            headerName: "Edit or Delete",
+            sortable: false,
+            width: 200,
+            disableClickEventBubbling: true,
+            renderCell: (params) => {
+                const Delete = () => {
+                    const api = params.api;
+                    const fields = api
+                        .getAllColumns()
+                        .map((c) => c.field)
+                        .filter((c) => c !== "__check__" && !!c);
+                    const thisRow = {};
+
+                    fields.forEach((f) => {
+                        thisRow[f] = params.getValue(f);
+                    });
+
+                    console.log(params.row.id);
+                    let item = docId.find(DocRef => DocRef.itemID == params.row.id)
+                    // deleteOrderNames(item);
+                    console.log("Delete Function")
+                    return
+                };
+
+                const update = () => {
+                    const api = params.api;
+                    const fields = api
+                        .getAllColumns()
+                        .map((c) => c.field)
+                        .filter((c) => c !== "__check__" && !!c);
+                    const thisRow = {};
+
+                    fields.forEach((f) => {
+                        thisRow[f] = params.getValue(f);
+                    });
+
+                    console.log(params.row.id);
+                    let item = docId.find(DocRef => DocRef.itemID == params.row.id)
+                    console.log(item);
+                    console.log("Updates Function")
+                    setEditColumn({
+                        flag:!editColumn.flag
+                    })
+                    updateOrderNames();
+                    return 
+                };
+                return <div>
+                    <Button variant="contained" color="primary" onClick={() => update()}>Edit</Button>
+                    <Button variant="contained" color="primary" onClick={() => Delete()}>X</Button>
+                </div>
+
+            }
+        },
+    ];
     return (
         <>
             <h1>Order Section</h1>
-            <div>
 
-                {/* <h1>{all[0].customerName}</h1>
-                <h1>{all[0].id}</h1>
-
-                <h1>{all[0].nameProduct}</h1>
-                <h1>{all[0].quantity}</h1>
-                <h1>{all[0].telephoneCustomer}</h1>
-                <h1>{all[0].to}</h1>
-                <h1>{all[0].totalPrice}</h1> */}
-
-
-
-                {/* {getAllOrderNames().then(res => {
-                    res.map(AllData => {
-                        return <h1> {AllData} </h1>
-                    })
-                })} */}
-
-                <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid rows={all} columns={columns} pageSize={5} checkboxSelection />
-                </div>
-
+            <div style={{ height: 400, width: '100%' }}>
+                <DataGrid rows={all} columns={columns} pageSize={5} checkboxSelection />
             </div>
-
+            {
+                editColumn.flag? <Modal/>: ''
+            }
+            
         </>
     )
 }
