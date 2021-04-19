@@ -22,6 +22,8 @@ import CustomerSectionPage from './customer';
 import ProductSectionPage from './product';
 import BrandSectionPage from './brand';
 import CategorySectionPage from './category';
+import OrderSectionPage from './order';
+
 
 const drawerWidth = 240;
 
@@ -91,7 +93,7 @@ export default function DashboardPage() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [currentSection, setCurrentSection] = React.useState(CustomerSectionPage);
+  // const [currentSection, setCurrentSection] = React.useState(CustomerSectionPage);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -102,7 +104,7 @@ export default function DashboardPage() {
   };
 
   const handleSectionChange = (section) => {
-    setCurrentSection(section);
+    // setCurrentSection(section);
   }
 
   return (
@@ -197,6 +199,19 @@ export default function DashboardPage() {
                   Category 
               </ListItemText>
           </ListItem>
+
+
+          <ListItem button onClick={() => handleSectionChange(OrderSectionPage)}>
+              <ListItemIcon>
+                  <GroupIcon />
+              </ListItemIcon>
+
+              <ListItemText>
+                  Order 
+              </ListItemText>
+          </ListItem>
+
+
         </List>
         <Divider />
         <List>
@@ -210,7 +225,9 @@ export default function DashboardPage() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        { currentSection }
+        {/* { currentSection } */}
+        <OrderSectionPage/>
+
       </main>
     </div>
   );
