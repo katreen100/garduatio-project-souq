@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/old-services/product.service';
 import { IProductCard } from 'src/viewModels/iproduct-card';
 
 @Component({

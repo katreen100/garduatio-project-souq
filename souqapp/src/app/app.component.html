@@ -1,1 +1,39 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
+
+
+<pre>
+    <h1>All Cateogries</h1>
+    {{ categories | async | json }}
+</pre>
+<br>
+<br>
+<hr>
+<pre>
+    <h1>One Categroy</h1>
+    <h2>Extract brand if you like</h2>
+    {{ brands | async | json }}
+</pre>
+
+<br>
+<br>
+<hr>
+<pre>
+    <h1>All Products</h1>
+    {{ products | async | json }}
+</pre>
+
+<br>
+<br>
+<hr>
+<pre>
+    <h1>Product Cards by locale</h1>
+    {{ productCards | async | json }}
+</pre>
+
+<br>
+<br>
+<hr>
+<pre>
+    <h1>Product Rating details</h1>
+    {{ ratingDetails | async | json }}
+</pre>

@@ -1,6 +1,6 @@
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/old-services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/services/users-service.service';
+import { UsersService } from 'src/old-services/users-service.service';
 
 @Component({
   selector: 'app-register-form',

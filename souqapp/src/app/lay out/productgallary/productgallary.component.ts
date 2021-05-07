@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDetails } from 'src/app/view model/productDetails';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/old-services/product.service';
 
 
 @Component({
