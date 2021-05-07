@@ -3,7 +3,7 @@ import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDropdown} from '@ng-bootstrap/ng-bootstrap'
 
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/old-services/product.service';
 
 
 @Component({

@@ -5,4 +5,4 @@ let locale = 'ar-EG';
 let category = (locale == 'ar-EG') ? 'categoryArabic' : 'categoryEnglish';
 let product = (locale == 'ar-EG') ? 'productArabic' : 'productEnglish';
 
-export { category, product };
+export { category, product, locale };

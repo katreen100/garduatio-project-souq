@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/old-services/product.service';
 
 @Component({
   selector: 'app-productInfo',

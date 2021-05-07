@@ -1,4 +1,4 @@
-import { ProductService } from 'src/services/product.service';
+import { ProductService } from 'src/old-services/product.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

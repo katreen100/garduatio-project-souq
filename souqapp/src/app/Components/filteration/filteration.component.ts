@@ -1,8 +1,8 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component, OnInit } from '@angular/core';
-import { BrandService } from 'src/services/brand.service';
-import { CategoryService } from 'src/services/category.service';
-import { ProductService } from 'src/services/product.service';
+import { BrandService } from 'src/old-services/brand.service';
+import { CategoryService } from 'src/old-services/category.service';
+import { ProductService } from 'src/old-services/product.service';
 
 @Component({
   selector: 'app-filteration',
