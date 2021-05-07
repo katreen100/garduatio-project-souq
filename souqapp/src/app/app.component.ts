@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ICategory } from '@models/icategory';
-import { IProduct, IProductCard, IRatingDetails } from '@models/iproduct';
+import { IProduct, IProductCard, IProductImages, IRatingDetails } from '@models/iproduct';
 import { Observable } from 'rxjs';
 // import { BrandService } from 'src/services/brand.service';
 import { CategoryService } from 'src/services/category.service';
@@ -24,6 +24,9 @@ export class AppComponent {
   categories: Observable<ICategory[]>;
   productCards: Observable<IProductCard[]>;
   ratingDetails: Observable<IRatingDetails>;
+  product: Observable<IProduct>;
+  productImages: Observable<IProductImages[]>;
+  productWithImages: Observable<any>;
 
   constructor(private categoryService: CategoryService,
               private productService: ProductService) {
@@ -33,6 +36,10 @@ export class AppComponent {
     this.productCards = this.productService.getAllProductCards();
     this.ratingDetails = this.productService.getProductRatingDetails('ed0f0600-854e-4ad4-b01d-bda780b2cdc0');
     this.productService.rateProduct('ed0f0600-854e-4ad4-b01d-bda780b2cdc0', 3, 16);
+    this.product = this.productService.getProduct('dMYoWJYfbryLYRJ99mWv');
+    this.productImages = this.productService.getProductImages('dMYoWJYfbryLYRJ99mWv');
+    this.productWithImages = this.productService.getProductWithImages('dMYoWJYfbryLYRJ99mWv');
+    
     
   //   this.productService.getProductReviews(1)
   //                       .subscribe(res => {
