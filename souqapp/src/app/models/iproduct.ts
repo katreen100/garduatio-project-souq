@@ -51,3 +51,9 @@ export interface IRatingDetails {
     five:          number;
     one:           number;
 }
+
+export interface IProductImages {
+    thumbnail: string;
+    regular:   string;
+    locale:    string;
+}
