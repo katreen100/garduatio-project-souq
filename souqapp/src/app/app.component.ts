@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 // import { BrandService } from 'src/services/brand.service';
 import { CategoryService } from 'src/services/category.service';
 import { OldProductService } from 'src/services/oldproduct.service';
-import { Product2Service } from 'src/services/product2.service';
+import { ProductService } from 'src/services/product.service';
 import { ReviewService } from 'src/services/review.service';
 // import { ProductService } from 'src/services/product.service';
 
@@ -37,7 +37,7 @@ export class AppComponent {
   categories;
 
   constructor(private categoryService: CategoryService,
-              private productService: Product2Service,
+              private productService: ProductService,
               private reviewService: ReviewService) {
     this.products = this.productService.getAllProducts();
     this.productVariant = this.productService.getProductVariant('LEiKmgMlBf7kSDmTiOlx');
