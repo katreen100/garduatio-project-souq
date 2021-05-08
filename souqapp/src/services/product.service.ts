@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { IParentProduct, IProductSpecs, IProductVariant, IProductVariantImages, IRatingDetails } from '@models/iproduct';
+import { LocalizeProduct, LocalizeProductSpecs, LocalizeProductVariant } from '@shared/localization';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { product, locale } from '@shared/localization';
-import { IProduct, IProductCard, IProductImages, IRatingDetails } from '@models/iproduct';
 
 @Injectable({
   providedIn: 'root'
@@ -12,92 +12,70 @@ export class ProductService {
 
   constructor(private db: AngularFirestore) { }
 
-  getAllProducts(): Observable<IProduct[]> {
-    return this.db.collection(product, ref => ref.where('mainAmongVariants', '==', true))
+  // for product grid/cards
+  getAllProducts(): Observable<IParentProduct[]> {
+    return this.db.collection('ParentProduct')
                   .get()
                   .pipe(
                     map(response => {
                       return response.docs.map(doc => {
-                        return doc.data() as IProduct;
+                        return LocalizeProduct(doc.data() as IParentProduct);
                       })
                     })
                   )
   }
 
-  getProduct(productId): Observable<IProduct> {
-    return this.db.collection(product)
-                  .doc(productId)
-                  .get()
-                  .pipe(
-                    map(response => response.data() as IProduct)
-                  )
-  }
-
-  getProductImages(productId): Observable<IProductImages[]> {
-    return this.db.collection(product)
+  getProductVariantImages(productId): Observable<IProductVariantImages[]> {
+    return this.db.collection('ProductVariants')
                     .doc(productId)
                     .collection('images')
                     .get()
                     .pipe(
                       map(response => {
                         return response.docs.map(doc => {
-                          return doc.data() as IProductImages;
+                          return doc.data() as IProductVariantImages;
                         })
                       })
                     )
   }
 
-  getProductWithImages(productId): Observable<any> {
-    return forkJoin([this.getProduct(productId),
-                      this.getProductImages(productId)]);
+  getProductVariant(productId): Observable<IProductVariant> {
+    return this.db.collection('ProductVariants')
+                  .doc(productId)
+                  .get()
+                  .pipe(
+                    map(response => LocalizeProductVariant(response.data() as IProductVariant))
+                  )
   }
 
-  getAllProductCards(): Observable<IProductCard[]> {
-    return this.db.collectionGroup('info',
-                        ref => ref.where('locale', '==', locale)
-                                  .where('mainAmongVariants', '==', true))
+  getProductVariantDetails(productId): Observable<[IProductVariant, IProductVariantImages[]]> {
+    return forkJoin([this.getProductVariant(productId),
+                      this.getProductVariantImages(productId)]);
+  }
+
+  getProductRatingDetails(parentProductId): Observable<IRatingDetails> {
+    return this.db.collection('ratingDetails')
+                    .doc(parentProductId)
                     .get()
                     .pipe(
-                      map(response => {
-                        return response.docs.map(doc => {
-                          return doc.data() as IProductCard;
-                        })
-                      })
-                    )
+                      map(response => response.data() as IRatingDetails)
+                    );
   }
 
-  getProductRatingDetails(productParentId): Observable<IRatingDetails> {
-    return this.db.collection('ratingDetails')
-                  .doc(productParentId)
+
+  getProductSpecs(parentProductId): Observable<IProductSpecs[]> {
+    return this.db.collection('ParentProduct')
+                  .doc(parentProductId)
+                  .collection('specs')
                   .get()
                   .pipe(
                     map(response => {
-                      return response.data() as IRatingDetails;
+                      return response.docs.map(doc => {
+                        return LocalizeProductSpecs(doc.data() as IProductSpecs);
+                      })
                     })
                   )
   }
 
-  rateProduct(productParentId, stars: number, newValue: number) {
-    // use a cloud function to update average rating
-    let r = 'rating';
-    switch(stars) {
-      case 1: r = 'one'; break;
-      case 2: r = 'two'; break;
-      case 3: r = 'three'; break;
-      case 4: r = 'four'; break;
-      case 5: r = 'five'; break;
-    }
-    return this.db.collection('ratingDetails')
-                  .doc(productParentId)
-                  .update({'one': newValue})
-  }
 
-  getProductReviews(productParentId): Observable<any> {
-    return this.db.collection('reviews')
-                    .doc(productParentId)
-                    .get()
-                    .pipe(
-
-                    )
-  }
 }
