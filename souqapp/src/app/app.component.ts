@@ -4,7 +4,9 @@ import { IProduct, IProductCard, IProductImages, IRatingDetails } from '@models/
 import { Observable } from 'rxjs';
 // import { BrandService } from 'src/services/brand.service';
 import { CategoryService } from 'src/services/category.service';
-import { ProductService } from 'src/services/product.service';
+import { OldProductService } from 'src/services/oldproduct.service';
+import { Product2Service } from 'src/services/product2.service';
+import { ReviewService } from 'src/services/review.service';
 // import { ProductService } from 'src/services/product.service';
 
 @Component({
@@ -15,30 +17,44 @@ import { ProductService } from 'src/services/product.service';
 
 export class AppComponent {
   title = 'souq-app';
-  products: Observable<IProduct[]>;
+  // products: Observable<IProduct[]>;
   specs;
   rating;
   descr;
   reviews;
-  brands: Observable<ICategory>;
-  categories: Observable<ICategory[]>;
-  productCards: Observable<IProductCard[]>;
-  ratingDetails: Observable<IRatingDetails>;
-  product: Observable<IProduct>;
-  productImages: Observable<IProductImages[]>;
-  productWithImages: Observable<any>;
+  // brands: Observable<ICategory>;
+  // categories: Observable<ICategory[]>;
+  // productCards: Observable<IProductCard[]>;
+  // ratingDetails: Observable<IRatingDetails>;
+  // product: Observable<IProduct>;
+  // productImages: Observable<IProductImages[]>;
+  // productWithImages: Observable<any>;
+  products;
+  productVariantImages;
+  productspecs;
+  productVariant;
+  productVariantDetails;
+  categories;
 
   constructor(private categoryService: CategoryService,
-              private productService: ProductService) {
-    this.categories = this.categoryService.getAllCategories();
-    this.brands = this.categoryService.getBrandByCategory('EnXv47N2LkilhZDVvYva');
+              private productService: Product2Service,
+              private reviewService: ReviewService) {
     this.products = this.productService.getAllProducts();
-    this.productCards = this.productService.getAllProductCards();
-    this.ratingDetails = this.productService.getProductRatingDetails('ed0f0600-854e-4ad4-b01d-bda780b2cdc0');
-    this.productService.rateProduct('ed0f0600-854e-4ad4-b01d-bda780b2cdc0', 3, 16);
-    this.product = this.productService.getProduct('dMYoWJYfbryLYRJ99mWv');
-    this.productImages = this.productService.getProductImages('dMYoWJYfbryLYRJ99mWv');
-    this.productWithImages = this.productService.getProductWithImages('dMYoWJYfbryLYRJ99mWv');
+    this.productVariant = this.productService.getProductVariant('LEiKmgMlBf7kSDmTiOlx');
+    this.productVariantDetails = this.productService.getProductVariantDetails('LEiKmgMlBf7kSDmTiOlx');
+    this.productspecs = this.productService.getProductSpecs('ed0f0600-854e-4ad4-b01d-bda780b2cdc0');
+    this.productVariantImages = this.productService.getProductVariantImages('Z9yl9x6K6ypb6Q18ow0R');
+    this.reviews = this.reviewService.getProductReviews('ed0f0600-854e-4ad4-b01d-bda780b2cdc0');
+    this.categories = this.categoryService.getAllCategories();
+    // this.categories = this.categoryService.getAllCategories();
+    // this.brands = this.categoryService.getBrandByCategory('EnXv47N2LkilhZDVvYva');
+    // this.products = this.productService.getAllProducts();
+    // this.productCards = this.productService.getAllProductCards();
+    // this.ratingDetails = this.productService.getProductRatingDetails('ed0f0600-854e-4ad4-b01d-bda780b2cdc0');
+    // this.productService.rateProduct('ed0f0600-854e-4ad4-b01d-bda780b2cdc0', 3, 16);
+    // this.product = this.productService.getProduct('dMYoWJYfbryLYRJ99mWv');
+    // this.productImages = this.productService.getProductImages('dMYoWJYfbryLYRJ99mWv');
+    // this.productWithImages = this.productService.getProductWithImages('dMYoWJYfbryLYRJ99mWv');
     
     
   //   this.productService.getProductReviews(1)

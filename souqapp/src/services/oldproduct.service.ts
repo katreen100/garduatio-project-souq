@@ -8,7 +8,7 @@ import { IProduct, IProductCard, IProductImages, IRatingDetails } from '@models/
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class OldProductService {
 
   constructor(private db: AngularFirestore) { }
 
