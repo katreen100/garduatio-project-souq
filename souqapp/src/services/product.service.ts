@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IParentProduct, IProductSpecs, IProductVariant, IProductVariantImages, IRatingDetails } from '@models/iproduct';
-import { LocalizeProduct, LocalizeProductSpecs, LocalizeProductVariant } from '@shared/localization';
+import { LocalizeProduct, LocalizeProductSpecs, LocalizeProductVariant } from '@shared/localization/localization';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
