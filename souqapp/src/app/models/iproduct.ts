@@ -95,18 +95,19 @@ export interface IParentProduct {
     averageRating:      number;
     brandName:          string;
     price:              number;
-    shipping_ar:        string;
+    // shipping_ar:        string;
     sellerNotes_ar:     string[];
     mainVariant:        string;
     brandName_ar:       string;
     discount:           number;
-    shipping:           string;
+    // shipping:           string;
     name_ar:            string;
     createdAt:          ITimestamp;
     tax:                number;
     variants:           string[];
     sellerNotes:        string[];
     description:        string;
+    freeShipping:       boolean;
 }
 
 

@@ -53,6 +53,24 @@ export class ProductService {
                       this.getProductVariantImages(productId)]);
   }
 
+  getParentProduct(parentProductId): Observable<IParentProduct> {
+    return this.db.collection('ParentProduct')
+                    .doc(parentProductId)
+                    .get()
+                    .pipe(
+                      map(response => {
+                        return LocalizeProduct(response.data() as IParentProduct);
+                      })
+                    );
+  }
+
+  // TODO: specifiy observable type
+  getFullProduct(parentProductId, mainVariantId): Observable<any> {
+    return forkJoin([this.getParentProduct(parentProductId),
+                     this.getProductVariant(mainVariantId),
+                     this.getProductVariantImages(mainVariantId)]);
+  }
+
   getProductRatingDetails(parentProductId): Observable<IRatingDetails> {
     return this.db.collection('ratingDetails')
                     .doc(parentProductId)

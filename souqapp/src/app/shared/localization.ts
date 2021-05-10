@@ -21,7 +21,7 @@ export function LocalizeProduct(dbProduct: IParentProduct): IParentProduct {
         dbProduct.condition = dbProduct.condition_ar;
         dbProduct.description = dbProduct.description_ar;
         dbProduct.features = dbProduct.features_ar;
-        dbProduct.shipping = dbProduct.shipping_ar;
+        // dbProduct.shipping = dbProduct.shipping_ar;
         dbProduct.sellerNotes = dbProduct.sellerNotes_ar;
         return dbProduct;
     } else {
