@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductService } from 'src/old-services/product.service';
 import { IProductCard } from 'src/viewModels/iproduct-card';
 
@@ -8,14 +9,10 @@ import { IProductCard } from 'src/viewModels/iproduct-card';
   styleUrls: ['./product-grid.component.css']
 })
 export class ProductGridComponent implements OnInit {
-  productCards: IProductCard[];
+  productCard$: Observable<IProductCard[]>;
 
   constructor(private productService: ProductService) {
-    this.productService.getAllProductCards()
-      .subscribe(res => {
-        this.productCards = res;
-        console.table(res);
-      });
+    this.productCard$ =  this.productService.getAllProductCards();
   }
 
   ngOnInit(): void {

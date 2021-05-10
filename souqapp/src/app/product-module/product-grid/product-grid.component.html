@@ -8,7 +8,7 @@
 <h1 class="text-secondary">Products:</h1>
 <section id="product-grid">
     <app-product-card
-        *ngFor="let p of productCards"
+        *ngFor="let p of productCard$ | async"
         [productData]="p">
     </app-product-card>
 </section>
