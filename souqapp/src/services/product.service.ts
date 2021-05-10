@@ -19,7 +19,7 @@ export class ProductService {
                   .pipe(
                     map(response => {
                       return response.docs.map(doc => {
-                        return LocalizeProduct(doc.data() as IParentProduct);
+                        return LocalizeProduct(doc.data() as IParentProduct, doc.id);
                       })
                     })
                   )
@@ -59,7 +59,7 @@ export class ProductService {
                     .get()
                     .pipe(
                       map(response => {
-                        return LocalizeProduct(response.data() as IParentProduct);
+                        return LocalizeProduct(response.data() as IParentProduct, response.id);
                       })
                     );
   }

@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { InView } from "@shared/pipes/in-view";
 
 /**
  * Product Card
@@ -31,8 +32,8 @@ constructor(private router:Router) {
   ngOnInit(): void {
     this.product = this.productData;
   }
-  productDetails(skuNumber){
-    this.router.navigate(['/productPage/',skuNumber])
+  productDetails(parentProductId, variantId){
+    this.router.navigate(['/productPage/',parentProductId,variantId])
   }
 
 }
