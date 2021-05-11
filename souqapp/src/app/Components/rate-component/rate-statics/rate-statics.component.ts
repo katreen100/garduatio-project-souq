@@ -8,13 +8,13 @@ import { IRate } from 'src/app/Viewmodels/Rate/irate';
 })
 export class RateStaticsComponent implements OnInit {
   @Input() rate: IRate;
+  total = 0;
   constructor() { 
-
   }
   ngOnInit(): void {
-
+    this.total = (this.rate.one + this.rate.two + this.rate.three + this.rate.four + this.rate.five)
   }
   getRate(value: number) {
-    return (value / this.rate.total) * 100
+    return (value / this.total) *100
   }
 }
