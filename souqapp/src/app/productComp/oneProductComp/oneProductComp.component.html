@@ -12,13 +12,15 @@
           <span id="dropdownBasic1" ngbDropdownToggle>
             <app-rate-component></app-rate-component>
           </span>
-          <span ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-2">
-            <!-- <app-rate-statics></app-rate-statics> -->
+          <span ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-2" style="width: 450px;">
+            <app-rate-statics></app-rate-statics>
+            <app-user-rate></app-user-rate>
           </span>
         </span>
         <span class="bluefontcolor"> (x)review </span>
       </div>
       <div>
+          <!-- <img src="https://cdn.mos.cms.futurecdn.net/VSy6kJDNq2pSXsCzb6cvYF.jpg" height="350px" alt=""> -->
         <app-productgallary></app-productgallary>
       </div>
     </div>
@@ -31,9 +33,9 @@
           <span
             class="priceBeforDiscount graytext"
             style="text-decoration: line-through"
-            >{{ product.price }}</span
+            >{{ product.price}}</span
           >
-          <span> you saved {{ calcSavedMony() }}</span>
+          <span> you saved {{calcSavedMony()}}</span>
         </div>
         <div>
           <span class="graytext"> All price include VAT</span>
@@ -42,7 +44,7 @@
         <div class="pb-2 graytext borderbtm pricedetails">
           <strong> free shipping</strong>
           <span class="bluefontcolor"
-            ><a (click)="openlg(content)" href="#"> details</a></span
+            ><a (click)="openlg(content)"> details</a></span
           >
         </div>
 
@@ -71,44 +73,22 @@
         </ng-template>
       </div>
       <div>
-        
-        <div id="product" class="pt-3" >
-         <!-- <dl *ngFor="let item of prodstatic.productVarities | keyvalue; let indexOfelement = index">
-            <dt>{{item.key}}</dt>
-            <dd
-              class="btn btn-secondary mr-2"
-              *ngFor="
-                let item of product.productVarieties.item.key;
-                let indexOfelement = index
-              "
-            >
-              {{ item.name }}
-            </dd>
-          </dl> -->
-          <dl *ngIf="product.productVarieties.size">
-            <dt>size</dt>
-            <dd
-              class="btn btn-secondary mr-2"
-              *ngFor="
-                let item of product.productVarieties.size;
-                let indexOfelement = index
-              "
-            >
-              {{ item.name }}
-            </dd>
-          </dl>
-          <dl *ngIf="product.productVarieties.color">
-            <dt>color</dt>
-            <dd
-              class="btn btn-secondary mr-2"
-              *ngFor="
-                let item of product.productVarieties.color;
-                let indexOfelement = index
-              "
-            >
-              {{ item.name }}
-            </dd>
-          </dl>
+        <div id="product" class="pt-3">
+          <div *ngFor="let item of product.allVariations | keyvalue; let indexOfelement = index" >
+            <dl >
+             <dt>{{item.key}}</dt>
+             <dd
+               class="btn btn-secondary mr-2"
+               *ngFor="
+                 let item of product.productprop ;let val of item.value
+                 let indexOfelement = index 
+               " (click)="firtation($event)" value="item"
+             >
+               {{ val}}
+             </dd>
+           </dl>
+            </div>
+         
         </div>
         <div>
           <dl>
@@ -146,6 +126,7 @@
           class="button w-100 btn-lg"
           type="button"
           value="ADD TO CARD"
+          onclick="addToCardFun()"
         />
         <span id="amount_left">function to get left in stock! </span>
       </div>
