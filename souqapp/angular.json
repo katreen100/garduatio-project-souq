@@ -62,6 +62,10 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "ar": {
+              "localize": ["ar"],
+              "outputPath": "dist/souq-app-ar/"
             }
           }
         },
@@ -73,6 +77,9 @@
           "configurations": {
             "production": {
               "browserTarget": "souq-app:build:production"
+            },
+            "ar": {
+              "browserTarget": "souq-app:build:ar"
             }
           }
         },
@@ -127,6 +134,15 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {}
+        }
+      },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ar": {
+            "translation": "src/app/shared/localization/messages.ar.EG.xlf",
+            "baseHref": ""
+          }
         }
       }
     }

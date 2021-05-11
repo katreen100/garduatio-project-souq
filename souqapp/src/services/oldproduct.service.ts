@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { product, locale } from '@shared/localization';
+import { product, locale } from '@shared/localization/localization';
 import { IProduct, IProductCard, IProductImages, IRatingDetails } from '@models/iproduct';
 
 @Injectable({

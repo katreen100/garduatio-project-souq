@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LocalizeCategory} from '@shared/localization';
+import { LocalizeCategory} from '@shared/localization/localization';
 import { ICategory } from '@models/icategory'; 
 
 @Injectable({
