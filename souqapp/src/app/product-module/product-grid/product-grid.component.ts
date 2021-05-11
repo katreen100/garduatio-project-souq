@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IParentProduct } from '@models/iproduct';
 import { Observable } from 'rxjs';
-import { ProductService } from 'src/old-services/product.service';
-import { IProductCard } from 'src/viewModels/iproduct-card';
+import { ProductService } from 'src/services/product.service';
 
 @Component({
   selector: 'app-product-grid',
@@ -9,10 +9,10 @@ import { IProductCard } from 'src/viewModels/iproduct-card';
   styleUrls: ['./product-grid.component.css']
 })
 export class ProductGridComponent implements OnInit {
-  productCard$: Observable<IProductCard[]>;
+  productCard$: Observable<IParentProduct[]>;
 
   constructor(private productService: ProductService) {
-    this.productCard$ =  this.productService.getAllProductCards();
+    this.productCard$ =  this.productService.getAllProducts();
   }
 
   ngOnInit(): void {

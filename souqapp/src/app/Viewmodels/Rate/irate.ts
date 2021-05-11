@@ -1,8 +1,8 @@
 export interface IRate {
-    oneStar:number;
-    twoStar:number;
-    threeStar:number;
-    fourStar:number;
-    fiveStar:number;
-    total:number;
+    averageRating:number;
+    one:number;
+    two:number;
+    three:number;
+    four:number;
+    five:number;
 }

@@ -94,7 +94,7 @@
 
 </style>
 
-<div class="m-3">
+<div class="">
     <section class="product-card shadow">
         <section class="product-show text-center py-2">
             <div class="productImage">
@@ -106,12 +106,12 @@
                 </div>
             </div>
             <div class="quick-view">
-                <h2>Quick View</h2>
+                <h2 i18n>Quick View</h2>
             </div>
 
         </section>
         <section class="product-details  px-4 py-2">
-            <h2 class="text-secondary" type="button" (click)="productDetails(product.sku)">{{ product.title }}</h2>
+            <h2 class="text-secondary" type="button" (click)="productDetails(product.parentId, product.mainVariant)">{{ product.name }}</h2>
 
             <div class="price-and-rating-row">
                 <div>
@@ -135,11 +135,11 @@
             </div>
 
             <div class="shipping-and-fullfillment-row">
-                <div *ngIf="product.shipping">{{ product.shipping }}</div>
-                <div *ngIf="product.fullfilledBySouq">Fullfilled by Souq</div>
+                <div *ngIf="product.freeShipping" i18n>Free Shipping<div>
+                <!-- <div *ngIf="product.fullfilledBySouq">Fullfilled by Souq</div> -->
             </div>
 
             <button class="add-to-cart-btn btn btn-primary">ADD TO CART</button>
-        </section>
-    </section>
+        <!-- </section> -->
+    <!-- </section> -->
 </div>

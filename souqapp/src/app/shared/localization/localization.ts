@@ -11,9 +11,9 @@ let product = (locale == 'ar-EG') ? 'productArabic' : 'productEnglish';
 export { category, product, locale };
 
 
-export function LocalizeProduct(dbProduct: IParentProduct): IParentProduct {
-    console.log(dbProduct);
+export function LocalizeProduct(dbProduct: IParentProduct, parentProductId): IParentProduct {
     if (locale == 'ar-EG') {
+        dbProduct.parentId = parentProductId;
         dbProduct.name = dbProduct.name_ar;
         dbProduct.allVariations = dbProduct.allVariations_ar;
         dbProduct.categoryName = dbProduct.categoryName_ar;
@@ -25,6 +25,7 @@ export function LocalizeProduct(dbProduct: IParentProduct): IParentProduct {
         dbProduct.sellerNotes = dbProduct.sellerNotes_ar;
         return dbProduct;
     } else {
+        dbProduct.parentId = parentProductId;
         return dbProduct;
     }
 }

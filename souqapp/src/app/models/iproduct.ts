@@ -79,6 +79,7 @@ export interface IProductVariantImages {
 }
 
 export interface IParentProduct {
+    parentId:           string;
     condition_ar:       string;
     features:           string[];
     eligibleForCoupons: boolean;
