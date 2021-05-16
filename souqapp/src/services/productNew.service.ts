@@ -24,7 +24,7 @@ export class ProductServiceNew {
                     })
                   )
   }
-//old service
+
 
   getProductVariantNew(productId,variantId): Observable<IProductVariant> {
     return this.db.collection('ParentProduct')
@@ -49,20 +49,18 @@ export class ProductServiceNew {
   }
   
   
-// getAllvariant(paroductid): Observable<IProductVariant[]>{
-//   return this.db.collection('ParentProduct').doc(paroductid)
-//                  .collection("ProductVariants")
-//                   .get()
-//                   .pipe(
-//                     map(response => {
-//                       return response.docs.map(doc => {
-//                         return LocalizeProduct(doc.data() as IProductVariant, doc.id);
-//                       })
-//                     })
-//                   )
-  
-
-// }
+getAllvariant(paroductid): Observable<IProductVariant[]>{
+  return this.db.collection('ParentProduct').doc(paroductid)
+                 .collection("ProductVariants")
+                  .get()
+                  .pipe(
+                    map(response => {
+                      return response.docs.map(doc => {
+                        return LocalizeProductVariant(doc.data() as IProductVariant);
+                      })
+                    })
+                  )
+                  }
   getParentProduct(parentProductId): Observable<IParentProduct> {
     return this.db.collection('ParentProduct')
                     .doc(parentProductId)
