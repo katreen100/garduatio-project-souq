@@ -3,6 +3,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDetails } from 'src/app/view model/productDetails';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from 'src/services/product.service'
+import { IProductVariant } from "@models/iproduct";
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ProductService } from 'src/services/product.service'
 export class ProductgallaryComponent implements OnInit {
   product;
   images:string[]=[]
-  productvariant: import("e:/frontend ITI/lastfolderfinlproject/souq-app/souqapp/src/app/models/iproduct").IProductVariant;
+  productvariant: IProductVariant;
   imagesOfMainvariant: any;
   //imgs:string[];
   constructor(config: NgbModalConfig,configc: NgbCarouselConfig, private modalService: NgbModal,private prodservice:ProductService) { 

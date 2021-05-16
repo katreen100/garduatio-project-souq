@@ -11,6 +11,11 @@ import { SearchComponent } from './Components/search/search.component';
 import { LoginComponent } from './lay out/User/login/login.component';
 import { ProductGridComponent } from './product-module/product-grid/product-grid.component';
 import { OneProductCompComponent } from './productComp/oneProductComp/oneProductComp.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { OrdersComponent } from './user/orders/orders.component';
+import { WishlistComponent } from './user/wishlist/wishlist.component';
+import { AddressesComponent } from './user/addresses/addresses.component';
+import { SettingsComponent } from './user/settings/settings.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
@@ -19,11 +24,22 @@ const routes: Routes = [
   {path:"category/:catName",component: CategoryComponent},   //Routing to category component and this component will expect the category name
   {path:"category",component: ProductGridComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"brand/:brandName",component: BrandComponent}, //Routing to Brand component and this component will expect the brand name
-  {path:"user/register",component: RegisterFormComponent},
   {path:"search-result/:searchParam",component: SearchComponent},
-  {path:"productPage/:prdsku",component: ProductPageComponent},
+  {path:"productPage/:prdsku/:x",component: ProductPageComponent},
   // {path:"user/register",component: AppComponent},
-  {path:"user/login",component: LoginComponent},
+  { path:"login",component: LoginComponent },
+  { path:"register",component: RegisterFormComponent },
+  { path: "logout", redirectTo: "/home", pathMatch: 'full' },
+  { 
+    path: "dashboard",
+    component: UserDashboardComponent,
+    children: [
+      { path: "orders", component: OrdersComponent },
+      { path: "wishlist", component: WishlistComponent },
+      { path: "addresses", component: AddressesComponent },
+      { path: "settings", component: SettingsComponent }
+    ]
+  },
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},
   // {path:"FAQS-summary",component: AppComponent},
@@ -36,7 +52,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true, scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
