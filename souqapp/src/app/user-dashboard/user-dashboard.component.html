@@ -1,38 +1,71 @@
 <style>
     article {
-        display: flex;
-        flex-direction: row;
+        /* display: flex; */
+        /* flex-direction: row; */
+        padding-top: 4vh;
+        padding-bottom: 8vh;
     }
-
-    #sidenav {
-        flex: 1;
-        background-color: aqua;
-    }
-
 
     #view {
-        flex: 3;
         background-color: lightblue;
     }
 
+    #nav-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-button {
+        background-color: #ffffff;
+        padding: 15px;
+        text-align: left;
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    .router-link-active {
+        background-color: #008bff;
+    }
 
 </style>
 
 
 <article class="container">
-    <section id="sidenav">
-        <h1>Dashboard</h1>
-        <section>
-            avatar + info
+    <div class="row">
+        <section id="sidenav" class="col-md-3">
+            <h1>User name</h1>
+            <section>
+                email + avatar photo
+            </section>
+
+            <section id="nav-buttons">
+                <!-- Todo: add a badge indicating how many orders/wishes/addresses each section has -->
+                <button class="nav-button" [routerLink]="['orders']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-truck fa-sm"></i>
+                    Orders
+                </button>
+
+                <button class="nav-button" [routerLink]="['wishlist']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-heart fa-sm"></i>
+                    Wishlist
+                </button>
+
+                <button class="nav-button" [routerLink]="['addresses']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-address-book fa-sm"></i>
+                    Addresses
+                </button>
+
+                <button class="nav-button" [routerLink]="['settings']" routerLinkActive="router-link-active" >
+                    <i class="fa fa-cogs fa-sm"></i>
+                    Settings
+                </button>
+
+            </section>
+
         </section>
 
-        <section>
-            side nav
+        <section id="view" class="col-md-9">
+            <router-outlet></router-outlet>
         </section>
-
-    </section>
-
-    <section id="view">
-        <router-outlet></router-outlet>
-    </section>
+    </div>
 </article>
