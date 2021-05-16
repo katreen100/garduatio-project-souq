@@ -1,0 +1,38 @@
+<style>
+    article {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #sidenav {
+        flex: 1;
+        background-color: aqua;
+    }
+
+
+    #view {
+        flex: 3;
+        background-color: lightblue;
+    }
+
+
+</style>
+
+
+<article class="container">
+    <section id="sidenav">
+        <h1>Dashboard</h1>
+        <section>
+            avatar + info
+        </section>
+
+        <section>
+            side nav
+        </section>
+
+    </section>
+
+    <section id="view">
+        <router-outlet></router-outlet>
+    </section>
+</article>
