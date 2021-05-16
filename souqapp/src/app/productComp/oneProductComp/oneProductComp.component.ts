@@ -53,10 +53,9 @@ export class OneProductCompComponent implements OnInit {
    this.getallvariant()
   
     let parentid = ' ed0f0600-854e-4ad4-b01d-bda780b2cdc0';
-    this.prodservice
+    this.prodserviceN
       .getFullProduct(
-        'ed0f0600-854e-4ad4-b01d-bda780b2cdc0',
-        'Z9yl9x6K6ypb6Q18ow0R'
+        'ed0f0600-854e-4ad4-b01d-bda780b2cdc0'
       )
       .subscribe((res) => {
         console.log(res);

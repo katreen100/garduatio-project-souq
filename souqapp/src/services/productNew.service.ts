@@ -73,9 +73,9 @@ getAllvariant(paroductid): Observable<IProductVariant[]>{
   }
 
  // TODO: specifiy observable type
-  getFullProduct(parentProductId, mainVariantId): Observable<any> {
+  getFullProduct(parentProductId): Observable<any> {
     return forkJoin([this.getParentProduct(parentProductId),
-                     this.getProductmainVariantNew (mainVariantId),]);
+                     this.getProductmainVariantNew (parentProductId)]);
   }
 
   getProductRatingDetails(parentProductId): Observable<IRatingDetails> {
