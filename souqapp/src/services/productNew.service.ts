@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductServiceNew {
 
   constructor(private db: AngularFirestore) { }
 
@@ -24,24 +24,24 @@ export class ProductService {
                     })
                   )
   }
+//old service
 
-  getProductVariantImages(productId): Observable<IProductVariantImages[]> {
-    return this.db.collection('ProductVariants')
-                    .doc(productId)
-                    .collection('images')
-                    .get()
-                    .pipe(
-                      map(response => {
-                        return response.docs.map(doc => {
-                          return doc.data() as IProductVariantImages;
-                        })
-                      })
-                    )
+  getProductVariantNew(productId,variantId): Observable<IProductVariant> {
+    return this.db.collection('ParentProduct')
+                  .doc(productId)
+                  .collection('ProductVariants')
+                  .doc(variantId)
+                  .get()
+                  .pipe(
+                    map(response => LocalizeProductVariant(response.data() as IProductVariant))
+                  )
   }
 
-  getProductVariant(productId): Observable<IProductVariant> {
-    return this.db.collection('ProductVariants')
+  getProductmainVariantNew(productId): Observable<IProductVariant> {
+    return this.db.collection('ParentProduct')
                   .doc(productId)
+                  .collection('ProductVariants')
+                  .doc(' mainVariant')
                   .get()
                   .pipe(
                     map(response => LocalizeProductVariant(response.data() as IProductVariant))
@@ -49,11 +49,20 @@ export class ProductService {
   }
   
   
-  getProductVariantDetails(productId): Observable<[IProductVariant, IProductVariantImages[]]> {
-    return forkJoin([this.getProductVariant(productId),
-                      this.getProductVariantImages(productId)]);
-  }
+// getAllvariant(paroductid): Observable<IProductVariant[]>{
+//   return this.db.collection('ParentProduct').doc(paroductid)
+//                  .collection("ProductVariants")
+//                   .get()
+//                   .pipe(
+//                     map(response => {
+//                       return response.docs.map(doc => {
+//                         return LocalizeProduct(doc.data() as IProductVariant, doc.id);
+//                       })
+//                     })
+//                   )
+  
 
+// }
   getParentProduct(parentProductId): Observable<IParentProduct> {
     return this.db.collection('ParentProduct')
                     .doc(parentProductId)
@@ -65,11 +74,10 @@ export class ProductService {
                     );
   }
 
-  // TODO: specifiy observable type
+ // TODO: specifiy observable type
   getFullProduct(parentProductId, mainVariantId): Observable<any> {
     return forkJoin([this.getParentProduct(parentProductId),
-                     this.getProductVariant(mainVariantId),
-                     this.getProductVariantImages(mainVariantId)]);
+                     this.getProductmainVariantNew (mainVariantId),]);
   }
 
   getProductRatingDetails(parentProductId): Observable<IRatingDetails> {
