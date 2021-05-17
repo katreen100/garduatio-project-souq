@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDetails } from 'src/app/view model/productDetails';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from 'src/old-services/product.service';
+import { ProductService } from 'src/services/product.service'
+import { IProductVariant } from "@models/iproduct";
 
 
 @Component({
@@ -13,8 +14,10 @@ import { ProductService } from 'src/old-services/product.service';
 })
 export class ProductgallaryComponent implements OnInit {
   product;
-  images=["../../../assets/watch"]
-  imgs:string[];
+  images:string[]=[]
+  productvariant: IProductVariant;
+  imagesOfMainvariant: any;
+  //imgs:string[];
   constructor(config: NgbModalConfig,configc: NgbCarouselConfig, private modalService: NgbModal,private prodservice:ProductService) { 
     
     config.backdrop = 'static';
@@ -27,16 +30,28 @@ export class ProductgallaryComponent implements OnInit {
   openlg(content) {
     this.modalService.open(content, { size: 'lg' });
   }
-getImges(obj){
-  this.imgs=this.product.productVarities.size[0].images
-}
+
   ngOnInit() {
-    this.prodservice.getProduct(1).subscribe(res=>{
+    this.prodservice.getFullProduct ("ed0f0600-854e-4ad4-b01d-bda780b2cdc0","Z9yl9x6K6ypb6Q18ow0R") .subscribe(res=>{
       console.log(res);
       this.product=res[0];
-    this.getImges(this.product);
-      console.log(this.product);
-      console.log(this.imgs)
+      this.images.push(this.product.mainImage)
+      this.imagesOfMainvariant=res[2]
+      console.log(this.imagesOfMainvariant)
+      for (let i=0;i<this.imagesOfMainvariant.length;i++)
+      {
+  
+        let img;
+       img=this.imagesOfMainvariant[i].regular;
+        console.log(img)
+        this.images.push(img)
+
+      }
+  
+    
+      console.log(this.images)
+      
+       
     })
-    }
+  }
 }

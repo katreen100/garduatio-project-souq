@@ -37,6 +37,11 @@ import { HomeComponent } from './Components/home/home.component';
 import { HomeLayloutComponent } from './Components/home-laylout/home-laylout.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { OrdersComponent } from './user/orders/orders.component';
+import { WishlistComponent } from './user/wishlist/wishlist.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { AddressesComponent } from './user/addresses/addresses.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,12 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
     HomeComponent,
     HomeLayloutComponent,
     SearchComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    UserDashboardComponent,
+    OrdersComponent,
+    WishlistComponent,
+    SettingsComponent,
+    AddressesComponent
   ],
   imports: [
     BrowserModule,
