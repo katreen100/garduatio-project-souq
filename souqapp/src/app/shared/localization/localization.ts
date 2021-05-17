@@ -1,5 +1,5 @@
 import { ICategory } from "@models/icategory";
-import { IParentProduct, IProductSpecs, IProductVariant } from "@models/iproduct";
+import { IParentProduct, IProductSpecs, IProductVariant, IVariant } from "@models/iproduct";
 
 let locale = 'ar-EG';
 
@@ -53,6 +53,15 @@ export function LocalizeCategory(dbProduct: ICategory): ICategory {
     if (locale == 'ar-EG') {
         dbProduct.brands = dbProduct.brands_ar;
         dbProduct.categoryName = dbProduct.categoryName_ar;
+        return dbProduct;
+    } else {
+        return dbProduct;
+    }
+}
+
+export function LocalizeVariant(dbProduct: IVariant): IVariant{
+    if (locale == 'ar-EG') {
+        dbProduct.variation = dbProduct.variation_ar;
         return dbProduct;
     } else {
         return dbProduct;

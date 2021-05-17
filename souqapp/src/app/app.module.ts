@@ -42,6 +42,7 @@ import { OrdersComponent } from './user/orders/orders.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
+import { WishlistItemComponent } from './user/wishlist-item/wishlist-item.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { AddressesComponent } from './user/addresses/addresses.component';
     OrdersComponent,
     WishlistComponent,
     SettingsComponent,
-    AddressesComponent
+    AddressesComponent,
+    WishlistItemComponent
   ],
   imports: [
     BrowserModule,
