@@ -244,6 +244,48 @@
           <context context-type="linenumber">76,85</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="6849366111199181458" datatype="html">
+        <source>5 stars</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Components/rate-component/rate-statics/rate-statics.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7583083730571749468" datatype="html">
+        <source>4 stars</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Components/rate-component/rate-statics/rate-statics.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7650389432863260437" datatype="html">
+        <source>3 stars</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Components/rate-component/rate-statics/rate-statics.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7522208204824388093" datatype="html">
+        <source>2 stars</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Components/rate-component/rate-statics/rate-statics.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2117618794250645920" datatype="html">
+        <source>1 star</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Components/rate-component/rate-statics/rate-statics.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8404661026873447559" datatype="html">
+        <source>Rate this product:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/Components/rate-component/user-rate/user-rate.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2546495087181086044" datatype="html">
         <source>Quick View</source>
         <context-group purpose="location">
