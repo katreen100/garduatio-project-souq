@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { IParentProduct, IProductSpecs, IProductVariant, IProductVariantImages, IRatingDetails } from '@models/iproduct';
-import { LocalizeProduct, LocalizeProductSpecs, LocalizeProductVariant } from '@shared/localization/localization';
+import { IParentProduct, IProductSpecs, IProductVariant, IProductVariantImages, IRatingDetails, IVariant, IWishListItemID } from '@models/iproduct';
+import { LocalizeProduct, LocalizeProductSpecs, LocalizeProductVariant, LocalizeVariant } from '@shared/localization/localization';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,9 +12,43 @@ export class ProductService {
 
   constructor(private db: AngularFirestore) { }
 
+
+  // latest product variant service setup
+  getVariant(id: IWishListItemID): Observable<IVariant> {
+    return this.db.collection('ParentProduct')
+                    .doc(id.parentProductId)
+                    .collection('ProductVariants')
+                    .doc(id.variantId)
+                    .get()
+                    .pipe(
+                      map(response => {
+                        return LocalizeVariant(response.data() as IVariant);
+                      })
+                    );
+  }
+
+
+  getProductWithVariant(id: IWishListItemID): Observable<[IParentProduct, IVariant]> {
+    return forkJoin([this.getParentProduct(id.parentProductId),
+                     this.getVariant(id)]);
+  }
+
   // for product grid/cards
   getAllProducts(): Observable<IParentProduct[]> {
     return this.db.collection('ParentProduct')
+                  .get()
+                  .pipe(
+                    map(response => {
+                      return response.docs.map(doc => {
+                        return LocalizeProduct(doc.data() as IParentProduct, doc.id);
+                      })
+                    })
+                  )
+  }
+
+
+  getArrayOfProducts(ids: string[]): Observable<IParentProduct[]> {
+    return this.db.collection('ParentProduct', ref => ref.where('__name__', 'in', ids))
                   .get()
                   .pipe(
                     map(response => {

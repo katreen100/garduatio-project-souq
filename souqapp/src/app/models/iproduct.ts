@@ -125,3 +125,23 @@ export interface IProductVariant {
     variation_ar:    { };
     variation:       { };
 }
+
+
+export interface IWishListItemID {
+    parentProductId: string;
+    variantId:       string;
+}
+
+
+export interface IVariant {
+    variation_ar: {};
+    quantity:     number;
+    variation:    {};
+    mainImage:    string;
+    images:       Image[];
+}
+
+export interface Image {
+    thumbnail: string;
+    regular:   string;
+}

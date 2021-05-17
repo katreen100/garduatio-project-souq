@@ -1,1 +1,37 @@
-<p>wishlist works!</p>
+<style>
+    .list {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+
+<h1>Wish List</h1>
+
+<section class="list">
+    <!-- <div *ngFor="let itemId of wishlist | async; let i = index"> -->
+   <app-wishlist-item
+            *ngFor="let itemId of (wishlist | async); let i=index"
+            [id]="i" 
+            parentProductId="{{itemId.parentProductId}}"
+            [variantId]="itemId.variantId"
+        >
+    </app-wishlist-item>
+    <!-- </div> -->
+</section>
+
+
+<h1>Wish List ids</h1>
+
+
+<pre>
+    {{ wishlist | async | json }}
+</pre>
+
+<h1>Product List</h1>
+
+
+<pre>
+    <!-- {{ products | async | json }} -->
+</pre>
+
