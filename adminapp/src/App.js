@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DashboardPage from './pages/dashboard/dashboard';
-import db from './network/firebase/firebaseConfig';
+import {db} from './network/firebase/firebaseConfig';
 import './App.css';
 
 
