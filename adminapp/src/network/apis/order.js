@@ -1,4 +1,4 @@
-import db from '../firebase/firebaseConfig';
+import {db} from '../firebase/firebaseConfig';
 
 // export function getAllOrderNames() {
 //     return db.collection('Order')

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Button from "@material-ui/core/Button";
-import { deleteOrderNames } from '../../network/apis/order';
-import db from '../../network/firebase/firebaseConfig';
-import { PanoramaVerticalSharp } from '@material-ui/icons';
+// import { deleteOrderNames } from '../../network/apis/order';
+import {db} from '../../network/firebase/firebaseConfig';
+// import { PanoramaVerticalSharp } from '@material-ui/icons';
 import Modal from "./Modal";
 import {updateOrderNames} from "../../network/apis/order";
 const OrderSectionPage = () => {
@@ -40,7 +40,7 @@ const OrderSectionPage = () => {
         const ref = db.collection('Order');
         function getAll() {
             ref.onSnapshot((snap) => {
-                let doc = {}
+                // let doc = {}
                 let temp = []
 
                 snap.forEach((doc) => {
@@ -60,7 +60,7 @@ const OrderSectionPage = () => {
         }
         console.log("use effect")
         getAll();
-    }, [])
+    }, [docId])
 
     // col grid data
     const columns = [
@@ -91,7 +91,7 @@ const OrderSectionPage = () => {
                     });
 
                     console.log(params.row.id);
-                    let item = docId.find(DocRef => DocRef.itemID == params.row.id)
+                    // let item = docId.find(DocRef => DocRef.itemID === params.row.id)
                     // deleteOrderNames(item);
                     console.log("Delete Function")
                     return
@@ -110,7 +110,7 @@ const OrderSectionPage = () => {
                     });
 
                     console.log(params.row.id);
-                    let item = docId.find(DocRef => DocRef.itemID == params.row.id)
+                    let item = docId.find(DocRef => DocRef.itemID === params.row.id)
                     console.log(item);
                     console.log("Updates Function")
                     setEditColumn({
