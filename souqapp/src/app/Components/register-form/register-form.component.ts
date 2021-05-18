@@ -1,6 +1,7 @@
 import { ProductService } from 'src/old-services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/old-services/users-service.service';
+import { IUserRegister } from 'src/app/view model/iuser-register';
 
 @Component({
   selector: 'app-register-form',
@@ -9,18 +10,21 @@ import { UsersService } from 'src/old-services/users-service.service';
 
 export class RegisterFormComponent implements OnInit {
     userRegister;
-
+    userInfo:IUserRegister;
     constructor( private Auth: UsersService) {
-        this.userRegister = {};
+        this.userInfo = {
+            email: '',
+            username:'',
+            password:'',
+        };
     }
 
     ngOnInit() {
     }
 
     register() {
-        debugger;
-        this.Auth.signUp(this.userRegister?.email, this.userRegister?.password).then(res => {
-            console.log(res);
+        this.Auth.signUp(this.userInfo).then(res => {
+           
         }).catch(err => { console.log('error', err); });
     }
 

@@ -31,7 +31,7 @@ import { SupportAndSocialLinksComponent } from './Components/support-and-social-
 import { FooterMyAccountComponent } from './Components/footer-my-account/footer-my-account.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { TopHeaderComponent } from './Components/header/top-header/top-header.component';
-import { LoginComponent } from './lay out/User/login/login.component';
+import { LoginComponent } from './user/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HomeComponent } from './Components/home/home.component';
 import { HomeLayloutComponent } from './Components/home-laylout/home-laylout.component';

@@ -18,10 +18,11 @@ export class LoginComponent implements OnInit {
   }
   login()
   {
-    this.Auth.SignIn(this.userLogin.email, this.userLogin.password).then(res=>{
-      console.log(res);
+    // this.Auth.SignIn(this.userLogin.email, this.userLogin.password).then(res=>{
+    //   console.log(res);
       
-    }).catch(err=>{console.log("error")});
+    // }).catch(err=>{console.log("error")});
+    this.Auth.SignIn(this.userLogin.email,this.userLogin.password)
   }
 
 }

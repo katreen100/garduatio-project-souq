@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IUserRegister } from 'src/app/view model/iuser-register';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,7 @@ export class UsersService {
 
   SignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
+      console.log(result.user.uid)
 
       localStorage.setItem("Token", result.user.refreshToken)
       // this.checkUser.next(true)
@@ -45,7 +47,7 @@ export class UsersService {
       return err;
     });
 
-    
+
   }
 
   isLogged(): boolean {
@@ -59,8 +61,11 @@ export class UsersService {
   Reset(email: string) {
     return this.afAuth.sendPasswordResetEmail(email)
   }
-  signUp(email: string, password: string) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password).then((res) => {
+  signUp(userInfo: IUserRegister) {
+    return this.afAuth.createUserWithEmailAndPassword(userInfo.email, userInfo.password).then((res) => {
+      console.log(res.user.uid)
+      userInfo.userId=res.user.uid;
+      this.db.collection('Users').doc(res.user.uid).set(userInfo)
       this.router.navigate(["Users/login"])
     });
   }

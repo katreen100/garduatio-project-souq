@@ -8,7 +8,7 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { RegisterFormComponent } from './Components/register-form/register-form.component';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { SearchComponent } from './Components/search/search.component';
-import { LoginComponent } from './lay out/User/login/login.component';
+import { LoginComponent } from './user/login/login.component';
 import { ProductGridComponent } from './product-module/product-grid/product-grid.component';
 import { OneProductCompComponent } from './productComp/oneProductComp/oneProductComp.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
