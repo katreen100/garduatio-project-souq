@@ -12,6 +12,7 @@ export class RateComponentComponent implements OnInit {
   constructor() {  }
 
   ngOnInit(): void {
+  
   }
 
 }
