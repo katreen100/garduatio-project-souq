@@ -3,15 +3,18 @@ import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Button from "@material-ui/core/Button";
 // import { deleteOrderNames } from '../../network/apis/order';
-import {db} from '../../network/firebase/firebaseConfig';
+import { db } from '../../network/firebase/firebaseConfig';
 // import { PanoramaVerticalSharp } from '@material-ui/icons';
 import Modal from "./Modal";
-import {updateOrderNames} from "../../network/apis/order";
-const OrderSectionPage = () => {
+import { updateOrderNames } from "../../network/apis/order";
+const OrderSectionPage = (props) => {
 
     const [editColumn, setEditColumn] = useState({
-        flag:false
+        flag: false
     })
+    const {userRole} = props;
+    console.log(userRole);
+
 
     // initail value
     const initial = [{
@@ -34,33 +37,34 @@ const OrderSectionPage = () => {
         itemID: id
     }
     */
+   const getAll = ()=>{
+    const items = [];
+    const ref = db.collection('Order');
+    ref.onSnapshot((snap) => {
+        // let doc = {}
+        let temp = []
+
+        snap.forEach((doc) => {
+            items.push(doc.data())
+            console.log(doc.data().id)
+            doc = {
+                DocID: doc.id,
+                itemID: doc.data().id
+            }
+            temp.push(doc)
+
+        })
+        setDocId(temp)
+        console.log(docId)
+        setAll(items)
+    })
+   }
+
 
     useEffect(() => {
-        const items = [];
-        const ref = db.collection('Order');
-        function getAll() {
-            ref.onSnapshot((snap) => {
-                // let doc = {}
-                let temp = []
-
-                snap.forEach((doc) => {
-                    items.push(doc.data())
-                    console.log(doc.data().id)
-                    doc = {
-                        DocID: doc.id,
-                        itemID: doc.data().id
-                    }
-                    temp.push(doc)
-
-                })
-                setDocId(temp)
-                console.log(docId)
-                setAll(items)
-            })
-        }
         console.log("use effect")
         getAll();
-    }, [docId])
+    }, []);
 
     // col grid data
     const columns = [
@@ -114,15 +118,30 @@ const OrderSectionPage = () => {
                     console.log(item);
                     console.log("Updates Function")
                     setEditColumn({
-                        flag:!editColumn.flag
+                        flag: !editColumn.flag
                     })
                     updateOrderNames();
-                    return 
+                    return
                 };
-                return <div>
-                    <Button variant="contained" color="primary" onClick={() => update()}>Edit</Button>
-                    <Button variant="contained" color="primary" onClick={() => Delete()}>X</Button>
-                </div>
+                if (userRole === 'editor') {
+                    return <div>
+                        <Button variant="contained" color="primary" onClick={() => update()}>Edit</Button>
+
+                    </div>
+                }
+                else if (userRole === 'viewer') {
+                    return <div>
+                        
+
+                    </div>
+                }
+                else {
+                    return <div>
+                        <Button variant="contained" color="primary" onClick={() => update()}>Edit</Button>
+                        <Button variant="contained" color="primary" onClick={() => Delete()}>X</Button>
+                    </div>
+                }
+
 
             }
         },
@@ -135,9 +154,9 @@ const OrderSectionPage = () => {
                 <DataGrid rows={all} columns={columns} pageSize={5} checkboxSelection />
             </div>
             {
-                editColumn.flag? <Modal/>: ''
+                editColumn.flag ? <Modal /> : ''
             }
-            
+
         </>
     )
 }

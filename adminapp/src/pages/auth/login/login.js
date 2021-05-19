@@ -1,13 +1,16 @@
-import React from 'react'
-
 const Login = (props) => {
+
     const { email,
         setEmail,
         password,
         setPassword,
         handleLogin,
         emailError,
-        passwordError } = props;
+        passwordError
+    
+    } = props;
+
+
 
     return (
         <section className="login">
@@ -33,5 +36,3 @@ const Login = (props) => {
 }
 export default Login;
 
-// email : admin1234@gmail.com
-// pass : ITIGroupOne@12345
