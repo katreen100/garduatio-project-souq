@@ -1,16 +1,7 @@
-import React from 'react';
+import OrderSectionPage from '../../dashboard/order'
+const Sucess = ({ handleLogOut, userRole }) => {
 
-const Sucess = ({ handleLogOut }) => {
-    const handlAdmin=()=>{
-        console.log("Create and Delete and Update and Read");
-    }
-    const handleEditor =()=>{
-        console.log("Read and Update");
-    }
-    const handleSubscriber = ()=>{
-        console.log("read");
-    }
-    
+
     return <section>
         <div style={{ height: 100 }}> </div>
         <div>
@@ -18,11 +9,13 @@ const Sucess = ({ handleLogOut }) => {
         </div>
         <div style={{ height: 100 }}> </div>
         <div>
-            <button onClick={handlAdmin}>Admin</button>
-            <button onClick={handleSubscriber}>Subscriber</button>
-            <button onClick={handleEditor}>Editor</button>
+            <h3> {userRole} </h3>
+            <OrderSectionPage userRole={userRole} />
+
         </div>
-        
+
+
+
     </section>
 }
 export default Sucess;
