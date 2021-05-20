@@ -96,7 +96,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState(CustomerSectionPage);
+  const [currentSection, setCurrentSection] = useState('CustomerSectionPage');
   
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -108,6 +108,33 @@ export default function DashboardPage({ userRole, handleLogOut }) {
 
   const handleSectionChange = (section) => {
     setCurrentSection(section);
+  }
+
+  const renderDetailsView = () => {
+    switch (currentSection) {
+      case 'CustomerSectionPage':
+        return <CustomerSectionPage />
+        break;
+        
+      case 'ProductSectionPage':
+        return <ProductSectionPage />
+        break;
+
+      case 'BrandSectionPage':
+        return <BrandSectionPage />
+        break;
+        
+      case 'CategorySectionPage':
+        return <CategorySectionPage />
+        break;
+
+      case 'OrderSectionPage':
+        return <OrderSectionPage />
+        break;
+      
+      default:
+        return null;
+    }
   }
 
   return (
@@ -166,7 +193,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
           ))} */}
 
 
-          <ListItem button onClick={(userRole) => handleSectionChange(CustomerSectionPage)}>
+          <ListItem button onClick={(userRole) => handleSectionChange('CustomerSectionPage')}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
@@ -176,7 +203,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
               </ListItemText>
           </ListItem>
 
-          <ListItem button onClick={(userRole) => handleSectionChange(ProductSectionPage)}>
+          <ListItem button onClick={(userRole) => handleSectionChange('ProductSectionPage')}>
             <ListItemIcon>
               <BusinessCenterIcon />
             </ListItemIcon>
@@ -186,7 +213,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
               </ListItemText>
           </ListItem>
 
-          <ListItem button onClick={(userRole) => handleSectionChange(BrandSectionPage)}>
+          <ListItem button onClick={(userRole) => handleSectionChange('BrandSectionPage')}>
             <ListItemIcon>
               <AppsIcon />
             </ListItemIcon>
@@ -196,7 +223,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
               </ListItemText>
           </ListItem>
 
-          <ListItem button onClick={(userRole) => handleSectionChange(CategorySectionPage)}>
+          <ListItem button onClick={(userRole) => handleSectionChange('CategorySectionPage')}>
             <ListItemIcon>
               <CategoryIcon />
             </ListItemIcon>
@@ -207,7 +234,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
           </ListItem>
 
 
-          <ListItem button onClick={(userRole) => handleSectionChange(OrderSectionPage)}>
+          <ListItem button onClick={(userRole) => handleSectionChange('OrderSectionPage')}>
             <ListItemIcon>
               <LocalShippingIcon />
             </ListItemIcon>
@@ -230,7 +257,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {currentSection}
+        {renderDetailsView()}
 
       </main>
     </div>
