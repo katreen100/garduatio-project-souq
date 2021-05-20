@@ -133,6 +133,15 @@ export interface IWishListItemID {
 }
 
 
+export interface IWishListItemData {
+    parentProductId: string;
+    variantId:       string;
+    name:            string;
+    price:           number;
+    discount:        number;
+    mainImage:       string;
+}
+
 export interface IVariant {
     variation_ar: {};
     quantity:     number;

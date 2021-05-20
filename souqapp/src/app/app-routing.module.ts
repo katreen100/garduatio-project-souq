@@ -20,12 +20,13 @@ import { SettingsComponent } from './user/settings/settings.component';
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
   {path:"home",component: HomeLayloutComponent}, // Home component should be here
-  {path:"freeShipppingDetails",component: OneProductCompComponent},
+  {path:"freeShippingDetails",component: OneProductCompComponent},
   {path:"category/:catName",component: CategoryComponent},   //Routing to category component and this component will expect the category name
   {path:"category",component: ProductGridComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"brand/:brandName",component: BrandComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"search-result/:searchParam",component: SearchComponent},
-  {path:"productPage/:prdsku/:x",component: ProductPageComponent},
+  // {path:"productPage/:parentProductId/:variantId",component: ProductPageComponent},
+  {path:"productPage/:parentProductId/:variantId",component: OneProductCompComponent},
   // {path:"user/register",component: AppComponent},
   { path:"login",component: LoginComponent },
   { path:"register",component: RegisterFormComponent },

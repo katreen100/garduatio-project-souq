@@ -15,6 +15,7 @@ export class ProductService {
 
   // latest product variant service setup
   getVariant(id: IWishListItemID): Observable<IVariant> {
+    console.log(id);
     return this.db.collection('ParentProduct')
                     .doc(id.parentProductId)
                     .collection('ProductVariants')
@@ -29,6 +30,7 @@ export class ProductService {
 
 
   getProductWithVariant(id: IWishListItemID): Observable<[IParentProduct, IVariant]> {
+    console.log(id);
     return forkJoin([this.getParentProduct(id.parentProductId),
                      this.getVariant(id)]);
   }
