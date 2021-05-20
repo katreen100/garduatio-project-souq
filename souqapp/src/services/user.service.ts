@@ -37,6 +37,49 @@ export class UserService {
   }
 
 
+  addToWishList(id) {
+    id.createdAt = new Date();
+    this.db.collection('user')
+            .doc(this.userId)
+            .collection('wishlist')
+            .add(id)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+  }
+
+  checkIfWishListItemExists(id): Boolean {
+    var isEmpty: boolean;
+    this.db.collection('user')
+                  .doc(this.userId)
+                  .collection('wishlist')
+                  .ref
+                  .where('parentProductId', '==', id.parentProductId)
+                  .where('variantId', '==', id.variantId)
+                  .get()
+                  .then(res => isEmpty = res.empty)
+                  .catch(err => console.log(err))
+    return isEmpty? true: false;
+  }
+
+  doesWishListExist(): Boolean {
+    var isEmpty: boolean;
+    this.db.collection('user')
+                  .doc(this.userId)
+                  .collection('wishlist')
+                  .get()
+                  .pipe(
+                    map(resp => {
+                      console.log(resp.empty)
+                    })
+                  )
+    return isEmpty? true: false;
+  }
+
+
+  removeFromWishList(id: IWishListItemID) {
+
+  }
+
   getOrders() {}
 
 
