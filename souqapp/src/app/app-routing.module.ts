@@ -16,6 +16,10 @@ import { OrdersComponent } from './user/orders/orders.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
 import { SettingsComponent } from './user/settings/settings.component';
+import { HelpComponent } from './Components/help/help.component';
+import { TermsComponent } from './Components/terms/terms.component';
+import { PrivacyComponent } from './Components/privacy/privacy.component';
+import { AuthGaurdServiceService } from 'src/services/auth-gaurd-service.service';
 
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
@@ -28,6 +32,9 @@ const routes: Routes = [
   {path:"productPage/:prdsku/:x",component: ProductPageComponent},
   // {path:"user/register",component: AppComponent},
   { path:"login",component: LoginComponent },
+  { path:"help",component: HelpComponent },
+  { path:"terms",component: TermsComponent },
+  { path:"privacy",component: PrivacyComponent },
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
   { 
@@ -38,7 +45,8 @@ const routes: Routes = [
       { path: "wishlist", component: WishlistComponent },
       { path: "addresses", component: AddressesComponent },
       { path: "settings", component: SettingsComponent }
-    ]
+    ],
+    canActivate:[AuthGaurdServiceService]
   },
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},

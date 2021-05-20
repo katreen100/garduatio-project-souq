@@ -43,6 +43,9 @@ import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
 import { WishlistItemComponent } from './user/wishlist-item/wishlist-item.component';
+import { TermsComponent } from './Components/terms/terms.component';
+import { HelpComponent } from './Components/help/help.component';
+import { PrivacyComponent } from './Components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +83,10 @@ import { WishlistItemComponent } from './user/wishlist-item/wishlist-item.compon
     WishlistComponent,
     SettingsComponent,
     AddressesComponent,
-    WishlistItemComponent
+    WishlistItemComponent,
+    TermsComponent,
+    HelpComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

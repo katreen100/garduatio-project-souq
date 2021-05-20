@@ -9,7 +9,7 @@ import { IUserRegister } from 'src/app/view model/iuser-register';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class UserAuthService {
   checkUser: BehaviorSubject<boolean>;
 
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private router: Router) { }
@@ -39,7 +39,6 @@ export class UsersService {
   SignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
       console.log(result.user.uid)
-
       localStorage.setItem("Token", result.user.refreshToken)
       // this.checkUser.next(true)
       this.router.navigate(['/home']);
@@ -62,11 +61,11 @@ export class UsersService {
     return this.afAuth.sendPasswordResetEmail(email)
   }
   signUp(userInfo: IUserRegister) {
+
     return this.afAuth.createUserWithEmailAndPassword(userInfo.email, userInfo.password).then((res) => {
-      console.log(res.user.uid)
-      userInfo.userId=res.user.uid;
-      this.db.collection('Users').doc(res.user.uid).set(userInfo)
-      this.router.navigate(["Users/login"])
+      userInfo.userId = res.user.uid;
+      this.db.collection('user').doc(res.user.uid).set(userInfo)
+      this.router.navigate(["/login"])
     });
   }
   getLoggedStatus(): Observable<boolean> {
