@@ -1,17 +1,11 @@
-import OrderSectionPage from '../../dashboard/order'
+import App from '../../../App'
 const Sucess = ({ handleLogOut, userRole }) => {
 
 
     return <section>
-        <div style={{ height: 100 }}> </div>
+        <h1> {userRole} </h1>
         <div>
-            <button onClick={handleLogOut}>Log Out</button>
-        </div>
-        <div style={{ height: 100 }}> </div>
-        <div>
-            <h3> {userRole} </h3>
-            <OrderSectionPage userRole={userRole} />
-
+            <App userRole={userRole} handleLogOut={handleLogOut}/>
         </div>
 
 
