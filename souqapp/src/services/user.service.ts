@@ -2,9 +2,9 @@ import { locale } from '@shared/localization/localization';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { from, Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ProductService } from './product.service';
-import { IWishListItemID } from '@models/iproduct';
+import { IWishListItemData, IWishListItemID } from '@models/iproduct';
 
 @Injectable({
   providedIn: 'root',
@@ -15,24 +15,23 @@ export class UserService {
   constructor(
     private db: AngularFirestore,
     private productService: ProductService
-  ) {
+  )
+  {
     this.userId = 'CLXtuKipWfR4TTJgwfteCF1CcmG3';
   }
 
-  addToWishList(id) {
-    id.createdAt = new Date();
+  addToWishList(id, wishListItem) {
+    wishListItem.createdAt = new Date();
     this.db
       .collection('user')
       .doc(this.userId)
       .collection('wishlist')
-      .add(id)
+      .add(wishListItem)
       .then((res) => console.log(res))
-
       .catch((err) => console.log(err));
-  
   }
 
-  addToWishListIfNotExist(id) {
+  addToWishListIfNotExist(id, wishListItem) {
     this.db
       .collection('user')
       .doc(this.userId)
@@ -42,7 +41,7 @@ export class UserService {
       .get()
       .then((res) => {
         if (res.empty) {
-          this.addToWishList(id);
+          this.addToWishList(id, wishListItem);
         }
       });
   }
@@ -97,6 +96,23 @@ export class UserService {
   })
  
 }
+  getWishListItems(): Observable<IWishListItemData[]> {
+    return from(
+      this.db
+        .collection('user')
+        .doc(this.userId)
+        .collection('wishlist')
+        .ref.orderBy('createdAt')
+        .get()
+    ).pipe(
+      map((response) => {
+        return response.docs.map((doc) => {
+          console.log(doc.data());
+          return doc.data() as IWishListItemData;
+        });
+      })
+    );
+  }
 
   getOrders() {}
 

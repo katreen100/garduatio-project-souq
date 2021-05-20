@@ -137,9 +137,13 @@ export interface IWishListItemData {
     parentProductId: string;
     variantId:       string;
     name:            string;
+    description:     string;
     price:           number;
     discount:        number;
     mainImage:       string;
+    quantity:        number;
+    variation:       Object;
+    createdAt:       Date; 
 }
 
 export interface IVariant {

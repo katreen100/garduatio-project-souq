@@ -18,6 +18,7 @@ import { UserService } from 'src/services/user.service'
 export class OneProductCompComponent implements OnInit {
   heartColor: boolean;
   product;
+  variation;
   subscriptions: any;
   productRate: IRate;
   wishListItem: IWishListItemData;
@@ -55,7 +56,7 @@ export class OneProductCompComponent implements OnInit {
     })
 
     if (!this.heartColor) {
-      this.userService.addToWishListIfNotExist(this.productFullId)
+      this.userService.addToWishListIfNotExist(this.productFullId, this.wishListItem)
       this.heartColor = true
     }
     else {
@@ -69,30 +70,33 @@ export class OneProductCompComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('oooooooooooooooooon innnnnnnnnnnnnnnnnnnnnnnnnnnit');
     this.userService.checkIfToWishListIfNotExist(this.productFullId)
         .subscribe(res => this.heartColor = res);
 
     this.prodservice.getProductWithVariant(this.productFullId)
         .subscribe((res) => {
               this.product = res[0];
+              this.variation = res[1];
+              this.wishListItem = {
+                // from Parent Product
+                parentProductId: this.productFullId.parentProductId,
+                variantId: this.productFullId.variantId,
+                name: this.product.name,
+                price: this.product.price,
+                discount: this.product.discount,
+                description: this.product.description,
+                // from Product variation subcollection
+                quantity: this.variation.quantity,
+                mainImage: this.variation.mainImage,
+                variation: this.variation.variation,
+                createdAt: new Date()
+              }
     });
 
     //getaverage rate
     this.prodservice.getProductRatingDetails(this.productFullId.parentProductId)
         .subscribe(res => this.productRate = res);
-
-
-    // this.wishListItem = {
-    //   parentProductId: this.product.parentProductId,
-    //   variantId: this.product,
-    //   name: this.product.name,
-    //   mainImage: this.product.mainImage,
-    //   price: this.product.price,
-    //   discount: this.product.discount
-    // }
   }
-
 }
 
 
