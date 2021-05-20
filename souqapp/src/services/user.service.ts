@@ -95,11 +95,9 @@ export class UserService {
   .then((res) => {
   res.docs[0].ref.delete()
   })
-  
-  
-  
+ 
+}
 
- }
   getOrders() {}
 
   getAddresses() {}
