@@ -25,10 +25,10 @@ export class WishlistComponent implements OnInit {
     variantId: "mainVariant"
   });
 
-    this.user.checkIfWishListItemExists({
-      parentProductId: "ed0f0600-854e-4ad4-b01d-bda780b2cdc0",
-      variantId: "mainVariant"
-    })
+    // this.user.checkIfWishListItemExists({
+    //   parentProductId: "ed0f0600-854e-4ad4-b01d-bda780b2cdc0",
+    //   variantId: "mainVariant"
+    // })
   }
 
   ngOnInit(): void {
