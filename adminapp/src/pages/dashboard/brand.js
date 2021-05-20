@@ -68,4 +68,5 @@ const BrandSectionPage = () => {
     )
 }
 
+
 export default BrandSectionPage;
