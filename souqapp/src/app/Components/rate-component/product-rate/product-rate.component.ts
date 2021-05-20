@@ -10,29 +10,16 @@ import { ProductService } from 'src/services/product.service';
 })
 export class ProductRateComponent implements OnInit, OnDestroy {
   productRate: IRate;
-  // @Input() avgRate: number;
   @Input() parentProduct: string;
   private subscriptions: Subscription[] = []
   prdRateFlag: boolean;
   constructor(private rateService: ProductService) {
-    this.productRate = {
-      averageRating: 0,
-      one: 0,
-      two: 6,
-      three: 0,
-      four: 0,
-      five: 0,
-    }
-
-
-    this.parentProduct = 'ed0f0600-854e-4ad4-b01d-bda780b2cdc0'
   }
 
 
   ngOnInit(): void {
     let sub = this.rateService.getProductRatingDetails(this.parentProduct).subscribe(res => {
       console.log(res)
-      // console.log(res.averageRating)
       this.productRate = res;
       this.prdRateFlag = this.productRate.averageRating == 0 ? true : false;
     })

@@ -81,7 +81,8 @@ export class ProductService {
                     map(response => LocalizeProductVariant(response.data() as IProductVariant))
                   )
   }
-
+  
+  
   getProductVariantDetails(productId): Observable<[IProductVariant, IProductVariantImages[]]> {
     return forkJoin([this.getProductVariant(productId),
                       this.getProductVariantImages(productId)]);

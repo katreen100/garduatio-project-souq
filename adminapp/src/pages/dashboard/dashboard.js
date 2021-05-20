@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,9 +15,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import GroupIcon from '@material-ui/icons/Group';
+import PersonIcon from '@material-ui/icons/Person';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import AppsIcon from '@material-ui/icons/Apps';
+import CategoryIcon from '@material-ui/icons/Category';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CustomerSectionPage from './customer';
 import ProductSectionPage from './product';
 import BrandSectionPage from './brand';
@@ -89,12 +92,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DashboardPage() {
+export default function DashboardPage({ userRole, handleLogOut }) {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  // const [currentSection, setCurrentSection] = React.useState(CustomerSectionPage);
-
+  const [open, setOpen] = useState(false);
+  const [currentSection, setCurrentSection] = useState(CustomerSectionPage);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -104,7 +107,7 @@ export default function DashboardPage() {
   };
 
   const handleSectionChange = (section) => {
-    // setCurrentSection(section);
+    setCurrentSection(section);
   }
 
   return (
@@ -129,7 +132,7 @@ export default function DashboardPage() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-              Admin Dashboard
+            Admin Dashboard {userRole}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -153,80 +156,81 @@ export default function DashboardPage() {
         </div>
         <Divider />
         <List>
-          {/* {['Customers', 'Products', 'Orders', 'Brands', 'Categories'].map((text, index) => (
+          {/* {['Customers', 'Products', 'Orders', 'Brands', 'Categories', 'LogOut'].map((text, index) => (
+            <>
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </>
           ))} */}
 
-          <ListItem button onClick={() => handleSectionChange(CustomerSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
 
-              <ListItemText>
-                  Customers
+          <ListItem button onClick={(userRole) => handleSectionChange(CustomerSectionPage)}>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+
+            <ListItemText>
+              Customers
               </ListItemText>
           </ListItem>
 
-          <ListItem button onClick={() => handleSectionChange(ProductSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
+          <ListItem button onClick={(userRole) => handleSectionChange(ProductSectionPage)}>
+            <ListItemIcon>
+              <BusinessCenterIcon />
+            </ListItemIcon>
 
-              <ListItemText>
-                  Product 
+            <ListItemText>
+              Product
               </ListItemText>
           </ListItem>
 
-          <ListItem button onClick={() => handleSectionChange(BrandSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
+          <ListItem button onClick={(userRole) => handleSectionChange(BrandSectionPage)}>
+            <ListItemIcon>
+              <AppsIcon />
+            </ListItemIcon>
 
-              <ListItemText>
-                  Brand 
+            <ListItemText>
+              Brand
               </ListItemText>
           </ListItem>
 
-          <ListItem button onClick={() => handleSectionChange(CategorySectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
+          <ListItem button onClick={(userRole) => handleSectionChange(CategorySectionPage)}>
+            <ListItemIcon>
+              <CategoryIcon />
+            </ListItemIcon>
 
-              <ListItemText>
-                  Category 
-              </ListItemText>
-          </ListItem>
-
-
-          <ListItem button onClick={() => handleSectionChange(OrderSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
-
-              <ListItemText>
-                  Order 
+            <ListItemText>
+              Category
               </ListItemText>
           </ListItem>
 
 
+          <ListItem button onClick={(userRole) => handleSectionChange(OrderSectionPage)}>
+            <ListItemIcon>
+              <LocalShippingIcon />
+            </ListItemIcon>
+
+            <ListItemText>
+              Order
+              </ListItemText>
+          </ListItem>
+          <ListItem button onClick={handleLogOut}>
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+
+            <ListItemText>
+              LogOut
+              </ListItemText>
+          </ListItem>
         </List>
-        <Divider />
-        <List>
-          {['Urgent', 'Reports'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {/* { currentSection } */}
-        <OrderSectionPage/>
+        {currentSection}
 
       </main>
     </div>

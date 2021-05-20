@@ -119,7 +119,8 @@ export interface IProductSpecs {
 
 
 export interface IProductVariant {
-    parentProductId: string;
+
+    images:          [];
     quantity:        number;
     variation_ar:    { };
     variation:       { };

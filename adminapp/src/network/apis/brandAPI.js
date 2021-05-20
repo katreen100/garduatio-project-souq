@@ -1,4 +1,4 @@
-import db from '../firebase/firebaseConfig';
+import {db} from '../firebase/firebaseConfig';
 
 export function getAllBrandNames() {
     return db.collection('brands')

@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <p> <small>100% of users recommend this product to a friend.</small></p>
-  <span *ngIf="firstRate" class="text-secondary" > Be the first to rate this product </span>
+  <p> <small i18n>100% of users recommend this product to a friend.</small></p>
+  <span *ngIf="firstRate" class="text-secondary" i18n> Be the first to rate this product </span>
   <h4 i18n>Rate this product:</h4>
   <ng-template #t let-fill="fill">
     <span class="star" [class.full]="fill === 100">

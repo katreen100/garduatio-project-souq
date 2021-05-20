@@ -10,11 +10,11 @@
       <div class="pb-2">
         <span ngbDropdown class="d-inline-block">
           <span id="dropdownBasic1" ngbDropdownToggle>
-            <app-rate-component></app-rate-component>
+            <app-rate-component [currentRate]='productRate.averageRating'  [size]="2"></app-rate-component>
           </span>
           <span ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-2" style="width: 450px;">
-            <app-rate-statics></app-rate-statics>
-            <app-user-rate></app-user-rate>
+            <app-rate-statics [parentID]='ids.parentProductId'></app-rate-statics>
+            <app-user-rate ></app-user-rate>
           </span>
         </span>
         <span class="bluefontcolor"> (x)review </span>
@@ -139,7 +139,7 @@
     </div>
     <div id="icondiv" class="col-12" style="font-size: 18px">
       <ul id="socialicon">
-        <li><i class="fas fa-heart p-2"></i></li>
+        <li><i class="fas fa-heart p-2" (click)="addToWishList()"[(ngModel)]="heartColor" [ngStyle]='{color: heartColor==true?"red":"gray"}'></i></li>
         <li><i class="fab fa-twitter p-2"></i></li>
         <li><i class="fab fa-facebook-square p-2"></i></li>
         <li><i class="fab fa-google-plus-g p-2"></i></li>
