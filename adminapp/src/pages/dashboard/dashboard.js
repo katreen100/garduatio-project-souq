@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -95,8 +95,8 @@ const useStyles = makeStyles((theme) => ({
 export default function DashboardPage({ userRole, handleLogOut }) {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [currentSection, setCurrentSection] = React.useState(CustomerSectionPage);
+  const [open, setOpen] = useState(false);
+  const [currentSection, setCurrentSection] = useState(CustomerSectionPage);
   
   const handleDrawerOpen = () => {
     setOpen(true);

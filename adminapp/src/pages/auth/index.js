@@ -61,8 +61,9 @@ const LoginPage = () => {
                     });
             }
             else {
-                clearErrors();
+                
                 setEmailError("Sorry, you are not admin")
+                clearErrors();
             }
             
         })

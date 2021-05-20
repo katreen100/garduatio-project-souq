@@ -1,11 +1,10 @@
-import App from '../../../App'
+import DashboardPage from '../../dashboard/dashboard'
 const Sucess = ({ handleLogOut, userRole }) => {
 
 
     return <section>
-        <h1> {userRole} </h1>
         <div>
-            <App userRole={userRole} handleLogOut={handleLogOut}/>
+            <DashboardPage userRole={userRole} handleLogOut={handleLogOut} />
         </div>
 
 

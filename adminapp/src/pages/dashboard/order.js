@@ -129,8 +129,6 @@ const OrderSectionPage = ({userRole, handleLogOut}) => {
     return (
         <>
             <h1>Order Section</h1>
-            <h1> {userRole} </h1>
-            <button onClick={handleLogOut}>  LogOut</button>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid rows={all} columns={columns} pageSize={5} checkboxSelection />
             </div>
