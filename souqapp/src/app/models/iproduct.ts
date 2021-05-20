@@ -145,3 +145,17 @@ export interface Image {
     thumbnail: string;
     regular:   string;
 }
+export interface Orders{
+    checkoutDate:{},
+    couponId:string,
+    deliveryAddress:string,
+    deliveryDate:{},
+    extraData:[],
+    items:[],
+    paymentConfirm:boolean,
+    
+paymentMethod:string,
+status:string,
+total:number
+
+}

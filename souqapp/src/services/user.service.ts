@@ -1,3 +1,4 @@
+import { Orders } from './../app/models/iproduct';
 import { locale } from '@shared/localization/localization';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -29,7 +30,6 @@ export class UserService {
       .then((res) => console.log(res))
 
       .catch((err) => console.log(err));
-  
   }
 
   addToWishListIfNotExist(id) {
@@ -84,23 +84,36 @@ export class UserService {
       })
     );
   }
- removeFromWishList(id){
-  this.db
-  .collection('user')
-  .doc(this.userId)
-  .collection('wishlist')
-  .ref.where('parentProductId', '==', id.parentProductId)
-  .where('variantId', '==', id.variantId)
-  .get()
-  .then((res) => {
-  res.docs[0].ref.delete()
-  })
-  
-  
-  
-
- }
-  getOrders() {}
+  removeFromWishList(id) {
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('wishlist')
+      .ref.where('parentProductId', '==', id.parentProductId)
+      .where('variantId', '==', id.variantId)
+      .get()
+      .then((res) => {
+        res.docs[0].ref.delete();
+      });
+  }
+  getOrders():Observable<any> {
+    
+    return from(
+      this.db
+        .collection('user')
+        .doc(this.userId)
+        .collection('orders')
+        .get()
+    ).pipe(
+      map((response) => {
+        
+        return response.docs.map((doc) => {
+          console.log(doc.data());
+          return doc.data() ;
+        });
+      })
+    );
+  }
 
   getAddresses() {}
 
