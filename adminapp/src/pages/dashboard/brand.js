@@ -49,7 +49,7 @@ const BrandSectionPage = () => {
                     </thead>
                     {brands.map(brand => {
                         return (
-                            <tbody>
+                            <tbody key={brand.id}>
                                 <tr>
                                     <td>{brand.brandName}</td>
                                     <td>{brand.brandID}</td>
