@@ -114,6 +114,49 @@ export class UserService {
     );
   }
 
+
+  // Cart crud
+  getCartItems(): Observable<IWishListItemData[]> {
+    return this.db.collection('user')
+                    .doc(this.userId)
+                    .collection('cart')
+                    .get()
+                    .pipe(
+                      map(response => {
+                        return response.docs.map(doc => {
+                          return doc.data() as IWishListItemData;
+                        })
+                      })
+                    );
+  }
+
+  addToCart(item: IWishListItemData) {
+    this.db.collection('user')
+            .doc(this.userId)
+            .collection('cart')
+            .add(item)
+            .then(console.log)
+            .catch(console.log);
+  }
+
+  removeFromCart(itemId) {
+
+  }
+
+  updateCartItemQuantity(itemId) {
+
+  }
+
+  incrementCartItemQuantity(itemId) {
+
+  }
+
+  decrementCartItemQuantity(itemId) {
+
+  }
+
+  // end of cart methods
+
   getOrders() {}
 
   getAddresses() {}

@@ -44,6 +44,7 @@ import { SettingsComponent } from './user/settings/settings.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
 import { WishlistItemComponent } from './user/wishlist-item/wishlist-item.component';
 import { CartComponent } from './user/cart/cart.component';
+import { CartItemComponent } from './user/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { CartComponent } from './user/cart/cart.component';
     SettingsComponent,
     AddressesComponent,
     WishlistItemComponent,
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

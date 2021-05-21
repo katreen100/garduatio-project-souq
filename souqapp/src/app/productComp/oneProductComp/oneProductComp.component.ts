@@ -89,7 +89,9 @@ export class OneProductCompComponent implements OnInit {
                 quantity: this.variation.quantity,
                 mainImage: this.variation.mainImage,
                 variation: this.variation.variation,
-                createdAt: new Date()
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                cartQuantity: 1
               }
     });
 

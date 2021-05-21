@@ -29,6 +29,7 @@ export class WishlistItemComponent implements OnInit {
     // Todo: add to cart function
     // remove from wishlist, then add to cart
     this.user.removeFromWishList(this.productFullId);
+    this.user.addToCart(this.productData);
   }
 
   removeFromWishList(ev) {
