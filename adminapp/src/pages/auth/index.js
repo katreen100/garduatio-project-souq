@@ -1,34 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { auth, db } from './../../network/firebase/firebaseConfig';
+import { auth } from './../../network/firebase/firebaseConfig';
 import './../../App.css';
 import Login from './login/login';
 import Sucess from './success/success';
-
+import { useFireStoreAdmins } from '../../network/apis/adminAPI';
+// import GlobalVarUserRole from '../../network/apis/GlobalVarUserRole'
 const LoginPage = () => {
     const [user, setUser] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-
-    const [userRole, setUserRole] = useState(false)
-    const [users, setUsers] = useState([])
-
-    const fetchUsers = () => {
-        db.collection("admins")
-            .get()
-            .then(querySnapshot => {
-                const data = querySnapshot.docs.map(doc => doc.data());
-                setUsers(data);
-                console.log(data);
-            });
-    }
-    useEffect(() => {
-        fetchUsers();
-    }, [])
-
-
+    const {Admins} = useFireStoreAdmins()
     const clearInputs = () => {
         setEmail('');
         setPassword('');
@@ -39,11 +22,16 @@ const LoginPage = () => {
     }
     const handleLogin = () => {
         clearErrors();
-        users && users.forEach(user => {
+        Admins && Admins.forEach(user => {
             if (user.email === email) {
                 console.log('done');
-                setUserRole(user.userRole);
-                console.log(userRole);
+                
+                localStorage.setItem('userRole' , user.userRole)
+                localStorage.setItem('userId' , user.id)
+                localStorage.setItem('profilePicture', user.profilePicture)
+                localStorage.setItem('email', user.email)
+                // localStorage getItem ()
+                console.log(user.userRole)
                 auth.signInWithEmailAndPassword(email, password)
                     .catch((err) => {
                         switch (err.code) {
@@ -78,22 +66,22 @@ const LoginPage = () => {
             if (user) {
                 clearInputs();
                 setUser(user);
-                // console.log(user.uid);
-
             }
             else {
                 setUser('');
+                
             }
         });
     }
+
     useEffect(() => {
         authListener();
+        
+        
     })
     return (
         <div className="App">
-
-            {user ? (<Sucess handleLogOut={handleLogOut} userRole={userRole}/>) :
-
+            {user ? (<Sucess handleLogOut={handleLogOut} />) :
                 (
                     <Login email={email}
                         setEmail={setEmail}
