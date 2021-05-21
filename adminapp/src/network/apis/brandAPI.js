@@ -13,14 +13,21 @@ export const useFireStoreBrands=()=>{
         return subscriberBrands
     }, [])
 
-    const addBrand =async (brand)=>{
+    const addBrand = async (brand)=>{
         await db.collection('brands').add({
             ...brand
         })
     }
 
-    const deleteBrand =async (id)=>{
+    const editBrand = async (brand)=>{
+        // debugger;
+        await db.collection('brands').doc(brand.id).update({
+            ...brand
+        })
+    }
+
+    const deleteBrand = async (id)=>{
         await db.collection('brands').doc(id).delete()
     }
-    return {brands, addBrand, deleteBrand}
+    return {brands, addBrand, editBrand, deleteBrand}
 }

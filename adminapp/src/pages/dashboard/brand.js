@@ -6,9 +6,7 @@ import { Button } from 'react-bootstrap'
 
 const initialValue = { brandID: "", brandName: "", brandQuantity: "", categoryID: "", createdAt: "", id: "" }
 const BrandSectionPage = () => {
-    const { brands } = useFireStoreBrands()
-    const { addBrand } = useFireStoreBrands()
-    const { deleteBrand } = useFireStoreBrands()
+    const { brands, addBrand, deleteBrand, editBrand } = useFireStoreBrands()
     const [brand, setBrand] = useState(initialValue)
     const handleChange = ({ target }) => {
         setBrand({
@@ -49,16 +47,8 @@ const BrandSectionPage = () => {
                     </thead>
                     {brands.map(brand => {
                         return (
-                            <tbody key={brand.id}>
-                                <tr>
-                                    <td>{brand.brandName}</td>
-                                    <td>{brand.brandID}</td>
-                                    <td>{brand.brandQuantity}</td>
-                                    <td>{brand.categoryID}</td>
-                                    <td> <Button onClick={() => deleteBrand(brand.id)}> delete </Button> </td>
-                                    {/* {2 === 3 ?  <td> <Button onClick={() => deleteBrand(brand.id)}> delete </Button> </td>: ''} */}
-                                    
-                                </tr>
+                            <tbody>
+                                <BrandRow item={brand} onDelete={deleteBrand} onSaveEdits={editBrand} />
                             </tbody>
                         )
                     })}
@@ -70,3 +60,48 @@ const BrandSectionPage = () => {
 
 
 export default BrandSectionPage;
+
+
+function BrandRow(props) {
+    const [isEditMode, setIsEditMode] = React.useState()
+
+    const [data, setData] = React.useState(props.item)
+
+    const toggleEditMode = () => setIsEditMode(!isEditMode)
+
+    const saveEditedData = () => {
+        props.onSaveEdits(data)
+        toggleEditMode()
+    }
+
+    const updateNameValue = (ev) => {
+        setData({
+            ...data,
+            brandName: ev.target.value
+        })
+    }
+
+    const updateQuantityValue = (ev) => {
+        setData({
+            ...data,
+            brandQuantity: ev.target.value
+        })
+    }
+
+    return (
+        <tr>
+            <td>{isEditMode ? <input value={data.brandName} onChange={updateNameValue} /> : data.brandName}</td>
+            <td>{data.brandID}</td>
+            <td>{isEditMode ? <input value={data.brandQuantity} onChange={updateQuantityValue} /> : data.brandQuantity}</td>
+            <td>{data.categoryID}</td>
+            <td> <Button onClick={() => props.onDelete(data.id)}> Delete </Button> </td>
+            <td>
+                {
+                    isEditMode
+                        ?   <Button onClick={saveEditedData}> Save </Button>
+                        :   <Button onClick={toggleEditMode}> Edit </Button>
+                }
+            </td>            
+        </tr>
+    )
+}
