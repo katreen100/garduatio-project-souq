@@ -84,8 +84,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
                 
               )
             })}
-            <li>  </li>
-            <li>  </li>
+
             <li> <HiIcons.HiOutlineLogout /> 
              <Button variant="danger" onClick={handleLogOut}>Logout</Button>
              </li>
