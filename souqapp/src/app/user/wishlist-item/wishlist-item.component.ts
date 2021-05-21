@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from 'src/services/product.service';
+import { IWishListItemID } from '@models/iproduct';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-wishlist-item',
@@ -8,11 +9,31 @@ import { ProductService } from 'src/services/product.service';
 })
 export class WishlistItemComponent implements OnInit {
   @Input() productData;
+  removed: boolean;
+  productFullId: IWishListItemID;
 
-  constructor(private productService: ProductService) {
-    console.log(this.productData);
+  constructor(private user: UserService) {
+    this.removed = false;
   }
 
   ngOnInit(): void {
+    this.productFullId = {
+      parentProductId: this.productData.parentProductId,
+      variantId: this.productData.variantId
+    };
+  }
+
+  addToCart(ev) {
+    ev.preventDefault();
+    this.removed = true;
+    // Todo: add to cart function
+    // remove from wishlist, then add to cart
+    this.user.removeFromWishList(this.productFullId);
+  }
+
+  removeFromWishList(ev) {
+    ev.preventDefault();
+    this.removed = true;
+    this.user.removeFromWishList(this.productFullId);
   }
 }

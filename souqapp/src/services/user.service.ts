@@ -17,6 +17,7 @@ export class UserService {
     private productService: ProductService
   )
   {
+    // Todo: get userid dynamically from firebase.auth.currentUser.uid
     this.userId = 'CLXtuKipWfR4TTJgwfteCF1CcmG3';
   }
 
@@ -107,7 +108,6 @@ export class UserService {
     ).pipe(
       map((response) => {
         return response.docs.map((doc) => {
-          console.log(doc.data());
           return doc.data() as IWishListItemData;
         });
       })
