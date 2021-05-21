@@ -84,6 +84,7 @@ export class UserService {
       })
     );
   }
+<<<<<<< HEAD
   removeFromWishList(id) {
     this.db
       .collection('user')
@@ -114,6 +115,23 @@ export class UserService {
       })
     );
   }
+=======
+ removeFromWishList(id){
+  this.db
+  .collection('user')
+  .doc(this.userId)
+  .collection('wishlist')
+  .ref.where('parentProductId', '==', id.parentProductId)
+  .where('variantId', '==', id.variantId)
+  .get()
+  .then((res) => {
+  res.docs[0].ref.delete()
+  })
+ 
+}
+
+  getOrders() {}
+>>>>>>> 7872bdf69337aa7ea6040a3c173f452c4fd627a9
 
   getAddresses() {}
 

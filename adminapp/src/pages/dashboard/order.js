@@ -5,15 +5,11 @@ import Button from "@material-ui/core/Button";
 // import { deleteOrderNames } from '../../network/apis/order';
 import { db } from '../../network/firebase/firebaseConfig';
 // import { PanoramaVerticalSharp } from '@material-ui/icons';
-import Modal from "./Modal";
-import { updateOrderNames } from "../../network/apis/order";
-const OrderSectionPage = (props) => {
 
-    const [editColumn, setEditColumn] = useState({
-        flag: false
-    })
-    const {userRole} = props;
-    console.log(userRole);
+import { updateOrderNames } from "../../network/apis/order";
+const OrderSectionPage = ({userRole, handleLogOut}) => {
+
+
 
 
     // initail value
@@ -29,15 +25,7 @@ const OrderSectionPage = (props) => {
 
     const [all, setAll] = useState(initial);
 
-
-    const [docId, setDocId] = useState([]);
-    /*
-    {
-        docID: asgasg,
-        itemID: id
-    }
-    */
-   const getAll = ()=>{
+    const getAll = ()=>{
     const items = [];
     const ref = db.collection('Order');
     ref.onSnapshot((snap) => {
@@ -47,15 +35,9 @@ const OrderSectionPage = (props) => {
         snap.forEach((doc) => {
             items.push(doc.data())
             console.log(doc.data().id)
-            doc = {
-                DocID: doc.id,
-                itemID: doc.data().id
-            }
             temp.push(doc)
 
         })
-        setDocId(temp)
-        console.log(docId)
         setAll(items)
     })
    }
@@ -114,12 +96,10 @@ const OrderSectionPage = (props) => {
                     });
 
                     console.log(params.row.id);
-                    let item = docId.find(DocRef => DocRef.itemID === params.row.id)
-                    console.log(item);
+                    // let item = docId.find(DocRef => DocRef.itemID === params.row.id)
+                    // console.log(item);
                     console.log("Updates Function")
-                    setEditColumn({
-                        flag: !editColumn.flag
-                    })
+
                     updateOrderNames();
                     return
                 };
@@ -149,13 +129,10 @@ const OrderSectionPage = (props) => {
     return (
         <>
             <h1>Order Section</h1>
-
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid rows={all} columns={columns} pageSize={5} checkboxSelection />
             </div>
-            {
-                editColumn.flag ? <Modal /> : ''
-            }
+
 
         </>
     )
