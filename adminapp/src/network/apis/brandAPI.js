@@ -1,13 +1,26 @@
-import {db} from '../firebase/firebaseConfig';
+import {useState, useEffect} from 'react'
+import {db} from '../../network/firebase/firebaseConfig'
 
-export function getAllBrandNames() {
-    return db.collection('brands')
-             .get()
-             .then(reponse => {
-                 return reponse.docs.map(doc => {
-                     console.log(doc.data());
-                     return doc.data();
-                 })
-             })
-             .catch(e => console.log(e));
+export const useFireStoreBrands=()=>{
+    const [brands, setBrands] = useState([])
+    useEffect(() => {
+        const subscriberBrands =db.collection('brands').orderBy('createdAt').onSnapshot(snap =>{
+            let fetched = snap.docs.map(doc =>{
+                return {...doc.data(), id:doc.id}
+            })
+            setBrands(fetched)
+        })
+        return subscriberBrands
+    }, [])
+
+    const addBrand =async (brand)=>{
+        await db.collection('brands').add({
+            ...brand
+        })
+    }
+
+    const deleteBrand =async (id)=>{
+        await db.collection('brands').doc(id).delete()
+    }
+    return {brands, addBrand, deleteBrand}
 }

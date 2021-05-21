@@ -7,11 +7,8 @@ import { db } from '../../network/firebase/firebaseConfig';
 // import { PanoramaVerticalSharp } from '@material-ui/icons';
 
 import { updateOrderNames } from "../../network/apis/order";
-const OrderSectionPage = ({userRole, handleLogOut}) => {
-
-
-
-
+const OrderSectionPage = ({userRole}) => {
+    
     // initail value
     const initial = [{
         customerName: "",
@@ -101,21 +98,25 @@ const OrderSectionPage = ({userRole, handleLogOut}) => {
                     console.log("Updates Function")
 
                     updateOrderNames();
+                    
                     return
                 };
-                if (userRole === 'editor') {
+                if ({userRole}=== 'editor') {
+                   
                     return <div>
                         <Button variant="contained" color="primary" onClick={() => update()}>Edit</Button>
 
                     </div>
                 }
-                else if (userRole === 'viewer') {
+                else if ({userRole}=== 'viewer') {
+                    
                     return <div>
-                        
+                        <p> You are not admin </p>
 
                     </div>
                 }
-                else {
+                else if ({userRole} === 'admin') {
+                    
                     return <div>
                         <Button variant="contained" color="primary" onClick={() => update()}>Edit</Button>
                         <Button variant="contained" color="primary" onClick={() => Delete()}>X</Button>
