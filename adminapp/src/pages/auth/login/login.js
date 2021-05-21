@@ -13,16 +13,17 @@ const Login = (props) => {
 
 
     return (
+
         <section className="login">
             <div className="loginContainer">
                 <label>Email Address</label>
-                <input type="text" autoFocus required value={email}
+                <input type="text" autoFocus required autoComplete="username" value={email}
                     onChange={((e) => setEmail(e.target.value))} />
                 <p className="errorMsg"> {emailError} </p>
 
 
                 <label>Password</label>
-                <input type="password" required value={password}
+                <input type="password" required autoComplete="current-password" value={password}
                     onChange={((e) => setPassword(e.target.value))} />
                 <p className="errorMsg"> {passwordError} </p>
 
@@ -32,6 +33,7 @@ const Login = (props) => {
 
             </div>
         </section>
+
     )
 }
 export default Login;

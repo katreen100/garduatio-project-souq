@@ -13,13 +13,20 @@ import './dashboard.css';
 import {IconContext} from 'react-icons' ;
 
 
-export default function DashboardPage({ userRole, handleLogOut }) {
+export default function DashboardPage({ handleLogOut }) {
   const [sidebar, setSidebar] = useState(false)
   const showSidebar = () => {
     setSidebar(!sidebar)
   }
   //'Customers', 'Products', 'Orders', 'Brands', 'Categories', 'LogOut'
   const sidebarData = [
+
+    {
+      title: 'Home',
+      path: '/',
+      icon: <AiIcons.AiOutlineHome />,
+      cname: 'nav-text',
+    },
 
     {
       title: 'Customers',
@@ -63,7 +70,6 @@ export default function DashboardPage({ userRole, handleLogOut }) {
   return (
     <>
     <IconContext.Provider value={{color : "#fff"}}>
-      
       <div className="navbar">
         <Link to="#" className="menu-bars" >
           <FaIcons.FaBars onClick={showSidebar} />
@@ -79,7 +85,7 @@ export default function DashboardPage({ userRole, handleLogOut }) {
             {sidebarData.map((item, index) => {
               return(
                 <li key={index} className={item.cname}>
-                  <Link to={item.path}> {item.icon}  <span> {item.title} </span></Link>
+                  <Link to={item.path} > {item.icon}  <span> {item.title} </span></Link>
                 </li>
                 
               )
