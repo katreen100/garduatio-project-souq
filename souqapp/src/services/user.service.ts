@@ -1,3 +1,4 @@
+import { Orders } from './../app/models/iproduct';
 import { locale } from '@shared/localization/localization';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -61,8 +62,7 @@ export class UserService {
           if (res.docs.length < 0) return false;
         })
     );
-    // .pipe(map(res =>console.log(res) )
-    // );
+   
   }
   getWishListIds(): Observable<IWishListItemID[]> {
     return from(
@@ -84,6 +84,36 @@ export class UserService {
       })
     );
   }
+  // removeFromWishList(id) {
+  //   this.db
+  //     .collection('user')
+  //     .doc(this.userId)
+  //     .collection('wishlist')
+  //     .ref.where('parentProductId', '==', id.parentProductId)
+  //     .where('variantId', '==', id.variantId)
+  //     .get()
+  //     .then((res) => {
+  //       res.docs[0].ref.delete();
+  //     });
+  // }
+  getOrders():Observable<any> {
+    
+    return from(
+      this.db
+        .collection('user')
+        .doc(this.userId)
+        .collection('orders')
+        .get()
+    ).pipe(
+      map((response) => {
+        
+        return response.docs.map((doc) => {
+          console.log(doc.data());
+          return doc.data() ;
+        });
+      })
+    );
+  }
  removeFromWishList(id){
   this.db
   .collection('user')
@@ -97,6 +127,7 @@ export class UserService {
   })
  
 }
+ 
   getWishListItems(): Observable<IWishListItemData[]> {
     return from(
       this.db

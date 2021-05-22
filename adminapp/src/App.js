@@ -3,7 +3,6 @@ import './App.css';
 import LoginPage from './pages/auth/index'
 
 function App() {
-
   return (
     <div className="App">
       <LoginPage />

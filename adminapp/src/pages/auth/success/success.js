@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AdminsSectionPage from '../../dashboard/admins';
 import BrandSectionPage from '../../dashboard/brand';
@@ -9,11 +10,8 @@ import OrderSectionPage from '../../dashboard/order';
 import ProductSectionPage from '../../dashboard/product';
 
 const Sucess = ({ handleLogOut }) => {
-
-
     return (
         <>
-
             <Router>
                 <DashboardPage handleLogOut={handleLogOut} />
                 <Switch>
