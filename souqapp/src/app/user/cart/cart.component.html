@@ -23,7 +23,7 @@
     }
 
     .router-link-active {
-        background-color: #008bff;
+        background-color: #3c5511;
     }
 
     button#checkout-btn {
@@ -65,7 +65,13 @@
 
                 <br>
 
-                <button class="btn" id="checkout-btn" (click)="checkOut()">
+                <button
+                    class="btn"
+                    id="checkout-btn"
+                    (click)="checkOut()"
+                    [routerLink]="['/checkout']"
+                    routerLinkActive="router-link-active" 
+                >
                     PROCEED TO CHECKOUT
                 </button>
 

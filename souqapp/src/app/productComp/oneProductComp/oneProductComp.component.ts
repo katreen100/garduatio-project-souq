@@ -99,6 +99,11 @@ export class OneProductCompComponent implements OnInit {
     this.prodservice.getProductRatingDetails(this.productFullId.parentProductId)
         .subscribe(res => this.productRate = res);
   }
+
+
+  addToCart() {
+    this.userService.addToCartIfNotExist(this.productFullId, this.wishListItem)
+  }
 }
 
 

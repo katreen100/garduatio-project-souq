@@ -126,7 +126,9 @@
           class="button w-100 btn-lg"
           type="button"
           value="ADD TO CARD"
-          onclick="addToCardFun()"
+          (click)="addToCart()"
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active" 
         />
         <span id="amount_left">function to get left in stock! </span>
       </div>
