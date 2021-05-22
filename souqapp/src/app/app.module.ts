@@ -31,7 +31,7 @@ import { SupportAndSocialLinksComponent } from './Components/support-and-social-
 import { FooterMyAccountComponent } from './Components/footer-my-account/footer-my-account.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { TopHeaderComponent } from './Components/header/top-header/top-header.component';
-import { LoginComponent } from './lay out/User/login/login.component';
+import { LoginComponent } from './user/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HomeComponent } from './Components/home/home.component';
 import { HomeLayloutComponent } from './Components/home-laylout/home-laylout.component';
@@ -43,6 +43,9 @@ import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
 import { WishlistItemComponent } from './user/wishlist-item/wishlist-item.component';
+import { TermsComponent } from './Components/terms/terms.component';
+import { HelpComponent } from './Components/help/help.component';
+import { PrivacyComponent } from './Components/privacy/privacy.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
 
@@ -83,6 +86,9 @@ import { CartItemComponent } from './user/cart-item/cart-item.component';
     SettingsComponent,
     AddressesComponent,
     WishlistItemComponent,
+    TermsComponent,
+    HelpComponent,
+    PrivacyComponent,
     CartComponent,
     CartItemComponent
   ],
