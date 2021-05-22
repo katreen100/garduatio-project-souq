@@ -1,28 +1,34 @@
-{{orders | async | json}}
-<!-- {{ wishlist | async | json}} -->
+<!-- {{orders | async | json}}
+{{ wishlist | async | json}} -->
 
 
 
 
 <style>
+  
   .userInfo {
     border-bottom: 10px rgb(230, 222, 222);
     line-height: 0.9;
   }
+  p{
+    line-height: 1.5;
+  }
 </style>
 <div *ngFor="let item of (orders | async)">
-<div class="row container-fluid" style="padding: 2%">
+<div class="row container-fluid shadow" style="padding: 2% ;font-weight: 500;">
   <div class="col-12 row userInfo">
     <div class="col-md-6 col-sm-12 col-sm-12 pb-3" >
-      <p>Order placed on : <strong>{{item.deliveryAddress}}</strong></p>
-      <p>Order ID : #gggggggg</p>
+      <p>Order placed on : <strong>{{item.createdAt.toDate() |date}}</strong></p>
+      <!-- <p>Order ID : {{item.id | }}</p> -->
+     <p> Delivary date : {{item.deliveryDate.toDate() |date}}</p>
 
-      <a> Order details</a>
+      <u style="color: royalblue;"><a href="">Order details</a> </u>
     </div>
     <div class="col-md-6 col-sm-12 col-sm-12 pb-3">
       <p>Recipient: user name</p>
-      <p>Payment mthod : method</p>
-      <p>total : total EGP</p>
+      <p>Payment mthod : {{item.paymentMethod}}</p>
+      <p>Total : {{item.total |currency :"EGP"}}</p>
+      <p> Products: {{item.itemCount }}</p>
     </div>
   </div>
   <div class="stepper col-12" >
@@ -37,19 +43,19 @@
             padding-top-2x padding-bottom-1x
           "
         >
-          <div class="step">
+          <div [ngClass]=" item.status=='RFS'?'step completed':'step'">
             <div class="step-icon-wrap" style="line-height: .8;">
               <div class="step-icon">1</div>
             </div>
             <h4 class="step-title" >Ready for shipping </h4>
           </div>
-          <div class="step">
+           <div [ngClass]=" item.status=='OFD'?'step completed':'step'">
             <div class="step-icon-wrap">
               <div class="step-icon">2</div>
             </div>
             <h4 class="step-title">Out of delivary</h4>
           </div>
-          <div class="step completed">
+          <div  [ngClass]=" item.status=='delivered'?'step completed':'step'">
             <div class="step-icon-wrap">
               <div class="step-icon">3</div>
             </div>
@@ -59,7 +65,7 @@
       </div>
     </div>
   </div>
-  <div class="col-12 product-orders row">
+  <!-- <div class="col-12 product-orders row">
     <div class="col-md-6 col-sm-12 row">
       <div class="col-2">
         <img
@@ -87,4 +93,4 @@
     </div>
   </div>
 </div>
-</div>
+</div> -->

@@ -1,4 +1,6 @@
-body{margin-top:20px;line-height: 1 !important;}
+body { 
+    margin-top:20px;
+    font-weight: 500 !important;}
 
 .steps .step {
     display: block;
