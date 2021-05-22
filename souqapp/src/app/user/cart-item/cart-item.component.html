@@ -33,16 +33,27 @@
             <div class="card-text font-weight-bold fs-3" *ngIf="cartItemData.quantity">
                 {{ cartItemData.price * (100 - cartItemData.discount) / 100 | currency:'EGP ' }}
             </div>
+
+            <div *ngFor="let v of cartItemData.variation | keyvalue; let i = index"
+                >
+                    <span class="font-weight-bold">
+                        {{ v.key }}
+                    </span> : {{ v.value }}
+            </div>
+
             <hr class="my-1">
+
             <div>
                 <button
                     class="btn btn-link"
+                    (click)="saveToWishList($event)"
                 >
                     Save
                 </button>
                 |
                 <button
                     class="btn btn-link"
+                    (click)="removeFromCart($event)"
                 >
                     Remove
                 </button>
@@ -51,13 +62,21 @@
           <div class="col-4">
             <form action="">
                 <label for="quantity">Quantity</label>
-                <input type="number" name="quanity" id="quantity">
+                <input
+                    type="number"
+                    name="quanity"
+                    id="quantity"
+                    [(ngModel)]="cartItemData.cartQuantity"
+                    (ngModelChange)="onQuantityChange($event)"
+                    min="1"
+                    [max]="cartItemData.quantity"
+                    >
             </form>
           </div>
       </div>
     </div>
   </div>
 </div>
-<pre>
+<!-- <pre>
     {{ cartItemData | json }}
-</pre>
+</pre> -->

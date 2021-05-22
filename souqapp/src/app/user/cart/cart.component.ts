@@ -31,9 +31,16 @@ export class CartComponent implements OnInit, OnDestroy {
 
 
   calculateTotalPrice(): number {
+    console.log(this.cartItems);
     return this.cartItems.map(item => {
       return item.cartQuantity * (item.price * (100 - item.discount) / 100);
     })
     .reduce((a, b) => a + b);
+  }
+
+  setCartQuantity(ev, index: number): void {
+      this.cartItems[index].cartQuantity = ev[0];
+      this.cartTotalPrice = this.calculateTotalPrice();
+      this.cartItemsCount += ev[1];
   }
 }

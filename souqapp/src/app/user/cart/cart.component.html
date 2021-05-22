@@ -45,6 +45,7 @@
                 *ngFor="let cartItem of cartItems; let i=index"
                 [id]="i"
                 [cartItemData]="cartItem"
+                (QuantityChange)="setCartQuantity($event, i)"
             >
             </app-cart-item>
         </section>

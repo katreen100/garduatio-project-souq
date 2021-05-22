@@ -130,7 +130,24 @@ export class UserService {
                     );
   }
 
+  addToCartIfNotExist(id, item: IWishListItemData) {
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .ref.where('parentProductId', '==', id.parentProductId)
+      .where('variantId', '==', id.variantId)
+      .get()
+      .then((res) => {
+        if (res.empty) {
+          this.addToCart(item);
+        }
+      });
+    
+  }
+
   addToCart(item: IWishListItemData) {
+    item.cartQuantity = 1;
     this.db.collection('user')
             .doc(this.userId)
             .collection('cart')
@@ -140,7 +157,16 @@ export class UserService {
   }
 
   removeFromCart(itemId) {
-
+      this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .ref.where('parentProductId', '==', itemId.parentProductId)
+      .where('variantId', '==', itemId.variantId)
+      .get()
+      .then((res) => {
+      res.docs[0].ref.delete()
+      });
   }
 
   updateCartItemQuantity(itemId) {
@@ -158,6 +184,11 @@ export class UserService {
   // end of cart methods
 
   getOrders() {}
+
+  getAllOrders() {
+    return this.db.collectionGroup('orders')
+              .get();
+  }
 
   getAddresses() {}
 
