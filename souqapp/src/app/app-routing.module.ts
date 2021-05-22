@@ -39,7 +39,7 @@ const routes: Routes = [
   { path:"privacy",component: PrivacyComponent },
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
-  { path: "cart", component:  CartComponent},
+  { path: "cart", component:  CartComponent, canActivate: [AuthGaurdServiceService]},
   { 
     path: "dashboard",
     component: UserDashboardComponent,
@@ -57,7 +57,6 @@ const routes: Routes = [
   {path:"orders",component: AppComponent},
   {path:"addresses",component: AppComponent},
   {path:"wishlist",component: AppComponent},
-  {path:"cart",component: AppComponent},
   {path:"addresses",component: AppComponent},
   {path:"**",component: NotFoundComponent},
 ];
