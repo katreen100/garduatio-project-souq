@@ -10,10 +10,9 @@
 
 <section class="list">
    <app-wishlist-item
-            *ngFor="let itemId of (wishlist | async); let i=index"
+            *ngFor="let item of (wishlist | async); let i=index"
             [id]="i" 
-            parentProductId="{{itemId.parentProductId}}"
-            [variantId]="itemId.variantId"
+            [productData]="item"
         >
     </app-wishlist-item>
 </section>

@@ -13,7 +13,7 @@
             <app-rate-component [currentRate]='productRate.averageRating'  [size]="2"></app-rate-component>
           </span>
           <span ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-2" style="width: 450px;">
-            <app-rate-statics [parentID]='ids.parentProductId'></app-rate-statics>
+            <app-rate-statics [parentID]='productFullId.parentProductId'></app-rate-statics>
             <app-user-rate ></app-user-rate>
           </span>
         </span>
