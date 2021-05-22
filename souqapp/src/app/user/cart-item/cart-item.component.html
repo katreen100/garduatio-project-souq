@@ -1,0 +1,82 @@
+<style>
+    #cart {
+        background-color: #8dc13e;
+        border-color: #8dc13e;
+    }
+
+    #remove {
+        background-color: #C14450;
+        border-color: #C14450;
+    }
+</style>
+
+<div
+  class="card shadow-sm justify-content-center"
+  style="max-width: 100%; height: 200px"
+  [hidden]="removed"
+  >
+  <div class="row p-2 align-items-center w-100">
+    <div class="col-md-4 text-center">
+      <img
+        [src]="cartItemData.mainImage"
+        class=""
+        height="150px"
+        alt="{{cartItemData.description}}"
+        title="{{ cartItemData.description }}" 
+        >
+    </div>
+    <div class="col-md-8">
+      <div class="card-body row">
+          <div class="col-8">
+            <h3 class="card-title">{{ cartItemData.name }}</h3>
+            <div *ngIf="!cartItemData.quantity">Not Available</div>
+            <div class="card-text font-weight-bold fs-3" *ngIf="cartItemData.quantity">
+                {{ cartItemData.price * (100 - cartItemData.discount) / 100 | currency:'EGP ' }}
+            </div>
+
+            <div *ngFor="let v of cartItemData.variation | keyvalue; let i = index"
+                >
+                    <span class="font-weight-bold">
+                        {{ v.key }}
+                    </span> : {{ v.value }}
+            </div>
+
+            <hr class="my-1">
+
+            <div>
+                <button
+                    class="btn btn-link"
+                    (click)="saveToWishList($event)"
+                >
+                    Save
+                </button>
+                |
+                <button
+                    class="btn btn-link"
+                    (click)="removeFromCart($event)"
+                >
+                    Remove
+                </button>
+            </div>
+          </div>
+          <div class="col-4">
+            <form action="">
+                <label for="quantity">Quantity</label>
+                <input
+                    type="number"
+                    name="quanity"
+                    id="quantity"
+                    [(ngModel)]="cartItemData.cartQuantity"
+                    (ngModelChange)="onQuantityChange($event)"
+                    min="1"
+                    [max]="cartItemData.quantity"
+                    >
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <pre>
+    {{ cartItemData | json }}
+</pre> -->

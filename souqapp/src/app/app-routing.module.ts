@@ -16,6 +16,7 @@ import { OrdersComponent } from './user/orders/orders.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
 import { SettingsComponent } from './user/settings/settings.component';
+import { CartComponent } from './user/cart/cart.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path:"login",component: LoginComponent },
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
+  { path: "cart", component:  CartComponent},
   { 
     path: "dashboard",
     component: UserDashboardComponent,

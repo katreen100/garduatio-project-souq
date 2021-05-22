@@ -114,7 +114,81 @@ export class UserService {
     );
   }
 
+
+  // Cart crud
+  getCartItems(): Observable<IWishListItemData[]> {
+    return this.db.collection('user')
+                    .doc(this.userId)
+                    .collection('cart')
+                    .get()
+                    .pipe(
+                      map(response => {
+                        return response.docs.map(doc => {
+                          return doc.data() as IWishListItemData;
+                        })
+                      })
+                    );
+  }
+
+  addToCartIfNotExist(id, item: IWishListItemData) {
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .ref.where('parentProductId', '==', id.parentProductId)
+      .where('variantId', '==', id.variantId)
+      .get()
+      .then((res) => {
+        if (res.empty) {
+          this.addToCart(item);
+        }
+      });
+    
+  }
+
+  addToCart(item: IWishListItemData) {
+    item.cartQuantity = 1;
+    this.db.collection('user')
+            .doc(this.userId)
+            .collection('cart')
+            .add(item)
+            .then(console.log)
+            .catch(console.log);
+  }
+
+  removeFromCart(itemId) {
+      this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .ref.where('parentProductId', '==', itemId.parentProductId)
+      .where('variantId', '==', itemId.variantId)
+      .get()
+      .then((res) => {
+      res.docs[0].ref.delete()
+      });
+  }
+
+  updateCartItemQuantity(itemId) {
+
+  }
+
+  incrementCartItemQuantity(itemId) {
+
+  }
+
+  decrementCartItemQuantity(itemId) {
+
+  }
+
+  // end of cart methods
+
   getOrders() {}
+
+  getAllOrders() {
+    return this.db.collectionGroup('orders')
+              .get();
+  }
 
   getAddresses() {}
 
