@@ -21,7 +21,6 @@ export class CartComponent implements OnInit, OnDestroy {
                           this.cartItemsCount = res.length;
                           this.cartTotalPrice = this.calculateTotalPrice();
                         });
-                        this.checkOut()
   }
 
   ngOnInit(): void {
@@ -33,27 +32,25 @@ export class CartComponent implements OnInit, OnDestroy {
 
   checkOut(){
     let date = new Date();
-    let deliveryDate=date.setDate(date.getDate() + 3);
-    let orderMetaData={
-      createdAt:date,
-      updatedAt:date,
-      total:this.cartTotalPrice,
-      itemCount:this.cartItemsCount,
+    let deliveryDate = new Date(date.setDate(date.getDate() + 3));
+    let orderMetaData = {
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      total: this.cartTotalPrice,
+      itemCount: this.cartItemsCount,
       status:'ready for shiping',
-      deliveryDate:deliveryDate,
+      deliveryDate: deliveryDate 
       // username     
-    }
-    this.user.proceedToCheckout(this.cartItems,orderMetaData)
+    };
 
-
+    this.user.proceedToCheckout(this.cartItems,orderMetaData);
   }
 
   calculateTotalPrice(): number {
-    console.log(this.cartItems);
     return this.cartItems.map(item => {
       return item.cartQuantity * (item.price * (100 - item.discount) / 100);
     })
-    .reduce((a, b) => a + b);
+    .reduce((a, b) => a + b, 0);
   }
 
   setCartQuantity(ev, index: number): void {

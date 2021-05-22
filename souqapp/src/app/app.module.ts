@@ -48,6 +48,7 @@ import { HelpComponent } from './Components/help/help.component';
 import { PrivacyComponent } from './Components/privacy/privacy.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
+import { CheckoutComponent } from './user/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { CartItemComponent } from './user/cart-item/cart-item.component';
     HelpComponent,
     PrivacyComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

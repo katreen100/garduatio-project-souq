@@ -21,6 +21,7 @@ import { TermsComponent } from './Components/terms/terms.component';
 import { PrivacyComponent } from './Components/privacy/privacy.component';
 import { AuthGaurdServiceService } from 'src/services/auth-gaurd-service.service';
 import { CartComponent } from './user/cart/cart.component';
+import { CheckoutComponent } from './user/checkout/checkout.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
   { path: "cart", component:  CartComponent, canActivate: [AuthGaurdServiceService]},
+  { path: "checkout", component: CheckoutComponent, canActivate: [AuthGaurdServiceService]},
   { 
     path: "dashboard",
     component: UserDashboardComponent,
@@ -54,10 +56,6 @@ const routes: Routes = [
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},
   // {path:"FAQS-summary",component: AppComponent},
-  {path:"orders",component: AppComponent},
-  {path:"addresses",component: AppComponent},
-  {path:"wishlist",component: AppComponent},
-  {path:"addresses",component: AppComponent},
   {path:"**",component: NotFoundComponent},
 ];
 
