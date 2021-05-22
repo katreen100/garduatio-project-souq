@@ -46,6 +46,8 @@ import { WishlistItemComponent } from './user/wishlist-item/wishlist-item.compon
 import { TermsComponent } from './Components/terms/terms.component';
 import { HelpComponent } from './Components/help/help.component';
 import { PrivacyComponent } from './Components/privacy/privacy.component';
+import { CartComponent } from './user/cart/cart.component';
+import { CartItemComponent } from './user/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,9 @@ import { PrivacyComponent } from './Components/privacy/privacy.component';
     WishlistItemComponent,
     TermsComponent,
     HelpComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

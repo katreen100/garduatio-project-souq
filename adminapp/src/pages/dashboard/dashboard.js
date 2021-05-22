@@ -1,234 +1,104 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import GroupIcon from '@material-ui/icons/Group';
-import CustomerSectionPage from './customer';
-import ProductSectionPage from './product';
-import BrandSectionPage from './brand';
-import CategorySectionPage from './category';
-import OrderSectionPage from './order';
+import React, { useState } from 'react';
+import * as FaIcons from "react-icons/fa";
+import * as FiIcons from "react-icons/fi";
+import * as AiIcons from "react-icons/ai";
+import * as RiIcons from "react-icons/ri";
+import * as MdIcons from "react-icons/md";
+import * as HiIcons from "react-icons/hi";
+import * as CgIcons from "react-icons/cg";
+import * as SiIcons from "react-icons/si";
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
+import './dashboard.css';
+import {IconContext} from 'react-icons' ;
 
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  },
-  drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
-
-export default function DashboardPage() {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  // const [currentSection, setCurrentSection] = React.useState(CustomerSectionPage);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const handleSectionChange = (section) => {
-    // setCurrentSection(section);
+export default function DashboardPage({ handleLogOut }) {
+  const [sidebar, setSidebar] = useState(false)
+  const showSidebar = () => {
+    setSidebar(!sidebar)
   }
+  //'Customers', 'Products', 'Orders', 'Brands', 'Categories', 'LogOut'
+  const sidebarData = [
 
+    {
+      title: 'Home',
+      path: '/',
+      icon: <AiIcons.AiOutlineHome />,
+      cname: 'nav-text',
+    },
+
+    {
+      title: 'Customers',
+      path: '/Customers',
+      icon: <FiIcons.FiUsers />,
+      cname: 'nav-text',
+    },
+    {
+      title: 'Products',
+      path: '/Products',
+      icon: <RiIcons.RiProductHuntLine />,
+      cname: 'nav-text',
+    },
+    {
+      title: 'Orders',
+      path: '/Orders',
+      icon: <MdIcons.MdLocalShipping />,
+      cname: 'nav-text',
+    },
+    {
+      title: 'Categories',
+      path: '/Categories',
+      icon: <CgIcons.CgOptions />,
+      cname: 'nav-text',
+    },
+    {
+      title: 'Admins',
+      path: '/Admins',
+      icon: <RiIcons.RiAdminLine />,
+      cname: 'nav-text',
+    },
+    {
+      title: 'Brands',
+      path: '/Brands',
+      icon: <SiIcons.SiBrandfolder />,
+      cname: 'nav-text',
+    },
+
+
+  ]
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
+    <>
+    <IconContext.Provider value={{color : "#fff"}}>
+      <div className="navbar">
+        <Link to="#" className="menu-bars" >
+          <FaIcons.FaBars onClick={showSidebar} />
+        </Link>
+
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-item' onClick={showSidebar}>
+            <li className="navbar-toggle">
+              <Link to="#" className="menu-bars" >
+                <AiIcons.AiOutlineCloseCircle />
+              </Link>
+            </li>
+            {sidebarData.map((item, index) => {
+              return(
+                <li key={index} className={item.cname}>
+                  <Link to={item.path} > {item.icon}  <span> {item.title} </span></Link>
+                </li>
+                
+              )
             })}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-              Admin Dashboard
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {/* {['Customers', 'Products', 'Orders', 'Brands', 'Categories'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))} */}
 
-          <ListItem button onClick={() => handleSectionChange(CustomerSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
+            <li> <HiIcons.HiOutlineLogout /> 
+             <Button variant="danger" onClick={handleLogOut}>Logout</Button>
+             </li>
+          </ul>
+        </nav>
+      </div>
+      </IconContext.Provider>
+    </>
+  )
 
-              <ListItemText>
-                  Customers
-              </ListItemText>
-          </ListItem>
-
-          <ListItem button onClick={() => handleSectionChange(ProductSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
-
-              <ListItemText>
-                  Product 
-              </ListItemText>
-          </ListItem>
-
-          <ListItem button onClick={() => handleSectionChange(BrandSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
-
-              <ListItemText>
-                  Brand 
-              </ListItemText>
-          </ListItem>
-
-          <ListItem button onClick={() => handleSectionChange(CategorySectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
-
-              <ListItemText>
-                  Category 
-              </ListItemText>
-          </ListItem>
-
-
-          <ListItem button onClick={() => handleSectionChange(OrderSectionPage)}>
-              <ListItemIcon>
-                  <GroupIcon />
-              </ListItemIcon>
-
-              <ListItemText>
-                  Order 
-              </ListItemText>
-          </ListItem>
-
-
-        </List>
-        <Divider />
-        <List>
-          {['Urgent', 'Reports'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {/* { currentSection } */}
-        <OrderSectionPage/>
-
-      </main>
-    </div>
-  );
 }
