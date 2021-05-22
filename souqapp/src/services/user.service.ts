@@ -96,24 +96,7 @@ export class UserService {
   //       res.docs[0].ref.delete();
   //     });
   // }
-  getOrders():Observable<any> {
-    
-    return from(
-      this.db
-        .collection('user')
-        .doc(this.userId)
-        .collection('orders')
-        .get()
-    ).pipe(
-      map((response) => {
-        
-        return response.docs.map((doc) => {
-          console.log(doc.data());
-          return doc.data() ;
-        });
-      })
-    );
-  }
+ 
  removeFromWishList(id){
   this.db
   .collection('user')
@@ -213,13 +196,47 @@ export class UserService {
   }
 
   // end of cart methods
+//orders methods
 
-  getOrders() {}
+getOrders():Observable<any> {
+    
+  return from(
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('orders')
+      .get()
+  ).pipe(
+    map((response) => {
+      
+      return response.docs.map((doc) => {
+        console.log(doc.data());
+        return doc.data() ;
+      });
+    })
+  );
+}
+
 
   getAllOrders() {
     return this.db.collectionGroup('orders')
               .get();
   }
+  proceedToCheckout(items,orderData){
+     this.db.collection('user')
+     .doc(this.userId)
+     .collection('orders')
+     .add({...orderData})
+     .then(console.log)
+     .catch(console.log)
+  }
+  
+  // getUser(){
+  //   this.db.collection("")
+  // }
+    
+
+  
 
   getAddresses() {}
 

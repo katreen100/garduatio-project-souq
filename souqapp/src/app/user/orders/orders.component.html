@@ -21,6 +21,7 @@
       <p>Order placed on : <strong>{{item.createdAt.toDate() |date}}</strong></p>
       <!-- <p>Order ID : {{item.id | }}</p> -->
      <p> Delivary date : {{item.deliveryDate.toDate() |date}}</p>
+     <p> Order ID : #{{item.orderId | slice:0:6}}</p>
 
       <u style="color: royalblue;"><a href="">Order details</a> </u>
     </div>

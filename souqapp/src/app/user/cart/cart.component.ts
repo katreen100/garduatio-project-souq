@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IWishListItemData } from '@models/iproduct';
 import { UserService } from 'src/services/user.service';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,13 +14,14 @@ export class CartComponent implements OnInit, OnDestroy {
   cartItemsCount: number;
   cartTotalPrice: number;
 
-  constructor(private user: UserService) {
+  constructor(private user: UserService ) {
     this.sub = this.user.getCartItems()
                         .subscribe(res => {
                           this.cartItems = res;
                           this.cartItemsCount = res.length;
                           this.cartTotalPrice = this.calculateTotalPrice();
                         });
+                        this.checkOut()
   }
 
   ngOnInit(): void {
@@ -29,6 +31,22 @@ export class CartComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  checkOut(){
+    let date = new Date();
+    let deliveryDate=date.setDate(date.getDate() + 3);
+    let orderMetaData={
+      createdAt:date,
+      updatedAt:date,
+      total:this.cartTotalPrice,
+      itemCount:this.cartItemsCount,
+      status:'ready for shiping',
+      deliveryDate:deliveryDate,
+      // username     
+    }
+    this.user.proceedToCheckout(this.cartItems,orderMetaData)
+
+
+  }
 
   calculateTotalPrice(): number {
     console.log(this.cartItems);
