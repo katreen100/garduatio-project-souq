@@ -22,6 +22,7 @@ import { PrivacyComponent } from './Components/privacy/privacy.component';
 import { AuthGaurdServiceService } from 'src/services/auth-gaurd-service.service';
 import { CartComponent } from './user/cart/cart.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
+import { OrderdetailsComponent } from './user/orderdetails/orderdetails.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
@@ -47,12 +48,15 @@ const routes: Routes = [
     component: UserDashboardComponent,
     children: [
       { path: "orders", component: OrdersComponent },
+      {path:'orderdetails',component:OrderdetailsComponent},
       { path: "wishlist", component: WishlistComponent },
       { path: "addresses", component: AddressesComponent },
-      { path: "settings", component: SettingsComponent }
+      { path: "settings", component: SettingsComponent },
+    //  {path:'orderdetails',component:OrderdetailsComponent}
     ],
     canActivate:[AuthGaurdServiceService]
   },
+  
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},
   // {path:"FAQS-summary",component: AppComponent},

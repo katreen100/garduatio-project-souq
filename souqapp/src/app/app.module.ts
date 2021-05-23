@@ -49,6 +49,7 @@ import { PrivacyComponent } from './Components/privacy/privacy.component';
 import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
+import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { CheckoutComponent } from './user/checkout/checkout.component';
     PrivacyComponent,
     CartComponent,
     CartItemComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderdetailsComponent
   ],
   imports: [
     BrowserModule,
