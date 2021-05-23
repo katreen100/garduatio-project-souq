@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { InView } from "@shared/pipes/in-view";
-
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IWishListItemID } from '@models/iproduct';
 /**
  * Product Card
  * ==============
@@ -21,16 +22,22 @@ import { InView } from "@shared/pipes/in-view";
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  styleUrls: ['./product-card.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class ProductCardComponent implements OnInit {
   @Input() productData;
   product;
-constructor(private router:Router) {
+  fullproductId:IWishListItemID;
+constructor(private router:Router,config: NgbModalConfig,
+  private modalService: NgbModal,) {
   }
-
+  openlg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
   ngOnInit(): void {
     this.product = this.productData;
+    
   }
   productDetails(parentProductId, variantId){
     this.router.navigate(['/productPage/',parentProductId,variantId])

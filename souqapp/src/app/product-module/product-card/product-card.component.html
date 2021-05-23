@@ -106,9 +106,31 @@
                 </div>
             </div>
             <div class="quick-view">
-                <h2 i18n>Quick View</h2>
+                <button class="btn btn-primary" (click)="openlg(content)">Quick View</button>
+                <!-- <h2  class ="btn " i18n>Quick View</h2> -->
             </div>
-
+            <ng-template
+          class="modal-lg"
+          #content
+          let-c="close"
+          style="width: 1200px"
+          let-d="dismiss"
+        >
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="d('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- <app-oneProductComp [fullproductId]='' ></app-oneProductComp> -->
+            one product component 
+          </div>
+        </ng-template>
         </section>
         <section class="product-details  px-4 py-2">
             <h2 class="text-secondary" type="button" (click)="productDetails(product.parentId, product.mainVariant)">{{ product.name }}</h2>
@@ -138,8 +160,10 @@
                 <div *ngIf="product.freeShipping" i18n>Free Shipping<div>
                 <!-- <div *ngIf="product.fullfilledBySouq">Fullfilled by Souq</div> -->
             </div>
-
-            <button class="add-to-cart-btn btn btn-primary">ADD TO CART</button>
+            <div class="w-100 ">
+                <button class="add-to-cart-btn btn btn-primary">ADD TO CART</button>
+            </div>
+            
         <!-- </section> -->
-    <!-- </section> -->
+ <!-- </section> -->
 </div>
