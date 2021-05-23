@@ -1,0 +1,52 @@
+.errors {
+    border: 1.5px solid #C40000;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px lightgray inset;
+}
+
+input {
+    outline: none;
+    border: 1px solid silver;
+    padding: 3px 7px;
+}
+
+input:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+}
+
+.register-btn {
+    font-size: 1.2rem;
+    color: white;
+    background: rgb(0, 139, 255);
+    background: linear-gradient(180deg, rgba(0, 139, 255, 1) 0%, rgba(48, 149, 233, 1) 58%);
+}
+
+.register-btn:hover {
+    /* background: rgb(77, 100, 120);
+    background: radial-gradient(circle, rgba(77, 100, 120, 1) 16%, rgba(0, 139, 255, 1) 100%); */
+    background: rgb(102, 162, 213);
+    background: linear-gradient(180deg, rgba(102, 162, 213, 1) 0%, rgba(0, 121, 222, 1) 100%);
+}
+
+.agreement {
+    line-height: 1;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #c45500;
+}
+
+footer ul li {
+    list-style-type: none;
+}
+
+.seperator {
+    display: inline-block;
+    width: 20px;
+}
+
+.copy {
+    display: block;
+}

@@ -144,6 +144,8 @@ export interface IWishListItemData {
     quantity:        number;
     variation:       Object;
     createdAt:       Date; 
+    updatedAt:       Date;
+    cartQuantity:    number; // for cart purposes
 }
 
 export interface IVariant {
@@ -157,4 +159,18 @@ export interface IVariant {
 export interface Image {
     thumbnail: string;
     regular:   string;
+}
+export interface Orders{
+    checkoutDate:{},
+    couponId:string,
+    deliveryAddress:string,
+    deliveryDate:{},
+    extraData:[],
+    items:[],
+    paymentConfirm:boolean,
+    
+paymentMethod:string,
+status:string,
+total:number
+
 }

@@ -89,13 +89,20 @@ export class OneProductCompComponent implements OnInit {
                 quantity: this.variation.quantity,
                 mainImage: this.variation.mainImage,
                 variation: this.variation.variation,
-                createdAt: new Date()
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                cartQuantity: 1
               }
     });
 
     //getaverage rate
     this.prodservice.getProductRatingDetails(this.productFullId.parentProductId)
         .subscribe(res => this.productRate = res);
+  }
+
+
+  addToCart() {
+    this.userService.addToCartIfNotExist(this.productFullId, this.wishListItem)
   }
 }
 

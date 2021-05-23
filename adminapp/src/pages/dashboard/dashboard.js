@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import * as FaIcons from "react-icons/fa";
 import * as FiIcons from "react-icons/fi";
@@ -26,7 +27,6 @@ export default function DashboardPage({ handleLogOut }) {
       icon: <AiIcons.AiOutlineHome />,
       cname: 'nav-text',
     },
-
     {
       title: 'Customers',
       path: '/Customers',
@@ -57,9 +57,6 @@ export default function DashboardPage({ handleLogOut }) {
       icon: <RiIcons.RiAdminLine />,
       cname: 'nav-text',
     },
-
-
-
   ]
   return (
     <>
@@ -84,7 +81,6 @@ export default function DashboardPage({ handleLogOut }) {
                 
               )
             })}
-
             <li> <HiIcons.HiOutlineLogout /> 
              <Button variant="danger" onClick={handleLogOut}>Logout</Button>
              </li>
@@ -94,5 +90,4 @@ export default function DashboardPage({ handleLogOut }) {
       </IconContext.Provider>
     </>
   )
-
 }
