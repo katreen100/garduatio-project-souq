@@ -6,7 +6,6 @@ import * as RiIcons from "react-icons/ri";
 import * as MdIcons from "react-icons/md";
 import * as HiIcons from "react-icons/hi";
 import * as CgIcons from "react-icons/cg";
-import * as SiIcons from "react-icons/si";
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 import './dashboard.css';
@@ -58,12 +57,7 @@ export default function DashboardPage({ handleLogOut }) {
       icon: <RiIcons.RiAdminLine />,
       cname: 'nav-text',
     },
-    {
-      title: 'Brands',
-      path: '/Brands',
-      icon: <SiIcons.SiBrandfolder />,
-      cname: 'nav-text',
-    },
+
 
 
   ]

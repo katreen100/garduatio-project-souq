@@ -20,7 +20,7 @@ export const useFireStoreCategories=()=>{
     }
 
     const editCategory = async (category)=>{
-        await db.collection('categoryEnglish').doc(Category.id).update({
+        await db.collection('categoryEnglish').doc(category.id).update({
             ...category
         })
     }
