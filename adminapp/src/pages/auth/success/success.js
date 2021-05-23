@@ -1,7 +1,6 @@
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AdminsSectionPage from '../../dashboard/admins';
-import BrandSectionPage from '../../dashboard/brand';
 import CategorySectionPage from '../../dashboard/category';
 import CustomerSectionPage from '../../dashboard/customer';
 import DashboardPage from '../../dashboard/dashboard'
@@ -21,7 +20,7 @@ const Sucess = ({ handleLogOut }) => {
                     <Route path='/Orders' component={OrderSectionPage} />
                     <Route path='/Categories' component={CategorySectionPage} />
                     <Route path='/Admins' component={AdminsSectionPage} />
-                    <Route path='/Brands' component={() => <BrandSectionPage />} />
+                    <Route path='/*' exact component={HomeSectionPage} />
                 </Switch>
 
             </Router>
