@@ -7,6 +7,7 @@ import * as RiIcons from "react-icons/ri";
 import * as MdIcons from "react-icons/md";
 import * as HiIcons from "react-icons/hi";
 import * as CgIcons from "react-icons/cg";
+import * as BiIcons from 'react-icons/bi';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 import './dashboard.css';
@@ -43,6 +44,12 @@ export default function DashboardPage({ handleLogOut }) {
       title: 'Orders',
       path: '/Orders',
       icon: <MdIcons.MdLocalShipping />,
+      cname: 'nav-text',
+    },
+    {
+      title: 'Brands',
+      path: '/Brands',
+      icon: <BiIcons.BiShapePolygon />,
       cname: 'nav-text',
     },
     {

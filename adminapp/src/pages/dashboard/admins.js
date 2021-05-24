@@ -35,6 +35,7 @@ const AdminsSectionPage = () => {
                     <input required={true} type="text" name="email" placeholder="Enter Email Address" onChange={handleChange} autoComplete="off" value={admin.email} />
                     <input required={true} type="text" name="name" placeholder="Enter Name" onChange={handleChange} autoComplete="off" value={admin.name} />
                     <input required={true} type="text" name="profilePicture" placeholder="Enter String Link" onChange={handleChange} autoComplete="off" value={admin.profilePicture} />
+                   
                     <select required={true} name="userRole" onChange={handleChange} value={admin.userRole}>
                         <option value="DEFAULT" disabled>Choose Role</option>
                         <option value="admin" > Admin </option>

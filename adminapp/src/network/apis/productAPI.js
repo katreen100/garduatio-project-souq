@@ -6,10 +6,12 @@ export const useFireStoreProducts=()=>{
     useEffect(() => {
         const subscriberProducts =db.collection('ParentProduct').orderBy('createdAt').onSnapshot(snap =>{
             let fetched = snap.docs.map(doc =>{
+                console.log(doc.data())
                 return {...doc.data(), id:doc.id}
             })
             setProducts(fetched)
         })
+        
         return subscriberProducts
     }, [])
 
