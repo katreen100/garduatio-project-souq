@@ -1,70 +1,86 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import React, { useState } from 'react';
+import { useFireStoreProducts } from '../../network/apis/productAPI'
+import './brand.css'
+import Table from 'react-bootstrap/Table'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
+const initialValue = {
+  allVariations: {},
+  color: '',
+  allVariations_ar: {},
+  sellerNotes: {},
+  sellerNotes_ar: {},
+  variants: {},
+  features: {},
+  features_ar: {},
+
+  brandName: '',
+  brandName_ar: '',
+  categoryName: '',
+  categoryName_ar: '',
+
+  description: '',
+  description_ar: '',
+  averageRating: '',
+  discount: '',
+  eligibleForCoupons: false,
+  freeShipping: true,
+  mainImage: '',
+  shipping_ar: '',
+  tax: '',
+
+  name: '',
+  name_ar: '',
+  price: '',
+  condition: '',
+  condition_ar: '',
+  mainVariant: 'mainVariant',
+
+  createdAt: new Date(),
+  updatedAt: new Date(),
 }
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
-
 export default function SimpleModal() {
-  const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
-      <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p>
-      <SimpleModal />
-    </div>
-  );
+  const { Products, addProduct, editProduct, deleteProduct } = useFireStoreProducts()
+  const [product, setProduct] = useState(initialValue)
+  const handleChange = ({ target }) => {
+    setProduct({
+      ...product,
+      [target.name]: target.value,
+    })
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await addProduct(product)
+    setProduct(initialValue)
+  }
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        {body}
-      </Modal>
+      <h1> Create Product Parent </h1>
+      <div className="input">
+
+
+        <form onSubmit={handleSubmit}>
+          <label> All Variations English </label>
+          {Products.map((product) => {
+            return Object.entries(product.allVariations).map(([keyAllVariation, valueAllVariation]) => {
+              return (
+                <select key={keyAllVariation.toString()} required={true} name="color" onChange={handleChange} value={product.color}>
+                  <option key={keyAllVariation} value='DEFAULT' disabled> {keyAllVariation}</option>
+                  {
+                    valueAllVariation.map((col) => <option key={col.toString()}>{col}</option>)
+                  }
+                </select>
+              )
+            })
+          })}
+
+
+          {localStorage.getItem('userRole') === 'admin' ? <input type="submit" value="ADD" /> : null}
+        </form>
+      </div>
     </div>
   );
 }
