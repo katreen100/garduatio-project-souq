@@ -14,6 +14,14 @@ export class RateStaticsComponent implements OnInit, OnDestroy {
   rate: IRate;
   total = 0;
   constructor(private rateService: ProductService) {
+    this.rate={
+      averageRating : 0,
+      five : 0,
+      four:0,
+      three:0,
+      two:0,
+      one:0
+    }
   }
   ngOnInit(): void {
     let sub = this.rateService.getProductRatingDetails(this.parentID).subscribe(res => {

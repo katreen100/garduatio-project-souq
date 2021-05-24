@@ -51,6 +51,7 @@ import { CartItemComponent } from './user/cart-item/cart-item.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +95,8 @@ import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
     CartComponent,
     CartItemComponent,
     CheckoutComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
