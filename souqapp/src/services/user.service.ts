@@ -1,6 +1,9 @@
+import { Orders } from './../app/models/iproduct';
 import { locale } from '@shared/localization/localization';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductService } from './product.service';
@@ -11,14 +14,20 @@ import { IWishListItemData, IWishListItemID } from '@models/iproduct';
 })
 export class UserService {
   userId: string;
+  userName: string;
+  user;
 
   constructor(
     private db: AngularFirestore,
-    private productService: ProductService
-  )
-  {
+    private auth: AngularFireAuth,
+  ) {
     // Todo: get userid dynamically from firebase.auth.currentUser.uid
-    this.userId = 'CLXtuKipWfR4TTJgwfteCF1CcmG3';
+    this.user = this.auth.user.subscribe(u => {
+      this.userName = u.displayName;
+      this.userId = u.uid;
+      console.log(this.userId);
+    });
+    // this.userId = 'CLXtuKipWfR4TTJgwfteCF1CcmG3';
   }
 
   addToWishList(id, wishListItem) {
@@ -61,8 +70,7 @@ export class UserService {
           if (res.docs.length < 0) return false;
         })
     );
-    // .pipe(map(res =>console.log(res) )
-    // );
+
   }
   getWishListIds(): Observable<IWishListItemID[]> {
     return from(
@@ -84,19 +92,33 @@ export class UserService {
       })
     );
   }
- removeFromWishList(id){
-  this.db
-  .collection('user')
-  .doc(this.userId)
-  .collection('wishlist')
-  .ref.where('parentProductId', '==', id.parentProductId)
-  .where('variantId', '==', id.variantId)
-  .get()
-  .then((res) => {
-  res.docs[0].ref.delete()
-  })
- 
-}
+  // removeFromWishList(id) {
+  //   this.db
+  //     .collection('user')
+  //     .doc(this.userId)
+  //     .collection('wishlist')
+  //     .ref.where('parentProductId', '==', id.parentProductId)
+  //     .where('variantId', '==', id.variantId)
+  //     .get()
+  //     .then((res) => {
+  //       res.docs[0].ref.delete();
+  //     });
+  // }
+
+  removeFromWishList(id) {
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('wishlist')
+      .ref.where('parentProductId', '==', id.parentProductId)
+      .where('variantId', '==', id.variantId)
+      .get()
+      .then((res) => {
+        res.docs[0].ref.delete()
+      })
+
+  }
+
   getWishListItems(): Observable<IWishListItemData[]> {
     return from(
       this.db
@@ -114,13 +136,163 @@ export class UserService {
     );
   }
 
-  getOrders() {}
 
-  getAddresses() {}
+  // Cart crud
+  getCartItems(): Observable<IWishListItemData[]> {
+    return this.db.collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .get()
+      .pipe(
+        map(response => {
+          return response.docs.map(doc => {
+            return doc.data() as IWishListItemData;
+          })
+        })
+      );
+  }
 
-  addAddress() {}
+  addToCartIfNotExist(id, item: IWishListItemData) {
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .ref.where('parentProductId', '==', id.parentProductId)
+      .where('variantId', '==', id.variantId)
+      .get()
+      .then((res) => {
+        if (res.empty) {
+          this.addToCart(item);
+        }
+      });
 
-  removeAddress() {}
+  }
 
-  updateAddress() {}
+  addToCart(item: IWishListItemData) {
+    item.cartQuantity = 1;
+    this.db.collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .add(item)
+      .then(console.log)
+      .catch(console.log);
+  }
+
+  removeFromCart(itemId) {
+    this.db
+      .collection('user')
+      .doc(this.userId)
+      .collection('cart')
+      .ref.where('parentProductId', '==', itemId.parentProductId)
+      .where('variantId', '==', itemId.variantId)
+      .get()
+      .then((res) => {
+        res.docs[0].ref.delete()
+      });
+  }
+
+  emptyCart() {
+    this.db.collection('user')
+            .doc(this.userId)
+            .collection('cart')
+            .get()
+            .toPromise()
+            .then(res => {
+              res.forEach(doc => {
+                doc.ref.delete();
+              })
+            });
+  }
+
+  // end of cart methods
+  //orders methods
+
+  getOrders(): Observable<any> {
+
+    return from(
+      this.db
+        .collection('user')
+        .doc(this.userId)
+        .collection('orders')
+        .get()
+    ).pipe(
+      map((response) => {
+
+        return response.docs.map((doc) => {
+          console.log(doc.data());
+          return doc.data();
+        });
+      })
+    );
+  }
+
+
+  getAllOrders() {
+    return this.db.collectionGroup('orders')
+      .get();
+  }
+
+  updateOrderId(orderId) {
+    this.db.collection('user')
+      .doc(this.userId)
+      .collection('orders')
+      .doc(orderId)
+      .update({ 
+        orderId,
+        userId: this.userId,
+        updatedAt: new Date()
+      });
+  }
+
+  addOrderItems(orderId, items) {
+    // for multiple document writes
+    let batch = this.db.firestore.batch();
+
+    items.forEach(item => {
+    let docRef = this.db.firestore.collection('user')
+                        .doc(this.userId)
+                        .collection('orders')
+                        .doc(orderId)
+                        .collection('items')
+                        .doc();
+
+      batch.set(docRef, item)
+    });
+
+    batch.commit();
+  }
+
+  proceedToCheckout(items, orderData) {
+    let id = '';
+    this.db.collection('user')
+      .doc(this.userId)
+      .collection('orders')
+      .add(orderData)
+      .then(res => {
+        // second step
+        id = res.id;
+        this.updateOrderId(id);
+        console.log('second step');
+      })
+      .then(() => {
+        // third step
+        this.addOrderItems(id, items);
+        console.log('third step');
+      })
+      .then(() => {
+        // fourth step
+        this.emptyCart();
+        console.log('third step');
+      })
+      .catch(res => console.log(res))
+  }
+
+
+  getAddresses() { }
+
+  addAddress() { }
+
+  removeAddress() { }
+
+  updateAddress() { }
 }

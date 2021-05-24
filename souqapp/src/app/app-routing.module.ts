@@ -8,7 +8,7 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { RegisterFormComponent } from './Components/register-form/register-form.component';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
 import { SearchComponent } from './Components/search/search.component';
-import { LoginComponent } from './lay out/User/login/login.component';
+import { LoginComponent } from './user/login/login.component';
 import { ProductGridComponent } from './product-module/product-grid/product-grid.component';
 import { OneProductCompComponent } from './productComp/oneProductComp/oneProductComp.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -16,6 +16,12 @@ import { OrdersComponent } from './user/orders/orders.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { AddressesComponent } from './user/addresses/addresses.component';
 import { SettingsComponent } from './user/settings/settings.component';
+import { HelpComponent } from './Components/help/help.component';
+import { TermsComponent } from './Components/terms/terms.component';
+import { PrivacyComponent } from './Components/privacy/privacy.component';
+import { AuthGaurdServiceService } from 'src/services/auth-gaurd-service.service';
+import { CartComponent } from './user/cart/cart.component';
+import { CheckoutComponent } from './user/checkout/checkout.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
@@ -29,8 +35,13 @@ const routes: Routes = [
   {path:"productPage/:parentProductId/:variantId",component: OneProductCompComponent},
   // {path:"user/register",component: AppComponent},
   { path:"login",component: LoginComponent },
+  { path:"help",component: HelpComponent },
+  { path:"terms",component: TermsComponent },
+  { path:"privacy",component: PrivacyComponent },
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
+  { path: "cart", component:  CartComponent, canActivate: [AuthGaurdServiceService]},
+  { path: "checkout", component: CheckoutComponent, canActivate: [AuthGaurdServiceService]},
   { 
     path: "dashboard",
     component: UserDashboardComponent,
@@ -39,16 +50,12 @@ const routes: Routes = [
       { path: "wishlist", component: WishlistComponent },
       { path: "addresses", component: AddressesComponent },
       { path: "settings", component: SettingsComponent }
-    ]
+    ],
+    canActivate:[AuthGaurdServiceService]
   },
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},
   // {path:"FAQS-summary",component: AppComponent},
-  {path:"orders",component: AppComponent},
-  {path:"addresses",component: AppComponent},
-  {path:"wishlist",component: AppComponent},
-  {path:"cart",component: AppComponent},
-  {path:"addresses",component: AppComponent},
   {path:"**",component: NotFoundComponent},
 ];
 
