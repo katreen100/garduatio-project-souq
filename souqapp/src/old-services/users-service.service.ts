@@ -39,6 +39,9 @@ export class UserAuthService {
   SignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
       console.log(result.user.uid)
+      localStorage.setItem('uid',result.user.uid);
+      localStorage.setItem('displayName',result.user.displayName);
+      localStorage.setItem('email',result.user.email);
       localStorage.setItem("Token", result.user.refreshToken)
       // this.checkUser.next(true)
       this.router.navigate(['/home']);
@@ -65,6 +68,7 @@ export class UserAuthService {
     return this.afAuth.createUserWithEmailAndPassword(userInfo.email, userInfo.password).then((res) => {
       userInfo.userId = res.user.uid;
       this.db.collection('user').doc(res.user.uid).set(userInfo)
+      console.log(userInfo)
       this.router.navigate(["/login"])
     });
   }

@@ -1,1 +1,125 @@
-<p>settings works!</p>
+<div class="container-fluid">
+    <div class="errors py-3 px-3 mb-3 border" *ngIf="validation.length>0">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-exclamation-circle fa-2x text-danger"></i>
+            <h5 class="a-alert-heading d-inline-block text-danger font-weight-normal pl-3" i18n>There is a problem</h5>
+        </div>
+        <ul class="ml-4 mb-0">
+            <li *ngFor="let err of validation" i18n>
+                {{err}}
+            </li>
+        </ul>
+    </div>
+    <h2 i18n>Account Settings</h2>
+    <div class="shadow">
+
+        <div class="py-2 px-3 border">
+            <h6 i18n>Account Information</h6>
+            <div class="row m-0 ">
+                <div class="col-10 p-0">
+                    <p style="line-height: 1;" i18n><small>
+                            Souq and Amazon now share account details. Changes here to your name, email, phone number,
+                            or
+                            password will also be reflected on Amazon.
+                        </small>
+                    </p>
+                    <p class="m-0">
+                        <span class="font-weight-bold" i18n>Name:</span> {{userInfo.name}}
+                    </p>
+                    <p class="m-0">
+                        <span class="font-weight-bold" i18n>Email:</span> {{userInfo.email}}
+                    </p>
+                    <p class="m-0">
+                        <span class="font-weight-bold" i18n>Password:</span> *******
+                    </p>
+                </div>
+                <div class="col-2 p-0 align-items-center d-flex">
+                    <button class="btn btn-secondary w-100" (click)="open(account)" i18n><small>Edit</small></button>
+                </div>
+                <ng-template #account let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title" i18n>Update Account Details</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label" i18n>name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" [placeholder]="userInfo.name" [(ngModel)]="updatedUserInfo.name" name="name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label" i18n>Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" [placeholder]="userInfo.email" [(ngModel)]="updatedUserInfo.email" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label" i18n>Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" [placeholder]="userInfo.password" [(ngModel)]="updatedUserInfo.password" name="password" autocomplete="off">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark mx-auto" (click)="modal.close('Save click');validate()">Save</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div class="py-2 px-3 border">
+            <h6 i18n>Personal Information</h6>
+            <div class="row m-0 ">
+                <div class="col-10 p-0">
+                    <p class="m-0">
+                        <span class="font-weight-bold" i18n>User Name:</span> {{userInfo.username}}
+                    </p>
+                    <p class="m-0">
+                        <span class="font-weight-bold" i18n>Gender:</span> {{userInfo.gender}}
+                    </p>
+                    <p class="m-0">
+                        <span class="font-weight-bold" i18n>Nationality:</span> {{userInfo.nationality}}
+                    </p>
+                </div>
+                <div class="col-2 p-0 align-items-center d-flex">
+                    <button class="btn btn-secondary w-100" (click)="open(personal)" i18n><small>Edit</small></button>
+                </div>
+                <ng-template #personal let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title" i18n>Update Account Details</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label" i18n>Gender</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" value="male" class="mr-1" name="gender" [(ngModel)]="updatedUserInfo.gender" id="M"> <label for="M" class="mr-2" i18n>Male</label>
+                                    <input type="radio" value="female" name="gender" [(ngModel)]="updatedUserInfo.gender" id="F" class="mr-1"> <label for="F" i18n>
+                                        Female</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label" i18n>Nationality</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" [placeholder]="userInfo.nationality" [(ngModel)]="updatedUserInfo.nationality" name="nationality">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark mx-auto" (click)="modal.close('Save click');validate()" i18n>Save</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+</div>
