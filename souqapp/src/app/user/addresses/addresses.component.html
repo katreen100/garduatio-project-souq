@@ -1,1 +1,105 @@
-<p>addresses works!</p>
+<div class="container-fluid">
+    <div class="errors py-3 px-3 mb-3 border" hidden>
+        <!-- <div class="errors py-3 px-3 mb-3 border" *ngIf="validation.length>0"> -->
+        <div class="d-flex align-items-center">
+            <i class="fas fa-exclamation-circle fa-2x text-danger"></i>
+            <h5 class="a-alert-heading d-inline-block text-danger font-weight-normal pl-3" i18n>There is a problem</h5>
+        </div>
+        <ul class="ml-4 mb-0">
+            <!-- <li *ngFor="let err of validation" i18n>
+                {{err}}
+            </li> -->
+        </ul>
+    </div>
+    <div class="row pb-2 d-flex align-items-center">
+        <div class="col-8">
+            <h2 i18n>Shipping Addresses</h2>
+
+        </div>
+        <div class="col-4" *ngIf="flag">
+            <button class="btn btn-secondary w-100 text-uppercase" (click)="newAdd()" i18n>
+                <small>Create new address</small>
+            </button>
+        </div>
+        <div class="col-4 text-right" *ngIf="!flag">
+            <button class="btn btn-outline-danger font-weight-bold py-1 px-3" (click)="newAdd()" i18n>
+                &times;
+            </button>
+        </div>
+    </div>
+    <div class="shadow border p-2  rounded">
+        <div *ngIf="flag;then showAddresses else addNewAddress">here is ignored</div>
+        <ng-template #showAddresses>
+            <div *ngFor="let element of addresses">
+                <div class="p-2">
+                    <label for="add"> <span class="font-weight-bold">Full Name: </span> {{element.name}} </label>
+                    <p><span class="font-weight-bold">Phone: </span> {{element.phone}}</p>
+                    <p><span class="font-weight-bold">City: </span> {{element.city}}</p>
+                    <p><span class="font-weight-bold">State: </span> {{element.state}}</p>
+                    <p><span class="font-weight-bold">Street: </span> {{element.street}}</p>
+                    <p><span class="font-weight-bold">Building Number: </span> {{element.bldgNo}}</p>
+                    <button class="btn btn-link text-uppercase" (click)="newAdd(element)" i18n>
+                        Edit
+                    </button>
+                    <button class="btn btn-link text-danger text-uppercase" (click)="remove(element.id)" i18n>
+                        Remove
+                    </button>
+                </div>
+                <hr class="my-0" />
+            </div>
+        </ng-template>
+        <ng-template #addNewAddress>
+            <div class="p-2">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="text-secondary" i18n>Full Name*</label>
+                        <div>
+                            <input type="text" id="name" class="form-control" placeholder="Enter Your Name Please" [(ngModel)]="address.name" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="text-secondary" i18n>Phone Number*</label>
+                        <div>
+                            <input type="text" id="phone" class="form-control" placeholder="Enter Your Phone Number Please" [(ngModel)]="address.phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="text-secondary" i18n>City</label>
+                        <div>
+                            <input type="text" id="city" class="form-control" placeholder="Enter Your Name Please, eg.Cairo" [(ngModel)]="address.city" name="city">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="text-secondary" i18n>State*</label>
+                        <div>
+                            <input type="text" id="state" class="form-control" placeholder="Enter Your Name Please" [(ngModel)]="address.state" name="state">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="street" class="text-secondary" i18n>Street Details*</label>
+                        <div>
+                            <input type="text" id="street" class="form-control" placeholder="Type Your Street Detials Here" [(ngModel)]="address.street" name="street">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bldgNo" class="text-secondary" i18n>Biulding Number</label>
+                        <div>
+                            <input type="text" id="bldgNo" class="form-control" placeholder="Enter Your Biulding Number here" [(ngModel)]="address.bldgNo" name="bldgNo">
+                        </div>
+                    </div>
+                    <div class="text-center">
+
+                        <button type="button" class="btn btn-outline-success px-4 py-2" (click)='add()' *ngIf="address.id == ''">Add New
+                            Address</button>
+                        <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)='editAddress()' *ngIf="address.id != ''">Edit
+                            Address</button>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+    </div>
+
+
+
+</div>
