@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'src/services/message.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
+  userData;
 
-  constructor() { }
+  constructor(private message: MessageService) {
+    this.message.currentUserData.subscribe(res => this.userData = res);
+  }
 
   ngOnInit(): void {
   }

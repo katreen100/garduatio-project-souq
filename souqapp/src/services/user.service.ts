@@ -10,6 +10,7 @@ import { ProductService } from './product.service';
 import { IWishListItemData, IWishListItemID } from '@models/iproduct';
 import { Router } from '@angular/router';
 import { IAddress } from 'src/app/view model/iaddress';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class UserService {
   constructor(
     private db: AngularFirestore,
     private auth: AngularFireAuth,
+    private message: MessageService,
     private router: Router
   ) {
     // Todo: get userid dynamically from firebase.auth.currentUser.uid
@@ -30,7 +32,8 @@ export class UserService {
     //   this.userId = u.uid;
     //   console.log(this.userId);
     // });
-    this.userId = '36g9WUVZTFcfcxgriOr1dqYAxVt1';
+    this.message.currentUserData.subscribe(res => this.userId = res.uid);
+    // this.userId = '36g9WUVZTFcfcxgriOr1dqYAxVt1';
   }
 
   addToWishList(id, wishListItem) {
@@ -315,14 +318,14 @@ export class UserService {
 
   getAddresses(): Observable<any> {
     return this.db.collection('user')
-      .doc('8g3fEQdGHxPCOMYZybTR7QLusQl2')
+      .doc(this.userId)
       .collection('addresses').get();
   }
 
   addAddress(address: IAddress) {
     console.log(address)
     this.db.collection('user')
-      .doc('8g3fEQdGHxPCOMYZybTR7QLusQl2')
+      .doc(this.userId)
       .collection('addresses').add(address)
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/dashboard/addresses'])
@@ -331,7 +334,7 @@ export class UserService {
 
   removeAddress(id) {
     this.db.collection('user')
-      .doc('8g3fEQdGHxPCOMYZybTR7QLusQl2')
+      .doc(this.userId)
       .collection('addresses')
       .doc(id).delete().then(() => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
@@ -343,7 +346,7 @@ export class UserService {
 
   updateAddress(address: IAddress) {
     this.db.collection('user')
-      .doc('8g3fEQdGHxPCOMYZybTR7QLusQl2')
+      .doc(this.userId)
       .collection('addresses')
       .doc(address.id).update(address).then(() => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
@@ -357,7 +360,7 @@ export class UserService {
     return from(
       this.db
         .collection('user')
-        .doc('8g3fEQdGHxPCOMYZybTR7QLusQl2').get()
+        .doc(this.userId).get()
       // .doc(this.userId).get()
     )
   }
@@ -367,7 +370,7 @@ export class UserService {
       res.updateEmail(userData.email).then(result => {
         console.log(res.email, userData, res.uid)
         this.db.collection('user')
-          .doc('8g3fEQdGHxPCOMYZybTR7QLusQl2')
+          .doc(this.userId)
           // .doc(this.userId)
           .update(userData).then(()=>{
             this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {

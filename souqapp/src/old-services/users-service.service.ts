@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUserRegister } from 'src/app/view model/iuser-register';
+import { MessageService } from 'src/services/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,10 @@ import { IUserRegister } from 'src/app/view model/iuser-register';
 export class UserAuthService {
   checkUser: BehaviorSubject<boolean>;
 
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private router: Router) { }
+  constructor(private db: AngularFirestore,
+              private afAuth: AngularFireAuth,
+              private message: MessageService,
+              private router: Router) { }
 
   getUser(id: number): Observable<any> {
     return this.db
@@ -38,7 +42,12 @@ export class UserAuthService {
 
   SignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
-      console.log(result.user.uid)
+      console.log(result.user)
+      this.message.updateUserData({
+        name: result.user.displayName,
+        email: result.user.email,
+        uid: result.user.uid,
+      });
       localStorage.setItem('uid',result.user.uid);
       localStorage.setItem('displayName',result.user.displayName);
       localStorage.setItem('email',result.user.email);
