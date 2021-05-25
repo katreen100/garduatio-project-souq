@@ -13,6 +13,7 @@ export class ProductGridComponent implements OnInit {
 
   constructor(private productService: ProductService) {
     this.productCard$ =  this.productService.getAllProducts();
+   this.productService.getAllProducts().subscribe(res=>console.log(res))
   }
 
   ngOnInit(): void {

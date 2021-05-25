@@ -122,7 +122,7 @@ export interface IProductVariant {
 
     images:          [];
     quantity:        number;
-    variation_ar:    { };
+    variation_ar?:    { };
     variation:       { };
 }
 

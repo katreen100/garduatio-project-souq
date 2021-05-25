@@ -1,5 +1,5 @@
 <!-- {{orders | async | json}}
-{{ wishlist | async | json}} -->
+{{ wishlist | async | json}}  -->
 
 
 
@@ -15,6 +15,7 @@
   }
 </style>
 <div *ngFor="let item of (orders | async)">
+  
 <div class="row container-fluid shadow" style="padding: 2% ;font-weight: 500;">
   <div class="col-12 row userInfo">
     <div class="col-md-6 col-sm-12 col-sm-12 pb-3" >
@@ -23,7 +24,7 @@
      <p> Delivary date : {{item.deliveryDate.toDate() |date}}</p>
      <p> Order ID : #{{item.orderId | slice:0:6}}</p>
 
-      <u style="color: royalblue;"><a href="">Order details</a> </u>
+      <u style="color: royalblue;"><a  [routerLink]="['../orderdetails']" >Order details</a> </u>
     </div>
     <div class="col-md-6 col-sm-12 col-sm-12 pb-3">
       <p>Recipient: user name</p>
@@ -44,54 +45,34 @@
             padding-top-2x padding-bottom-1x
           "
         >
-          <div [ngClass]=" item.status=='RFS'?'step completed':'step'">
+          <div [ngClass]=" item.status=='ready for shiping'?'step completed':'step'">
             <div class="step-icon-wrap" style="line-height: .8;">
               <div class="step-icon">1</div>
             </div>
             <h4 class="step-title" >Ready for shipping </h4>
           </div>
-           <div [ngClass]=" item.status=='OFD'?'step completed':'step'">
+           <div [ngClass]=" item.status=='Out of delivary'?'step completed':'step'">
             <div class="step-icon-wrap">
               <div class="step-icon">2</div>
             </div>
             <h4 class="step-title">Out of delivary</h4>
           </div>
-          <div  [ngClass]=" item.status=='delivered'?'step completed':'step'">
+          <div  [ngClass]=" item.status=='delivered'?'step completed':'step'" *ngIf="item.status==returned" >
             <div class="step-icon-wrap">
               <div class="step-icon">3</div>
             </div>
             <h4 class="step-title">Delivered</h4>
           </div>
+          <div  [ngClass]=" item.status=='returned'?'step returned':'step'" [hidden]="!item.status==returned" >
+            <div class="step-icon-wrap" style="color: royalblue;">
+              <div class="step-icon" >3</div>
+            </div>
+            <h4 class="step-title" style="font-weight: bold;">Rteurned</h4>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
-  <!-- <div class="col-12 product-orders row">
-    <div class="col-md-6 col-sm-12 row">
-      <div class="col-2">
-        <img
-          src="https://cf3.s3.souqcdn.com/item/2017/05/24/22/87/05/66/item_XS_22870566_31942865.jpg"
-        />
-      </div>
-      <div class="col-10" >
-        <h6>this is product name</h6>
-        <small>
-          condithion :new 
-        </small>
-        <app-user-rate></app-user-rate>
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-12 pr-3 row d-flex pl-5">
-      <p>
-        Return window closed on <strong>02 december 2020</strong>,item cannot be
-        returned
-      </p>
-      <input
-        class="btn btn-secondary w-100 align-self-end"
-        type="button"
-        value="TRACK SHIPMENT"
-      />
-    </div>
-  </div>
-</div>
-</div> -->
+  
+  

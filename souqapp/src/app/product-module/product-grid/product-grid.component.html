@@ -1,14 +1,19 @@
 <style>
     #product-grid {
-        border: 3px solid tomato;
+        /* border: 3px solid tomato; */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
 </style>
 <h1 class="text-secondary">Products:</h1>
-<section id="product-grid">
+<div class="container-fluid">
+<section id="product-grid " class="row"  *ngFor="let p of productCard$ | async">
+    <div class="col-md-3 col-sm-12">
     <app-product-card
-        *ngFor="let p of productCard$ | async"
+       
         [productData]="p">
     </app-product-card>
-</section>
+    </div>
+    
+</section> 
+</div>

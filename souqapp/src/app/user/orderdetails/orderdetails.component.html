@@ -1,0 +1,74 @@
+<!-- {{orderItems |async |json}}
+
+<div *ngFor="let item of ( orderItems | async)">
+  <div>
+    {{item.description}}
+  </div>
+
+</div> -->
+<style>
+  #cart {
+      background-color: #8dc13e;
+      border-color: #8dc13e;
+  }
+
+  #remove {
+      background-color: #C14450;
+      border-color: #C14450;
+  }
+</style>
+<div *ngFor="let orderItems of (orderItems | async)">
+
+<div
+class="card shadow-sm justify-content-center"
+style="max-width: 100%; height: 200px"
+
+>
+<div class="row p-2 align-items-center w-100">
+  <div class="col-md-4 text-center">
+    <img
+      [src]="orderItems.mainImage"
+      class=""
+      height="150px"
+      alt="{{orderItems.description}}"
+      title="{{ orderItems.description }}" 
+      >
+  </div>
+  <div class="col-md-8">
+    <div class="card-body row">
+        <div class="col-7">
+          <h3 class="card-title">{{ orderItems.name }}</h3>
+          <div *ngIf="!orderItems.quantity">Not Available</div>
+          <div class="card-text font-weight-bold fs-3" *ngIf="orderItems.quantity">
+              {{ orderItems.price * (100 - orderItems.discount) / 100 | currency:'EGP ' }}
+          </div>
+
+          <div *ngFor="let v of orderItems.variation | keyvalue; let i = index"
+              >
+                  <span class="font-weight-bold">
+                      {{ v.key }}
+                  </span> : {{ v.value }}
+                  
+          </div>
+          <div>
+            <span class="font-weight-bold">
+                الكمية المطلوبة 
+          </span>
+             :{{orderItems.quantity}}
+          </div>
+          <hr class="my-1">
+
+        </div>
+        <div class="col-5 border-left">
+          <app-user-rate ></app-user-rate>
+          
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- <pre>
+  {{ orderItems | json }}
+</pre> -->
+

@@ -25,12 +25,12 @@ export class UserService {
     private router: Router
   ) {
     // Todo: get userid dynamically from firebase.auth.currentUser.uid
-    this.user = this.auth.user.subscribe(u => {
-      this.userName = u.displayName;
-      this.userId = u.uid;
-      console.log(this.userId);
-    });
-    // this.userId = 'CLXtuKipWfR4TTJgwfteCF1CcmG3';
+    // this.user = this.auth.user.subscribe(u => {
+    //   this.userName = u.displayName;
+    //   this.userId = u.uid;
+    //   console.log(this.userId);
+    // });
+    this.userId = '36g9WUVZTFcfcxgriOr1dqYAxVt1';
   }
 
   addToWishList(id, wishListItem) {
@@ -289,7 +289,29 @@ export class UserService {
       })
       .catch(res => console.log(res))
   }
-
+  getOrdrsItem(){
+    return from(
+      this.db
+        .collection('user')
+        .doc(this.userId)
+        .collection('orders')
+        .doc("TZbmti8TwTrnVdpBVzZC")
+        .collection('items')
+        .get()
+    ).pipe(
+      map((response) => {
+  
+        return response.docs.map((doc) => {
+          console.log("test");
+          console.log(doc.data());
+          return doc.data();
+        });
+      })
+    );
+    
+    
+  
+   }
 
   getAddresses(): Observable<any> {
     return this.db.collection('user')

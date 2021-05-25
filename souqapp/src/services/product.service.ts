@@ -129,6 +129,22 @@ export class ProductService {
                     })
                   )
   }
+  getMainVariant(parentProductId) {
+ 
+    return this.db.collection('ParentProduct')
+    .doc(parentProductId)
+    .collection('ProductVariants')
+    .doc("mainVariant")
+    .get()
+     .pipe(
+      map(response => {
+        console.log(response.data())
+        return LocalizeProductVariant( response.data() as IProductVariant)
+      })
+    )
+    
+    
+  }
 
 
 }

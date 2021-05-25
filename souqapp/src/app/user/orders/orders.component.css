@@ -73,7 +73,18 @@ body {
     
     
 }
-
+.steps .step.returned .step-icon-wrap::before,
+.steps .step.returned .step-icon-wrap::after {
+    background-color:#e1e7ec;
+    
+    
+}
+.steps .step.returned .step-icon {
+    
+    
+    background-color: #d11f4b;
+    color: #fff
+}
 .steps .step.completed .step-icon {
     
     

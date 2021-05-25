@@ -5,7 +5,7 @@
   <div id="leftDiv" class="col-lg-5 col-md-12 col-sm-12 row pb-4 pr-2">
     <div id="productinfo" class="col-12">
       <h6>
-        {{ product.description }}
+        {{ product?.description }}
       </h6>
       <div class="pb-2">
         <span ngbDropdown class="d-inline-block">
@@ -28,14 +28,14 @@
   <div id="middldiv" class="col-lg-4 col-md-6 col-sm-12 pb-3">
     <div class="pr-3 pl-3">
       <div id="headprice">
-        <h2 class="storngancor">{{ calPricefterDiscount() }}<sub>EGP</sub></h2>
+        <h2 class="storngancor">{{ product?.price* ((100 - product.discount) / 100)  |currency:" " }}<sub>EGP</sub></h2>
         <div [hidden]="product.price.discount == 0">
           <span
             class="priceBeforDiscount graytext"
             style="text-decoration: line-through"
-            >{{ product.price}}</span
+            >{{ product?.price}}</span
           >
-          <span> you saved {{calcSavedMony()}}</span>
+          <span> you saved {{product?.price - (product?.price* ((100 - product.discount) / 100)  ) | currency: " "}}</span>
         </div>
         <div>
           <span class="graytext"> All price include VAT</span>
@@ -93,7 +93,7 @@
         <div>
           <dl>
             <dt style="float: left">brand :</dt>
-            <dd>{{ product.brandName }}</dd>
+            <dd>{{ product?.brandName }}</dd>
           </dl>
         </div>
         <div id="ptoduct-desc">
@@ -135,13 +135,13 @@
       <div id="details">
         <dl>
           <dt style="float: left; width: 40%">condition:</dt>
-          <dd>{{ product.condition }}</dd>
+          <dd>{{ product?.condition }}</dd>
         </dl>
       </div>
     </div>
     <div id="icondiv" class="col-12" style="font-size: 18px">
       <ul id="socialicon">
-        <li><i class="fas fa-heart p-2" (click)="addToWishList()"[(ngModel)]="heartColor" [ngStyle]='{color: heartColor==true?"red":"gray"}'></i></li>
+        <li><i class="fas fa-heart p-2" (click)="addToWishList()"  [ngStyle]='{color: heartColor==true?"red":"gray"}'></i></li>
         <li><i class="fab fa-twitter p-2"></i></li>
         <li><i class="fab fa-facebook-square p-2"></i></li>
         <li><i class="fab fa-google-plus-g p-2"></i></li>

@@ -1,5 +1,5 @@
 import { LabelType } from '@angular-slider/ngx-slider';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IWishListItemData, IWishListItemID } from '@models/iproduct';
 
@@ -16,6 +16,7 @@ import { UserService } from 'src/services/user.service'
   providers: [NgbModalConfig, NgbModal, NgbDropdown],
 })
 export class OneProductCompComponent implements OnInit {
+  @Input() productIdasInput;
   heartColor: boolean;
   product;
   variation;
@@ -34,42 +35,86 @@ export class OneProductCompComponent implements OnInit {
   {
     config.backdrop = 'static';
     config.keyboard = false;
-    this.productFullId = {
-      parentProductId: activeRoute.snapshot.params['parentProductId'],
-      variantId: activeRoute.snapshot.params['variantId']
-    };
+    this.productRate = {
+      averageRating:0,
+      one:0,
+      two:0,
+      three:0,
+      four:0,
+      five:0
+    }
+    this.product={
+      id:0,
+      price:{
+        discount : 0,
+      },
+      discount: 0,
+      productprop:{},
+      allVariations:{},
+      features:[]
+
+    }
+    // this.product={
+    //   parentId:           " ";
+    // condition_ar:       " ";
+    // features:           [" " ];
+    // eligibleForCoupons: boolean;
+    // updatedAt:          ITimestamp;
+    // features_ar:        string[];
+    // categoryName_ar:    string;
+    // categoryName:       string;
+    // mainImage:          string;
+    // allVariations_ar:   { };
+    // condition:          string;
+    // description_ar:     string;
+    // allVariations:      { };
+    // name:               string;
+    // averageRating:      number;
+    // brandName:          string;
+    // price:              number;
+    // // shipping_ar:        string;
+    // sellerNotes_ar:     string[];
+    // mainVariant:        string;
+    // brandName_ar:       string;
+    // discount:           number;
+    // // shipping:           string;
+    // name_ar:            string;
+    // createdAt:          ITimestamp;
+    // tax:                number;
+    // variants:           string[];
+    // sellerNotes:        string[];
+    // description:        string;
+    // freeShipping:       boolean;
+
+    // }
   }
 
   openlg(content) {
     this.modalService.open(content, { size: 'lg' });
   }
 
-  calPricefterDiscount() {
-    return (
-      this.product.price - (this.product.price * this.product.discount) / 100
-    );
-  }
 
-  addToWishList() {
-    this.userService.checkIfToWishListIfNotExist(this.productFullId).subscribe(res => {
-      this.heartColor = res
-    })
 
+  addToWishList() { ///this.heartColor == true
     if (!this.heartColor) {
       this.userService.addToWishListIfNotExist(this.productFullId, this.wishListItem)
       this.heartColor = true
     }
     else {
-      // this.heartColor=false;
       this.userService.removeFromWishList(this.productFullId)
+      this.heartColor = false
     }
+   
   }
 
-  calcSavedMony(): number {
-    return this.product.price - this.calPricefterDiscount();
-  }
+ 
 
   ngOnInit() {
+    this.productFullId = {
+      parentProductId: this.productIdasInput,
+      variantId: "mainVariant"
+    };
+    console.log(this.productFullId)
     this.userService.checkIfToWishListIfNotExist(this.productFullId)
         .subscribe(res => this.heartColor = res);
 
