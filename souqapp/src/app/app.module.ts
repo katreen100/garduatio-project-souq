@@ -50,6 +50,11 @@ import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
+import {HomecarouselComponent} from './lay out/homecarousel/homecarousel.component'
+import {ProductCarouselComponent}from './lay out/productCarousel/productCarousel.component'
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "@angular/material/stepper";
 import { MatButtonModule } from "@angular/material/button";
 
@@ -98,10 +103,8 @@ import { MatButtonModule } from "@angular/material/button";
     CartItemComponent,
     CheckoutComponent,
     OrderdetailsComponent,
-    // MatStepLabel,
-    // MatStepper,
-    // MatVerticalStepper,
-    
+    HomecarouselComponent,
+    ProductCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -114,9 +117,21 @@ import { MatButtonModule } from "@angular/material/button";
     AngularFireAuthModule,
     MatButtonModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage:'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json');
+}

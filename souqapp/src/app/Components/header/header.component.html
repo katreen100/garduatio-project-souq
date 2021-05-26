@@ -1,25 +1,26 @@
 <div class="d-flex">
 
-    <app-sidebar [Toggled]=isToggled></app-sidebar>
+  <app-sidebar [Toggled]=isToggled></app-sidebar>
 
-    <!-- Page content holder -->
-    <div class="page-content" [class.active]="isToggled" id="content">
-        <div [ngClass]="{'side-bar-active': !isToggled}" (click)="toggleClass()"> </div>
-        <!-- Toggle button -->
-        <app-top-header></app-top-header>
-        <header class="container-fluid main-header" (scroll)="scrollHandler($event)">
+  <!-- Page content holder -->
+  <div class="page-content" [class.active]="isToggled" id="content" >
+    <div [ngClass]="{'side-bar-active': !isToggled}" (click)="toggleClass()"> </div>
+    <!-- Toggle button -->
+    <app-top-header></app-top-header>
+    <header class="container-fluid main-header" (scroll)="scrollHandler($event)">
 
-            <div class="container py-3">
-                <div class="row ">
-                    <div class="col-9 col-md-3" id="sidebarCollapse" (click)="toggleClass()">
-                        <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
-                        <img src="../../../assets/logo.png" alt="">
-                    </div>
-                    <div class="col-md-5 col-lg-7 d-none d-md-block ">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
-                            <div class="input-group-prepend">
-                                <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
+      <div class="container py-3">
+        <div class="row ">
+          <div class="col-9 col-md-3" id="sidebarCollapse" (click)="toggleClass()">
+            <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
+            <img [src]= "'logo' |translate" alt="">
+          </div>
+          <div class="col-md-5 col-lg-7 d-none d-md-block ">
+            <div class="input-group">
+              <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
+              <div class="input-group-prepend">
+                <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
+
                   <i class="fas fa-search"></i>
                 </button>
                             </div>
@@ -42,7 +43,25 @@
                     </li>
                 </ul>
             </div>
+          </div>
+          <div class="col pt-1">
+            <button class="btn btn-link" [routerLink]="['/user/login']"  >{{'Login' | translate }}</button>
+          </div>
         </div>
+      </div>
+    </header>
+    <div class="categories container-fluid bg-light">
+      <div class="container ">
+        <ul class="p-0 m-0 nav ">
+          <li class="nav-item category py-2">
+            <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">{{'All Categories' | translate }}</a>
+          </li>
+          <li class="nav-item category py-2" *ngFor="let cat of categories" (mouseenter)="show(cat.categoryName)" (mouseleave)="hide()">
+            <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]" href="#">{{cat.categoryName}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
         <!-- <button id="sidebarCollapse" (click)="toggleClass()" type="button"
         class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small
