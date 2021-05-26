@@ -8,8 +8,15 @@ export class MessageService {
   userData = new  BehaviorSubject<any>('');
   currentUserData = this.userData.asObservable();
 
+  langSource = new BehaviorSubject<any>('en');
+  currentLang = this.langSource.asObservable();
+
 
   constructor() {
+  }
+
+  changeLang(lang) {
+    this.langSource.next(lang);
   }
 
   updateUserData(message) {

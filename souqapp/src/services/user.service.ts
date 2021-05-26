@@ -278,20 +278,18 @@ export class UserService {
         // second step
         id = res.id;
         this.updateOrderId(id);
-        console.log('second step');
       })
       .then(() => {
         // third step
         this.addOrderItems(id, items);
-        console.log('third step');
       })
       .then(() => {
         // fourth step
         this.emptyCart();
-        console.log('third step');
       })
       .catch(res => console.log(res))
   }
+
   getOrdrsItem(){
     return from(
       this.db
@@ -311,9 +309,6 @@ export class UserService {
         });
       })
     );
-    
-    
-  
    }
 
   getAddresses(): Observable<any> {
