@@ -71,6 +71,7 @@
                     (click)="checkOut()"
                     [routerLink]="['/checkout']"
                     routerLinkActive="router-link-active" 
+                    [disabled]="cartItemsCount == 0? true : false"
                 >
                     PROCEED TO CHECKOUT
                 </button>
