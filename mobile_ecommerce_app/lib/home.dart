@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         animationDuration: Duration(milliseconds: 1000),
         dotSize: 4.0,
         indicatorBgPadding: 2.0,
-        dotColor: Colors.red,
+        dotColor: Colors.lightBlue,
         dotBgColor: Colors.transparent,
         
 
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.lightBlue,
         title: Text('Ecommerce App'),
         actions: [
           IconButton(
@@ -74,14 +74,14 @@ class _HomePageState extends State<HomePage> {
                   child: Icon(Icons.person, color: Colors.white),
                 ),
               ),
-              decoration: BoxDecoration(color: Colors.red),
+              decoration: BoxDecoration(color: Colors.lightBlue),
             ),
             //body
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text('Home'),
-                leading: Icon(Icons.home, color: Colors.red,),
+                leading: Icon(Icons.home, color: Colors.lightBlue,),
               ),
             ),
 
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('My Account'),
-                leading: Icon(Icons.person, color: Colors.red,),
+                leading: Icon(Icons.person, color: Colors.lightBlue,),
               ),
             ),
 
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Orders'),
-                leading: Icon(Icons.shopping_basket, color: Colors.red,),
+                leading: Icon(Icons.shopping_basket, color: Colors.lightBlue,),
               ),
             ),
 
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: ListTile(
                 title: Text('Shopping Cart'),
-                leading: Icon(Icons.shopping_cart, color: Colors.red,),
+                leading: Icon(Icons.shopping_cart, color: Colors.lightBlue,),
               ),
             ),
 
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Favories'),
-                leading: Icon(Icons.favorite, color: Colors.red,),
+                leading: Icon(Icons.favorite, color: Colors.lightBlue,),
               ),
             ),
 

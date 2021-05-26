@@ -90,7 +90,7 @@ class SingleProduct extends StatelessWidget {
                     //     Text(
                     //       "\$$productPrice",
                     //       style: TextStyle(
-                    //           color: Colors.red, fontWeight: FontWeight.w800),
+                    //           color: Colors.lightBlue, fontWeight: FontWeight.w800),
                     //     ),
                     //                     Text(
                     //     "\$$productOldPrice",
@@ -110,7 +110,7 @@ class SingleProduct extends StatelessWidget {
                   title: Text(
                     "\$$productPrice",
                     style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.w800),
+                        color: Colors.lightBlue, fontWeight: FontWeight.w800),
                   ),
                   subtitle: Text(
                     "\$$productOldPrice",

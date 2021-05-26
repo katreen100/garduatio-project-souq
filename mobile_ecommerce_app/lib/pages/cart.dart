@@ -12,7 +12,7 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.lightBlue,
         title: Text('Cart'),
         actions: [
           IconButton(
@@ -39,7 +39,7 @@ class _CartPageState extends State<CartPage> {
 
           Expanded(child: MaterialButton(onPressed: (){},
           child: Text('Check Out', style: TextStyle(color: Colors.white),),
-          color: Colors.red,
+          color: Colors.lightBlue,
           ),
           ),
 

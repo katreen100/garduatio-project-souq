@@ -23,7 +23,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.lightBlue,
         title: InkWell (child: Text('Ecommerce App'),
         onTap: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
@@ -68,7 +68,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         child: Text(
                           "\$${widget.productDetailsPrice}",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.red),
+                              fontWeight: FontWeight.bold, color: Colors.lightBlue),
                         ),
                       ),
                     ],
@@ -192,23 +192,23 @@ class _ProductDetailsState extends State<ProductDetails> {
               Expanded(
                 child: MaterialButton(
                   onPressed: () {},
-                  color: Colors.red,
+                  color: Colors.lightBlue,
                   textColor: Colors.white,
                   elevation: 0.2,
                   child: Text('Buy Now'),
                 ),
               ),
 
-              IconButton(icon: Icon(Icons.add_shopping_cart, color: Colors.red,), onPressed: (){}),
-              IconButton(icon: Icon(Icons.favorite_border, color: Colors.red,), onPressed: (){}),
+              IconButton(icon: Icon(Icons.add_shopping_cart, color: Colors.lightBlue,), onPressed: (){}),
+              IconButton(icon: Icon(Icons.favorite_border, color: Colors.lightBlue,), onPressed: (){}),
             ],
           ),
-          Divider(color: Colors.red,),
+          Divider(color: Colors.lightBlue,),
           ListTile(
             title: Text('Product Details'),
             subtitle: Text(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
           ),
-          Divider(color: Colors.red,),
+          Divider(color: Colors.lightBlue,),
 
           Row(children: [
             Padding(padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
