@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { CategoryService } from 'src/old-services/category.service';
 
 @Component({
@@ -10,16 +11,11 @@ export class HomeComponent implements OnInit {
 
   Cateogryoptions = [];
   cats = [];
+  currentLang: string;
 
-  constructor(private catService : CategoryService) {
-    this.catService.getCategories()
-      .subscribe(res => {
-        this.Cateogryoptions = res;
-        this.cats = [...this.Cateogryoptions]
-        console.log(this.cats);
-      });
-   }
-
+  constructor(private catService : CategoryService,
+  ){}
+  
   ngOnInit(): void {
   }
 

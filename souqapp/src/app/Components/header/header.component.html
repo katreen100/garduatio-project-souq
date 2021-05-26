@@ -13,7 +13,7 @@
         <div class="row ">
           <div class="col-9 col-md-3" id="sidebarCollapse" (click)="toggleClass()">
             <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
-            <img src="../../../assets/logo.png" alt="">
+            <img [src]= "'logo' |translate" alt="">
           </div>
           <div class="col-md-5 col-lg-7 d-none d-md-block ">
             <div class="input-group">
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="col pt-1">
-            <button class="btn btn-link" [routerLink]="['/user/login']"  >Login</button>
+            <button class="btn btn-link" [routerLink]="['/user/login']"  >{{'Login' | translate }}</button>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
       <div class="container ">
         <ul class="p-0 m-0 nav ">
           <li class="nav-item category py-2">
-            <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">All Categories</a>
+            <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">{{'All Categories' | translate }}</a>
           </li>
           <li class="nav-item category py-2" *ngFor="let cat of categories" (mouseenter)="show(cat.categoryName)" (mouseleave)="hide()">
             <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]" href="#">{{cat.categoryName}}</a>

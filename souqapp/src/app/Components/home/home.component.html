@@ -1,19 +1,22 @@
-
+<div [dir]="direction">
 <div class=" container-fluid row">
   <div class="col-md-4 col-sm-12 col-xs-12">
-    <img  class ="card-img" src="assets/CIB-en.jpg">
+    <img  class ="card-img" [src]=" 'CIB' |translate">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12">
-    <img  class ="card-img" src="assets/AYHN-en.jpg">
+    <img  class ="card-img"  [src]=" 'AYHN' |translate">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12">
-    <img  class ="card-img" src="assets/Valu-en.jpg">
+    <img  class ="card-img"  [src]=" 'VLUE' |translate">
   </div>
 </div>
 
 <app-homecarousel></app-homecarousel>
 <app-productCarousel></app-productCarousel>  
 <div class="freeshipping w-100 ">
-    <a [routerLink]="['../freeshipping']"><img class="card-img-top  pb-4" src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/Banners/HP-Strip/Free-Shipping-en.png">
+    <a [routerLink]="['../freeshipping']"><img class="card-img-top  pb-4" [src]="'FREESHIPING'|translate">
     </a>
 </div>
+</div>
+
+<!--  -->

@@ -51,7 +51,7 @@ export class ProductService {
                   .get()
                   .pipe(
                     map(response => {
-                      return response.docs.slice(0,4) .map(doc => {
+                      return response.docs.slice(0,5) .map(doc => {
                         return LocalizeProduct(doc.data() as IParentProduct, doc.id);
                       })
                     })
