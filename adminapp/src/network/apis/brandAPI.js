@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react'
-import {db} from '../../network/firebase/firebaseConfig'
+import {db} from '../firebase/firebaseConfig'
 
 export const useFireStoreBrands=()=>{
-    const [brands, setBrands] = useState([])
+    const [Brands, setBrands] = useState([])
     useEffect(() => {
         const subscriberBrands =db.collection('brands').orderBy('createdAt').onSnapshot(snap =>{
             let fetched = snap.docs.map(doc =>{
@@ -20,7 +20,6 @@ export const useFireStoreBrands=()=>{
     }
 
     const editBrand = async (brand)=>{
-        // debugger;
         await db.collection('brands').doc(brand.id).update({
             ...brand
         })
@@ -29,5 +28,5 @@ export const useFireStoreBrands=()=>{
     const deleteBrand = async (id)=>{
         await db.collection('brands').doc(id).delete()
     }
-    return {brands, addBrand, editBrand, deleteBrand}
+    return {Brands, addBrand, editBrand, deleteBrand}
 }

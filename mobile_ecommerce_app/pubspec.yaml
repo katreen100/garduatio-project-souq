@@ -1,0 +1,57 @@
+name: mobile_ecommerce_app
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  
+dependencies:
+  flutter:
+    sdk: flutter
+  carousel_pro: ^1.0.0
+  firebase_core: "0.7.0"
+  firebase_auth: "^0.20.1"
+  provider: ^5.0.0
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - images/shoses2.jpg
+    - images/watches.jpg
+    - images/clothes.jpg
+    - images/all.jpg
+    - images/cat/clothesCategory.png
+    - images/cat/shosesCategory.png
+    - images/cat/watchesCategory.png
+    - images/product/addidas.jpg
+    - images/product/apple_watch.png
+    - images/product/blazzer.jpg
+    - images/icons/buyicon.png
+
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+

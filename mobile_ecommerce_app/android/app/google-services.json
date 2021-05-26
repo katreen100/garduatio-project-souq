@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "539446440742",
+    "project_id": "ecommerce-clone-site",
+    "storage_bucket": "ecommerce-clone-site.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539446440742:android:17f871384a265b22c647e7",
+        "android_client_info": {
+          "package_name": "com.teamone.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539446440742-kul1a9h9po4rv32oc2f25t6vlbm7afir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiKSIIRmx84H4yk6hzJG7C-8ZiCJNcQrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539446440742-kul1a9h9po4rv32oc2f25t6vlbm7afir.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

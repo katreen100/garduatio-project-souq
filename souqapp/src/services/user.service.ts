@@ -8,6 +8,9 @@ import { from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductService } from './product.service';
 import { IWishListItemData, IWishListItemID } from '@models/iproduct';
+import { Router } from '@angular/router';
+import { IAddress } from 'src/app/view model/iaddress';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +23,8 @@ export class UserService {
   constructor(
     private db: AngularFirestore,
     private auth: AngularFireAuth,
+    private message: MessageService,
+    private router: Router
   ) {
     // Todo: get userid dynamically from firebase.auth.currentUser.uid
     // this.user = this.auth.user.subscribe(u => {
@@ -27,7 +32,8 @@ export class UserService {
     //   this.userId = u.uid;
     //   console.log(this.userId);
     // });
-    this.userId = '36g9WUVZTFcfcxgriOr1dqYAxVt1';
+    this.message.currentUserData.subscribe(res => this.userId = res.uid);
+    // this.userId = '36g9WUVZTFcfcxgriOr1dqYAxVt1';
   }
 
   addToWishList(id, wishListItem) {
@@ -193,15 +199,15 @@ export class UserService {
 
   emptyCart() {
     this.db.collection('user')
-            .doc(this.userId)
-            .collection('cart')
-            .get()
-            .toPromise()
-            .then(res => {
-              res.forEach(doc => {
-                doc.ref.delete();
-              })
-            });
+      .doc(this.userId)
+      .collection('cart')
+      .get()
+      .toPromise()
+      .then(res => {
+        res.forEach(doc => {
+          doc.ref.delete();
+        })
+      });
   }
 
   // end of cart methods
@@ -237,7 +243,7 @@ export class UserService {
       .doc(this.userId)
       .collection('orders')
       .doc(orderId)
-      .update({ 
+      .update({
         orderId,
         userId: this.userId,
         updatedAt: new Date()
@@ -249,12 +255,12 @@ export class UserService {
     let batch = this.db.firestore.batch();
 
     items.forEach(item => {
-    let docRef = this.db.firestore.collection('user')
-                        .doc(this.userId)
-                        .collection('orders')
-                        .doc(orderId)
-                        .collection('items')
-                        .doc();
+      let docRef = this.db.firestore.collection('user')
+        .doc(this.userId)
+        .collection('orders')
+        .doc(orderId)
+        .collection('items')
+        .doc();
 
       batch.set(docRef, item)
     });
@@ -272,20 +278,18 @@ export class UserService {
         // second step
         id = res.id;
         this.updateOrderId(id);
-        console.log('second step');
       })
       .then(() => {
         // third step
         this.addOrderItems(id, items);
-        console.log('third step');
       })
       .then(() => {
         // fourth step
         this.emptyCart();
-        console.log('third step');
       })
       .catch(res => console.log(res))
   }
+
   getOrdrsItem(){
     return from(
       this.db
@@ -305,16 +309,73 @@ export class UserService {
         });
       })
     );
-    
-    
-  
    }
 
-  getAddresses() { }
+  getAddresses(): Observable<any> {
+    return this.db.collection('user')
+      .doc(this.userId)
+      .collection('addresses').get();
+  }
 
-  addAddress() { }
+  addAddress(address: IAddress) {
+    console.log(address)
+    this.db.collection('user')
+      .doc(this.userId)
+      .collection('addresses').add(address)
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/dashboard/addresses'])
+    })
+  }
 
-  removeAddress() { }
+  removeAddress(id) {
+    this.db.collection('user')
+      .doc(this.userId)
+      .collection('addresses')
+      .doc(id).delete().then(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/dashboard/addresses'])
+        })
+      })
 
-  updateAddress() { }
+  }
+
+  updateAddress(address: IAddress) {
+    this.db.collection('user')
+      .doc(this.userId)
+      .collection('addresses')
+      .doc(address.id).update(address).then(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/dashboard/addresses'])
+        })
+      })
+
+  }
+
+  getSettings() {
+    return from(
+      this.db
+        .collection('user')
+        .doc(this.userId).get()
+      // .doc(this.userId).get()
+    )
+  }
+
+  updateSettings(userData) {
+    this.auth.currentUser.then(res => {
+      res.updateEmail(userData.email).then(result => {
+        console.log(res.email, userData, res.uid)
+        this.db.collection('user')
+          .doc(this.userId)
+          // .doc(this.userId)
+          .update(userData).then(()=>{
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/dashboard/settings'])
+            })
+          })
+
+      }).catch(err => {
+        console.log(err)
+      })
+    })
+  }
 }

@@ -48,8 +48,8 @@ const routes: Routes = [
     path: "dashboard",
     component: UserDashboardComponent,
     children: [
+      { path: 'orderdetails', component:OrderdetailsComponent },
       { path: "orders", component: OrdersComponent },
-      {path:'orderdetails',component:OrderdetailsComponent},
       { path: "wishlist", component: WishlistComponent },
       { path: "addresses", component: AddressesComponent },
       { path: "settings", component: SettingsComponent },

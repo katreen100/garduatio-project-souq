@@ -7,7 +7,7 @@ import { ProductGridComponent } from './product-module/product-grid/product-grid
 import { ReviewCardComponent } from './reviewCard/reviewCard.component';
 import { ProductInfoComponent } from './productInfo/productInfo.component';
 import { ReviewsListComponent } from './reviewsList/reviewsList.component';
-import{OneProductCompComponent} from './productComp/oneProductComp/oneProductComp.component';
+import { OneProductCompComponent } from './productComp/oneProductComp/oneProductComp.component';
 import {FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component'
 import {ProductgallaryComponent} from "./lay out/productgallary/productgallary.component"
 import { RateComponentComponent } from './Components/rate-component/avg/rate-component.component';
@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
 import { FilterationComponent } from './Components/filteration/filteration.component';
 import { RegisterFormComponent } from './Components/register-form/register-form.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { CategoryComponent } from './Components/category/category.component';
@@ -55,6 +55,10 @@ import {ProductCarouselComponent}from './lay out/productCarousel/productCarousel
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "@angular/material/stepper";
+import { MatButtonModule } from "@angular/material/button";
+
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +105,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     OrderdetailsComponent,
     HomecarouselComponent,
     ProductCarouselComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -112,6 +115,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     NgxSliderModule,
     FormsModule,
     AngularFireAuthModule,
+    MatButtonModule,
+    MatStepperModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage:'en',
@@ -121,7 +127,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
           deps: [HttpClient]
       }
   })
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

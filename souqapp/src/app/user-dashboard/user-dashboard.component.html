@@ -34,9 +34,9 @@
 <article class="container">
     <div class="row">
         <section id="sidenav" class="col-md-3">
-            <h1>User name</h1>
+            <h1>{{ userData.name || "" }}</h1>
             <section>
-                email + avatar photo
+                {{ userData.email }}
             </section>
 
             <section id="nav-buttons">
