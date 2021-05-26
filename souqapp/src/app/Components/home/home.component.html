@@ -1,7 +1,19 @@
-<div *ngFor="let item of cats">
 
-   <h1>{{item.categoryName}}</h1>
+<div class=" container-fluid row">
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <img  class ="card-img" src="assets/CIB-en.jpg">
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <img  class ="card-img" src="assets/AYHN-en.jpg">
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <img  class ="card-img" src="assets/Valu-en.jpg">
+  </div>
+</div>
 
-    <img src="{{item.categoryImage}}" alt="">
- 
+<app-homecarousel></app-homecarousel>
+<app-productCarousel></app-productCarousel>  
+<div class="freeshipping w-100 ">
+    <a [routerLink]="['../freeshipping']"><img class="card-img-top  pb-4" src="https://cms.souqcdn.com/sanfronto/eg/2018/Web/Banners/HP-Strip/Free-Shipping-en.png">
+    </a>
 </div>

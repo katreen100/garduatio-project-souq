@@ -7,13 +7,13 @@
 </style>
 <h1 class="text-secondary">Products:</h1>
 <div class="container-fluid">
-<section id="product-grid " class="row"  *ngFor="let p of productCard$ | async">
-    <div class="col-md-3 col-sm-12">
-    <app-product-card
-       
-        [productData]="p">
-    </app-product-card>
-    </div>
+<section id="product-grid " class="row"  >
+    <div class="col-md-4 "  *ngFor="let p of productCard$ | async">
+        <app-product-card
+           
+            [productData]="p">
+        </app-product-card>
+        </div>
     
 </section> 
 </div>

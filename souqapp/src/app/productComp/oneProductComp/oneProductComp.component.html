@@ -17,7 +17,7 @@
             <app-user-rate ></app-user-rate>
           </span>
         </span>
-        <span class="bluefontcolor"> (x)review </span>
+        <span class="bluefontcolor">  review </span>
       </div>
       <div>
           <!-- <img src="https://cdn.mos.cms.futurecdn.net/VSy6kJDNq2pSXsCzb6cvYF.jpg" height="350px" alt=""> -->
@@ -110,7 +110,7 @@
     class="col-lg-3 col-md-6 col-sm-12 align-content-between flex-wrap"
   >
     <div class="borderleft pl-2">
-      <div id="shiping-info " class="p-2 fullborder">
+      <!-- <div id="shiping-info " class="p-2 fullborder">
         <span>
           Ship to <b id="shiping-city"> Cairo </b> (<a class="bluefontcolor">
             Change city</a
@@ -119,7 +119,7 @@
           <b>Delivered within {{ getarrivalDate(product.id) </b> to
           <b>Cairo</b>
         </span>
-      </div>
+      </div> -->
       <div class="pt-3">
         <input
           id="addtoCard"
@@ -130,13 +130,12 @@
           [routerLink]="['/cart']"
           routerLinkActive="router-link-active" 
         />
-        <span id="amount_left">function to get left in stock! </span>
+        <!-- <span id="amount_left">function to get left in stock! </span> -->
       </div>
       <div id="details">
-        <dl>
-          <dt style="float: left; width: 40%">condition:</dt>
-          <dd>{{ product?.condition }}</dd>
-        </dl>
+        <p> <strong> condition:</strong>
+          {{ product?.condition }}
+       
       </div>
     </div>
     <div id="icondiv" class="col-12" style="font-size: 18px">

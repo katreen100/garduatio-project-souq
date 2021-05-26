@@ -50,8 +50,8 @@ import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
-
- 
+import {HomecarouselComponent} from './lay out/homecarousel/homecarousel.component'
+import {ProductCarouselComponent}from './lay out/productCarousel/productCarousel.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,6 +96,8 @@ import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
     CartItemComponent,
     CheckoutComponent,
     OrderdetailsComponent,
+    HomecarouselComponent,
+    ProductCarouselComponent
     
   ],
   imports: [
