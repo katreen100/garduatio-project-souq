@@ -55,8 +55,8 @@ import {ProductCarouselComponent}from './lay out/productCarousel/productCarousel
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "@angular/material/stepper";
-import { MatButtonModule } from "@angular/material/button";
+// import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "@angular/material/stepper";
+// import { MatButtonModule } from "@angular/material/button";
 
  
 @NgModule({
@@ -115,8 +115,8 @@ import { MatButtonModule } from "@angular/material/button";
     NgxSliderModule,
     FormsModule,
     AngularFireAuthModule,
-    MatButtonModule,
-    MatStepperModule,
+    // MatButtonModule,
+    // MatStepperModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

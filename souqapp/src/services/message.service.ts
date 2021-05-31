@@ -16,6 +16,7 @@ export class MessageService {
   }
 
   changeLang(lang) {
+   //let currentlang= localStorage.getItem('currentLang')
     this.langSource.next(lang);
   }
 

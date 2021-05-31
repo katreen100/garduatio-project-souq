@@ -43,8 +43,8 @@ export class ProductCardComponent implements OnInit {
 constructor(private router:Router,config: NgbModalConfig,
   private modalService: NgbModal, private userService: UserService,private productservice:ProductService) {
   }
-  openlg(content) {
-    this.modalService.open(content, { size: 'lg' });
+  openxl(content) {
+    this.modalService.open(content, { size: 'xl' });
   }
   ngOnInit(): void {
     this.product = this.productData;

@@ -17,7 +17,7 @@
           </div>
           <div class="col-md-5 col-lg-7 d-none d-md-block ">
             <div class="input-group">
-              <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
+              <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput [placeholder]="'What are you looking for?' | translate">
               <div class="input-group-prepend">
                 <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
 
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col pt-1">
-                        <button class="btn btn-link" [routerLink]="['/login']">Login</button>
+                        <button class="btn btn-link" [routerLink]="['/login']">{{'Login' | translate }}</button>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="container ">
                 <ul class="p-0 m-0 nav ">
                     <li class="nav-item category py-2">
-                        <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">All Categories</a>
+                        <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">{{'All Categories' |translate }}</a>
                     </li>
                     <li class="nav-item category py-2" *ngFor="let cat of categories" (mouseenter)="show(cat.categoryName)" (mouseleave)="hide()">
                         <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]" href="#">{{cat.categoryName}}</a>
@@ -45,11 +45,11 @@
             </div>
           </div>
           <div class="col pt-1">
-            <button class="btn btn-link" [routerLink]="['/user/login']"  >{{'Login' | translate }}</button>
+            <!-- <button class="btn btn-link" [routerLink]="['/user/login']"  >{{'Login' | translate }}</button> -->
           </div>
-        </div>
-      </div>
-    </header>
+        
+    
+    
     <div class="categories container-fluid bg-light">
       <div class="container ">
         <ul class="p-0 m-0 nav ">

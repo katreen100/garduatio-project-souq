@@ -9,6 +9,7 @@ import { ProductService } from 'src/services/product.service';
 import { ReviewService } from 'src/services/review.service';
 // import { ProductService } from 'src/services/product.service';
 import {TranslateService} from '@ngx-translate/core';
+import { MessageService } from 'src/services/message.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export class AppComponent {
   rating;
   descr;
   reviews;
+  direction;
   // brands: Observable<ICategory>;
   // categories: Observable<ICategory[]>;
   // productCards: Observable<IProductCard[]>;
@@ -37,15 +39,31 @@ export class AppComponent {
   productVariantDetails;
   categories;
   currentLang:string;
-  direction ;
+  
   constructor(private categoryService: CategoryService,
               private productService: ProductService,
               private reviewService: ReviewService,
-              public translate: TranslateService) {
+              public translate: TranslateService,
+              private messageserv:MessageService) {
 
                 this.currentLang=localStorage.getItem('currentLang')||'en';
                 this.translate.use(this.currentLang)
-                
+               this.messageserv.currentLang.subscribe(res=>{
+                    if(res=='en'){
+                      this.direction="ltr"
+                      console.log("dirction chanded isa")
+                    }
+                    else{
+                      this.direction="rtl"
+                      console.log("dirction chanded isa")
+                    }
+
+
+               })
+
+
+
+               
     this.products = this.productService.getAllProducts();
     this.productVariant = this.productService.getProductVariant('LEiKmgMlBf7kSDmTiOlx');
     this.productVariantDetails = this.productService.getProductVariantDetails('LEiKmgMlBf7kSDmTiOlx');
@@ -56,15 +74,7 @@ export class AppComponent {
 
     
   }
-  changeCurrentLang(lang:string){
-    this.translate.use(lang)
-    // if (this.currentLang=="en"){
-    //   this.direction="rtl"
-    // }
-    // else{
-    //   this.direction="ltr"
-    // }
-    localStorage.setItem('currentLang',lang);
+
     
 
   }
@@ -117,5 +127,5 @@ export class AppComponent {
 
   //   this.categoryService.getCategories()
   //                       .subscribe(res => this.categories = res);
-  }
+  
 
