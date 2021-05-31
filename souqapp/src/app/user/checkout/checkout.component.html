@@ -1,1 +1,88 @@
-<p>checkout works!</p>
+<style>
+    article {
+        padding-top: 4vh;
+        padding-bottom: 8vh;
+    }
+
+    #view {
+        background-color: #f8f9fa;
+        background-color: #ffffff;
+    }
+
+    #nav-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-button {
+        background-color: #ffffff;
+        padding: 15px;
+        text-align: left;
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    .router-link-active {
+        background-color: #3c5511;
+    }
+
+    button#checkout-btn {
+        background-color: #8dc13e;
+        color: white;
+        font-weight: bolder;
+        font-size: 1.2rem;
+    }
+
+</style>
+
+
+<article class="container">
+    <div class="mx-3">
+    <div class="row mx-5">
+        <section id="view" class="col-md-8">
+          <app-addresses></app-addresses>
+          <br>
+          <div>
+            <h2>Paymenth Method</h2>
+            <form>
+              <div>
+                <input type="radio" name="paymentMethod" id="cash" value="cash">
+                <label for="cash"> Cash on Delivery</label>
+              </div>
+
+              <div>
+                <input type="radio" name="paymentMethod" id="card" value="card">
+                <label for="card"> Paypal</label>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="sidenav" class="col-md-4">
+            <section id="nav-buttons">
+                <div class="card p-3">
+                    <div style="font-size: 1.3rem;">Products</div> 
+                    <div class="h2">
+                        <!-- {{ cartItemsCount }} -->
+                    </div>
+                    <div style="font-size: 1.3rem;">Total</div> 
+                    <div class="h2">
+                        <!-- {{ cartTotalPrice | currency:'EGP '}}  -->
+                    </div>
+                </div>
+
+                <br>
+
+                <button
+                    class="btn"
+                    id="checkout-btn"
+                >
+                  Confirm Order
+                </button>
+
+            </section>
+
+        </section>
+    </div>
+    </div>
+</article>

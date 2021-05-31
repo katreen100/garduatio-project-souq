@@ -2,12 +2,8 @@
   "name": "souq-app",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "i18n:init": "ngx-translate-extract --input ./src --output ./src/assets/i18n/template.json --key-as-default-value --replace --format json",
+    "i18n:extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/{en,da,de,fi,nb,nl,sv}.json --clean --format json"
   },
   "private": true,
   "dependencies": {
@@ -24,23 +20,32 @@
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "angular-bootstrap-md": "^11.0.0",
     "bootstrap": "^4.6.0",
     "firebase": "^8.4.1",
     "jquery": "^3.6.0",
     "jw-angular-social-buttons": "^1.0.0",
     "ngx-bootstrap": "^6.2.0",
-    "rxjs": "~6.6.0",
+    "ngx-translate": "0.0.1-security",
+    "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
+    "@angular-devkit/architect": ">= 0.900 < 0.1200",
     "@angular-devkit/build-angular": "~0.1102.6",
     "@angular/cli": "~11.2.6",
     "@angular/compiler-cli": "~11.2.7",
+    "@biesbjerg/ngx-translate-extract": "^7.0.4",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "firebase-tools": "^8.0.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.1.0",
@@ -48,15 +53,10 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "open": "^7.0.3",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.5",
-    "@angular-devkit/architect": ">= 0.900 < 0.1200",
-    "firebase-tools": "^8.0.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
-    "open": "^7.0.3"
+    "typescript": "~4.1.5"
   }
 }
