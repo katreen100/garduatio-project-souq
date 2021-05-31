@@ -1,32 +1,37 @@
 <strong class="text-dark">{{'MY ACCOUNT' | translate }}</strong>
 <ul class="p-0 nav flex-column">
     <li>
-        <a [routerLink]="['/user/register']" href="#" class="text-secondary nav-link p-0">{{'Register' | translate }}</a>
+        <a [routerLink]="['/register']" class="text-secondary nav-link p-0">Register</a>
     </li>
     <li>
-        <a [routerLink]="['/cart']" href="" class="text-secondary nav-link p-0">{{'My Shopping Cart' | translate }}</a>
+        <a [routerLink]="['/cart']" class="text-secondary nav-link p-0">My Shopping Cart</a>
     </li>
     <li>
-        <a [routerLink]="['/orders']" href="" class="text-secondary nav-link p-0">{{'My Orders' | translate }}</a>
+        <a [routerLink]="['dashboard', 'orders']" class="text-secondary nav-link p-0">My Orders</a>
     </li>
     <li>
-        <a [routerLink]="['/addresses']" href="" class="text-secondary nav-link p-0">{{'My Addresses' | translate }}</a>
+        <a [routerLink]="['dashboard', 'addresses']" class="text-secondary nav-link p-0">My Addresses</a>
     </li>
     <li>
-        <a [routerLink]="['/wishlist']" href="" class="text-secondary nav-link p-0">{{'Wish Lists' | translate }}</a>
+        <a [routerLink]="['dashboard', 'wishlist']" class="text-secondary nav-link p-0">Wish Lists</a>
     </li>
     <li>
-        <a [routerLink]="['/user/account-settings']" href="" class="text-secondary nav-link p-0">{{'Account Settings' | translate }}</a>
+        <a [routerLink]="['dashboard', 'settings']" class="text-secondary nav-link p-0">Account
+            Settings</a>
     </li>
     <li>
-        <a [routerLink]="['/user/account-summary']" href="" class="text-secondary nav-link p-0">{{'Account' | translate }}
-            {{'Summary' | translate }}</a>
+        <a [routerLink]="['dashboard', 'summary']" class="text-secondary nav-link p-0">Account
+            Summary</a>
+
     </li>
 </ul>
 <strong class="text-dark">{{'INTELLECTUAL PROPERTY' | translate }} </strong>
 <ul class="p-0 nav flex-column">
     <li>
-        <a [routerLink]="['/home']" href="#" class="text-secondary nav-link p-0">{{'Brand and Copyright
-            Owners' | translate }}</a>
-        </li>
+        <a [routerLink]="['/home']" class="text-secondary nav-link p-0">Brand and Copyright
+            Owners</a>
+    </li>
+    <li>
+        <a [routerLink]="['/home']" class="text-secondary nav-link p-0">Marketplace Sellers</a>
+    </li>
 </ul>

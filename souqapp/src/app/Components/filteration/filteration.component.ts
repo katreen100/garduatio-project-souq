@@ -1,5 +1,6 @@
 import { Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BrandService } from 'src/old-services/brand.service';
 import { CategoryService } from 'src/old-services/category.service';
 import { ProductService } from 'src/old-services/product.service';
@@ -13,8 +14,8 @@ export class FilterationComponent implements OnInit {
   searchCat: string;
   searchCondition: string;
   searchBrand: string;
-
-  Cateogryoptions = [];
+  
+  @Input() Cateogryoptions = [];
   cats = []
 
   minValue: number = 0;
@@ -43,13 +44,13 @@ export class FilterationComponent implements OnInit {
 
 
 
-  constructor(private categoryService: CategoryService, private brandService: BrandService, private productService: ProductService) {
+  constructor(private router:Router ,private categoryService: CategoryService, private brandService: BrandService, private productService: ProductService) {
     this.categoryService.getCategories()
       .subscribe(res => {
         this.Cateogryoptions = res
         this.cats = [...this.Cateogryoptions]
       });
-    this.brandService.getBrands(1)
+    this.brandService.getBrands('123')
       .subscribe(res => {
         this.Brand = res;
         this.bran = [...this.Brand];
@@ -64,7 +65,6 @@ export class FilterationComponent implements OnInit {
       .subscribe(res => {
         this.products = res;
       });
-
 
   }
 
@@ -89,8 +89,8 @@ export class FilterationComponent implements OnInit {
 
 
   }
-  SelectedProduct(item) {
-    console.log(item);
+  selectedOption(item) {
+    this.router.navigate(['search-result/',item])
   }
   priceFromTo(from, to) {
     console.log(from);
@@ -136,9 +136,7 @@ export class FilterationComponent implements OnInit {
     }
 
   }
-  brandOption(item) {
-    console.log(item);
-  }
+
 
 
 }

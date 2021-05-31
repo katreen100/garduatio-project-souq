@@ -4,7 +4,22 @@
             <app-filteration></app-filteration>
         </div>
         <div class="col-9">
-            <app-product-grid></app-product-grid>
+            <!-- <app-product-grid></app-product-grid> -->
+            <div *ngIf="products; then showProducts else noProducts"></div>
+            <ng-template #showProducts>
+                <section class="row" *ngFor="let p of products">
+                    <div class="col-md-3 col-sm-12">
+                        <app-product-card [productData]="p">
+                        </app-product-card>
+
+                    </div>
+
+                </section>
+            </ng-template>
+            <ng-template #noProducts>
+                <h2 class="text-danger text-center">No Products or Categories Found on our Database</h2>
+            </ng-template>
+
         </div>
     </div>
 </div>

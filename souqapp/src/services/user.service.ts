@@ -363,6 +363,7 @@ export class UserService {
   updateSettings(userData) {
     this.auth.currentUser.then(res => {
       res.updateEmail(userData.email).then(result => {
+        res.updatePassword(userData.password).then(console.log)
         console.log(res.email, userData, res.uid)
         this.db.collection('user')
           .doc(this.userId)

@@ -1,28 +1,27 @@
 <div class="d-flex">
 
-  <app-sidebar [Toggled]=isToggled></app-sidebar>
+    <app-sidebar [Toggled]=isToggled></app-sidebar>
 
-  <!-- Page content holder -->
-  <div class="page-content" [class.active]="isToggled" id="content" >
-    <div [ngClass]="{'side-bar-active': !isToggled}" (click)="toggleClass()"> </div>
-    <!-- Toggle button -->
-    <app-top-header></app-top-header>
-    <header class="container-fluid main-header" (scroll)="scrollHandler($event)">
+    <!-- Page content holder -->
+    <div class="page-content" [class.active]="isToggled" id="content">
+        <div [ngClass]="{'side-bar-active': !isToggled}" (click)="toggleClass()"> </div>
+        <!-- Toggle button -->
+        <app-top-header></app-top-header>
+        <header class="container-fluid main-header" (scroll)="scrollHandler($event)">
 
-      <div class="container py-3">
-        <div class="row ">
-          <div class="col-9 col-md-3" id="sidebarCollapse" (click)="toggleClass()">
-            <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
-            <img [src]= "'logo' |translate" alt="">
-          </div>
-          <div class="col-md-5 col-lg-7 d-none d-md-block ">
-            <div class="input-group">
-              <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
-              <div class="input-group-prepend">
-                <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
-
-                  <i class="fas fa-search"></i>
-                </button>
+            <div class="container py-3">
+                <div class="row ">
+                    <div class="col-9 col-md-3" id="sidebarCollapse" (click)="toggleClass()">
+                        <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
+                        <img src="../../../assets/logo.png" alt="">
+                    </div>
+                    <div class="col-md-5 col-lg-7 d-none d-md-block ">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
+                                    <i class="fas fa-search" on></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -67,8 +66,11 @@
         class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small
           class="text-uppercase font-weight-bold">Toggle Side bar</small></button> -->
         <!-- <div class="content"><span> Content</span></div> -->
+        <div class="container">
 
-        <router-outlet></router-outlet>
+            <app-settings></app-settings>
+        </div>
+        <!-- <router-outlet></router-outlet> -->
 
         <app-footer></app-footer>
 
