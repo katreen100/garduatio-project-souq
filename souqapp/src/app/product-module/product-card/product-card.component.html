@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="quick-view ">
-                <button class="btn btn-primary" (click)="openlg(content)">Quick View</button>
+                <button class="btn btn-primary" (click)="openxl(content)">{{'Quick View' |translate }}</button>
                 <!-- <h2  class ="btn " i18n>Quick View</h2> -->
             </div>
             <ng-template
@@ -137,7 +137,7 @@
         
                         <div class=" col-12 " >
                             <div *ngIf="product.freeShipping" i18n>
-                           <strong> Free Shipping</strong>    </div>
+                           <strong> {{'free shipping' |translate}}</strong>    </div>
 
                     </div>
                 </div>
