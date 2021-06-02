@@ -1,6 +1,6 @@
 <div class="d-flex">
 
-    <app-sidebar [Toggled]=isToggled></app-sidebar>
+    <app-sidebar [Toggled]="isToggled"></app-sidebar>
 
     <!-- Page content holder -->
     <div class="page-content" [class.active]="isToggled" id="content">
@@ -46,7 +46,7 @@
           </div>
           <div class="col pt-1">
             <!-- <button class="btn btn-link" [routerLink]="['/user/login']"  >{{'Login' | translate }}</button> -->
-          </div>
+          <!-- </div> -->
     <div class="categories container-fluid bg-light">
       <div class="container ">
         <ul class="p-0 m-0 nav ">
@@ -73,5 +73,5 @@
         <app-footer></app-footer>
 
 
-    </div>
 </div>
+<!-- </div> -->
