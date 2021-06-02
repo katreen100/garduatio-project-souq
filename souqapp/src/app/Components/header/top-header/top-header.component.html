@@ -5,19 +5,19 @@
                 <div class="pr-3 p-0 d-inline-block" placement="bottom" ngbTooltip="All orders of 350.00 EGP or more on eligible items across any product category qualify for FREE Shipping. " role="button" tooltipClass="ml-4">
                     <small>
                         <i class="fas fa-truck pr-1"></i>
-                        Free Shipping
+                        {{'Free Shipping' | translate }}
                     </small>
                 </div>
                 <div class="pr-3 p-0 d-inline-block" placement="bottom" ngbTooltip="Changed your mind, you can return your product and get a full refund" role="button">
                     <small>
                         <i class="fas fa-sync pr-1"></i>
-                        Free Returns
+                        {{'Free Returns' | translate }}
                     </small>
                 </div>
                 <div class="pr-3 p-0 d-inline-block" placement="bottom" ngbTooltip="Pay for your order in cash at the moment the shipment is delivered to your doorstep." role="button">
                     <small>
                         <i class="fas fa-dollar-sign pr-1"></i>
-                        Cash on delivery
+                        {{'Cash on delivery' | translate }}
                     </small>
                 </div>
             </article>
@@ -29,6 +29,7 @@
                     <li>
                         <a href="#"> <small class="px-2">Daily Deals</small></a>
                     </li>
+                    
                     <li>
                         <a href="#"> <small class="px-2">Customer Service</small></a>
                     </li>
@@ -38,6 +39,8 @@
                     <li>
                         <a [routerLink]="['/orders']" href="#"> <small class="px-2">Track Orders</small> </a>
                     </li>
+                    <li><a (click)="changeCurrentLang('ar')"> <small  class="px-2">العربية</small></a></li>
+                    <li><a (click)="changeCurrentLang('en')"> <small  class="px-2">ُEnglish</small></a></li>
                 </ul>
             </article>
         </div>

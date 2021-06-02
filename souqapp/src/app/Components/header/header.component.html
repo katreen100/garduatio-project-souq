@@ -1,6 +1,6 @@
 <div class="d-flex">
 
-    <app-sidebar [Toggled]=isToggled></app-sidebar>
+    <app-sidebar [Toggled]="isToggled"></app-sidebar>
 
     <!-- Page content holder -->
     <div class="page-content" [class.active]="isToggled" id="content">
@@ -55,9 +55,11 @@
         </header>
         <div class="categories container-fluid bg-light">
             <div class="w-75 mx-auto ">
+        <!-- <div class="categories container-fluid bg-light">
+            <div class="container ">
                 <ul class="p-0 m-0 nav ">
                     <li class="nav-item category py-2">
-                        <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">All Categories</a>
+                        <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">{{'All Categories' |translate }}</a>
                     </li>
                     <li class="nav-item category py-2" *ngFor="let cat of categories" (mouseenter)="show(cat.categoryName)" (mouseleave)="hide()">
                         <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]" href="#">{{cat.categoryName}}</a>
@@ -71,8 +73,9 @@
         </div>
         <router-outlet></router-outlet>
 
+
         <app-footer></app-footer>
 
 
-    </div>
 </div>
+<!-- </div> -->

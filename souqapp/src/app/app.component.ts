@@ -8,6 +8,8 @@ import { OldProductService } from 'src/services/oldproduct.service';
 import { ProductService } from 'src/services/product.service';
 import { ReviewService } from 'src/services/review.service';
 // import { ProductService } from 'src/services/product.service';
+import {TranslateService} from '@ngx-translate/core';
+import { MessageService } from 'src/services/message.service';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +24,7 @@ export class AppComponent {
   rating;
   descr;
   reviews;
+  direction;
   // brands: Observable<ICategory>;
   // categories: Observable<ICategory[]>;
   // productCards: Observable<IProductCard[]>;
@@ -35,10 +38,32 @@ export class AppComponent {
   productVariant;
   productVariantDetails;
   categories;
-
+  currentLang:string;
+  
   constructor(private categoryService: CategoryService,
               private productService: ProductService,
-              private reviewService: ReviewService) {
+              private reviewService: ReviewService,
+              public translate: TranslateService,
+              private messageserv:MessageService) {
+
+                this.currentLang=localStorage.getItem('currentLang')||'en';
+                this.translate.use(this.currentLang)
+               this.messageserv.currentLang.subscribe(res=>{
+                    if(res=='en'){
+                      this.direction="ltr"
+                      console.log("dirction chanded isa")
+                    }
+                    else{
+                      this.direction="rtl"
+                      console.log("dirction chanded isa")
+                    }
+
+
+               })
+
+
+
+               
     this.products = this.productService.getAllProducts();
     this.productVariant = this.productService.getProductVariant('LEiKmgMlBf7kSDmTiOlx');
     this.productVariantDetails = this.productService.getProductVariantDetails('LEiKmgMlBf7kSDmTiOlx');
@@ -46,6 +71,14 @@ export class AppComponent {
     this.productVariantImages = this.productService.getProductVariantImages('Z9yl9x6K6ypb6Q18ow0R');
     this.reviews = this.reviewService.getProductReviews('ed0f0600-854e-4ad4-b01d-bda780b2cdc0');
     this.categories = this.categoryService.getAllCategories();
+
+    
+  }
+
+    
+
+  }
+  
     // this.categories = this.categoryService.getAllCategories();
     // this.brands = this.categoryService.getBrandByCategory('EnXv47N2LkilhZDVvYva');
     // this.products = this.productService.getAllProducts();
@@ -94,5 +127,5 @@ export class AppComponent {
 
   //   this.categoryService.getCategories()
   //                       .subscribe(res => this.categories = res);
-  }
-}
+  
+
