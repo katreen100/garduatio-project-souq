@@ -8,11 +8,27 @@ export class MessageService {
   userData = new  BehaviorSubject<any>('');
   currentUserData = this.userData.asObservable();
 
+  langSource = new BehaviorSubject<any>('en');
+  currentLang = this.langSource.asObservable();
+  
+
+  loginSource = new BehaviorSubject<any>(false);
+  currentLogin = this.loginSource.asObservable();
+
 
   constructor() {
+  }
+
+  changeLang(lang) {
+   //let currentlang= localStorage.getItem('currentLang')
+    this.langSource.next(lang);
   }
 
   updateUserData(message) {
     this.userData.next(message);
   }
+
+  toggleLogin(status: boolean) {
+    this.loginSource.next(status);
+  } 
 }

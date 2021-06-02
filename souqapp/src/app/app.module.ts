@@ -7,7 +7,7 @@ import { ProductGridComponent } from './product-module/product-grid/product-grid
 import { ReviewCardComponent } from './reviewCard/reviewCard.component';
 import { ProductInfoComponent } from './productInfo/productInfo.component';
 import { ReviewsListComponent } from './reviewsList/reviewsList.component';
-import{OneProductCompComponent} from './productComp/oneProductComp/oneProductComp.component';
+import { OneProductCompComponent } from './productComp/oneProductComp/oneProductComp.component';
 import {FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component'
 import {ProductgallaryComponent} from "./lay out/productgallary/productgallary.component"
 import { RateComponentComponent } from './Components/rate-component/avg/rate-component.component';
@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
 import { FilterationComponent } from './Components/filteration/filteration.component';
 import { RegisterFormComponent } from './Components/register-form/register-form.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { CategoryComponent } from './Components/category/category.component';
@@ -50,6 +50,13 @@ import { CartComponent } from './user/cart/cart.component';
 import { CartItemComponent } from './user/cart-item/cart-item.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
+import {HomecarouselComponent} from './lay out/homecarousel/homecarousel.component'
+import {ProductCarouselComponent}from './lay out/productCarousel/productCarousel.component'
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+// import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "@angular/material/stepper";
+// import { MatButtonModule } from "@angular/material/button";
 
  
 @NgModule({
@@ -96,7 +103,8 @@ import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
     CartItemComponent,
     CheckoutComponent,
     OrderdetailsComponent,
-    
+    HomecarouselComponent,
+    ProductCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -106,10 +114,24 @@ import {OrderdetailsComponent} from './user/orderdetails/orderdetails.component'
     NgbModule,
     NgxSliderModule,
     FormsModule,
-    AngularFireAuthModule
-    
+    AngularFireAuthModule,
+    // MatButtonModule,
+    // MatStepperModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage:'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json');
+}

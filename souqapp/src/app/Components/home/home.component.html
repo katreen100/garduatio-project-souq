@@ -1,7 +1,23 @@
-<div *ngFor="let item of cats">
 
-   <h1>{{item.categoryName}}</h1>
-
-    <img src="{{item.categoryImage}}" alt="">
- 
+<div> 
+<div class=" container-fluid row">
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <img  class ="card-img" [src]=" 'CIB' |translate">
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <img  class ="card-img"  [src]=" 'AYHN' |translate">
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <img  class ="card-img"  [src]=" 'VLUE' |translate">
+  </div>
 </div>
+
+<app-homecarousel></app-homecarousel>
+<app-productCarousel></app-productCarousel>  
+<div class="freeshipping w-100 ">
+    <a [routerLink]="['../freeshipping']"><img class="card-img-top  pb-4" [src]="'FREESHIPING'|translate">
+    </a>
+</div>
+</div>
+
+<!--  -->

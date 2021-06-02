@@ -11,15 +11,9 @@ export class HomeComponent implements OnInit {
   Cateogryoptions = [];
   cats = [];
 
-  constructor(private catService : CategoryService) {
-    this.catService.getCategories()
-      .subscribe(res => {
-        this.Cateogryoptions = res;
-        this.cats = [...this.Cateogryoptions]
-        console.log(this.cats);
-      });
-   }
-
+  constructor(private catService : CategoryService,
+  ){}
+  
   ngOnInit(): void {
   }
 

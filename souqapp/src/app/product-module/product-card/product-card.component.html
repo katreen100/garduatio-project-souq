@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="quick-view ">
-                <button class="btn btn-primary" (click)="openlg(content)">Quick View</button>
+                <button class="btn btn-primary" (click)="openxl(content)">{{'Quick View' |translate }}</button>
                 <!-- <h2  class ="btn " i18n>Quick View</h2> -->
             </div>
             <ng-template
@@ -108,13 +108,13 @@
         </ng-template>
         </div>
         <div class="product-details  py-3 col-md-12 col-sm-8  " >
-            <div class="card-details row d-flex  justify-content-between  px-2 " style="height: 280px;">
+            <div class="card-details row d-flex  justify-content-between  px-2 " style="height: 260px;">
                 <div class="title col-12">
                     <h4  type="button" (click)="productDetails(product.parentId, product.mainVariant)">{{ product.name | slice:0:70}}</h4> 
                 </div>
                 <div class="priceAndRatingAndshipping   w-100">
                    <div class="priceAndRating  row m-auto  ">
-                    <div class="price col-md-6 ">
+                    <div class="price col-md-6  ">
                         <div class="price ">
                            <h4 style="color: #006fcc;font-weight: bold;"> {{ product.price* ((100 - product.discount) / 100)  |currency:" "}}<sub > EGP</sub></h4>
                         
@@ -137,13 +137,13 @@
         
                         <div class=" col-12 " >
                             <div *ngIf="product.freeShipping" i18n>
-                           <strong> Free Shipping</strong>    </div>
+                           <strong> {{'free shipping' |translate}}</strong>    </div>
 
                     </div>
                 </div>
                 
                 <div class="addToCard col-12 align-items-end d-flex">
-                    <button class="add-to-cart-btn btn  w-100 align-items-end" (click)="addToCart(product.parentId)">ADD TO CART</button>
+                    <button class="add-to-cart-btn btn  w-100 align-items-end" (click)="addToCart(product.parentId)">{{'add to card' | translate}}</button>
 
                 </div>
 

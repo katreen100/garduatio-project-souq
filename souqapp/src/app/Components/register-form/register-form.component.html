@@ -10,8 +10,7 @@
             <div class="errors py-3 px-3 mb-3" *ngIf="validation.length>0">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-exclamation-circle fa-2x text-danger"></i>
-                    <h5 class="a-alert-heading d-inline-block text-danger font-weight-normal pl-3">There was a problem
-                    </h5>
+                    <h5 class="a-alert-heading d-inline-block text-danger font-weight-normal pl-3">There was a problem</h5>
                 </div>
                 <ul class="ml-4 mb-0">
                     <li *ngFor="let err of validation">
@@ -27,40 +26,36 @@
                         </div>
                         <!-- Name -->
                         <div class="control-group mb-3">
-                            <label class="control-label " for="username"><small class="font-weight-bold text-dark">
-                                    Your Name</small>
-                            </label>
+                            <label class="control-label " for="username"><small class="font-weight-bold text-dark">User name</small>
+              </label>
                             <div class="controls">
-                                <input type="text" [(ngModel)]="userInfo.name" id="name" name="name" placeholder="" class="input-xlarge w-100 rounded" required minlength="3">
+                                <input type="text" [(ngModel)]="userInfo.username" id="username" name="username" placeholder="" class="input-xlarge w-100 rounded" required minlength="3">
                                 <!-- <p class="help-block">Username can contain any letters or numbers, without spaces</p> -->
                             </div>
                         </div>
                         <!-- E-mail -->
                         <div class="control-group mb-3">
-                            <label class="control-label " for="username"><small
-                                    class="font-weight-bold text-dark">Email</small>
-                            </label>
+                            <label class="control-label " for="username"><small class="font-weight-bold text-dark">Email</small>
+              </label>
                             <div class="controls">
                                 <input type="email" [(ngModel)]="userInfo.email" name="email" id="email" placeholder="" class="input-xlarge w-100 rounded">
                             </div>
                         </div>
                         <!-- Password -->
                         <div class="control-group mb-3">
-                            <label class="control-label " for="username"><small
-                                    class="font-weight-bold text-dark">Password</small>
-                            </label>
+                            <label class="control-label " for="username"><small class="font-weight-bold text-dark">Password</small>
+              </label>
                             <div class="controls">
                                 <input type="password" [(ngModel)]="userInfo.password" id="password" name="password" placeholder="" class="input-xlarge w-100 rounded" placeholder="At least 6 characters" autocomplete="off">
                                 <small class="help-block">
-                                    <i class="fas fa-info text-info fa-xs pr-2"></i>
-                                    Password should be at least 6 characters</small>
+                  <i class="fas fa-info text-info fa-xs pr-2"></i>
+                  Password should be at least 6 characters</small>
                             </div>
                         </div>
                         <!-- Password Confirmation -->
                         <div class="control-group mb-3">
-                            <label class="control-label " for="username"><small
-                                    class="font-weight-bold text-dark">Re-enter
-                                    password</small> </label>
+                            <label class="control-label " for="username"><small class="font-weight-bold text-dark">Re-enter
+                  password</small> </label>
                             <div class="controls">
                                 <input type="password" [(ngModel)]="passwordConfirmation" id="confirmPassword" name="confirmPassword" placeholder="" class="input-xlarge w-100 rounded" autocomplete="off">
                             </div>
@@ -76,16 +71,16 @@
                 </form>
                 <div class="agreement py-2">
                     <small>
-                        By creating an account, you agree to our Conditions of Use and Privacy Policy.
-                    </small>
+            By creating an account, you agree to our Conditions of Use and Privacy Policy.
+          </small>
                 </div>
                 <hr class="mx-auto shadow" style="height: 1px;">
                 <p> <small>
-                        Already have an account?
-                        <a [routerLink]="['../login']">
-                            Sign in <i class="fas fa-caret-right fa-xs"></i>
-                        </a>
-                    </small>
+            Already have an account?
+            <a [routerLink]="['../login']">
+              Sign in <i class="fas fa-caret-right fa-xs"></i>
+            </a>
+          </small>
                 </p>
             </div>
         </div>
@@ -97,31 +92,31 @@
             <li>
                 <a [routerLink]="['terms']">
                     <small>
-                        Conditions of Use
-                    </small>
+            Conditions of Use
+          </small>
                 </a>
             </li>
             <span class="seperator"> </span>
             <li>
                 <a [routerLink]="['privacy']">
                     <small>
-                        Privacy Notice
-                    </small>
+            Privacy Notice
+          </small>
                 </a>
             </li>
             <span class="seperator"> </span>
             <li>
                 <a [routerLink]="['help']">
                     <small>
-                        Help
-                    </small>
+            Help
+          </small>
                 </a>
             </li>
         </ul>
         <div class="copy ml-5">
             <small>
-                2018 Souq.com FZ LLC and its affiliates. All rights reserved.
-            </small>
+        2018 Souq.com FZ LLC and its affiliates. All rights reserved.
+      </small>
         </div>
     </footer>
 </div>

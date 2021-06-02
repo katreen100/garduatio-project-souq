@@ -45,6 +45,18 @@ export class ProductService {
                     })
                   )
   }
+  //for home page 
+  getAllProductsforHome(): Observable<IParentProduct[]> {
+    return this.db.collection('ParentProduct')
+                  .get()
+                  .pipe(
+                    map(response => {
+                      return response.docs.slice(0,5) .map(doc => {
+                        return LocalizeProduct(doc.data() as IParentProduct, doc.id);
+                      })
+                    })
+                  )
+  }
 
 
   getArrayOfProducts(ids: string[]): Observable<IParentProduct[]> {
