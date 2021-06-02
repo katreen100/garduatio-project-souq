@@ -23,11 +23,10 @@ import { AuthGaurdServiceService } from 'src/services/auth-gaurd-service.service
 import { CartComponent } from './user/cart/cart.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import { OrderdetailsComponent } from './user/orderdetails/orderdetails.component';
-import { FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component';
-import{HomeComponent}from './Components/home/home.component'
+
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
-  {path:"home",component: HomeComponent}, // Home component should be here
+  {path:"home",component: HomeLayloutComponent}, // Home component should be here
   {path:"freeShippingDetails",component: OneProductCompComponent},
   {path:"category/:catName",component: CategoryComponent},   //Routing to category component and this component will expect the category name
   {path:"category",component: ProductGridComponent}, //Routing to Brand component and this component will expect the brand name
@@ -42,22 +41,21 @@ const routes: Routes = [
   { path:"privacy",component: PrivacyComponent },
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
-  { path: "cart", component:  CartComponent },
+  { path: "cart", component:  CartComponent, canActivate: [AuthGaurdServiceService]},
   { path: "checkout", component: CheckoutComponent, canActivate: [AuthGaurdServiceService]},
   { 
     path: "dashboard",
     component: UserDashboardComponent,
     children: [
-      // { path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGaurdServiceService] },
-      { path: "orders", component: OrdersComponent, canActivate: [AuthGaurdServiceService] },
+      { path: 'orderdetails', component:OrderdetailsComponent },
+      { path: "orders", component: OrdersComponent },
       { path: "wishlist", component: WishlistComponent },
-      { path: "addresses", component: AddressesComponent, canActivate: [AuthGaurdServiceService] },
-      { path: "settings", component: SettingsComponent, canActivate: [AuthGaurdServiceService]},
-      { path:'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGaurdServiceService] }
+      { path: "addresses", component: AddressesComponent },
+      { path: "settings", component: SettingsComponent },
+    //  {path:'orderdetails',component:OrderdetailsComponent}
     ],
-    // canActivate:[AuthGaurdServiceService]
+    canActivate:[AuthGaurdServiceService]
   },
-  { path:"freeshipping" ,component:FreeShipppingmodalComponent},
   
   // {path:"user/account-settings",component: AppComponent},
   // {path:"user/account-summary",component: AppComponent},
