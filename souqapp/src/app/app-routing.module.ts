@@ -42,20 +42,20 @@ const routes: Routes = [
   { path:"privacy",component: PrivacyComponent },
   { path:"register",component: RegisterFormComponent },
   { path: "logout", redirectTo: "/home", pathMatch: 'full' },
-  { path: "cart", component:  CartComponent, canActivate: [AuthGaurdServiceService]},
+  { path: "cart", component:  CartComponent },
   { path: "checkout", component: CheckoutComponent, canActivate: [AuthGaurdServiceService]},
   { 
     path: "dashboard",
     component: UserDashboardComponent,
     children: [
-      { path: 'orderdetails', component:OrderdetailsComponent },
-      { path: "orders", component: OrdersComponent },
+      // { path: 'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGaurdServiceService] },
+      { path: "orders", component: OrdersComponent, canActivate: [AuthGaurdServiceService] },
       { path: "wishlist", component: WishlistComponent },
-      { path: "addresses", component: AddressesComponent },
-      { path: "settings", component: SettingsComponent },
-    //  {path:'orderdetails',component:OrderdetailsComponent}
+      { path: "addresses", component: AddressesComponent, canActivate: [AuthGaurdServiceService] },
+      { path: "settings", component: SettingsComponent, canActivate: [AuthGaurdServiceService]},
+      { path:'orderdetails', component: OrderdetailsComponent, canActivate: [AuthGaurdServiceService] }
     ],
-    canActivate:[AuthGaurdServiceService]
+    // canActivate:[AuthGaurdServiceService]
   },
   { path:"freeshipping" ,component:FreeShipppingmodalComponent},
   
