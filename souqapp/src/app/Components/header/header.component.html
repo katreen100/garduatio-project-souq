@@ -9,13 +9,13 @@
         <app-top-header></app-top-header>
         <header class="container-fluid main-header" (scroll)="scrollHandler($event)">
 
-            <div class="container py-3">
+            <div class="w-75 mx-auto pb-2 pt-4">
                 <div class="row ">
-                    <div class="col-9 col-md-3" id="sidebarCollapse" (click)="toggleClass()">
+                    <div class="col-6 col-md-4 col-lg-3" id="sidebarCollapse" (click)="toggleClass()">
                         <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
                         <img src="../../../assets/logo.png" alt="">
                     </div>
-                    <div class="col-md-5 col-lg-7 d-none d-md-block ">
+                    <div class="col-md-5 col-lg-6 d-none d-md-block ">
                         <div class="input-group">
                             <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
                             <div class="input-group-prepend">
@@ -25,14 +25,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col pt-1">
-                        <button class="btn btn-link" [routerLink]="['/login']">Login</button>
+                    <div class="col-5 col-md-3 col-lg-2 d-flex align-items-start ">
+
+                        <a [routerLink]="['/cart']" style="text-decoration: none;">
+                            <div class="d-flex flex-column justify-content-between align-items-center pr-4 cart">
+                                <!-- Shape 1 -->
+                                <span class="text-danger cart-items-amount">0</span>
+                                <i class="fab fa-opencart text-primary fa-lg"></i>
+                                <!-- Shape 2 -->
+                                <!-- <span class="text-danger font-weight-bold cart-items-amount pl-2">0</span>
+                                <i class="fas fa-shopping-cart text-primary fa-2x pt-1"></i> -->
+                                <p class="text-center font-weight-bold py-0">Cart</p>
+                            </div>
+                        </a>
+                        <a [routerLink]="['/dashboard/wishlist']" style="text-decoration: none;">
+                            <div class="d-flex flex-column justify-content-between align-items-center pr-4 cart">
+
+                                <span class="text-danger cart-items-amount">0</span>
+                                <i class="fas fa-heart fa-lg text-danger heart"></i>
+                                <p class="text-center font-weight-bold py-0">Favorite</p>
+                            </div>
+                        </a>
+                        <button class="btn btn-primary " [routerLink]="['/login']" *ngIf="!userStatus">Login</button>
+                        <button class="btn btn-danger " *ngIf="userStatus" (click)="signOut()">Logout</button>
                     </div>
+
                 </div>
             </div>
         </header>
         <div class="categories container-fluid bg-light">
-            <div class="container ">
+            <div class="w-75 mx-auto ">
                 <ul class="p-0 m-0 nav ">
                     <li class="nav-item category py-2">
                         <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">All Categories</a>
@@ -43,16 +65,11 @@
                 </ul>
             </div>
         </div>
-
-        <!-- <button id="sidebarCollapse" (click)="toggleClass()" type="button"
-        class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small
-          class="text-uppercase font-weight-bold">Toggle Side bar</small></button> -->
-        <!-- <div class="content"><span> Content</span></div> -->
         <div class="container">
 
-            <app-settings></app-settings>
+            <!-- <app-settings></app-settings> -->
         </div>
-        <!-- <router-outlet></router-outlet> -->
+        <router-outlet></router-outlet>
 
         <app-footer></app-footer>
 

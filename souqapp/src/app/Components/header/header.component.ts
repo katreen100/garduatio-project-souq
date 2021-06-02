@@ -1,6 +1,7 @@
-import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/old-services/category.service';
+import { UserAuthService } from 'src/old-services/users-service.service';
 
 @Component({
   selector: 'app-header',
@@ -9,31 +10,33 @@ import { CategoryService } from 'src/old-services/category.service';
 })
 export class HeaderComponent implements OnInit {
   isToggled: boolean = true;
-  @ViewChild('sidebarCollapse', {static: true}) sideBarCollapse: ElementRef;
+  @ViewChild('sidebarCollapse', { static: true }) sideBarCollapse: ElementRef;
   categories: []
-  
-  constructor(private service: CategoryService, private router:Router) { }
+  userStatus:boolean;
+
+  constructor(private service: CategoryService, private router: Router, private userService: UserAuthService) { 
+    this.userService.checkUser.subscribe(res=>{
+      this.userStatus = res;
+    })
+  }
 
   ngOnInit(): void {
     this.service.getCategories().subscribe(res => {
       this.categories = res
     })
   }
-  toggleClass(): void{
+  toggleClass(): void {
     this.isToggled = !this.isToggled;
   }
-  scrollHandler(event){
+  scrollHandler(event) {
     console.log(event)
     console.log("hello")
   }
-  show(catName){
-    // console.log(catName)
+  search(search) {
+    this.router.navigate(['search-result/', search])
   }
-  hide(){
-    
-  }
-  search(search){
-    this.router.navigate(['search-result/',search])
+  signOut(){
+    this.userService.SignOut();
   }
 
 }

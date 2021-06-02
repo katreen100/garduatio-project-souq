@@ -12,7 +12,6 @@ export class SettingsComponent implements OnInit {
   showpassword = 'password'
   userInfo = {
     name: '',
-    username: '',
     password: '',
     email: '',
     gender: '',
@@ -25,7 +24,6 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.service.getSettings().subscribe(res => {
       // console.log(res.data());
-      this.userInfo.username = res.data()['username'];
       this.userInfo.email = res.data()['email'];
       this.userInfo.password = res.data()['password'];
       res.data()['name'] ? this.userInfo.name = res.data()['name'] : this.userInfo.name = '';
@@ -64,7 +62,7 @@ export class SettingsComponent implements OnInit {
       this.validation.push('kindly enter a valid Name')
       flag = false
     }
-    if (this.userInfo.email.match(emailPattern)) {
+    if (!this.userInfo.email.match(emailPattern)) {
       this.validation.push('Kindly enter a valid email address')
       flag = false;
     }
