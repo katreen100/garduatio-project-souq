@@ -35,5 +35,10 @@ export class HeaderComponent implements OnInit {
   search(search){
     this.router.navigate(['search-result/',search])
   }
-
+  show(x:string){
+    console.log('showed',x)
+  }
+  hide(x:string){
+    console.log('hidden',x)
+  }
 }
