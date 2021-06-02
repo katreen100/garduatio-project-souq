@@ -10,7 +10,7 @@ import { UserAuthService } from 'src/old-services/users-service.service';
 export class LoginComponent implements OnInit {
   userLogin: IuserLogin;
   validation = [];
-  caretFlag:boolean;
+  caretFlag: boolean;
   constructor(private Auth: UserAuthService) {
     this.userLogin = {
       email: '',
@@ -44,11 +44,13 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    this.Auth.SignIn(this.userLogin.email, this.userLogin.password).then(res=>{
-      this.validation.push(res.message)
+    this.Auth.SignIn(this.userLogin.email, this.userLogin.password).then(res => {
+      if (res != undefined) {
+        this.validation.push(res.message)
+      }
     })
   }
-  toggle(){
+  toggle() {
     this.caretFlag = !this.caretFlag;
   }
 

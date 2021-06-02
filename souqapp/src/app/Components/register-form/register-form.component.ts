@@ -15,8 +15,8 @@ export class RegisterFormComponent implements OnInit {
     validation = [];
     constructor(private Auth: UserAuthService) {
         this.userInfo = {
+            name: '',
             email: '',
-            username: '',
             password: '',
         };
     }
@@ -28,8 +28,8 @@ export class RegisterFormComponent implements OnInit {
         let flag = true;
 
         let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-        if (this.userInfo.username === '') {
-            this.validation.push('User name is required')
+        if (this.userInfo.name === '') {
+            this.validation.push('Name is required')
             flag = false;
         }
         if (!this.userInfo.email.match(emailPattern)) {
@@ -43,7 +43,7 @@ export class RegisterFormComponent implements OnInit {
         else if (this.userInfo.password.length < 6) {
             this.validation.push('Password should be at least 6 characters')
             flag = false;
-        }        
+        }
         if (this.passwordConfirmation !== this.userInfo.password) {
             this.validation.push('Passwords are not Matched')
             flag = false;
@@ -54,7 +54,7 @@ export class RegisterFormComponent implements OnInit {
     }
     register() {
         this.Auth.signUp(this.userInfo).then(res => {
-        }).catch(err => { console.log('error', err); });
+        }).catch(err => { this.validation.push(err.message) });
     }
 
 }
