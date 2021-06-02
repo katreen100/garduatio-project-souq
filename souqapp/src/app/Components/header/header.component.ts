@@ -38,5 +38,10 @@ export class HeaderComponent implements OnInit {
   signOut(){
     this.userService.SignOut();
   }
-
+  show(x:string){
+    console.log('showed',x)
+  }
+  hide(x:string){
+    console.log('hidden',x)
+  }
 }

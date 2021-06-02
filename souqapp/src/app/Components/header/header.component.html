@@ -59,7 +59,7 @@
                     <li class="nav-item category py-2">
                         <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">All Categories</a>
                     </li>
-                    <li class="nav-item category py-2" *ngFor="let cat of categories" (mouseenter)="show(cat.categoryName)" (mouseleave)="hide()">
+                    <li class="nav-item category py-2" *ngFor="let cat of categories" (mouseenter)="show(cat.categoryName)" (mouseleave)="hide(cat.categoryName)">
                         <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]" href="#">{{cat.categoryName}}</a>
                     </li>
                 </ul>
