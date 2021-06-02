@@ -9,6 +9,10 @@
 <h1>Wish List</h1>
 
 <section class="list">
-    <app-wishlist-item *ngFor="let item of (wishlist | async); let i=index" [id]="i" [productData]="item">
+   <app-wishlist-item
+            *ngFor="let item of (wishlist | async); let i=index"
+            [id]="i" 
+            [productData]="item"
+        >
     </app-wishlist-item>
 </section>

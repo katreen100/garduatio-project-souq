@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUserRegister } from 'src/app/view model/iuser-register';
 import { MessageService } from 'src/services/message.service';
@@ -11,13 +11,12 @@ import { MessageService } from 'src/services/message.service';
   providedIn: 'root'
 })
 export class UserAuthService {
-  checkUser: Subject<boolean> = new BehaviorSubject<boolean>(false);
-
+  checkUser: BehaviorSubject<boolean>;
 
   constructor(private db: AngularFirestore,
-    private afAuth: AngularFireAuth,
-    private message: MessageService,
-    private router: Router) { this.isLogged() }
+              private afAuth: AngularFireAuth,
+              private message: MessageService,
+              private router: Router) { }
 
   getUser(id: number): Observable<any> {
     return this.db
@@ -39,7 +38,6 @@ export class UserAuthService {
           })
         })
       )
-
   }
 
   SignIn(email: string, password: string) {
@@ -50,11 +48,11 @@ export class UserAuthService {
         email: result.user.email,
         uid: result.user.uid,
       });
-      localStorage.setItem('uid', result.user.uid);
-      localStorage.setItem('displayName', result.user.displayName);
-      localStorage.setItem('email', result.user.email);
+      localStorage.setItem('uid',result.user.uid);
+      localStorage.setItem('displayName',result.user.displayName);
+      localStorage.setItem('email',result.user.email);
       localStorage.setItem("Token", result.user.refreshToken)
-      this.checkUser.next(true)
+      // this.checkUser.next(true)
       this.router.navigate(['/home']);
     }).catch((err) => {
       return err;
@@ -63,15 +61,13 @@ export class UserAuthService {
 
   }
 
-  isLogged():boolean {
-    this.checkUser.next(localStorage.Token ? true : false)
-    return(localStorage.Token ? true : false)
+  isLogged(): boolean {
+    return (localStorage.Token ? true : false)
   }
 
   SignOut() {
-    this.checkUser.next(false)
+    // this.checkUser.next(false)
     localStorage.removeItem('Token');
-    this.router.navigate(["/home"])
   }
   Reset(email: string) {
     return this.afAuth.sendPasswordResetEmail(email)
@@ -79,7 +75,6 @@ export class UserAuthService {
   signUp(userInfo: IUserRegister) {
 
     return this.afAuth.createUserWithEmailAndPassword(userInfo.email, userInfo.password).then((res) => {
-      res.user.updateProfile({ displayName: userInfo.name })
       userInfo.userId = res.user.uid;
       this.db.collection('user').doc(res.user.uid).set(userInfo)
       console.log(userInfo)
