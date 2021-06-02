@@ -11,7 +11,7 @@ export class CategoryService {
   constructor(private db: AngularFirestore) { }
 
   getCategories(): Observable<any> {
-    return this.db.collection('categories')
+    return this.db.collection('categoryEnglish')
                   .get()
                   .pipe(
                     map(resp => {

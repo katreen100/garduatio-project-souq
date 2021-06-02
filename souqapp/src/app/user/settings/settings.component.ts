@@ -9,6 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SettingsComponent implements OnInit {
   closeResult = '';
+  showpassword = 'password'
   userInfo = {
     name: '',
     username: '',
@@ -52,20 +53,31 @@ export class SettingsComponent implements OnInit {
     }
   }
   validate() {
+    this.validation = []
+    console.log(this.userInfo)
+    console.log(this.updatedUserInfo)
     let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    // make the name Pattern validate incoming name...
+    let namePattern = /^[a-zA-Z]{3,}$/ig;
     let flag = true;
-
-    if (!this.userInfo.email.match(emailPattern)) {
+    if(this.userInfo.name.match(namePattern)){
+      this.validation.push('kindly enter a valid Name')
+      flag = false
+    }
+    if (this.userInfo.email.match(emailPattern)) {
       this.validation.push('Kindly enter a valid email address')
       flag = false;
     }
+    if (this.userInfo.password.length <= 6) {
+      this.validation.push('Password Should be more than 6 characters')
+    }
     if (flag)
       this.update();
-    else
-      console.log(this.validation)
-
   }
   update() {
     this.service.updateSettings(this.updatedUserInfo)
+  }
+  showPWD() {
+    this.showpassword == 'password'? this.showpassword = 'text' : this.showpassword = 'password'
   }
 }
