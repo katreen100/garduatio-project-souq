@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IParentProduct } from '@models/iproduct';
 import { ProductService } from 'src/services/product.service';
 
 @Component({
@@ -10,16 +11,10 @@ export class ProductInfoComponent implements OnInit {
   data;
   productFullId;
   @Input() ParentID: string;
-  product: import("e:/frontend ITI/lastfolderfinlproject/souq-app/souqapp/src/app/models/iproduct").IParentProduct;
+  product:IParentProduct;
   feature: string[];
   constructor(private productService: ProductService) {
-    // this.productService.getProductDescription(1)
-    //   .subscribe(res => {
-    //     this.data = res;
-    //     console.log(this.data)
-    //   })
-    // this.productService.getProduct(this.ParentID).subscribe(res=>{
-    // })
+
   }
 
   ngOnInit() {
