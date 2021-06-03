@@ -26,8 +26,17 @@ export class HeaderComponent implements OnInit {
       this.userStatus = res;
     })
 
-    this.message.currentWishList.subscribe(res => this.wishlistItemCount += res);
-    this.message.currentCart.subscribe(res => this.cartItemCount += res);
+    this.message.currentWishList.subscribe(res => { 
+      // if (this.wishlistItemCount != 0 && res > 0) {
+        this.wishlistItemCount += res
+      // }
+    });
+
+    this.message.currentCart.subscribe(res => {
+      // if (this.cartItemCount != 0 && res > 0) {
+        this.cartItemCount += res
+      // }
+    });
   }
 
   ngOnInit(): void {

@@ -171,7 +171,6 @@ export class UserService {
       .then((res) => {
         if (res.empty) {
           this.addToCart(item);
-          this.message.updateCart(1);
         }
       });
 
@@ -185,9 +184,11 @@ export class UserService {
       .add(item)
       .then(console.log)
       .catch(console.log);
+    this.message.updateCart(1);
   }
 
   removeFromCart(itemId) {
+    console.log('removeFromCart');
     this.db
       .collection('user')
       .doc(this.userId)
@@ -210,6 +211,7 @@ export class UserService {
       .then(res => {
         res.forEach(doc => {
           this.message.updateCart(-1);
+          console.log('empty cart iteration')
           doc.ref.delete();
         })
       });

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IWishListItemData } from '@models/iproduct';
+import { MessageService } from 'src/services/message.service';
 import { UserService } from 'src/services/user.service';
 
 
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit, OnDestroy {
   cartItemsCount: number;
   cartTotalPrice: number;
 
-  constructor(private user: UserService ) {
+  constructor(private user: UserService, private message: MessageService ) {
     this.sub = this.user.getCartItems()
                         .subscribe(res => {
                           this.cartItems = res;
@@ -42,6 +43,10 @@ export class CartComponent implements OnInit, OnDestroy {
       deliveryDate: deliveryDate 
       // username     
     };
+
+    this.message.updateOrderPrice(this.cartTotalPrice);
+    this.message.updateOrderCount(this.cartItemsCount);
+    this.message.updateCart(-1 * this.cartItemsCount);
 
     this.user.proceedToCheckout(this.cartItems,orderMetaData);
   }

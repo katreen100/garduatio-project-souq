@@ -23,7 +23,22 @@ export class MessageService {
   currentCart = this.cartSource.asObservable();
 
 
+  orderCountSource = new BehaviorSubject<any>(0);
+  currentOrderCountSource = this.orderCountSource.asObservable();
+
+  orderPriceSource = new BehaviorSubject<any>(0);
+  currentOrderPrice = this.orderPriceSource.asObservable();
+
+
   constructor() {
+  }
+
+  updateOrderCount(x: number) {
+    this.orderCountSource.next(x);
+  }
+
+  updateOrderPrice(x: number) {
+    this.orderPriceSource.next(x);
   }
 
   updateWishlist(x: number) {

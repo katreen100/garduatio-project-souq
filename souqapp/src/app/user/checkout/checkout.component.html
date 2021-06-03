@@ -43,10 +43,10 @@
           <app-addresses></app-addresses>
           <br>
           <div>
-            <h2>Paymenth Method</h2>
-              <div class="card">
+            <h3 class="border border-light">Paymenth Method</h3>
+              <div class="card-body bg-white">
                 <input type="radio" checked name="paymentMethod" id="cash" value="cash">
-                <label for="cash"> Cash on Delivery</label>
+                <label for="cash">&nbsp; Cash on Delivery</label>
               </div>
           </div>
 
@@ -57,11 +57,11 @@
                 <div class="card p-3">
                     <div style="font-size: 1.3rem;">Products</div> 
                     <div class="h2">
-                        <!-- {{ cartItemsCount }} -->
+                        {{ cartItemsCount }} 
                     </div>
                     <div style="font-size: 1.3rem;">Total</div> 
                     <div class="h2">
-                        <!-- {{ cartTotalPrice | currency:'EGP '}}  -->
+                        {{ cartTotalPrice | currency:'EGP '}}
                     </div>
                 </div>
 
@@ -70,6 +70,8 @@
                 <button
                     class="btn"
                     id="checkout-btn"
+                    [routerLink]="['/dashboard', 'orders']"
+                    (click)="confirmOrder()"
                 >
                   Confirm Order
                 </button>
