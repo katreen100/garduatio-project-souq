@@ -1,9 +1,9 @@
-
 <!-- <h2>SKU Number: {{skuNumber}}</h2> -->
-<div class="container">
-
-<app-oneProductComp></app-oneProductComp>
-<app-productInfo></app-productInfo>
-<app-product-rate></app-product-rate>
-<app-reviewsList></app-reviewsList>
+<div class="container-fluid" style="background-color: #f8f9fa !important">
+  <!-- <div class="shadow mb-5 bg-body rounded">
+<app-oneProductComp [productIdasInput]="parentID"></app-oneProductComp>
+  </div> -->
+  <app-productInfo [ParentID]="parentID"></app-productInfo>
+  <app-product-rate [parentProduct]="parentID"></app-product-rate>
+  <app-reviewsList [productID]="parentID"></app-reviewsList>
 </div>

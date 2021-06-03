@@ -23,17 +23,18 @@ import { AuthGaurdServiceService } from 'src/services/auth-gaurd-service.service
 import { CartComponent } from './user/cart/cart.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import { OrderdetailsComponent } from './user/orderdetails/orderdetails.component';
-
+import {HomeComponent} from './Components/home/home.component'
+import { FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component';
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
-  {path:"home",component: HomeLayloutComponent}, // Home component should be here
-  {path:"freeShippingDetails",component: OneProductCompComponent},
+  {path:"home",component: HomeComponent}, // Home component should be here
+  {path:"freeshipping",component: FreeShipppingmodalComponent},
   {path:"category/:catName",component: CategoryComponent},   //Routing to category component and this component will expect the category name
   {path:"category",component: ProductGridComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"brand/:brandName",component: BrandComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"search-result/:searchParam",component: SearchComponent},
   // {path:"productPage/:parentProductId/:variantId",component: ProductPageComponent},
-  {path:"productPage/:parentProductId/:variantId",component: OneProductCompComponent},
+  {path:"productPage/:parentProductId/:variantId",component: ProductPageComponent},
   // {path:"user/register",component: AppComponent},
   { path:"login",component: LoginComponent },
   { path:"help",component: HelpComponent },

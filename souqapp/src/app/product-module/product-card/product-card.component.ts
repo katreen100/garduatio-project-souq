@@ -51,8 +51,8 @@ constructor(private router:Router,config: NgbModalConfig,
     this.productid=this.product.id;
     console.log(this.productid)
   }
-  productDetails(parentProductId, variantId){
-    this.router.navigate(['/productPage/',parentProductId,variantId])
+  productDetails(parentProductId, variantId='mainVariant'){
+    this.router.navigate(['/productPage/',parentProductId, variantId])
   }
   addToCart(parentId) {
     console.log(parentId)

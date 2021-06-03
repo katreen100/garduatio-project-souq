@@ -1,5 +1,5 @@
-import { ProductService } from 'src/old-services/product.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { ProductServiceNew } from 'src/services/productNew.service';
 
 @Component({
   selector: 'app-reviewsList',
@@ -7,18 +7,19 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./reviewsList.component.css']
 })
 export class ReviewsListComponent implements OnInit {
+  @Input() productID:string
   reviews;
   rating;
   descr;
 
-  constructor(private productService: ProductService) {
-    this.productService.getProductReviews(1)
-      .subscribe(res => {
-        this.reviews = res[0];
-        console.table(this.reviews);
-        console.log(...this.reviews);
-    });
-
+  constructor(private productService: ProductServiceNew) {
+    // this.productService.getProductReviews(1)
+    //   .subscribe(res => {
+    //     this.reviews = res[0];
+    //     console.table(this.reviews);
+    //     console.log(...this.reviews);
+    // });
+    // this.productService.
     // this.data = [
     //   {
     //     ratingValue: 4,

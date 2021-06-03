@@ -10,7 +10,7 @@
       <div class="pb-2">
         <span ngbDropdown class="d-inline-block">
           <span id="dropdownBasic1" ngbDropdownToggle>
-            <app-rate-component [currentRate]='productRate.averageRating'  [size]="2"></app-rate-component>
+            <app-rate-component [currentRate]='product.averageRating'  [size]="2"></app-rate-component>
           </span>
           <span ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-2" style="width: 450px;">
             <app-rate-statics [parentID]='productFullId.parentProductId'></app-rate-statics>
@@ -19,9 +19,9 @@
         </span>
         <span class="bluefontcolor">  review </span>
       </div>
-      <div>
-          <!-- <img src="https://cdn.mos.cms.futurecdn.net/VSy6kJDNq2pSXsCzb6cvYF.jpg" height="350px" alt=""> -->
-        <app-productgallary></app-productgallary>
+      <div class="p-4 border">
+           <img class="card-img" [src]="product.mainImage" height="350px" alt=""> 
+      
       </div>
     </div>
   </div>
@@ -79,12 +79,9 @@
              <dt>{{item.key}}</dt>
              <dd
                class="btn btn-secondary mr-2"
-               *ngFor="
-                 let item of product.productprop ;let val of item.value
-                 let indexOfelement = index 
-               " (click)="firtation($event)" value="item"
+               
              >
-               {{ val}}
+               {{item.value}}
              </dd>
            </dl>
             </div>
