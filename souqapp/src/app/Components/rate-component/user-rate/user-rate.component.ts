@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IRate } from 'src/app/Viewmodels/Rate/irate';
+import { ProductService } from 'src/services/product.service';
 
 @Component({
   selector: 'app-user-rate',
@@ -7,30 +10,37 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class UserRateComponent implements OnInit {
   @Input() firstRate: boolean;
-  constructor() { }
+  @Input() productId: string;
+  @Input() productRate: IRate;
+  constructor(private service:ProductService,private router:Router) { }
 
   ngOnInit(): void {
   }
   //the function when use choose the rate is here
   rateChangeFun(_rate) {
+
     switch (_rate) {
       case 1:
-        console.log('User Choosed 1 star');
+        this.productRate.one++;
         break;
       case 2:
-        console.log('User Choosed 2 stars');
+        this.productRate.two++;
         break;
       case 3:
-        console.log('User Choosed 3 stars');
+        this.productRate.three++;
         break;
       case 4:
-        console.log('User Choosed 4 stars');
+        this.productRate.four++;
         break;
       case 5:
-        console.log('User Choosed 5 stars');
+        this.productRate.five++;
         break;
       default:
         break;
     }
+    this.service.updateProductRateDetails(this.productId,this.productRate).then(()=>{
+      alert('Thank you for giving us you feedback')
+      this.router.navigate(['../home'])
+    }).catch(err=>alert(err.message))
   }
 }

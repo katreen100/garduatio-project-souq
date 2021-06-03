@@ -2,23 +2,17 @@
 <!-- it will put the avg in rate Component to make the rate shape (fill the stars) -->
 <div class="container p-0 py-4">
     <h2 class="text-uppercase text-secondary">customer reviews</h2>
-  <div class="container shadow bg-white">
-    <div class="container p-3" id="rate">
-      <div class="row my-2">
-        <!-- This column will take the Avrage rate  -->
-        <div
-          class="col-lg-3 py-2 borderCOL d-flex align-items-center flex-column"
-        >
-          <div class="avg">
-            {{ productRate.averageRating }}
-          </div>
-          <!-- send the avg rate with [currentRate] and if you want a specific size for the stars, you can send it in [size], the size will be rem -->
-          <app-rate-component
-            [currentRate]="productRate.averageRating"
-            [size]="2"
-          ></app-rate-component>
-          <strong *ngIf="productRate.averageRating > 0"
-            >{{ productRate.averageRating }} out of 5</strong
+    <div class="container shadow bg-white">
+        <div class="container p-3" id="rate">
+            <div class="row my-2">
+                <!-- This column will take the Avrage rate  -->
+                <div class="col-lg-3 py-2 borderCOL d-flex align-items-center flex-column">
+                    <div class="avg">
+                        {{ productRate.averageRating }}
+                    </div>
+                    <!-- send the avg rate with [currentRate] and if you want a specific size for the stars, you can send it in [size], the size will be rem -->
+                    <app-rate-component [currentRate]="productRate.averageRating" [size]="2"></app-rate-component>
+                    <strong *ngIf="productRate.averageRating > 0">{{ productRate.averageRating }} out of 5</strong
           >
 
           <span class="text-secondary" *ngIf="productRate.averageRating > 0"
@@ -34,7 +28,7 @@
         </div>
         <!-- this components is responisble for Rating -->
         <div class="col-lg-3 mt-3 col-sm-12 px-2">
-          <app-user-rate [firstRate]="prdRateFlag"></app-user-rate>
+          <app-user-rate [firstRate]="prdRateFlag" [productId]="parentProduct" [productRate]='productRate'></app-user-rate>
         </div>
       </div>
     </div>

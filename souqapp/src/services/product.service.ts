@@ -17,6 +17,7 @@ import {
 } from '@shared/localization/localization';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IRate } from 'src/app/Viewmodels/Rate/irate';
 
 @Injectable({
   providedIn: 'root',
@@ -218,7 +219,9 @@ export class ProductService {
       .get()
       .pipe(map((response) => response.data() as IRatingDetails));
   }
-
+  updateProductRateDetails(productID:string, _rate:IRate){
+    return this.db.collection('ratingDetails').doc(productID).update(_rate);
+  }
   getProductSpecs(parentProductId): Observable<IProductSpecs[]> {
     return this.db
       .collection('ParentProduct')
