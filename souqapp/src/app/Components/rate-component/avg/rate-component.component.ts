@@ -7,12 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RateComponentComponent implements OnInit {
   @Input() currentRate: number;
-  @Input() size:string;
+  @Input() size: string;
 
-  constructor() {  }
+  constructor() {
+  }
 
   ngOnInit(): void {
-  
   }
 
 }
