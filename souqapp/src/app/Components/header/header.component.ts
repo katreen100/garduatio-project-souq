@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/old-services/category.service';
 import { UserAuthService } from 'src/old-services/users-service.service';
+import { MessageService } from 'src/services/message.service';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +15,19 @@ export class HeaderComponent implements OnInit {
   categories: []
   userStatus:boolean;
 
-  constructor(private service: CategoryService, private router: Router, private userService: UserAuthService) { 
+  wishlistItemCount: number = 0;
+  cartItemCount: number = 0;
+
+  constructor(private service: CategoryService,
+              private router: Router,
+              private userService: UserAuthService,
+              private message: MessageService) { 
     this.userService.checkUser.subscribe(res=>{
       this.userStatus = res;
     })
+
+    this.message.currentWishList.subscribe(res => this.wishlistItemCount += res);
+    this.message.currentCart.subscribe(res => this.cartItemCount += res);
   }
 
   ngOnInit(): void {

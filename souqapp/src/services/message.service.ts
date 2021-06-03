@@ -16,7 +16,22 @@ export class MessageService {
   currentLogin = this.loginSource.asObservable();
 
 
+  wishlistSource = new BehaviorSubject<any>(0);
+  currentWishList = this.wishlistSource.asObservable();
+
+  cartSource = new BehaviorSubject<any>(0);
+  currentCart = this.cartSource.asObservable();
+
+
   constructor() {
+  }
+
+  updateWishlist(x: number) {
+    this.wishlistSource.next(x);
+  }
+
+  updateCart(x: number) {
+    this.cartSource.next(x);
   }
 
   changeLang(lang) {

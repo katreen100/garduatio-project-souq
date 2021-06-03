@@ -45,6 +45,7 @@ export class UserService {
       .add(wishListItem)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    this.message.updateWishlist(1);
   }
 
   addToWishListIfNotExist(id, wishListItem) {
@@ -121,6 +122,7 @@ export class UserService {
       .get()
       .then((res) => {
         res.docs[0].ref.delete()
+        this.message.updateWishlist(-1);
       })
 
   }
@@ -169,6 +171,7 @@ export class UserService {
       .then((res) => {
         if (res.empty) {
           this.addToCart(item);
+          this.message.updateCart(1);
         }
       });
 
@@ -195,6 +198,7 @@ export class UserService {
       .then((res) => {
         res.docs[0].ref.delete()
       });
+    this.message.updateCart(-1);
   }
 
   emptyCart() {
@@ -205,6 +209,7 @@ export class UserService {
       .toPromise()
       .then(res => {
         res.forEach(doc => {
+          this.message.updateCart(-1);
           doc.ref.delete();
         })
       });
