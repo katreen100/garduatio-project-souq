@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
     console.log("hello")
   }
   search(search) {
-    this.router.navigate(['search-result/', search])
+    this.router.navigate(['search-result/products/', search])
   }
   signOut(){
     this.userService.SignOut();

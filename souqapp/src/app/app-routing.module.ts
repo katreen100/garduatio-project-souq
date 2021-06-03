@@ -30,9 +30,9 @@ const routes: Routes = [
   {path:"home",component: HomeComponent}, // Home component should be here
   {path:"freeshipping",component: FreeShipppingmodalComponent},
   {path:"category/:catName",component: CategoryComponent},   //Routing to category component and this component will expect the category name
-  {path:"category",component: ProductGridComponent}, //Routing to Brand component and this component will expect the brand name
+  {path:"category",component:SearchComponent}, //Routing to Brand component and this component will expect the brand name
   {path:"brand/:brandName",component: BrandComponent}, //Routing to Brand component and this component will expect the brand name
-  {path:"search-result/:searchParam",component: SearchComponent},
+  {path:"search-result/:type/:searchParam",component: SearchComponent},
   // {path:"productPage/:parentProductId/:variantId",component: ProductPageComponent},
   {path:"productPage/:parentProductId/:variantId",component: ProductPageComponent},
   // {path:"user/register",component: AppComponent},
