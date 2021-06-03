@@ -59,8 +59,14 @@
                     <li class="nav-item category py-2">
                         <a class="font-weight-bold px-2" [routerLink]="['/search-result/products/all']">{{'All Categories' |translate}}</a>
                     </li>
-                    <li class="nav-item category py-2" *ngFor="let cat of categories">
-                        <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]">{{cat.categoryName}}</a>
+                    <li class="nav-item category py-2">
+                        <a class="font-weight-bold px-2" [routerLink]="['/category','Shoes']">{{'Shoes' |translate}}</a>
+                    </li>
+                    <li class="nav-item category py-2">
+                        <a class="font-weight-bold px-2" [routerLink]="['/category','Watches']">{{'Watches'|translate}}</a>
+                    </li>
+                    <li class="nav-item category py-2">
+                        <a class="font-weight-bold px-2" [routerLink]="['/category','Clothes']">{{'Clothes'|translate}}</a>
                     </li>
                 </ul>
             </div>

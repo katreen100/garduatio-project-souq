@@ -13,7 +13,7 @@
    "Create an account":"انشاء حساب ",
    "Daily Deals":"صفقة اليوم ",
    "Track Orders":"تتبع المشتريات ",
-   "Login":"تسجيل الدخول ",
+   "Login":"الدخول ",
    "All Categories":"التصنيفات ",
   "POPULAR SEARCHES":"الاكثر بحثا ",
   "BUYING ON SOUQ.COM": "الشراء  علي سوق.كوم ",
@@ -41,5 +41,8 @@
 "What are you looking for?":"ماذا تبحث عن؟",
 "Cart":"السلة ",
 "Favorite":"المفضلة",
-"Logout":"تسجيل الخروج"
+"Logout":" الخروج",
+"Shoes":"احذية",
+"Watches":"ساعات",
+"Clothes":"ملابس"
  }
