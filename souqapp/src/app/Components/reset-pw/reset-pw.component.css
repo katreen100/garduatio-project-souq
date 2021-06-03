@@ -1,0 +1,86 @@
+.errors {
+    border: 1.5px solid #C40000;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px lightgray inset;
+}
+
+input {
+    outline: none;
+    border: 1px solid silver;
+    padding: 3px 7px;
+}
+
+input:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+}
+
+.login-btn {
+    font-size: 1.2rem;
+    color: white;
+    background: rgb(0, 139, 255);
+    background: linear-gradient(180deg, rgba(0, 139, 255, 1) 0%, rgba(48, 149, 233, 1) 58%);
+}
+
+.login-btn:hover {
+    background: rgb(102, 162, 213);
+    background: linear-gradient(180deg, rgba(102, 162, 213, 1) 0%, rgba(0, 121, 222, 1) 100%);
+}
+
+.agreement {
+    line-height: 1;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #c45500;
+}
+
+footer ul li {
+    list-style-type: none;
+}
+
+.seperator {
+    display: inline-block;
+    width: 20px;
+}
+
+.copy {
+    display: block;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    color: #767676;
+    margin: 1rem 0px;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em;
+}
+
+.new-account-btn {
+    background: rgb(251, 251, 251);
+    background: linear-gradient(180deg, rgba(251, 251, 251, 1) 0%, rgba(217, 220, 225, 1) 100%);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 60%) inset;
+    border: 1px solid silver;
+}
+
+.new-account-btn:hover {
+    background: rgb(251, 251, 251);
+    background: linear-gradient(360deg, rgba(251, 251, 251, 1) 0%, rgba(217, 220, 225, 1) 100%);
+}

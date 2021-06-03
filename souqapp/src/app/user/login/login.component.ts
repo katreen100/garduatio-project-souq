@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   userLogin: IuserLogin;
   validation = [];
   caretFlag: boolean;
+  isLoading: boolean = false
   constructor(private Auth: UserAuthService) {
     this.userLogin = {
       email: '',
@@ -41,14 +42,17 @@ export class LoginComponent implements OnInit {
 
     if (flag) {
       this.login()
+      this.isLoading = true
     }
   }
   login() {
     this.Auth.SignIn(this.userLogin.email, this.userLogin.password).then(res => {
       if (res != undefined) {
         this.validation.push(res.message)
+        this.isLoading = false;
       }
     })
+
   }
   toggle() {
     this.caretFlag = !this.caretFlag;

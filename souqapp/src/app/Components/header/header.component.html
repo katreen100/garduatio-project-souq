@@ -57,8 +57,9 @@
             <div class="w-75 mx-auto ">
                 <ul class="p-0 m-0 nav ">
                     <li class="nav-item category py-2">
-                        <a class="font-weight-bold px-2" [routerLink]="['/search-result/products/all']">{{'All Categories' |translate}}</a>
+                        <a class="font-weight-bold px-2" [routerLink]="['/search-result/products/all']" routerLinkActive="active">{{'All Categories' |translate}}</a>
                     </li>
+
                     <li class="nav-item category py-2">
                         <a class="font-weight-bold px-2" [routerLink]="['/category','Shoes']">{{'Shoes' |translate}}</a>
                     </li>
@@ -67,6 +68,7 @@
                     </li>
                     <li class="nav-item category py-2">
                         <a class="font-weight-bold px-2" [routerLink]="['/category','Clothes']">{{'Clothes'|translate}}</a>
+
                     </li>
                 </ul>
             </div>
