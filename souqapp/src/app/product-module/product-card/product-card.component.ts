@@ -30,6 +30,8 @@ import { ProductService } from 'src/services/product.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input() productData;
+  @Input() imgClass ='product-show text-center  col-md-12 col-sm-4';
+  @Input() productDetailsClass='product-details  py-3 col-md-12 col-sm-8'
   product;
   
   // this property as input 
@@ -47,12 +49,13 @@ constructor(private router:Router,config: NgbModalConfig,
     this.modalService.open(content, { size: 'xl' });
   }
   ngOnInit(): void {
+    
     this.product = this.productData;
     this.productid=this.product.id;
     console.log(this.productid)
   }
-  productDetails(parentProductId, variantId='mainVariant'){
-    this.router.navigate(['/productPage/',parentProductId, variantId])
+  productDetails(parentProductId, variantId="mainVariant"){
+    this.router.navigate(['../productPage/',parentProductId,variantId])
   }
   addToCart(parentId) {
     console.log(parentId)

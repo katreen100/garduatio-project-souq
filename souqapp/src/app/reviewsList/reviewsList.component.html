@@ -1,15 +1,19 @@
-<div>
+<div class="container p-0 pb-4">
+<h2 class="text-uppercase text-secondary">reviews</h2>
+<div class="bg-white shadow p-2">
+
   <ul>
-    <li *ngFor="let review of reviews">
-      <app-reviewCard
-        [ratingValue]="review.rating"
-        userName={{review.reviewerName}}
-        reviewDate={{review.reviewDate}}
-        reviewText={{review.reviewBody}}
-        positive={{review.positives}}
-        negative={{review.negatives}}
-        isPurchasedOnSouq={{review.purchasesOn}}
-      ></app-reviewCard>
-    </li>
-  </ul>
+      <li *ngFor="let review of reviews" style="list-style: none;">
+        <app-reviewCard
+          [ratingValue]="review.rating"
+          userName={{review.reviewerName}}
+          reviewDate={{review.reviewDate}}
+          reviewText={{review.reviewBody}}
+          positive={{review.positives}}
+          negative={{review.negatives}}
+          isPurchasedOnSouq={{review.purchasesOn}}
+        ></app-reviewCard>
+      </li>
+    </ul>
+</div>
 </div>
