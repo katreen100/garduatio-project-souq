@@ -7,12 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
-  skuNumber:number;
+  parentID:string;
+
+  // skuNumber:number;
   constructor(private param:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.param.paramMap.subscribe(param=>{
-      this.skuNumber = parseInt(param.get('prdsku'))
+      // this.skuNumber = parseInt(param.get('prdsku'))
+      this.parentID = param.get('parentProductId');
+      console.log(this.parentID)
     })
   }
 

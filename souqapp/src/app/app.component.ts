@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { ICategory } from '@models/icategory';
 import { IProduct, IProductCard, IProductImages, IRatingDetails } from '@models/iproduct';
+import {  TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 // import { BrandService } from 'src/services/brand.service';
 import { CategoryService } from 'src/services/category.service';
+import { MessageService } from 'src/services/message.service';
 import { OldProductService } from 'src/services/oldproduct.service';
 import { ProductService } from 'src/services/product.service';
 import { ReviewService } from 'src/services/review.service';
@@ -35,10 +37,30 @@ export class AppComponent {
   productVariant;
   productVariantDetails;
   categories;
+  direction: string;
+  currentLang: any;
 
   constructor(private categoryService: CategoryService,
-              private productService: ProductService,
-              private reviewService: ReviewService) {
+    private productService: ProductService,
+    private reviewService: ReviewService,
+    public translate: TranslateService,
+    private messageserv:MessageService) {
+
+      this.currentLang=localStorage.getItem('currentLang')||'en';
+      this.translate.use(this.currentLang)
+     this.messageserv.currentLang.subscribe(res=>{
+          if(res=='en'){
+            this.direction="ltr"
+            console.log("dirction chanded isa")
+          }
+          else{
+            this.direction="rtl"
+            console.log("dirction chanded isa")
+          }
+
+
+     })
+
     this.products = this.productService.getAllProducts();
     this.productVariant = this.productService.getProductVariant('LEiKmgMlBf7kSDmTiOlx');
     this.productVariantDetails = this.productService.getProductVariantDetails('LEiKmgMlBf7kSDmTiOlx');

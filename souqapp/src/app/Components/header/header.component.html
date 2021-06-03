@@ -13,11 +13,11 @@
                 <div class="row ">
                     <div class="col-6 col-md-4 col-lg-3" id="sidebarCollapse" (click)="toggleClass()">
                         <i class="fas fa-bars fa-lg pr-2 text-primary"></i>
-                        <img src="../../../assets/logo.png" alt="">
+                        <img [src]="'logo' |translate" alt="">
                     </div>
                     <div class="col-md-5 col-lg-6 d-none d-md-block ">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput placeholder="What are you looking for?">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" #searchInput [placeholder]=" 'What are you looking for?' |translate">
                             <div class="input-group-prepend">
                                 <button type="button" class="btn btn-primary" (click)="search(searchInput.value)">
                                     <i class="fas fa-search" on></i>
@@ -35,7 +35,7 @@
                                 <!-- Shape 2 -->
                                 <!-- <span class="text-danger font-weight-bold cart-items-amount pl-2">0</span>
                                 <i class="fas fa-shopping-cart text-primary fa-2x pt-1"></i> -->
-                                <p class="text-center font-weight-bold py-0">Cart</p>
+                                <p class="text-center font-weight-bold py-0">{{'Cart' |translate}}</p>
                             </div>
                         </a>
                         <a [routerLink]="['/dashboard/wishlist']" style="text-decoration: none;">
@@ -43,11 +43,11 @@
 
                                 <span class="text-danger cart-items-amount">0</span>
                                 <i class="fas fa-heart fa-lg text-danger heart"></i>
-                                <p class="text-center font-weight-bold py-0">Favorite</p>
+                                <p class="text-center font-weight-bold py-0">{{'Favorite' |translate}}</p>
                             </div>
                         </a>
-                        <button class="btn btn-primary " [routerLink]="['/login']" *ngIf="!userStatus">Login</button>
-                        <button class="btn btn-danger " *ngIf="userStatus" (click)="signOut()">Logout</button>
+                        <button class="btn btn-primary " [routerLink]="['/login']" *ngIf="!userStatus">{{'Login' |translate}}</button>
+                        <button class="btn btn-danger " *ngIf="userStatus" (click)="signOut()">{{'Logout' |translate}}</button>
                     </div>
 
                 </div>
@@ -57,7 +57,7 @@
             <div class="w-75 mx-auto ">
                 <ul class="p-0 m-0 nav ">
                     <li class="nav-item category py-2">
-                        <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">All Categories</a>
+                        <a class="font-weight-bold px-2" [routerLink]="['/category']" href="#">{{'All Categories' |translate}}</a>
                     </li>
                     <li class="nav-item category py-2" *ngFor="let cat of categories">
                         <a class="font-weight-bold px-2" [routerLink]="['/category',cat.categoryName]" href="#">{{cat.categoryName}}</a>

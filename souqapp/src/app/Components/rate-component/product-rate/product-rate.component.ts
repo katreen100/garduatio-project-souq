@@ -14,12 +14,20 @@ export class ProductRateComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = []
   prdRateFlag: boolean;
   constructor(private rateService: ProductService) {
+    this.productRate = {
+      averageRating:0,
+      one:0,
+      two:0,
+      three:0,
+      four:0,
+      five:0,
+    }
   }
+
 
 
   ngOnInit(): void {
     let sub = this.rateService.getProductRatingDetails(this.parentProduct).subscribe(res => {
-      console.log(res)
       this.productRate = res;
       this.prdRateFlag = this.productRate.averageRating == 0 ? true : false;
     })

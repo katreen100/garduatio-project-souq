@@ -73,7 +73,7 @@
     <div class="product-card shadow row m-auto ">
         <div class="product-show text-center  col-md-12 col-sm-4">
             <div class="productImage text-center">
-                <img [src]="product.mainImage" height="320px" class="product-image card-img " alt="product image" />
+                <img [src]="product.mainImage" height="280px" class="product-image card-img " alt="product image" />
                 <!-- <img [src]="product.img" width="100%" class="product-image" alt="product image" /> -->
 
                 <div class="discount-box px-2">
@@ -108,7 +108,7 @@
         </ng-template>
         </div>
         <div class="product-details  py-3 col-md-12 col-sm-8  " >
-            <div class="card-details row d-flex  justify-content-between  px-2 " style="height: 260px;">
+            <div class="card-details row d-flex  justify-content-between  px-2 " style="height: 230px;">
                 <div class="title col-12">
                     <h4  type="button" (click)="productDetails(product.parentId, product.mainVariant)">{{ product.name | slice:0:70}}</h4> 
                 </div>

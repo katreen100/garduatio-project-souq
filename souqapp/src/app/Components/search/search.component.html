@@ -7,8 +7,8 @@
             <!-- <app-product-grid></app-product-grid> -->
             <div *ngIf="products; then showProducts else noProducts"></div>
             <ng-template #showProducts>
-                <section class="row" *ngFor="let p of products">
-                    <div class="col-md-3 col-sm-12">
+                <section class="row" >
+                    <div class="col-md-4 col-sm-12" *ngFor="let p of products">
                         <app-product-card [productData]="p">
                         </app-product-card>
 

@@ -1,17 +1,25 @@
-
-  <div class="mainDiv" *ngFor="let item of data">
+  <!-- <div class="mainDiv" >
     <div>
       <p>Discription</p>
-      <div>{{item.desription}}</div>
+      <div>{{data}}</div>
     </div>
 
     <br><br>
     
     <div>
       <p>Key features</p>
-      <div class="middleDiv">
-        <div *ngFor="let feature of item.features">{{feature}}</div>
+      <div class="middleDiv" >
+        <ul *ngFor="let item of feature">
+          <li>
+            {{ item}}
+
+          </li>
+        </ul>
       </div>
       
     </div>
+  </div> -->
+  <div class="container p-0">
+    <h2 class="text-uppercase align-left">product information</h2>
+
   </div>
