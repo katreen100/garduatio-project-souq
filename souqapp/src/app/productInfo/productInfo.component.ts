@@ -12,15 +12,10 @@ export class ProductInfoComponent implements OnInit {
   productFullId;
   @Input() ParentID: string;
   product: IParentProduct;
+
   feature: string[];
   constructor(private productService: ProductService) {
-    // this.productService.getProductDescription(1)
-    //   .subscribe(res => {
-    //     this.data = res;
-    //     console.log(this.data)
-    //   })
-    // this.productService.getProduct(this.ParentID).subscribe(res=>{
-    // })
+
   }
 
   ngOnInit() {

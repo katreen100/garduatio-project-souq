@@ -28,9 +28,9 @@ export class ReviewCardComponent implements OnInit {
   }
 
   extractReviewDate(r) {
-    let res = r.split('=')[1].split(',')[0];
-    console.log(res);
-    return res;
+    // let res = r.split('=')[1].split(',')[0];
+    console.log(r);
+    // return res;
   }
 
 }

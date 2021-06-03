@@ -10,8 +10,8 @@ export class BrandService {
 
   constructor(private db: AngularFirestore) { }
 
-   getBrands(categoryID): Observable<any> {
-    return this.db.collection('brands', ref => ref.where('categoryID', '==', categoryID))
+   getBrands(): Observable<any> {
+    return this.db.collection('brands')
                   .get()
                   .pipe(
                     map(resp => {

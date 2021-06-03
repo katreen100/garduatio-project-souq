@@ -20,6 +20,13 @@
     </div>
   </div> -->
   <div class="container p-0">
-    <h2 class="text-uppercase align-left">product information</h2>
-
+    <h2 class="text-uppercase align-left text-secondary">product information</h2>
+    <div class="bg-white shadow p-2 ">
+      <p class="text-uppercase text-secondary font-weight-bold">description:</p>
+      <p class="text-dark">{{data}}</p>
+      <p class="text-uppercase text-secondary font-weight-bold">features:</p>
+      <ul *ngFor="let fet of feature">
+        <li class="text-dark">{{fet}}</li>
+      </ul>
+    </div>
   </div>

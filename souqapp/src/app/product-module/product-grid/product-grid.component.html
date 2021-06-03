@@ -5,15 +5,30 @@
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
 </style>
-<h1 class="text-secondary">Products:</h1>
+
 <div class="container-fluid">
+    <div>
+    <a class="p-2 " (click)="changeToCloumn()"  ><i class="fas fa-th"></i></a>
+    <a class="p-2" (click)="changeToRow()"><i class="fas fa-bars"></i></a>
+    </div>
+    <div
+        class="search-results"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollUpDistance]="1.5"
+        [infiniteScrollThrottle]="50"
+       
+        
+      > 
 <section id="product-grid " class="row"  >
-    <div class="col-md-4 "  *ngFor="let p of productCard$ | async">
-        <app-product-card
+    
+   <div  [ngClass]="cloumnShow?'col-md-3':'col-12'" *ngFor="let p of productCard$ ">
+        <app-product-card *ngIf="p"
            
-            [productData]="p">
+            [productData]="p" [imgClass]='imgclass' [productDetailsClass]='productDetailsClass'>
         </app-product-card>
+        
         </div>
     
-</section> 
+</section> </div>
 </div>

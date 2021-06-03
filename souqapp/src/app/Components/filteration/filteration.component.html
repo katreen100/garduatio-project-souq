@@ -12,7 +12,7 @@
                 <input type="text" [(ngModel)]="searchCat" [ngModelOptions]="{standalone: true}" (input)="Search()" />
 
                 <div class="form-check" *ngFor="let item of Cateogryoptions; let i=index">
-                    <input class="form-check-input" type="radio" name="Category" id={{i}} (change)="selectedOption(item.categoryName)">
+                    <input class="form-check-input" type="radio" name="Category" id={{i}} (change)="selectedCategory(item.categoryName)">
                     <label class="form-check-label" for={{i}}>
                         {{item.categoryName}}
                     </label>
@@ -30,7 +30,7 @@
                 <input type="text" [(ngModel)]="searchBrand" [ngModelOptions]="{standalone: true}" (input)="SearchBrand()" />
 
                 <div class="form-check" *ngFor="let item of Brand;let j = i">
-                    <input class="form-check-input" type="radio" name="Category" id={{j+1}} (change)="selectedOption(item.brandName)">
+                    <input class="form-check-input" type="radio" name="Category" (change)="selectedBrand(item.brandName)">
                     <label class="form-check-label" for={{j+1}}>
                         {{item.brandName}}
                     </label>

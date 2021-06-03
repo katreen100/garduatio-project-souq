@@ -1,6 +1,8 @@
+
+
+  
 <style>
     /* .product-card {
-
       
     } */
 
@@ -71,9 +73,9 @@
 </style>
 
     <div class="product-card shadow row m-auto ">
-        <div class="product-show text-center  col-md-12 col-sm-4">
+        <div [class]="imgClass">
             <div class="productImage text-center">
-                <img [src]="product.mainImage" height="280px" class="product-image card-img " alt="product image" />
+                <img [src]="product.mainImage" height="250px" class="product-image card-img " alt="product image" />
                 <!-- <img [src]="product.img" width="100%" class="product-image" alt="product image" /> -->
 
                 <div class="discount-box px-2">
@@ -107,8 +109,8 @@
           </div>
         </ng-template>
         </div>
-        <div class="product-details  py-3 col-md-12 col-sm-8  " >
-            <div class="card-details row d-flex  justify-content-between  px-2 " style="height: 230px;">
+        <div [class]="productDetailsClass " >
+            <div class="card-details row d-flex  justify-content-between  px-2 " style="height: 220px;">
                 <div class="title col-12">
                     <h4  type="button" (click)="productDetails(product.parentId, product.mainVariant)">{{ product.name | slice:0:70}}</h4> 
                 </div>
@@ -177,14 +179,12 @@
                     <div>
                         {{ product.price* ((100 - product.discount) / 100)  }}
                     </div>
-
                     <div *ngIf="product.discount">
                         <small>
                             <strike>{{ product.price}}</strike>
                         </small>
                     </div>
                 </div>
-
                 <div>
                     <app-rate-component
                         [currentRate]="product.averageRating"
@@ -192,7 +192,6 @@
                     </app-rate-component>
                 </div>
             </div>
-
             <div class="shipping-and-fullfillment-row w-100" style="background-color: red;">
                 <div *ngIf="product.freeShipping" i18n>Free Shipping<div>
              <div *ngIf="product.fullfilledBySouq">Fullfilled by Souq</div> -->

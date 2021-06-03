@@ -1,24 +1,39 @@
 <div>
-  <app-rate-component [currentRate]="ratingValue" size="1.5"></app-rate-component>
+  <app-rate-component
+    [currentRate]="ratingValue"
+    size="1.5"
+  ></app-rate-component>
 </div>
-<div class="isPurch" *ngIf="isPurchasedOnSouq">
-  Purchased on Souq
-</div>
+<div class="isPurch" *ngIf="isPurchasedOnSouq">Purchased on Souq</div>
 <div>
-  By: <strong>{{userName}}</strong> on {{ extractReviewDate(reviewDate) * 1000 | date: 'fullDate'}}
+  <!-- By: <strong>{{userName}}</strong> on {{ extractReviewDate(reviewDate) * 1000 | date: 'fullDate'}} -->
+  By: <strong>{{ userName }}</strong>
 </div>
 <div class="reviewText">
-  {{reviewText}}
-  <br />
-  WHAT'S GOOD ABOUT THIS PRODUCT:
-  <br />
-  {{positive}}
-  <br />
-  WHAT'S NOT SO GOOD ABOUT THIS PRODUCT:
-  <br />
-  {{negative}}
+  {{ reviewText }}
+  <p class="text-secondary m-0 mt-2"> WHAT'S GOOD ABOUT THIS PRODUCT: </p>
+  <span class="pl-2 text-dark">
+    {{ positive }}
+  </span>
+  <p class="text-secondary m-0 mt-2"> WHAT'S NOT SO GOOD ABOUT THIS PRODUCT: </p>
+  <span class="pl-2 text-dark">
+    {{ negative }}
+  </span>
 </div>
 <p *ngIf="isHelpfulSelected">Thanks for your feedback!</p>
-<button class="selected" (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is Helpful</button>
-<button (click)="toggleIsHelpful()" *ngIf="!isHelpfulSelected">Is not helpful</button>
-<hr>
+<button
+  class="selected p-2 rounded my-2"
+  (click)="toggleIsHelpful()"
+  *ngIf="!isHelpfulSelected"
+>
+  <i class="fas fa-thumbs-up fa-lg pr-2"></i>
+  Is Helpful
+</button>
+<button
+  class="p-2 rounded my-2"
+  (click)="toggleIsHelpful()"
+  *ngIf="!isHelpfulSelected"
+>
+  <i class="fas fa-thumbs-down fa-lg pr-2"></i>
+  not helpful
+</button>
