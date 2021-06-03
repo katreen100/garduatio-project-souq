@@ -26,15 +26,19 @@
                     <li>
                         <a [routerLink]="['/register']" routerLinkActive="active" href="#"><small  class="px-2">{{'Create an account' |translate }}</small> </a>
                     </li>
-                 
-                    
-                   
-                    
+
+
+
+
                     <li>
-                        <a [routerLink]="['/orders']" href="#"> <small class="px-2">{{'Track Orders' | translate }}</small> </a>
+                        <a [routerLink]="['dashboard', 'orders']"> <small class="px-2">{{'Track Orders' | translate }}</small> </a>
                     </li>
-                    <li><a (click)="changeCurrentLang('en')"> <small  class="px-2"> English</small></a></li>
-                    <li><a (click)="changeCurrentLang('ar')"> <small  class="px-2">العربية</small></a></li>
+                    <li>
+                        <a (click)="changeCurrentLang('en')"> <small class="px-2"> English</small></a>
+                    </li>
+                    <li>
+                        <a (click)="changeCurrentLang('ar')"> <small class="px-2">العربية</small></a>
+                    </li>
                 </ul>
             </article>
         </div>

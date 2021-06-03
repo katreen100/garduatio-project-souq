@@ -25,6 +25,7 @@ import { CheckoutComponent } from './user/checkout/checkout.component';
 import { OrderdetailsComponent } from './user/orderdetails/orderdetails.component';
 import {HomeComponent} from './Components/home/home.component'
 import { FreeShipppingmodalComponent } from './lay out/freeShipppingmodal/freeShipppingmodal.component';
+import { ResetPWComponent } from './Components/reset-pw/reset-pw.component';
 const routes: Routes = [
   {path:"",redirectTo:"/home",pathMatch:'full'}, // Home component should be here
   {path:"home",component: HomeComponent}, // Home component should be here
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:"productPage/:parentProductId/:variantId",component: ProductPageComponent},
   // {path:"user/register",component: AppComponent},
   { path:"login",component: LoginComponent },
+  { path:"reset",component: ResetPWComponent },
   { path:"help",component: HelpComponent },
   { path:"terms",component: TermsComponent },
   { path:"privacy",component: PrivacyComponent },

@@ -86,6 +86,9 @@ export class UserAuthService {
       this.router.navigate(["/login"])
     });
   }
+  resetPassword(email:string){
+    return this.afAuth.sendPasswordResetEmail(email);
+  }
   getLoggedStatus(): Observable<boolean> {
     return this.checkUser.asObservable();
   }

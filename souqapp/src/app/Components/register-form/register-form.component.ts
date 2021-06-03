@@ -10,6 +10,7 @@ import { IUserRegister } from 'src/app/view model/iuser-register';
 })
 
 export class RegisterFormComponent implements OnInit {
+    isLoading: boolean = false
     userInfo: IUserRegister;
     passwordConfirmation = '';
     validation = [];
@@ -50,11 +51,16 @@ export class RegisterFormComponent implements OnInit {
         }
         if (flag) {
             this.register()
+            this.isLoading = true
+
         }
     }
     register() {
         this.Auth.signUp(this.userInfo).then(res => {
-        }).catch(err => { this.validation.push(err.message) });
+        }).catch(err => {
+            this.validation.push(err.message);
+            this.isLoading = false;
+        });
     }
 
 }
