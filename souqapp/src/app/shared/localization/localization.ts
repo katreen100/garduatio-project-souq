@@ -1,7 +1,7 @@
 import { ICategory } from "@models/icategory";
 import { IParentProduct, IProductSpecs, IProductVariant, IVariant } from "@models/iproduct";
 
-let locale = 'ar-EG';
+let locale = 'en';
 
 
 // table names
