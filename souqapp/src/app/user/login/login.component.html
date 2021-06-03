@@ -1,12 +1,7 @@
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid bg-light">
+    <div class="row container mx-auto">
         <div class="col-4"></div>
         <div class="col-5">
-            <div class="logo py-3 text-center">
-                <a [routerLink]="['../home']">
-                    <img src="../../../assets/logo.png" alt="">
-                </a>
-            </div>
             <div class="errors py-3 px-3 mb-3" *ngIf="validation.length>0">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-exclamation-circle fa-2x text-danger"></i>
@@ -19,7 +14,7 @@
                     </li>
                 </ul>
             </div>
-            <div class=" border pt-3 px-3">
+            <div class=" border bg-white pt-3 px-3">
                 <form class="form-horizontal" action='' method="POST">
                     <fieldset>
                         <div id="legend">
@@ -48,8 +43,15 @@
                         </div>
                         <div class="control-group">
                             <!-- Button -->
-                            <div class="controls pt-1">
+                            <div class="controls pt-1" *ngIf="!isLoading">
                                 <button class="btn login-btn w-100" (click)="validate()">Login</button>
+                            </div>
+                            <div class="controls pt-1" *ngIf="isLoading">
+                                <button class="btn btn-primary w-100" disabled>
+                                    <div class="spinner-border text-white-50" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </fieldset>
@@ -72,11 +74,8 @@
 
                             <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="card-body py-1">
-                                    <a [routerLink]="['../forgetPassword']">
+                                    <a [routerLink]="['/reset']">
                                         Forgot your password?
-                                    </a>
-                                    <a [routerLink]="['../signInIssues']" class="d-block">
-                                        Other issues with Sign-In
                                     </a>
                                 </div>
                             </div>
@@ -86,43 +85,13 @@
             </div>
             <div class="separator">New Customer? </div>
             <p> <small>
-                <a [routerLink]="['../register']" class="btn new-account-btn text-dark w-100">
-                    Create New Account
-                </a>
-            </small>
+                    <a [routerLink]="['../register']" class="btn new-account-btn text-dark w-100">
+                        Create New Account
+                    </a>
+                </small>
             </p>
         </div>
         <div class="col-3"></div>
     </div>
     <hr class="w-75 mx-auto shadow mt-4" style="height: 1px;">
-    <footer class="pt-2 text-center">
-        <ul class="d-flex justify-content-center m-0">
-            <li>
-                <a [routerLink]="['../terms']">
-                    <small>
-                        Conditions of Use
-                    </small>
-                </a>
-            </li>
-            <span class="seperator"> </span>
-            <li>
-                <a [routerLink]="['../privacy']">
-                    <small>
-                        Privacy Notice
-                    </small>
-                </a>
-            </li>
-            <span class="seperator"> </span>
-            <li>
-                <a [routerLink]="['../help']">
-                    <small>
-                        Help
-                    </small>
-                </a>
-            </li>
-        </ul>
-        <div class="copy ml-5">
-            <small>2018 Souq.com FZ LLC and its affiliates. All rights reserved.</small>
-        </div>
-    </footer>
 </div>

@@ -59,6 +59,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "@angular/material/stepper";
  import { MatButtonModule } from "@angular/material/button";
  import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ResetPWComponent } from './Components/reset-pw/reset-pw.component';
 
  
 @NgModule({
@@ -106,7 +107,8 @@ import { MatStepperModule, MatVerticalStepper, MatStepper, MatStepLabel } from "
     CheckoutComponent,
     OrderdetailsComponent,
     HomecarouselComponent,
-    ProductCarouselComponent
+    ProductCarouselComponent,
+    ResetPWComponent
   ],
   imports: [
     BrowserModule,

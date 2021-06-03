@@ -1,22 +1,19 @@
 <div class="vertical-nav bg-dark" id="sidebar" [class.active]="Toggled">
     <ul class="bg-dark mb-0 flex-column nav navbar-nav text-white-50">
         <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/orders']" routerLinkActive="active">Track Orders</a>
+            <a class="nav-link" [routerLink]="['dashboard', 'orders']" routerLinkActive="active">Track Orders</a>
         </li>
         <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/users/login']" routerLinkActive="active">My Account</a>
+            <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">Account Summary</a>
         </li>
         <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">Account Summary</a>
+            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Customer Service</a>
         </li>
         <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">Customer Service</a>
-        </li>
-        <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active">News feed</a>
+            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">News feed</a>
         </li>
     </ul>
     <div><strong class="ul-title">Categories</strong></div>
@@ -27,7 +24,7 @@
     </ul>
     <ul class="bg-dark mb-0 flex-column nav navbar-nav text-white-50">
         <li class="nav-item px-2">
-            <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><strong>Shop All
+            <a class="nav-link" [routerLink]="['/search-result/products/all']" routerLinkActive="active"><strong>Shop All
                     Categories</strong></a>
         </li>
     </ul>
