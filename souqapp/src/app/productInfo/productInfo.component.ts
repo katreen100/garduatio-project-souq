@@ -11,7 +11,8 @@ export class ProductInfoComponent implements OnInit {
   data;
   productFullId;
   @Input() ParentID: string;
-  product:IParentProduct;
+  product: IParentProduct;
+
   feature: string[];
   constructor(private productService: ProductService) {
 

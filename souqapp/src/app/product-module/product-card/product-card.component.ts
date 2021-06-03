@@ -89,5 +89,4 @@ constructor(private router:Router,config: NgbModalConfig,
   //    console.log(this.wishListItem)
    // this.userService.addToCartIfNotExist(this.productFullId, this.wishListItem)
   }
-
 }

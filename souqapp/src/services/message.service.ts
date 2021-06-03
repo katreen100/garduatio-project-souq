@@ -16,7 +16,37 @@ export class MessageService {
   currentLogin = this.loginSource.asObservable();
 
 
+  wishlistSource = new BehaviorSubject<any>(0);
+  currentWishList = this.wishlistSource.asObservable();
+
+  cartSource = new BehaviorSubject<any>(0);
+  currentCart = this.cartSource.asObservable();
+
+
+  orderCountSource = new BehaviorSubject<any>(0);
+  currentOrderCountSource = this.orderCountSource.asObservable();
+
+  orderPriceSource = new BehaviorSubject<any>(0);
+  currentOrderPrice = this.orderPriceSource.asObservable();
+
+
   constructor() {
+  }
+
+  updateOrderCount(x: number) {
+    this.orderCountSource.next(x);
+  }
+
+  updateOrderPrice(x: number) {
+    this.orderPriceSource.next(x);
+  }
+
+  updateWishlist(x: number) {
+    this.wishlistSource.next(x);
+  }
+
+  updateCart(x: number) {
+    this.cartSource.next(x);
   }
 
   changeLang(lang) {
